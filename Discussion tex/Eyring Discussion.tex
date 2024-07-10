@@ -63,8 +63,8 @@
 \maketitle% this prints the handout title, author, and date
 
 \begin{abstract}
-You have analyzed data and presented your conclusions. Can others get to the same values using your data? Could someone check your methods in detail? If you perform your analysis using \textit{Python}, the code will reveal your methods. We will explore using \textit{Python} to analyze your data in an interactive environment and to document your methodology. Along the way we will hopefully agree to never use "cubic spline" again.
-\noindent \marginnote[-35mm]{This document was produced using the \LaTeX\ typesetting language with the Tufte-handout document class. Chemical diagrams were created in \textit{ChemDoodle} Plots were typeset using \textit{MatPlotLib} and \textit{Python} tools. Diagrams were created and edited using \textit{Affinity Designer}.}
+You have analyzed data and presented your conclusions. Can others get to the same values using your data? Could someone check your methods in detail? If you perform your analysis using \textit{Python}, the code will reveal your methods. We will explore using an interactive \textit{Python} environment to analyze your data and to document your methodology. Along the way we will hopefully agree to never use "cubic spline" again.
+\noindent \marginnote[-35mm]{This document was produced using the \LaTeX\ typesetting language with the Tufte-handout document class. Chemical diagrams were created in \textit{ChemDoodle}. Plots were typeset using \textit{MatPlotLib} and \textit{Python} tools. Diagrams were created and edited using \textit{Affinity Designer}.}
 
 \end{abstract}
 
@@ -73,7 +73,7 @@ You have analyzed data and presented your conclusions. Can others get to the sam
 
 The Eyring equation is a classic of physical chemistry.\sidenote
 [][-10mm]{Read chapter 7 of ``Modern Physical Organic Chemistry'' by Anslyn \& Dougherty, \textit{University Science Books}, \textbf{2006} or any textbook that discussed chemical kinetics.}
- The free energy of activation for a reaction can be determined and, if a series of rate constant values are available at different temperatures, we can determine the enthalpy and the entropy of activation. These parameters are very helpful in interpreting reaction mechanism. But can these results be trusted? How could you estimate their reliability? Unless you are calculating the standard deviations from your plot you may be unaware of a low quality relationship.
+ The free energy of activation for a reaction can be determined and, if a series of rate constant values are available at different temperatures, we can determine the enthalpy and the entropy of activation. These parameters are very helpful in interpreting reaction mechanism. But can these results be trusted? How could you estimate their reliability? Unless you are calculating the standard deviations from your plot, you may be unaware of a low quality relationship.
 
 The Erying equation was developed almost 100~years ago\sidenote
 [][-25mm]{"The activated complex in chemical reactions." H. Eyring,  \textit{J. Chem. Phys.}, \textbf{1935}, \textit{3}, 107-115, \url{https://doi.org/10.1063/1.1749604} \vspace{2mm}}\sidenote
@@ -103,7 +103,7 @@ This can be presented in a linear form\ldots
 $$ \ln{\frac{k}{T}} = \frac{-\Delta H^\ddagger}{R} \frac{1}{T} + \frac{\Delta S^\ddagger}{R} + \kappa \frac{k_B}{h} $$ 
 \vspace{0mm}
 
-The famous Eyring plot is a plot of $\ln{\nicefrac{k}{T}}$ vs. $\nicefrac{1}{T}$. The slope will be the value of $-\nicefrac{\Delta H^\ddagger}{R}$ and the intercept will the the sum $\nicefrac{\Delta S^\ddagger}{R} + \kappa \nicefrac{k_B}{h}$. Assuming that $\Delta H^\ddagger$ and $\Delta S^\ddagger$ do not change with temperature in the range being studied, the plot should produce a straight line.
+The famous Eyring plot is a plot of $\ln{\nicefrac{k}{T}}$ vs. $\nicefrac{1}{T}$. The slope will be the value of $\nicefrac{-\Delta H^\ddagger}{R}$ and the intercept will the the sum $\nicefrac{\Delta S^\ddagger}{R} + \nicefrac{\kappa k_B}{h}$. Assuming that $\Delta H^\ddagger$ and $\Delta S^\ddagger$ do not change with temperature in the range being studied, the plot should produce a straight line.
 
 
 
@@ -112,14 +112,14 @@ The famous Eyring plot is a plot of $\ln{\nicefrac{k}{T}}$ vs. $\nicefrac{1}{T}$
 \section{An Example}
 
 To demonstrate the Erying plot, we must first obtain some experimental data. Here we will present some results from an enzyme kinetics experiment.\sidenote
-[][-5mm]{"Linear Eyring Plots Conceal a Change in the Rate-Limiting Step in an Enzyme Reaction", Teresa F. G. Machado, Tracey M. Gloster, and Rafael G. da Silva, \textit{Biochemistry}, \textbf{2018}, \textit{57}, 6757-6761. \url{https://doi.org/10.1021/acs.biochem.8b01099.}\label{paper1} \vspace{2mm}} the authors determine the Michaelis-Menten $k_{cat}$ value for a reaction over a series of temperatures. As long as the chemical change is the rate-determining-step and not some other step such as substrate binding or product release,\sidenote
+[][-5mm]{"Linear Eyring Plots Conceal a Change in the Rate-Limiting Step in an Enzyme Reaction", Teresa F. G. Machado, Tracey M. Gloster, and Rafael G. da Silva, \textit{Biochemistry}, \textbf{2018}, \textit{57}, 6757-6761. \url{https://doi.org/10.1021/acs.biochem.8b01099.}\label{paper1} \vspace{2mm}}
+The authors determined the Michaelis-Menten $k_{cat}$ value for a reaction over a series of temperatures. As long as the chemical change is the rate-determining-step, and not some other step such as substrate binding or product release,\sidenote
 [][0mm]{It is an investigation into this very possibility that is the focus of this paper.\vspace{2mm}}
 then the Erying equation will apply.\sidenote
-[][0mm]{The Erying equation requires a reaction that is a "single step." Multistep reactions with high-energy intermediates will also work as long as there is no significant concentration of the intermediate present during the reaction. If a significant portion of the reactant is converted to an intermediate that then converts to product in a r.d.s., such as in enzyme burst kinetics, the Erying equation would not be appropriate. If one could determine the separate rate constants, then the Eyring equation could be successfully applied to each step.}
+[][0mm]{The Erying equation requires a reaction that is a "single step." Multistep reactions with high-energy intermediates will also work as long as there is no significant concentration of the intermediate present during the reaction. If a significant portion of the reactant is converted to an intermediate that then converts to product in a subsequent r.d.s., such as in enzyme burst kinetics, the Erying equation would not be appropriate. If one could determine the separate rate constants, then the Eyring equation could be successfully applied to each step.}
 
 The authors reported rate/temperature data for the reduction of the \textbeta -ketoacids 3-oxobutanoate and 3-oxopentanoate by NADH in the presence of \textit{hydroxybutyrate dehydrogenase} (EC 1.1.1.30) from \textit{Acinetobacter baumannii}.
 
-\num{0.12345(9)} 
 
 \begin{figure}[h!]
   \centering
@@ -144,10 +144,10 @@ Below are two sets of data from the publication (always check the supplement\-ar
     \begin{tabular}{
        S
        S[
-               table-number-alignment = right,
+                table-number-alignment = right,
                 separate-uncertainty = true,
                 table-figures-uncertainty = 1,
-               table-figures-decimal = 1
+                table-figures-decimal = 1
         ]
        S[
                 table-number-alignment = left,
@@ -156,10 +156,10 @@ Below are two sets of data from the publication (always check the supplement\-ar
                 table-figures-decimal = 1
         ]
        S[
-               table-number-alignment = right,
+                table-number-alignment = right,
                 separate-uncertainty = true,
                 table-figures-uncertainty = 1,
-               table-figures-decimal = 1
+                table-figures-decimal = 1
         ]
        S[
                 table-number-alignment = left,
@@ -174,7 +174,7 @@ Below are two sets of data from the publication (always check the supplement\-ar
 {Temp. (/ $K$)}  & \multicolumn{2}{c}{3-oxobutanoate}  & \multicolumn{2}{c}{3-oxopentanoate}  \\
 
 \midrule
-293  &     7.6  &\pm  0.2  &   0.46 &\pm 0.02  \\                 
+293  &     7.6  &\pm 0.2   &  0.46  &\pm 0.02  \\                 
 298  &     11.7 &\pm 0.3   &  0.60  &\pm 0.03  \\
 303  &     15.2 &\pm 0.1   &  1.16  &\pm 0.02  \\
 308  &     21.3 &\pm 0.9   &  1.47  &\pm 0.03  \\
@@ -218,9 +218,9 @@ Com\-ment on the precision of each parameter.
 
 We have enormous computing power at our fingertips now. Why do we stick with methods meant for graph paper?} Perhaps we could try fitting the data directly to $k_{cat}$ vs. $T$ using non-linear curve fitting? Repeat the exercises described above. How is the precision now?
 
-\item Document your methods for creating the plots, performing the curve fits and performing calculations with correct error-propagation. Explain how your method of documentation provides an unambiguous description of your math and methods. Does your documentation provide a tool that can be easily reused by yourself or your lab-mates in analyzing other sets of rate data at different temperatures?
+\item Document your methods for creating the plots, performing the curve fits and performing calculations with correct error-propagation. Explain how your method of documentation provides an unambiguous description of your math and methods. Does your documentation provide a tool that can be easily reused by yourself or your lab-mates in analyzing other sets of rate data at different temperatures? What if you didn't have to write detailed documentation because your data analysis documented itself?
 
-\item Where in this process did Microsoft Excel become useless to you?
+\item Where in the above process did Microsoft Excel become useless to you?
 
 \end{enumerate}
 
@@ -275,7 +275,7 @@ In the workshop that will follow the seminar, participants will gain hands-on ex
 
 \item A notebook as a self-documenting and reusable data analysis tool
 
-\item Exporting plots for use in your thesis and in publications.
+\item Creating plots for use in your thesis and in publications.
 
 \end{enumerate}
 
