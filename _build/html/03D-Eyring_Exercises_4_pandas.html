@@ -353,6 +353,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-data-is-good">More Data is Good</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-data">Read the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-linear-curve-fit">Perform Linear Curve Fit</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-thermodynamic-parameters">Calculate Thermodynamic Parameters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-curve-fit-and-confidence-band">Plot Curve Fit and Confidence Band</a></li>
@@ -383,7 +384,7 @@ document.write(`
                   
   <div class="tex2jax_ignore mathjax_ignore section" id="part-3d-reading-data">
 <h1>Part 3D: Reading Data<a class="headerlink" href="#part-3d-reading-data" title="Permalink to this headline">#</a></h1>
-<p>This notebook is almost identical to the <span class="xref myst">curve fit</span> notebook. The only change is that I have replaced the direct data entry with reading a data file into a <em>Pandas</em> dataframe. You may be familiar with <em>Pandas</em> from other notebooks. It is a powerful set of tools for manipulating tables of data. Its like Excel for python. Her we use it to read a “comma-separated-value” (CSV) file that contains labeled columns of data. We then assign the data in each column to one of the three data arrays used in the curve fit notebook.</p>
+<p>This notebook is almost identical to the <a class="reference internal" href="03B-Eyring_Exercises_2_curvefit.html"><span class="doc std std-doc">curve fit</span></a> notebook. The only change is that I have replaced the direct data entry with reading a data file into a <em>Pandas</em> dataframe. You may be familiar with <em>Pandas</em> from other notebooks. It is a powerful set of tools for manipulating tables of data. Its like Excel for python. Her we use it to read a “comma-separated-value” (CSV) file that contains labeled columns of data. We then assign the data in each column to one of the three data arrays used in the curve fit notebook.</p>
 <div class="section" id="more-data-is-good">
 <h2>More Data is Good<a class="headerlink" href="#more-data-is-good" title="Permalink to this headline">#</a></h2>
 <p>The data set being read is larger and therefore the curve fit has more confidence in the fit parameters. Do you agree with this observation?</p>
@@ -423,7 +424,16 @@ document.write(`
 </div>
 </details>
 </div>
-<div class="cell docutils container">
+</div>
+<div class="section" id="read-the-data">
+<h2>Read the Data<a class="headerlink" href="#read-the-data" title="Permalink to this headline">#</a></h2>
+<p>Below we see the use of the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function of the <em>Pandas</em> library. This will create a ‘dataframe’ from the csv file. A dataframe is a dfata object with columns and rows, just like a spreadsheet.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Read in data set</span>
 <span class="n">datafile</span> <span class="o">=</span> <span class="s2">&quot;Eryingdata1.csv&quot;</span>   <span class="c1"># change this file for new data</span>
@@ -438,6 +448,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2046,6 +2057,7 @@ Calculated k at T = 310 K is 24.05+/-0.24 s^-1
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-data-is-good">More Data is Good</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-data">Read the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-linear-curve-fit">Perform Linear Curve Fit</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-thermodynamic-parameters">Calculate Thermodynamic Parameters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-curve-fit-and-confidence-band">Plot Curve Fit and Confidence Band</a></li>

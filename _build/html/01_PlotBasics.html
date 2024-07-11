@@ -443,7 +443,12 @@ document.write(`
 <h2>Data Analysis - Linear Regression<a class="headerlink" href="#data-analysis-linear-regression" title="Permalink to this headline">#</a></h2>
 <p>A famous (or infamous) method for analyzing enzyme kinetics is the Lineweaver-Burke equation. It is a double-reciprocal plot. We must convert the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values to <span class="math notranslate nohighlight">\(1/x\)</span> and <span class="math notranslate nohighlight">\(1/y\)</span>. The <span class="math notranslate nohighlight">\(y\)</span>-intercept will be <span class="math notranslate nohighlight">\(1/V_{max}\)</span> and the slope will be <span class="math notranslate nohighlight">\(K_M/V_{max}\)</span>. From this plot we can determine these two kinetic parameters for the enzyme and its substrate.</p>
 <p>The code below demonstrates these calculations, the plot and a linear regression line fit to obtain the slope and intercept.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># plotting tools</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                 <span class="c1"># we need the array object</span>
@@ -497,6 +502,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/4c43d6cebd16e7b28941bdd0f461a11bb7b0747301c6859d9d9a4603ea88f4e5.png" src="_images/4c43d6cebd16e7b28941bdd0f461a11bb7b0747301c6859d9d9a4603ea88f4e5.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The intercept is 0.0050
@@ -513,7 +519,12 @@ The KM is 24.4023
 <h2>Data Analysis - Non-linear Regression<a class="headerlink" href="#data-analysis-non-linear-regression" title="Permalink to this headline">#</a></h2>
 <p>We can fit data to any function and so are not limited to linear fits. The <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> tool will optimized parameters to obtain the best fit of x and y to a function that you define.</p>
 <p>The code below demonstrates these calculations, the plot and a curve fit to obtain the best-fit parameters.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># plotting tools</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                 <span class="c1"># we need the array object</span>
@@ -569,6 +580,7 @@ The KM is 24.4023
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/ab5779bfd930e6244c1958185e5c8f47acd131c1c15dc4d18e5c582d94fea901.png" src="_images/ab5779bfd930e6244c1958185e5c8f47acd131c1c15dc4d18e5c582d94fea901.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 81.0018
@@ -583,7 +595,12 @@ The red line is the predicted curve using Lineweaver-Burke results.
 <h2>The Same, but Fancy<a class="headerlink" href="#the-same-but-fancy" title="Permalink to this headline">#</a></h2>
 <p>The code below is almost exactly the same as in the example just above. Observe that I added a style-sheet command (look for the region hilighted by comments in the code).</p>
 <p>You can have a standard style for your lab and agree on a given style-sheet. Journals will often provide a <em>MatPlotLib</em> style-sheet file for you. Do you like it? Never appologize for your style (but always be willing to change it to suit the whims of fashion.)</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># plotting tools</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                 <span class="c1"># we need the array object</span>
@@ -643,6 +660,7 @@ The red line is the predicted curve using Lineweaver-Burke results.
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/dc70ef7e3dbc9f466c8d06df27288d00ba005b1db79ae62355c9272f43e83628.png" src="_images/dc70ef7e3dbc9f466c8d06df27288d00ba005b1db79ae62355c9272f43e83628.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 81.0018

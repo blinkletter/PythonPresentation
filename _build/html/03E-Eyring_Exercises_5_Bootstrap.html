@@ -411,10 +411,10 @@ document.write(`
 
 <span class="c1">### Set global variables</span>
 
-<span class="n">location_data</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>         <span class="c1">## Use either local folder or github folder. </span>
-<span class="n">location_styles</span> <span class="o">=</span> <span class="s2">&quot;styles/&quot;</span>     <span class="c1">## Use github locations for Colab</span>
-<span class="c1">#location_data = &quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/data/&quot;</span>
-<span class="c1">#location_styles = &quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/styles/&quot;</span>
+<span class="c1">#location_data = &quot;data/&quot;         ## Use either local folder or github folder. </span>
+<span class="c1">#location_styles = &quot;styles/&quot;     ## Use github locations for Colab</span>
+<span class="n">location_data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/data/&quot;</span>
+<span class="n">location_styles</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/styles/&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -461,7 +461,12 @@ document.write(`
 <div class="section" id="a-quick-bootstrap">
 <h2>A Quick Bootstrap<a class="headerlink" href="#a-quick-bootstrap" title="Permalink to this headline">#</a></h2>
 <p>We can get a bootstrapped confidence interval using the <code class="docutils literal notranslate"><span class="pre">seaborn.regplot()</span></code> function that is part of the <em>Seaborn</em> plotting package. It will perform a bootstrap analysis and plot the confidence interval requested (below I am using a stardard 95% confiodence interval. Change the confidence and see what happens.)</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
@@ -472,14 +477,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/245393801be830bcd979bd2279b15f39a4418ad2ffa7c780b85e9ca85acaf8c0.png" src="_images/245393801be830bcd979bd2279b15f39a4418ad2ffa7c780b85e9ca85acaf8c0.png" />
+<img alt="_images/58c5b7208120ac99cd753c56b8f4a74e3392c98adce698610adfdb12952dd4ca.png" src="_images/58c5b7208120ac99cd753c56b8f4a74e3392c98adce698610adfdb12952dd4ca.png" />
 </div>
 </div>
 <div class="section" id="styling-the-plot">
 <h3>Styling the Plot<a class="headerlink" href="#styling-the-plot" title="Permalink to this headline">#</a></h3>
 <p>Below is the same plot as above but I have added styling to the plot to fit with my own preferred publication style. We can send plotting style parameters into the <code class="docutils literal notranslate"><span class="pre">regplot()</span></code> function using keyword dictionaries.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
@@ -502,8 +513,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/5e190cdcc528541e3e614f03311197d7c0377fd142be8c93c46df84c16ba6221.png" src="_images/5e190cdcc528541e3e614f03311197d7c0377fd142be8c93c46df84c16ba6221.png" />
+<img alt="_images/70f7e61d697cb831f9e60d588a04f1eaa08746463269585e524b90ce8dc5ee1b.png" src="_images/70f7e61d697cb831f9e60d588a04f1eaa08746463269585e524b90ce8dc5ee1b.png" />
 </div>
 </div>
 </div>
@@ -514,7 +526,12 @@ document.write(`
 <p>After we run the analysis many times (2000 times in the example below) we can select the values that border the confidence interval in each list. If we are interested in 68% confidence (one standard deviation or <span class="math notranslate nohighlight">\(1\sigma\)</span>) then we select the value at the <span class="math notranslate nohighlight">\(16^{th}\)</span> percentile (lower limit of confidence) and the value at the <span class="math notranslate nohighlight">\(84^{th}\)</span> percentile (a span of <span class="math notranslate nohighlight">\(34\%\)</span> on either side of the median, a band than contains the central <span class="math notranslate nohighlight">\(68\%\)</span> of the answers.)</p>
 <p>We can query the lists of line fit and calculated thermodynamic parameters and get the range that encloses the middle <span class="math notranslate nohighlight">\(68\%\)</span> of the possible results. How does this compare to the traditional line fit and calculated standard deviation? Note that the upper and lower limits are not symmetrical around the mean value. the bootstrap reveals a more “real world” confidence interval, and yet it is not greatly different that the standard deviation determined using a standard curve fit.</p>
 <p>Observe that when you run the bootstrap process again, the values change slightly. Each run is a different set of random resamplings. In a system where we have few data points we end up with sets of repeating lines. This can result in jumps in the percentile values depending on hoe many times these lines repeat. The bootstrap is a poor choice for limited data sets, however this can be addressed as we soon shall see.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
 <span class="c1">### BOOTSTRAP </span>
@@ -677,11 +694,8 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_41161/37414098.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
-  popt,pcov = curve_fit(linear, x_s, y_s,     # Curve fit the resampled data
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 68.3%
 
 slope range is -5161.6 to -5852.7
@@ -707,7 +721,12 @@ best fit value for delta S is -69.80+/-6.84
 <div class="section" id="plotting-the-bootstrap-runs">
 <h2>Plotting the Bootstrap Runs<a class="headerlink" href="#plotting-the-bootstrap-runs" title="Permalink to this headline">#</a></h2>
 <p>Let us plot all the curve fits fom the bootstrap. Thats 2000 lines on a plot. I will use transparent lines (5% visible or alpha = 0.05) so that only the areas of the plot with many lines will “stack up” and be visible. The code below will plot the bootstrap data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################################</span>
 <span class="c1">### Create plot</span>
@@ -776,15 +795,21 @@ best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/fc93edf4eca36711eee9978b7b9a749eab0ec54b137bbf83365414c34a8c6043.png" src="_images/fc93edf4eca36711eee9978b7b9a749eab0ec54b137bbf83365414c34a8c6043.png" />
+<img alt="_images/5aa64d7a2c053d19795ef2a95af9a4621837a150be01be9d24aa1ce7ef83d8a1.png" src="_images/5aa64d7a2c053d19795ef2a95af9a4621837a150be01be9d24aa1ce7ef83d8a1.png" />
 </div>
 </div>
 <div class="section" id="checking-the-distribution">
 <h3>Checking the Distribution<a class="headerlink" href="#checking-the-distribution" title="Permalink to this headline">#</a></h3>
 <p>We can check the quality of our bootstrap process by plotting the values for a give parameter. Let us check the calculated <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> value. We will plot the values and we observe that there are several discrete values that we bounce around between rather than a smooth random. We  will also plot the distribution sorted from lowest values to highest and compare that to a distribution generated by a Gaussian probability curve.</p>
 <p>We can see the “steps” that are the result of repeated discrete values. The low number of points means that there are many repeats of the same resample.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median</span> <span class="o">=</span> <span class="n">median_dS</span>
 <span class="n">value</span> <span class="o">=</span> <span class="n">dS</span>
@@ -898,8 +923,9 @@ best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/9edab8cf3c84dd2eb849b2e772082dbc59ba9cf98b3557d20d5567fcc4f9a574.png" src="_images/9edab8cf3c84dd2eb849b2e772082dbc59ba9cf98b3557d20d5567fcc4f9a574.png" />
+<img alt="_images/d1e5f014bdcd5b418db07343567625056947a401f63f0b55aa650a323fe70557.png" src="_images/d1e5f014bdcd5b418db07343567625056947a401f63f0b55aa650a323fe70557.png" />
 </div>
 </div>
 </div>
@@ -908,7 +934,12 @@ best fit value for delta S is -69.80+/-6.84
 <h2>Smooth Bootstrap<a class="headerlink" href="#smooth-bootstrap" title="Permalink to this headline">#</a></h2>
 <p>If we do not have a large data set the bootstrap will contain many identical values and a smooth distribution of values will not be possible. However we can create more values by applying error to the data points. The below code is ifdentical to the above except that we are applying a random Gaussian distribution function to each resamples y-value. We will use the standard deviations reported for each data points to define these errors.</p>
 <p>Observe how the distribuition of lines is now smoother. There should be a better consistency to the percentile confidence interval values as well.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
 <span class="c1">### SMOOTH BOOTSTRAP </span>
@@ -1136,34 +1167,44 @@ best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_43195/2731163377.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
+  popt,pcov = curve_fit(linear, x_s, y_s)    # Curve fit the resampled data
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 68.3%
 
-slope range is -5150.0 to -5884.8
-median slope in bootstrap population is -5574.3 + 424.3 - 310.5
+slope range is -5164.4 to -5857.1
+median slope in bootstrap population is -5555.9 + 391.5 - 301.2
 best fit value for slope is -5560.1+/-249.1
 
-intercept range is 16.44 to 14.03
-median intercept in bootstrap population is 15.41 + 1.03 - 1.38
+intercept range is 16.34 to 14.08
+median intercept in bootstrap population is 15.35 + 0.99 - 1.27
 best fit value for intercept is 15.37+/-0.82
 
-delta H range is 42819.12 to 48929.16
-median delta H in bootstrap population is 46347.12 + 2582.04 - 3527.99
+delta H range is 42939.26 to 48698.79
+median delta H in bootstrap population is 46194.10 + 2504.68 - 3254.84
 best fit value for delta H is 46229.03+/-2070.94
 
-delta S range is -80.89 to -60.88
-median delta S in bootstrap population is -69.46 + 8.57 - 11.44
+delta S range is -80.51 to -61.68
+median delta S in bootstrap population is -69.95 + 8.27 - 10.56
 best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
-<img alt="_images/d66d41774a73e128dab09c4158de7fffa0f65b0198e0e48e4a103d2ef13207ed.png" src="_images/d66d41774a73e128dab09c4158de7fffa0f65b0198e0e48e4a103d2ef13207ed.png" />
+<img alt="_images/cec2b789cfc8776213f7ff59b3dc3c0cb3e729aca70c02ab3b1a3fce63847652.png" src="_images/cec2b789cfc8776213f7ff59b3dc3c0cb3e729aca70c02ab3b1a3fce63847652.png" />
 </div>
 </div>
 <div class="section" id="checking-the-smoothness">
 <h3>Checking the Smoothness<a class="headerlink" href="#checking-the-smoothness" title="Permalink to this headline">#</a></h3>
 <p>How is our distribution of results? Does it approach a random normal distribution? Let us see.</p>
 <p>We observe that the distribution is more evenly spread (smoother) and the values follow a curve that resemble a gaussian distribution.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median</span> <span class="o">=</span> <span class="n">median_dS</span>
 <span class="n">value</span> <span class="o">=</span> <span class="n">dS</span>
@@ -1261,8 +1302,9 @@ best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/57e40beab79c1cc82ad0edba46f0bd228257c53b63de6f4c597274f2fa555959.png" src="_images/57e40beab79c1cc82ad0edba46f0bd228257c53b63de6f4c597274f2fa555959.png" />
+<img alt="_images/3607ed3a0332f232abbf96ee2074491b5b8a55e216c450f37b3f236aa3e8d09e.png" src="_images/3607ed3a0332f232abbf96ee2074491b5b8a55e216c450f37b3f236aa3e8d09e.png" />
 </div>
 </div>
 </div>
@@ -1271,7 +1313,12 @@ best fit value for delta S is -69.80+/-6.84
 <h2>Plotting a Confidence Band<a class="headerlink" href="#plotting-a-confidence-band" title="Permalink to this headline">#</a></h2>
 <p>We have a set of thousands of lines plotted using the slope and intercept from the resampled and smoothed (by Gaussian error) data set. We have determined the confidence interval for the fit parameters and calculated thermodynamic paraters. Now lets plot the region of the plot that contains a band that encompasses the confidence interval for predicted y-values. All we need to do is get the percentile limits for the upper and lower confidence interval at every point that the prediction was calculated and then plot this is a filled area.</p>
 <p>Consider the code below for plotting this band.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
 <span class="c1">### SMOOTH BOOTSTRAP </span>
@@ -1523,31 +1570,32 @@ best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_41161/3313734404.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_43195/3313734404.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
   popt,pcov = curve_fit(linear, x_s, y_s)    # Curve fit the resampled data
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 95.5%
 
-slope range is -4714.5 to -6289.5
-median slope in bootstrap population is -5572.3 + 857.8 - 717.2
+slope range is -4734.2 to -6249.0
+median slope in bootstrap population is -5550.2 + 816.0 - 698.9
 best fit value for slope is -5545.9+/-277.8
 
-intercept range is 17.80 to 12.60
-median intercept in bootstrap population is 15.40 + 2.40 - 2.81
+intercept range is 17.67 to 12.66
+median intercept in bootstrap population is 15.34 + 2.33 - 2.68
 best fit value for intercept is 15.31+/-0.92
 
-delta H range is 39198.61 to 52293.96
-median delta H in bootstrap population is 46331.02 + 5962.94 - 7132.41
+delta H range is 39362.27 to 51957.22
+median delta H in bootstrap population is 46146.60 + 5810.63 - 6784.32
 best fit value for delta H is 46110.87+/-2309.56
 
-delta S range is -92.83 to -49.53
-median delta S in bootstrap population is -69.47 + 19.94 - 23.36
+delta S range is -92.33 to -50.66
+median delta S in bootstrap population is -70.04 + 19.38 - 22.28
 best fit value for delta S is -70.24+/-7.63
 </pre></div>
 </div>
-<img alt="_images/1681525610edba4c563b94116e502c97d8b0421403a6e2229d63c498fe851ff6.png" src="_images/1681525610edba4c563b94116e502c97d8b0421403a6e2229d63c498fe851ff6.png" />
+<img alt="_images/0d4011603f07dde1b8f03fd5195aacedc149c23462919d4c55305037372f69ef.png" src="_images/0d4011603f07dde1b8f03fd5195aacedc149c23462919d4c55305037372f69ef.png" />
 </div>
 </div>
 </div>
@@ -1558,22 +1606,27 @@ best fit value for delta S is -70.24+/-7.63
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">y_data</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12be705d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1272fb090&gt;]
 </pre></div>
 </div>
+<img alt="_images/2b4fab54ac15b87fe05bda8a645f1b186fe81374524ccba46086b4ffe3c146d3.png" src="_images/2b4fab54ac15b87fe05bda8a645f1b186fe81374524ccba46086b4ffe3c146d3.png" />
 </div>
 </div>
 </div>
 <div class="section" id="bonus-bootstrap-step-by-step">
 <h2>Bonus: Bootstrap Step by Step<a class="headerlink" href="#bonus-bootstrap-step-by-step" title="Permalink to this headline">#</a></h2>
 <p>below is code that makes a plot of twelve example boostrap runs. In each a different set of the five data points, randomly chose with replacement, is presented. Imagine that this was the first twelve plots in the 2000 we ran for each bootstrap above.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################################</span>
 <span class="c1">## Set up functions for curve fit and thermodynamic calculations</span>
@@ -1724,6 +1777,7 @@ best fit value for delta S is -70.24+/-7.63
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot saved as plots/plot_contact_sheet.pdf
 Plot saved as plots/plot_contact_sheet.pdf

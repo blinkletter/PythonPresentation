@@ -351,10 +351,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-curve-fit">Perform the Curve Fit</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-data">Set Up the Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curve-fit">The Curve Fit</a></li>
@@ -407,19 +404,16 @@ document.write(`
 
 <span class="c1">### Set global variables</span>
 
-<span class="n">location_data</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>         <span class="c1">## Use either local folder or github folder. </span>
-<span class="n">location_styles</span> <span class="o">=</span> <span class="s2">&quot;styles/&quot;</span>     <span class="c1">## Use github locations for Colab</span>
-<span class="c1">#location_data = &quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/data/&quot;</span>
-<span class="c1">#location_styles = &quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/styles/&quot;</span>
+<span class="c1">#location_data = &quot;data/&quot;         ## Use either local folder or github folder. </span>
+<span class="c1">#location_styles = &quot;styles/&quot;     ## Use github locations for Colab</span>
+<span class="n">location_data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/data/&quot;</span>
+<span class="n">location_styles</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/styles/&quot;</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
-</div>
-<div class="section" id="id1">
-<h3><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 </div>
 </div>
 <div class="section" id="perform-the-curve-fit">
@@ -487,7 +481,12 @@ document.write(`
 <div class="section" id="extract-results-and-print-report">
 <h3>Extract Results and Print Report<a class="headerlink" href="#extract-results-and-print-report" title="Permalink to this headline">#</a></h3>
 <p>Now we call the <code class="docutils literal notranslate"><span class="pre">fit_report</span></code> function built into the result object. It will output lots of information about the fit. We then extract the slope and intercept as uncertain values and calculate the <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> values. Compare these to the results from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code>. They should be identical because both systems use the least squares algorithm. You will see that the calculation of <span class="math notranslate nohighlight">\(k_{cat}\)</span> at a given temperature produces a good value showing that the covariance between <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span>  is included in their respective ufloat values.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------- FIT REPORT ------------&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
@@ -522,6 +521,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------- FIT REPORT ------------
 [[Model]]
@@ -558,10 +558,14 @@ calculate k at T=303 K is 15.22+/-0.15
 <h3>Plot the Fit<a class="headerlink" href="#plot-the-fit" title="Permalink to this headline">#</a></h3>
 <p>Now we will plot the data and the line representing the optimized parameters. Observe the complicated code for doing so. What do you think?</p>
 <p>LMFit result objects contain many tool like this all-in-one plotting function that uses the data and parameters that are contained within the result object.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
-
 
 <span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>   <span class="c1"># This method is built in to the &#39;result&#39; object. </span>
                 <span class="c1">#   It plots the data, line-fit and residuals in one go.</span>
@@ -570,6 +574,7 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/6a3864dd75b600ee5add659f1332581efc978d096826f0257b0f404395e954dd.png" src="_images/6a3864dd75b600ee5add659f1332581efc978d096826f0257b0f404395e954dd.png" />
 </div>
@@ -578,7 +583,12 @@ calculate k at T=303 K is 15.22+/-0.15
 <div class="section" id="adding-the-confidence-band">
 <h3>Adding the Confidence Band<a class="headerlink" href="#adding-the-confidence-band" title="Permalink to this headline">#</a></h3>
 <p>Observe how we use the <code class="docutils literal notranslate"><span class="pre">eval_uncertainty</span></code> that is built in to the result object to calculate the standard deviation at each data point. We then use that to calculate the confidence band at <span class="math notranslate nohighlight">\(2\sigma\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
@@ -587,6 +597,7 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/f2a5e2f192a9a03d8fbcaf56b6afdd04bf0a7e4a6cf6248625409a1e12011a84.png" src="_images/f2a5e2f192a9a03d8fbcaf56b6afdd04bf0a7e4a6cf6248625409a1e12011a84.png" />
 </div>
@@ -595,7 +606,12 @@ calculate k at T=303 K is 15.22+/-0.15
 <div class="section" id="fancy-styling">
 <h3>Fancy Styling<a class="headerlink" href="#fancy-styling" title="Permalink to this headline">#</a></h3>
 <p>We can access style options within the built in plotting function of the result object. Observe how we do this using style dictionaries. There are three blocks of code below. The first plots the fit with residuals, the econd is just the fit and the last is just the residuals.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
 <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
@@ -639,11 +655,17 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/a1bfc1c4303117e263e33613e1a64dcaa8386ce1caf451add8863a64fbcdf25c.png" src="_images/a1bfc1c4303117e263e33613e1a64dcaa8386ce1caf451add8863a64fbcdf25c.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
 <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
@@ -679,11 +701,17 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/414c4a42c9712cd048307256062d5dfc3f75ccc371c1a8a8754ccb6ce88ac10f.png" src="_images/414c4a42c9712cd048307256062d5dfc3f75ccc371c1a8a8754ccb6ce88ac10f.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
 <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
@@ -712,6 +740,7 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/c2dcf59f7d6b3537466b3debb3783ac7265530d9df661eef0329107eca06b367.png" src="_images/c2dcf59f7d6b3537466b3debb3783ac7265530d9df661eef0329107eca06b367.png" />
 </div>
@@ -721,7 +750,12 @@ calculate k at T=303 K is 15.22+/-0.15
 <div class="section" id="plots-of-k-vs-t">
 <h2>Plots of <span class="math notranslate nohighlight">\(k\)</span> vs. <span class="math notranslate nohighlight">\(T\)</span><a class="headerlink" href="#plots-of-k-vs-t" title="Permalink to this headline">#</a></h2>
 <p>We can repeat all of the above for the direct curve fit to the Erying equation. Observe how little we had to change to accomplish this.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">######################</span>
 <span class="c1">### Experimental data with error</span>
@@ -866,6 +900,7 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------- FIT REPORT ------------
 [[Model]]
@@ -973,10 +1008,7 @@ calculate k at T=303 K is 15.22+/-0.15
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-curve-fit">Perform the Curve Fit</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-data">Set Up the Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curve-fit">The Curve Fit</a></li>

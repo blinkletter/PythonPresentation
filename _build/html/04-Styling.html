@@ -397,7 +397,6 @@ document.write(`
 <span class="c1">#!pip install uncertainties              # uncomment to install dependancy</span>
 <span class="c1">#!pip install lmfit                     ### for docs see https://lmfit.github.io/lmfit-py/</span>
 
-
 <span class="kn">import</span> <span class="nn">lmfit</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1"># import the tools of NumPy but use a shorter name, &quot;np&quot;</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>     <span class="c1"># tools for plotting</span>
@@ -465,7 +464,12 @@ document.write(`
 <div class="section" id="the-curve-fit">
 <h3>The Curve Fit<a class="headerlink" href="#the-curve-fit" title="Permalink to this headline">#</a></h3>
 <p>Below we use the <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> function to produce an object that contains the optimized parameters and much more.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">######################</span>
 <span class="c1">###  Linear function to be used by curve_fit</span>
@@ -484,12 +488,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </div>
 <div class="section" id="extract-results-and-print-report">
 <h3>Extract Results and Print Report<a class="headerlink" href="#extract-results-and-print-report" title="Permalink to this headline">#</a></h3>
 <p>Now we call the <code class="docutils literal notranslate"><span class="pre">fit_report</span></code> function built into the result object. It will output lots of information about the fit. We then extract the slope and intercept as uncertain values and calculate the <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> values. Compare these to the results from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code>. They should be identical because both systems use the least squares algorithm. You will see that the calculation of <span class="math notranslate nohighlight">\(k_{cat}\)</span> at a given temperature produces a good value showing that the covariance between <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span>  is included in their respective ufloat values.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------- FIT REPORT ------------&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
@@ -524,6 +534,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------- FIT REPORT ------------
 [[Model]]
@@ -561,7 +572,12 @@ calculate k at T=303 K is 15.22+/-0.15
 <h2>Styling Examples<a class="headerlink" href="#styling-examples" title="Permalink to this headline">#</a></h2>
 <p>We can access style options within the built in plotting function of the result object. Observe how we do this using style dictionaries and style files. the example below uses the built-in plot function in the <em>LMFit</em> object. We apply styles using style sheets. In the final example I add some specific style options to get exactly my preferred style for these kinds of presentations.</p>
 <p>You can use standard styles and then make some tweaks or you can edit a standard file to obtain your preferred style as default. Its up to you. Consider the following code.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
 
@@ -587,6 +603,7 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/971afdf8d5225e02d3435ea75403f55ec8f03743d670b7aacf53274352c243e5.png" src="_images/971afdf8d5225e02d3435ea75403f55ec8f03743d670b7aacf53274352c243e5.png" />
 </div>
@@ -610,8 +627,13 @@ calculate k at T=303 K is 15.22+/-0.15
 <div class="section" id="examples-of-style-sheets">
 <h3>Examples of Style Sheets<a class="headerlink" href="#examples-of-style-sheets" title="Permalink to this headline">#</a></h3>
 <p>Below is code that will run through all the available styles and output a plot for each.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">styles</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">available</span>
 
 <span class="k">for</span> <span class="n">style</span> <span class="ow">in</span> <span class="n">styles</span><span class="p">:</span>
@@ -641,6 +663,12 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
 <img alt="_images/1525150fa13d404f175168e73053e7d9bf3b90a7bc371a45a0c172029502b862.png" src="_images/1525150fa13d404f175168e73053e7d9bf3b90a7bc371a45a0c172029502b862.png" />
 <img alt="_images/d643ac97dac2efad27fe83eec3a5194e9963bc4fa6dea559967af07cd34646f0.png" src="_images/d643ac97dac2efad27fe83eec3a5194e9963bc4fa6dea559967af07cd34646f0.png" />
@@ -671,13 +699,19 @@ calculate k at T=303 K is 15.22+/-0.15
 <img alt="_images/8cfd9c09a866184f6a9b8c91900d829a7a8a31abb4701c80c4d40dc3865be7b8.png" src="_images/8cfd9c09a866184f6a9b8c91900d829a7a8a31abb4701c80c4d40dc3865be7b8.png" />
 <img alt="_images/1c84de3f00f3efe0f6056762b0c5357df8456a3fb37999f6d8d6a1eed5c404dc.png" src="_images/1c84de3f00f3efe0f6056762b0c5357df8456a3fb37999f6d8d6a1eed5c404dc.png" />
 </div>
+</details>
 </div>
 </div>
 <div class="section" id="my-style">
 <h3>My Style<a class="headerlink" href="#my-style" title="Permalink to this headline">#</a></h3>
 <p>You can use style sheets from others. Here I use a style sheet made by Nicole Vadot via their github site at https://github.com/ninivert/matplotlib_tufte</p>
 <p>I downloaded the style file, made a small modification (removed the axis lines) and then saved it in my own working folder.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
 <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
@@ -706,6 +740,7 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/a18a258d4955c93f69cdacd12f854551f83552f4441eef2de4a88233dda975a1.png" src="_images/a18a258d4955c93f69cdacd12f854551f83552f4441eef2de4a88233dda975a1.png" />
 </div>
@@ -716,7 +751,12 @@ calculate k at T=303 K is 15.22+/-0.15
 <p>I have a preferred style that is “lighter” in appearance than the dfault colors and sizes of <em>matplotlib</em>. I could edit the style file but I often have different needs so I prefer to apply line and marker styles separately.</p>
 <p>here I am using keyword dictionaries to pass style commands into the <em>LMFit</em> plot command. When plotting the confidence interval I am passing the style commands as direct arguments to the plot function. Pyplot has many ways to send style information to the polotting system and different modules demand different paradigms. Once you figure it all out just keep copying that code and reusing and you’ll never have to relearn it.</p>
 <p>Consider the code below.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
 <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
@@ -754,6 +794,7 @@ calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/bbb4453317518b93b05fa6a077d279ea143ba40c5503fc8b5c68455ef35de92b.png" src="_images/bbb4453317518b93b05fa6a077d279ea143ba40c5503fc8b5c68455ef35de92b.png" />
 </div>
