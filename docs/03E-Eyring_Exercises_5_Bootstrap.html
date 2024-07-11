@@ -1,65 +1,63 @@
 
-
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Part 3E: Bootstrapping Confidence Intervals &#8212; Python Presentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css?v=189edcc0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03E-Eyring_Exercises_5_Bootstrap';</script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Part 4: Styling with Style Sheets" href="04-Styling.html" />
     <link rel="prev" title="Part 3D: Reading Data" href="03D-Eyring_Exercises_4_pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -76,19 +74,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -110,12 +112,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -130,9 +140,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="start.html">
+  
   
   
   
@@ -142,12 +154,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Python Presentation - Home"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Python Presentation - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -189,7 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -198,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -311,20 +334,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -378,15 +403,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="part-3e-bootstrapping-confidence-intervals">
-<h1>Part 3E: Bootstrapping Confidence Intervals<a class="headerlink" href="#part-3e-bootstrapping-confidence-intervals" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="part-3e-bootstrapping-confidence-intervals">
+<h1>Part 3E: Bootstrapping Confidence Intervals<a class="headerlink" href="#part-3e-bootstrapping-confidence-intervals" title="Link to this heading">#</a></h1>
 <p>The confidence intervals calculated with the uncertain fit parameters determined using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> or <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> are symmetrical. We get <span class="math notranslate nohighlight">\(\pm\)</span> some value as the standard deviation. This is a perfectly good was to estimate the confidence interval (all errors are estimated) but it hides a subtle truth. The confidence is not symmetrical. The data does not necesssarity have the same contribution to each parameter across the range of measuremnts and some regions may have more error than others, especially with non-linear curve fits.</p>
 <p>One way to estimate a confidence interval that reflects these regional effects in your data series is to use bootstrapping. It is a computationally expensive method where we randomly select data points from our data set and perfomr the curve fit hundreds, perhaps thousands of times. Then we values for the parameters that encompass the 68%, 95% and 99% percentiles (<span class="math notranslate nohighlight">\(1\sigma\)</span>, <span class="math notranslate nohighlight">\(2\sigma\)</span>, <span class="math notranslate nohighlight">\(3\sigma\)</span>) or any arbitrary range we like. The median values and these upper and lower bounds will reflect a more accurate picture of estimated error, if we have enough data.</p>
 <p>This method may not be useful with small data sets as there may not be enough combinations such that percentiles are meaningful. Choosing the 95% percentile range from 6 discrete values is not useful. However, there are ways to magnify the amount of data through applying random error to data points. Is that appropriate? Some say yes, some say no. Regardless, you will know exactly what I did to determine the confidence interval for my experiment because the code is available for your inspection.</p>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
 <p>As before, we load in the <em>Python</em> packages needed and set global variables.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -397,11 +422,11 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
 
-<span class="o">!</span>mkdir plots
+<span class="o">!</span>mkdir<span class="w"> </span>plots
 
 <span class="c1">### Install and load packages</span>
 
-<span class="o">!</span>pip install uncertainties              # uncomment to install dependancy
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>uncertainties<span class="w">              </span>#<span class="w"> </span>uncomment<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>dependancy
 
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>     <span class="c1"># tool for curve fitting</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>     <span class="c1"># tool for curve fitting</span>
@@ -424,9 +449,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="the-data-set">
-<h2>The Data Set<a class="headerlink" href="#the-data-set" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="the-data-set">
+<h2>The Data Set<a class="headerlink" href="#the-data-set" title="Link to this heading">#</a></h2>
 <p>We will begin with the 5-point data set that we have been using so far.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -461,9 +486,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="a-quick-bootstrap">
-<h2>A Quick Bootstrap<a class="headerlink" href="#a-quick-bootstrap" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="a-quick-bootstrap">
+<h2>A Quick Bootstrap<a class="headerlink" href="#a-quick-bootstrap" title="Link to this heading">#</a></h2>
 <p>We can get a bootstrapped confidence interval using the <code class="docutils literal notranslate"><span class="pre">seaborn.regplot()</span></code> function that is part of the <em>Seaborn</em> plotting package. It will perform a bootstrap analysis and plot the confidence interval requested (below I am using a stardard 95% confiodence interval. Change the confidence and see what happens.)</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -486,8 +511,8 @@ document.write(`
 <img alt="_images/58c5b7208120ac99cd753c56b8f4a74e3392c98adce698610adfdb12952dd4ca.png" src="_images/58c5b7208120ac99cd753c56b8f4a74e3392c98adce698610adfdb12952dd4ca.png" />
 </div>
 </div>
-<div class="section" id="styling-the-plot">
-<h3>Styling the Plot<a class="headerlink" href="#styling-the-plot" title="Permalink to this headline">#</a></h3>
+<section id="styling-the-plot">
+<h3>Styling the Plot<a class="headerlink" href="#styling-the-plot" title="Link to this heading">#</a></h3>
 <p>Below is the same plot as above but I have added styling to the plot to fit with my own preferred publication style. We can send plotting style parameters into the <code class="docutils literal notranslate"><span class="pre">regplot()</span></code> function using keyword dictionaries.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -522,10 +547,10 @@ document.write(`
 <img alt="_images/70f7e61d697cb831f9e60d588a04f1eaa08746463269585e524b90ce8dc5ee1b.png" src="_images/70f7e61d697cb831f9e60d588a04f1eaa08746463269585e524b90ce8dc5ee1b.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="the-bootstrap">
-<h2>The Bootstrap<a class="headerlink" href="#the-bootstrap" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="the-bootstrap">
+<h2>The Bootstrap<a class="headerlink" href="#the-bootstrap" title="Link to this heading">#</a></h2>
 <p>The code below will sample points from the data with replacement. That means that in a list of 1-2-3-4-5 we might sample 1-3-4-1-2. Note that we might have two or three points repeated (or even, in rare instances, all five being the same selected point). We curve fit the resampled data and collect the slope, intercept, calculated <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> &amp; <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> values in lists. We also calculate the predicted lines based on the curve fit in each case and store the predicted values in lists as well.</p>
 <p>After we run the analysis many times (2000 times in the example below) we can select the values that border the confidence interval in each list. If we are interested in 68% confidence (one standard deviation or <span class="math notranslate nohighlight">\(1\sigma\)</span>) then we select the value at the <span class="math notranslate nohighlight">\(16^{th}\)</span> percentile (lower limit of confidence) and the value at the <span class="math notranslate nohighlight">\(84^{th}\)</span> percentile (a span of <span class="math notranslate nohighlight">\(34\%\)</span> on either side of the median, a band than contains the central <span class="math notranslate nohighlight">\(68\%\)</span> of the answers.)</p>
 <p>We can query the lists of line fit and calculated thermodynamic parameters and get the range that encloses the middle <span class="math notranslate nohighlight">\(68\%\)</span> of the possible results. How does this compare to the traditional line fit and calculated standard deviation? Note that the upper and lower limits are not symmetrical around the mean value. the bootstrap reveals a more “real world” confidence interval, and yet it is not greatly different that the standard deviation determined using a standard curve fit.</p>
@@ -721,9 +746,9 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plotting-the-bootstrap-runs">
-<h2>Plotting the Bootstrap Runs<a class="headerlink" href="#plotting-the-bootstrap-runs" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="plotting-the-bootstrap-runs">
+<h2>Plotting the Bootstrap Runs<a class="headerlink" href="#plotting-the-bootstrap-runs" title="Link to this heading">#</a></h2>
 <p>Let us plot all the curve fits fom the bootstrap. Thats 2000 lines on a plot. I will use transparent lines (5% visible or alpha = 0.05) so that only the areas of the plot with many lines will “stack up” and be visible. The code below will plot the bootstrap data.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -804,8 +829,8 @@ best fit value for delta S is -69.80+/-6.84
 <img alt="_images/5aa64d7a2c053d19795ef2a95af9a4621837a150be01be9d24aa1ce7ef83d8a1.png" src="_images/5aa64d7a2c053d19795ef2a95af9a4621837a150be01be9d24aa1ce7ef83d8a1.png" />
 </div>
 </div>
-<div class="section" id="checking-the-distribution">
-<h3>Checking the Distribution<a class="headerlink" href="#checking-the-distribution" title="Permalink to this headline">#</a></h3>
+<section id="checking-the-distribution">
+<h3>Checking the Distribution<a class="headerlink" href="#checking-the-distribution" title="Link to this heading">#</a></h3>
 <p>We can check the quality of our bootstrap process by plotting the values for a give parameter. Let us check the calculated <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> value. We will plot the values and we observe that there are several discrete values that we bounce around between rather than a smooth random. We  will also plot the distribution sorted from lowest values to highest and compare that to a distribution generated by a Gaussian probability curve.</p>
 <p>We can see the “steps” that are the result of repeated discrete values. The low number of points means that there are many repeats of the same resample.</p>
 <div class="cell tag_hide-input docutils container">
@@ -932,10 +957,10 @@ best fit value for delta S is -69.80+/-6.84
 <img alt="_images/d1e5f014bdcd5b418db07343567625056947a401f63f0b55aa650a323fe70557.png" src="_images/d1e5f014bdcd5b418db07343567625056947a401f63f0b55aa650a323fe70557.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="smooth-bootstrap">
-<h2>Smooth Bootstrap<a class="headerlink" href="#smooth-bootstrap" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="smooth-bootstrap">
+<h2>Smooth Bootstrap<a class="headerlink" href="#smooth-bootstrap" title="Link to this heading">#</a></h2>
 <p>If we do not have a large data set the bootstrap will contain many identical values and a smooth distribution of values will not be possible. However we can create more values by applying error to the data points. The below code is ifdentical to the above except that we are applying a random Gaussian distribution function to each resamples y-value. We will use the standard deviations reported for each data points to define these errors.</p>
 <p>Observe how the distribuition of lines is now smoother. There should be a better consistency to the percentile confidence interval values as well.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1199,8 +1224,8 @@ best fit value for delta S is -69.80+/-6.84
 <img alt="_images/cec2b789cfc8776213f7ff59b3dc3c0cb3e729aca70c02ab3b1a3fce63847652.png" src="_images/cec2b789cfc8776213f7ff59b3dc3c0cb3e729aca70c02ab3b1a3fce63847652.png" />
 </div>
 </div>
-<div class="section" id="checking-the-smoothness">
-<h3>Checking the Smoothness<a class="headerlink" href="#checking-the-smoothness" title="Permalink to this headline">#</a></h3>
+<section id="checking-the-smoothness">
+<h3>Checking the Smoothness<a class="headerlink" href="#checking-the-smoothness" title="Link to this heading">#</a></h3>
 <p>How is our distribution of results? Does it approach a random normal distribution? Let us see.</p>
 <p>We observe that the distribution is more evenly spread (smoother) and the values follow a curve that resemble a gaussian distribution.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1311,10 +1336,10 @@ best fit value for delta S is -69.80+/-6.84
 <img alt="_images/3607ed3a0332f232abbf96ee2074491b5b8a55e216c450f37b3f236aa3e8d09e.png" src="_images/3607ed3a0332f232abbf96ee2074491b5b8a55e216c450f37b3f236aa3e8d09e.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="plotting-a-confidence-band">
-<h2>Plotting a Confidence Band<a class="headerlink" href="#plotting-a-confidence-band" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="plotting-a-confidence-band">
+<h2>Plotting a Confidence Band<a class="headerlink" href="#plotting-a-confidence-band" title="Link to this heading">#</a></h2>
 <p>We have a set of thousands of lines plotted using the slope and intercept from the resampled and smoothed (by Gaussian error) data set. We have determined the confidence interval for the fit parameters and calculated thermodynamic paraters. Now lets plot the region of the plot that contains a band that encompasses the confidence interval for predicted y-values. All we need to do is get the percentile limits for the upper and lower confidence interval at every point that the prediction was calculated and then plot this is a filled area.</p>
 <p>Consider the code below for plotting this band.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1602,9 +1627,9 @@ best fit value for delta S is -70.24+/-7.63
 <img alt="_images/0d4011603f07dde1b8f03fd5195aacedc149c23462919d4c55305037372f69ef.png" src="_images/0d4011603f07dde1b8f03fd5195aacedc149c23462919d4c55305037372f69ef.png" />
 </div>
 </div>
-</div>
-<div class="section" id="bonus-gaussian-error">
-<h2>Bonus: Gaussian Error<a class="headerlink" href="#bonus-gaussian-error" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="bonus-gaussian-error">
+<h2>Bonus: Gaussian Error<a class="headerlink" href="#bonus-gaussian-error" title="Link to this heading">#</a></h2>
 <p>The smooth bootstrap above used a function that applied Guassian error to our data point. We can visualize the distrubution of Guassian error using a “normal distribution” function. Consider the code below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1621,9 +1646,9 @@ best fit value for delta S is -70.24+/-7.63
 <img alt="_images/2b4fab54ac15b87fe05bda8a645f1b186fe81374524ccba46086b4ffe3c146d3.png" src="_images/2b4fab54ac15b87fe05bda8a645f1b186fe81374524ccba46086b4ffe3c146d3.png" />
 </div>
 </div>
-</div>
-<div class="section" id="bonus-bootstrap-step-by-step">
-<h2>Bonus: Bootstrap Step by Step<a class="headerlink" href="#bonus-bootstrap-step-by-step" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="bonus-bootstrap-step-by-step">
+<h2>Bonus: Bootstrap Step by Step<a class="headerlink" href="#bonus-bootstrap-step-by-step" title="Link to this heading">#</a></h2>
 <p>below is code that makes a plot of twelve example boostrap runs. In each a different set of the five data points, randomly chose with replacement, is presented. Imagine that this was the first twelve plots in the 2000 we ran for each bootstrap above.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1651,7 +1676,7 @@ best fit value for delta S is -70.24+/-7.63
 
 <span class="k">def</span> <span class="nf">contact_sheet</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_err</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
             <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="s2">&quot;6&quot;</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">,</span><span class="s2">&quot;8&quot;</span><span class="p">,</span><span class="s2">&quot;9&quot;</span><span class="p">,</span><span class="s2">&quot;10&quot;</span><span class="p">,</span><span class="s2">&quot;11&quot;</span><span class="p">,</span><span class="s2">&quot;12&quot;</span><span class="p">,</span><span class="s2">&quot;13&quot;</span><span class="p">,</span><span class="s2">&quot;14&quot;</span><span class="p">,</span><span class="s2">&quot;15&quot;</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;Plots 12 plots, one for each column of plate</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots 12 plots, one for each column of plate</span>
 <span class="sd">    </span>
 <span class="sd">    Will produce a &#39;contact sheet&#39; of plots, one for each plat column</span>
 <span class="sd">    </span>
@@ -1797,8 +1822,8 @@ Plot saved as plots/plot_contact_sheet.pdf
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1825,11 +1850,10 @@ Plot saved as plots/plot_contact_sheet.pdf
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03D-Eyring_Exercises_4_pandas.html"
@@ -1849,10 +1873,7 @@ Plot saved as plots/plot_contact_sheet.pdf
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1860,6 +1881,7 @@ Plot saved as plots/plot_contact_sheet.pdf
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1906,6 +1928,7 @@ By Barry Linkletter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -1932,8 +1955,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

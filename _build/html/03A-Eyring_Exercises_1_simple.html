@@ -1,65 +1,63 @@
 
-
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Part 3A: A Simple Data Analysis &#8212; Python Presentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css?v=189edcc0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03A-Eyring_Exercises_1_simple';</script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Part 3B: Curve Fitting and Covariance" href="03B-Eyring_Exercises_2_curvefit.html" />
     <link rel="prev" title="The Erying Equation and Experimental Error" href="03-Eyring_Exercises_Intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -76,19 +74,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -110,12 +112,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -130,9 +140,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="start.html">
+  
   
   
   
@@ -142,12 +154,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Python Presentation - Home"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Python Presentation - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -189,7 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -198,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -311,20 +334,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -384,18 +409,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="part-3a-a-simple-data-analysis">
-<h1>Part 3A: A Simple Data Analysis<a class="headerlink" href="#part-3a-a-simple-data-analysis" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="part-3a-a-simple-data-analysis">
+<h1>Part 3A: A Simple Data Analysis<a class="headerlink" href="#part-3a-a-simple-data-analysis" title="Link to this heading">#</a></h1>
 <p>We will use data from the results of Machado et al. introduced on the previous page. I will use just five data points as that is a common number used in the literature (we really should insist on more.)</p>
-<div class="section" id="its-simple">
-<h2>Its Simple<a class="headerlink" href="#its-simple" title="Permalink to this headline">#</a></h2>
+<section id="its-simple">
+<h2>Its Simple<a class="headerlink" href="#its-simple" title="Link to this heading">#</a></h2>
 <p><em>Python</em> is not complicated. In this notebook we will become acquainted with how a notebook works and with the architecture of a <em>Python</em> program. I have no intention of teaching <em>Python</em> here. You can figure out what is happening by looking at the code and reading the comments. You can access the code via Google <em>Colab</em> or download this notebook and use it on your own computer with the buttons at the top right of this web page.</p>
 <p>Lets dive right in…</p>
-</div>
-<div class="section" id="load-the-toolbox">
-<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="load-the-toolbox">
+<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Link to this heading">#</a></h2>
 <p>In a <em>Python</em> notebook we can mix code and text. In the code block below are commands to load the libraries and modules we ill need for this exercise. there are some special commands that are used to run unix xommands directly in the terminal of <em>Colab</em> to install <em>Python</em> packages that are not available by default. These are “commented out” so that they don’t run on your own computer should you have downloaded this notebook. You will need to delete the “hashtag” comment symbol to use these in <em>Colab</em>. Don’t worry, you will get an error if you forget that will remind you.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -406,8 +431,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
 
-<span class="o">!</span>mkdir plots
-<span class="o">!</span>pip install uncertainties              # uncomment to install dependancy
+<span class="o">!</span>mkdir<span class="w"> </span>plots
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>uncertainties<span class="w">              </span>#<span class="w"> </span>uncomment<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>dependancy
 
 <span class="kn">import</span> <span class="nn">scipy</span>                             <span class="c1"># includes tools for data analysis</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1"># import the tools of NumPy as &quot;np&quot;</span>
@@ -427,12 +452,12 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="the-erying-plot">
-<h2>The Erying Plot<a class="headerlink" href="#the-erying-plot" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="the-erying-plot">
+<h2>The Erying Plot<a class="headerlink" href="#the-erying-plot" title="Link to this heading">#</a></h2>
 <p>The code below will take some data that we typed in and perform a linear least-squares fit. The data and the line fit will be plotted. I am using the minimum amount of coding here to emphasize how simple this can be. More complicated examples that follow in upcoming pages are all based on this foundation.</p>
-<div class="section" id="the-complete-calculation">
-<h3>The Complete Calculation<a class="headerlink" href="#the-complete-calculation" title="Permalink to this headline">#</a></h3>
+<section id="the-complete-calculation">
+<h3>The Complete Calculation<a class="headerlink" href="#the-complete-calculation" title="Link to this heading">#</a></h3>
 <p>The code below performs a linear fit to the Eyring plot and the results are printed out.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -466,9 +491,9 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-report">
-<h3>The Report<a class="headerlink" href="#the-report" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="the-report">
+<h3>The Report<a class="headerlink" href="#the-report" title="Link to this heading">#</a></h3>
 <p>It doesn’t matter what you do, you must tell somebody about it. The code below will print out the parameters and statistical information and plot the original data and a line calculated from the fit parameters. The second narrow plot is a plot of the residuals. Always plot the residuals for any curve fit. It may reveal systematic error in your model.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -526,13 +551,13 @@ rsq = 0.994
 <img alt="_images/1be715287559029cacd3958e79b69970baf24f83a763e75cca4c3378b1edd731.png" src="_images/1be715287559029cacd3958e79b69970baf24f83a763e75cca4c3378b1edd731.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="calculating-thermodynamic-parameters">
-<h2>Calculating Thermodynamic Parameters<a class="headerlink" href="#calculating-thermodynamic-parameters" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="calculating-thermodynamic-parameters">
+<h2>Calculating Thermodynamic Parameters<a class="headerlink" href="#calculating-thermodynamic-parameters" title="Link to this heading">#</a></h2>
 <p>We performed the Eyring plot analysis to get <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> for the reaction in the active site of the enzyme. Slope and intercept are not the goal. I can easily calculate the <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> from the line fit, but how do I propagate error through the calculation. The line-fit algorithm has produced an estimated error expressed as a standard deviation value for both slope and intercept. This error must be correctly translated to the calculated <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> values obtained from the uncertain slope and intercept. There are mathematical rules for doing this.</p>
-<div class="section" id="uncertain-numbers">
-<h3>Uncertain Numbers<a class="headerlink" href="#uncertain-numbers" title="Permalink to this headline">#</a></h3>
+<section id="uncertain-numbers">
+<h3>Uncertain Numbers<a class="headerlink" href="#uncertain-numbers" title="Link to this heading">#</a></h3>
 <p>Rather than review a statistics testbook, let us use a tool that handles error propagation for us. We will use the <code class="docutils literal notranslate"><span class="pre">uncertainties</span></code> module. It provides a data structure called <em>ufloat</em>, which is a floating point value with the error included. It is an object that retains information on the uncertainty for the value and its relationship to any other uncertain values with which it has interacted. For example, if I multiply the ufloat values <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> together, it will produce a value that combines the errors. If I divide that answer by <span class="math notranslate nohighlight">\(b\)</span> I will not get an answer in which the errors have been combined but will get the original <span class="math notranslate nohighlight">\(a\)</span> back. The answer knew its history with <span class="math notranslate nohighlight">\(b\)</span> and correctly handled the situation.</p>
 <p>The code below will create ufloat values from the parameters and their estimated uncertainties. Then we will use these values to calculate the values of <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> with errors included. You can see that the estimated errors in the thermodynamic parameters are large.</p>
 <div class="cell tag_hide-input docutils container">
@@ -568,13 +593,13 @@ The change in entropy is -69.80+/-6.84 J/mole.K
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="highly-leveraged">
-<h2>Highly Leveraged<a class="headerlink" href="#highly-leveraged" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="highly-leveraged">
+<h2>Highly Leveraged<a class="headerlink" href="#highly-leveraged" title="Link to this heading">#</a></h2>
 <p>We shall now observe that we have set ourselves up for trouble with the way we are using these errors. The error in the slope has a large effect on the value of the intercept. The values of slope and intercept are “strongly coupled”in tnis case but the ufloat objects for <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> have no connection with each other because we created them from scratch. Consider the example below.</p>
-<div class="section" id="check-the-confidence-interval">
-<h3>Check the Confidence Interval<a class="headerlink" href="#check-the-confidence-interval" title="Permalink to this headline">#</a></h3>
+<section id="check-the-confidence-interval">
+<h3>Check the Confidence Interval<a class="headerlink" href="#check-the-confidence-interval" title="Link to this heading">#</a></h3>
 <p>We have the parameters and the estimated errors. We can back-propagate these uncertain values and calculate the rates at the tempertures in the data. The errors determined in the ufloat object will be the “<span class="math notranslate nohighlight">\(1\sigma\)</span> confidence interval.”  This should be the range where 68% of the values determined at that temperature would be found (one standard deviation in a Gaussian distribution.)</p>
 <p>As you can see, the confidence is awful. Our value is garbage. We have no confidence. Did we make a mistake? Yes we did.</p>
 <div class="cell tag_hide-input docutils container">
@@ -600,9 +625,9 @@ The change in entropy is -69.80+/-6.84 J/mole.K
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-lever-arm">
-<h3>The Lever Arm<a class="headerlink" href="#the-lever-arm" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="the-lever-arm">
+<h3>The Lever Arm<a class="headerlink" href="#the-lever-arm" title="Link to this heading">#</a></h3>
 <p>Let us plot the entire x-axis from zero (where the y-intercept is) to our data. You can see that we are a looong distance from the y-axis and any small errors in slope will lead to large error in intercept.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -631,9 +656,9 @@ The change in entropy is -69.80+/-6.84 J/mole.K
 <img alt="_images/88aedb09146f588b8226ed38a180e0c9612c906e8bf8621d19bb933cfd81a5f7.png" src="_images/88aedb09146f588b8226ed38a180e0c9612c906e8bf8621d19bb933cfd81a5f7.png" />
 </div>
 </div>
-</div>
-<div class="section" id="removing-the-lever">
-<h3>Removing the Lever<a class="headerlink" href="#removing-the-lever" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="removing-the-lever">
+<h3>Removing the Lever<a class="headerlink" href="#removing-the-lever" title="Link to this heading">#</a></h3>
 <p>This problem is easily solved. We need the intercept to be very close to the data so there is no long lever arm. Let is simply subtract the average value for the x-axis data from the data set. Then the intercept will be in the middle of the data and experience the minimum coupling. We can calulate the value of the y-axis at the far flung end of the former lever arm and see that the erros for <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> are exactly the same as before. But now the ufloat object for the intercept knows that it has been coupled with the slope because we used the slope value in its calculation (see code below).</p>
 <p>With the coupling (covariance) established we can repeat the confidince interval calculation and we see a much more reasonable value.</p>
 <div class="cell tag_hide-input docutils container">
@@ -686,9 +711,9 @@ rsq = 0.994
 <img alt="_images/aefc42263bf5cd52867237be609be99cd85bf31411ef951d0e32785670a2593f.png" src="_images/aefc42263bf5cd52867237be609be99cd85bf31411ef951d0e32785670a2593f.png" />
 </div>
 </div>
-</div>
-<div class="section" id="calculating-thermodynamic-parameters-again">
-<h3>Calculating Thermodynamic Parameters Again<a class="headerlink" href="#calculating-thermodynamic-parameters-again" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="calculating-thermodynamic-parameters-again">
+<h3>Calculating Thermodynamic Parameters Again<a class="headerlink" href="#calculating-thermodynamic-parameters-again" title="Link to this heading">#</a></h3>
 <p>We have a value for intercept and its error that is very small as it is in the middle of the data set and largely unaffected by any variations in slope. We will now calculate the “true intercept” at <span class="math notranslate nohighlight">\(1/T = 0\)</span>. In the code below you can see that we are multiplying the slope by the length of the lever arm (the value we subtracted from the x axis) and adding that to the intercept. this will give us the true intercept at the end of the lever arm. The new ufloat object carries within it the knowledge that it was created through the combination of the slope and the intercept. The true intercept value is strongly coupled to slope (we multiplied by a long lever arm to get the value) but the ufloat object now includes this fact within it somehow.</p>
 <p>The values of <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> are derived from the strongly coupled slope and true intercept values. As a result, they are also strongly couples but the ufloat objects will continue to hold that covariance within them. When we use these values to calculate the <span class="math notranslate nohighlight">\(k_{cat}\)</span> value we see that the error is much more reasonable.</p>
 <div class="cell tag_hide-input docutils container">
@@ -740,14 +765,14 @@ Calculated k at T = 303 K is 15.31+/-0.29 s^-1
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="plot-the-confidence-band">
-<h2>Plot the Confidence Band<a class="headerlink" href="#plot-the-confidence-band" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="plot-the-confidence-band">
+<h2>Plot the Confidence Band<a class="headerlink" href="#plot-the-confidence-band" title="Link to this heading">#</a></h2>
 <p>Now that we have values for <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> that are represented by coupled ufloat objects we can use them to calculate the confidence interval at every x-value and plot the fit and the “confidence band.” the usual practice is to plot the 95% confidence interval, which is <span class="math notranslate nohighlight">\(2\sigma\)</span> or twice the standard deviation.</p>
 <p>In the code below you will see ways to separate the nominal value and the error values out of a ufloat object. The <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> library cannot use ufloat values. The code below is also “complete.” I will be repeating many elements that have already been assigned above so that this block of code can be cut and pasted in its entirety and used in your own work.</p>
-<div class="section" id="band-calculated-from-uncertain-delta-h-ddagger-and-delta-s-ddagger">
-<h3>Band Calculated from Uncertain <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span><a class="headerlink" href="#band-calculated-from-uncertain-delta-h-ddagger-and-delta-s-ddagger" title="Permalink to this headline">#</a></h3>
+<section id="band-calculated-from-uncertain-delta-h-ddagger-and-delta-s-ddagger">
+<h3>Band Calculated from Uncertain <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span><a class="headerlink" href="#band-calculated-from-uncertain-delta-h-ddagger-and-delta-s-ddagger" title="Link to this heading">#</a></h3>
 <p>We can calculate the confidence band for the Erying plot by using the uncertain values for <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> to get an uncertain value for <span class="math notranslate nohighlight">\(k_{cat}\)</span>. We then calculate the y-axis of <span class="math notranslate nohighlight">\(\ln\left( k_{cat}/T\right)\)</span> as an uncertain number. Add and subtract the <span class="math notranslate nohighlight">\(\pm\)</span> error to get the confidence band.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -883,9 +908,9 @@ Calculated k at T = 303 K is 15.31+/-0.29 s^-1
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="band-calculated-from-uncertain-slope-and-intercept">
-<h3>Band Calculated from Uncertain Slope and Intercept<a class="headerlink" href="#band-calculated-from-uncertain-slope-and-intercept" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="band-calculated-from-uncertain-slope-and-intercept">
+<h3>Band Calculated from Uncertain Slope and Intercept<a class="headerlink" href="#band-calculated-from-uncertain-slope-and-intercept" title="Link to this heading">#</a></h3>
 <p>Note that it is identical to the above case where we used the uncertain ufloat values of <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span>. this is because the ufloat objects correctly handled error propagation back and forth through the math. They should be identical and indeed they are. The code is below.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -963,9 +988,9 @@ rsq = 0.994
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="band-calculated-from-zero">
-<h3>Band Calculated from Zero<a class="headerlink" href="#band-calculated-from-zero" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="band-calculated-from-zero">
+<h3>Band Calculated from Zero<a class="headerlink" href="#band-calculated-from-zero" title="Link to this heading">#</a></h3>
 <p>Here we plot the lever arm plot again but add the confidence band. This plot must be calculated using the slope and intercept. The intercept occurs at <span class="math notranslate nohighlight">\(x = 0\)</span>.  If <span class="math notranslate nohighlight">\(1/T\)</span> is zero that means we are at infinite temperature. If I had used the uncertain <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> and temperature I would have had to use very high temperture values to approach, but never reach the origin of the <span class="math notranslate nohighlight">\(1/T\)</span> <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
 <p>this plot emphasizes the effect of the lever arm well.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1028,9 +1053,9 @@ rsq = 0.994
 <img alt="_images/e2ac5a769eb6421b55826fa6341c0434e069bbcc1880e4844d74597466909fc0.png" src="_images/e2ac5a769eb6421b55826fa6341c0434e069bbcc1880e4844d74597466909fc0.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1057,11 +1082,10 @@ rsq = 0.994
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03-Eyring_Exercises_Intro.html"
@@ -1081,10 +1105,7 @@ rsq = 0.994
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1092,6 +1113,7 @@ rsq = 0.994
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1144,6 +1166,7 @@ By Barry Linkletter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -1170,8 +1193,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
