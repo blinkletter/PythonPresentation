@@ -1,0 +1,1309 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Part 2: Please Don’t Use “Smooth Lines” &#8212; Python Presentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02-CubicSpline';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Erying Equation and Experimental Error" href="03-Eyring_Exercises_Intro.html" />
+    <link rel="prev" title="Part 1: Quick Examples of Python" href="01_PlotBasics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="start.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="start.html">
+                    Documenting Data Analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_PlotBasics.html">Part 1: Quick Examples of Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Part 2: Please Don’t Use “Smooth Lines”</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Curve Fits and Error</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="03-Eyring_Exercises_Intro.html">The Erying Equation and Experimental Error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03A-Eyring_Exercises_1_simple.html">Part 3A: A Simple Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03B-Eyring_Exercises_2_curvefit.html">Part 3B: Curve Fitting and Covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03C-Eyring_Exercises_3_LMfit.html">Part 3C: Using LMFit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03D-Eyring_Exercises_4_pandas.html">Part 3D: Reading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03E-Eyring_Exercises_5_Bootstrap.html">Part 3E: Bootstrapping Confidence Intervals</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04-Styling.html">Part 4: Styling with Style Sheets</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/PythonPresentation/blob/main/./02-CubicSpline.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/02-CubicSpline.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Part 2: Please Don’t Use “Smooth Lines”</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-with-excel">Plotting with Excel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spreadsheet">The Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#that-curve">That Curve</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-python-plot">A Python Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-the-data">Extract the Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-plot">A Simple Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-bit-of-dithering">A Bit of Dithering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-right-way">The Right Way</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-with-splines">Plotting with Splines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simple-cubic-spline">The Simple Cubic Spline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spline-with-akima1dinterpolator">Spline with Akima1DInterpolator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spline-with-pchipinterpolator">Spline with PchipInterpolator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothing-splines">Smoothing Splines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-interpolate-make-smoothing-spline">scipy.interpolate.make_smoothing_spline</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="part-2-please-don-t-use-smooth-lines">
+<h1>Part 2: Please Don’t Use “Smooth Lines”<a class="headerlink" href="#part-2-please-don-t-use-smooth-lines" title="Permalink to this headline">#</a></h1>
+<p>Microsoft Excel has a handy option when plotting called “smooth lines.” Rather than connect data points with straight lines you can smooth those lines. This produces some sort of spline function that connects the data points with a curvy line.</p>
+<p>Showing a line on a plot implies that you are plotting a model that is fit to the data. Non one assumes this of standard “connect-the-dots” plots but a curve can confuse the reader, especially when the spline swoops through inpossible values (like negative concentrations).</p>
+<p>In this notebook we will plot some data involving living cells. Such data often defies mathematical modelling and all we can do is plot our observations and compare results. I will present this data using MS Excel just for the sake of ridiculing it. Then I will present ways that <em>Python</em> can plot similar splines (which you should never use, but at least your exact methods can be documented for others to criticize.)</p>
+<p>Finally I will present the data using straight lines, as such data is usually visualized in the literature. As you read widely, you will observe that smooth lines are not used in major journals.</p>
+<div class="section" id="the-data">
+<h2>The Data<a class="headerlink" href="#the-data" title="Permalink to this headline">#</a></h2>
+<p>The data set is from a recent coontribution from the group of Sanda Wilkes at the University of Southhampton: “The survival of <em>Escherichia coli</em> O157 on a range of metal surfaces.” S.A. Wilks, H. Michels, C.W. Keevil, <em>Int. J. Food Microbiol.</em>, <strong>2005</strong>, <em>105</em>, 445-454. https://doi.org/10.1016/j.ijfoodmicro.2005.04.021.</p>
+<p>The experiment involves measuring the density of bacteria in contact with different alloys of copper. This is a process with many factors but the decay of the bacterial population under different condition can be visualized and compared. We begin with Excel.</p>
+</div>
+<div class="section" id="plotting-with-excel">
+<h2>Plotting with Excel<a class="headerlink" href="#plotting-with-excel" title="Permalink to this headline">#</a></h2>
+<p>Below is a plot of the data from a quick plot in Excel. Observe the dips below zero population as the smooth curve curves through the points. Also observe the curves between points; do you think this predicts the bacterial population between measurements?</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/images/02-bacteriaSurvival.png"><img alt="Alternative text" src="https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/images/02-bacteriaSurvival.png" style="width: 400px;" /></a>
+<div class="section" id="the-spreadsheet">
+<h3>The Spreadsheet<a class="headerlink" href="#the-spreadsheet" title="Permalink to this headline">#</a></h3>
+<p>So how would you instruct a future student reading your thesis so that they could reproduce that plot from your data? Below is a printout of the spreadsheet that created the plot. What calculations were done? What settings were changed on the default plot? As you can see, the spreadsheet has no information that documents the calculations visible. One could get the Excel file and click on each cell to see what is happening but that cant be archived in your print</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/images/02-bacteriaSurvivalExcel.png"><img alt="Alternative text" src="https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/images/02-bacteriaSurvivalExcel.png" style="width: 500px;" /></a>
+</div>
+<div class="section" id="that-curve">
+<h3>That Curve<a class="headerlink" href="#that-curve" title="Permalink to this headline">#</a></h3>
+<p>To add insult to injury, you probably cannot describe the method that generated that smooth curve. What kind of spline function was it? What were the parameters? I cannot information in the Excel documentation. You wouldn’t fly an airplane without the manual, so don’t plot a curve without documentation. I honestly belive that bad data interpretation has killed more people than aviation disasters.</p>
+</div>
+</div>
+<div class="section" id="a-python-plot">
+<h2>A Python Plot<a class="headerlink" href="#a-python-plot" title="Permalink to this headline">#</a></h2>
+<p>First we will need data. In the code below we will get the data from a file.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
+
+<span class="o">!</span>mkdir plots
+
+<span class="c1">### Install and load packages</span>
+ 
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>     <span class="c1"># tool for curve fitting</span>
+<span class="kn">import</span> <span class="nn">scipy</span>                             <span class="c1"># includes tools for data analysis</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1"># import the tools of NumPy as &quot;np&quot;</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>     <span class="c1"># tools for plotting</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                      <span class="c1"># data handling tools</span>
+<span class="kn">import</span> <span class="nn">scipy.interpolate</span>                 <span class="c1"># The spline functions</span>
+
+<span class="c1">### Set global variables</span>
+
+<span class="c1">#location_data = &quot;data/&quot;         ## Use either local folder or github folder. </span>
+<span class="c1">#location_styles = &quot;styles/&quot;     ## Use github locations for Colab</span>
+<span class="n">location_data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/data/&quot;</span>
+<span class="n">location_styles</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/styles/&quot;</span>
+
+<span class="c1">### Read in data set</span>
+<span class="n">datafile</span> <span class="o">=</span> <span class="s2">&quot;02-bacteriaSurvival.csv&quot;</span>   <span class="c1"># change this file for new data</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">location_data</span> <span class="o">+</span> <span class="n">datafile</span><span class="p">,</span> 
+                 <span class="n">delimiter</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> 
+                 <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                 <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TIME (MIN)</th>
+      <th>C51000</th>
+      <th>C71000</th>
+      <th>C75200</th>
+      <th>SSteel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1600000000</td>
+      <td>1600000000</td>
+      <td>1.600000e+09</td>
+      <td>1.600000e+09</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15</td>
+      <td>1600000000</td>
+      <td>1030000000</td>
+      <td>1.600000e+09</td>
+      <td>1.600000e+09</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>30</td>
+      <td>927000000</td>
+      <td>927000000</td>
+      <td>9.270000e+08</td>
+      <td>1.430000e+09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>45</td>
+      <td>282000000</td>
+      <td>670000000</td>
+      <td>NaN</td>
+      <td>1.430000e+09</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>60</td>
+      <td>315000000</td>
+      <td>540000000</td>
+      <td>NaN</td>
+      <td>1.150000e+09</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>75</td>
+      <td>534000</td>
+      <td>540000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>90</td>
+      <td>12100</td>
+      <td>540000000</td>
+      <td>4.850000e+08</td>
+      <td>1.430000e+09</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>105</td>
+      <td>1</td>
+      <td>163000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>120</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>180</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2.040000e+08</td>
+      <td>1.280000e+09</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>270</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1.000000e+00</td>
+      <td>2.040000e+08</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>360</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1.000000e+00</td>
+      <td>2.820000e+08</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="extract-the-data">
+<h3>Extract the Data<a class="headerlink" href="#extract-the-data" title="Permalink to this headline">#</a></h3>
+<p>Below I will manipulate the data to get a series of data sets for each experiment. Observe how the code reveals exactly what I did.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataframes for different materials, removing any empty data</span>
+<span class="n">df75</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;TIME (MIN)&quot;</span><span class="p">,</span><span class="s2">&quot;C75200&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">dfSS</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;TIME (MIN)&quot;</span><span class="p">,</span><span class="s2">&quot;SSteel&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df51</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;TIME (MIN)&quot;</span><span class="p">,</span><span class="s2">&quot;C51000&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df71</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;TIME (MIN)&quot;</span><span class="p">,</span><span class="s2">&quot;C71000&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">x51</span> <span class="o">=</span> <span class="n">df51</span><span class="p">[</span><span class="s2">&quot;TIME (MIN)&quot;</span><span class="p">]</span>      <span class="c1"># get x and y values from each data set</span>
+<span class="n">y51</span> <span class="o">=</span> <span class="n">df51</span><span class="p">[</span><span class="s2">&quot;C51000&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1E9</span>    <span class="c1"># scale y axis by 10^9</span>
+
+<span class="n">x71</span> <span class="o">=</span> <span class="n">df71</span><span class="p">[</span><span class="s2">&quot;TIME (MIN)&quot;</span><span class="p">]</span>
+<span class="n">y71</span> <span class="o">=</span> <span class="n">df71</span><span class="p">[</span><span class="s2">&quot;C71000&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1E9</span>
+
+<span class="n">x75</span> <span class="o">=</span> <span class="n">df75</span><span class="p">[</span><span class="s2">&quot;TIME (MIN)&quot;</span><span class="p">]</span>
+<span class="n">y75</span> <span class="o">=</span> <span class="n">df75</span><span class="p">[</span><span class="s2">&quot;C75200&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1E9</span>
+
+<span class="n">xSS</span> <span class="o">=</span> <span class="n">dfSS</span><span class="p">[</span><span class="s2">&quot;TIME (MIN)&quot;</span><span class="p">]</span>
+<span class="n">ySS</span> <span class="o">=</span> <span class="n">dfSS</span><span class="p">[</span><span class="s2">&quot;SSteel&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1E9</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="section" id="a-simple-plot">
+<h3>A Simple Plot<a class="headerlink" href="#a-simple-plot" title="Permalink to this headline">#</a></h3>
+<p>The code below plots the four sets of data. Without lines the relationship between the four data sets is not obvious. Observe that the plot code is using a different paradigm in this example. here we create a plot object called <code class="docutils literal notranslate"><span class="pre">ax</span></code> that contains methods for adding plots to itself and setting style parameters. <code class="docutils literal notranslate"><span class="pre">ax.scatter()</span></code> and <code class="docutils literal notranslate"><span class="pre">ax.set()</span></code> are just some of the built-in tools that allow us to manipulate the <code class="docutils literal notranslate"><span class="pre">ax</span></code> object.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a figure (fig) of given size that contains a plot (ax)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>  
+
+<span class="c1"># add four scatter plots to that &#39;ax&#39; object</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x51</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y51</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;chartreuse&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C51000&quot;</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x71</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y71</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C71000&quot;</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x75</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y75</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C75200&quot;</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xSS</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ySS</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;S30400&quot;</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Settings for plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Scatter Plot&quot;</span><span class="p">,</span>       
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm{bacterial\ count}\ /10^9\;\rm</span><span class="si">{ml}</span><span class="s2">^{-1}$&quot;</span><span class="p">,</span> 
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm</span><span class="si">{time}</span><span class="s2">\ /\rm</span><span class="si">{min}</span><span class="s2">$&quot;</span><span class="p">,</span>                
+        <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">380</span><span class="p">],</span>                  
+        <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.8</span><span class="p">]</span>
+       <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/splines1.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/ebc976bc3890d3b40266602841f8753f9b146c90b6ac2875f625dbd46dcb8e07.png" src="_images/ebc976bc3890d3b40266602841f8753f9b146c90b6ac2875f625dbd46dcb8e07.png" />
+</div>
+</div>
+</div>
+<div class="section" id="a-bit-of-dithering">
+<h3>A Bit of Dithering<a class="headerlink" href="#a-bit-of-dithering" title="Permalink to this headline">#</a></h3>
+<p>Because of the low precision of the data we see that many of the points are obscuring others. In the code below I copied that from above and changed it by adding small offsets to the data points. One should definitely inform the reader of this fact - fortunately a casual inspection of the code will reveal exactly what was done. The code can often be the only documentation you need.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a figure (fig) of given size that contains a plot (ax)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>  
+
+<span class="n">dx</span> <span class="o">=</span> <span class="mi">3</span>     <span class="c1"># shift for dithering the x axis</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="mf">0.02</span>   <span class="c1"># shift for dithering the y axis</span>
+
+<span class="c1"># add four scatter plots to that &#39;ax&#39; object</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x51</span><span class="o">-</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y51</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;chartreuse&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C51000&quot;</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x71</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y71</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C71000&quot;</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x75</span><span class="o">+</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y75</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C75200&quot;</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xSS</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;S30400&quot;</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Settings for plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Scatter Plot with Dither&quot;</span><span class="p">,</span>       
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm{bacterial\ count}\ /10^9\;\rm</span><span class="si">{ml}</span><span class="s2">^{-1}$&quot;</span><span class="p">,</span> 
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm</span><span class="si">{time}</span><span class="s2">\ /\rm</span><span class="si">{min}</span><span class="s2">$&quot;</span><span class="p">,</span>                
+        <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">380</span><span class="p">],</span>                  
+        <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.8</span><span class="p">]</span>
+       <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/splines2.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/dd81f9f17a9b47c461ae82c40cac91d470ba2779bee68a3b31bacf5705b2ef08.png" src="_images/dd81f9f17a9b47c461ae82c40cac91d470ba2779bee68a3b31bacf5705b2ef08.png" />
+</div>
+</div>
+</div>
+<div class="section" id="the-right-way">
+<h3>The Right Way<a class="headerlink" href="#the-right-way" title="Permalink to this headline">#</a></h3>
+<p>The code below will plot the data the way I prefer – with straight line connecting the points. No one will assume that this was an attempt to fit a mathematical model to the data. the lines help the reader follow the ternds without misleading anyone as to their purpose. Here we use the <code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code> method built into the <code class="docutils literal notranslate"><span class="pre">ax</span></code> object.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> 
+
+<span class="c1"># create a figure (fig) of given size that contains a plot (ax)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>  
+
+<span class="n">dx</span> <span class="o">=</span> <span class="mi">3</span>     <span class="c1"># shift for dithering the x axis</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="mf">0.02</span>   <span class="c1"># shift for dithering the y axis</span>
+
+<span class="c1"># add four scatter plots to that &#39;ax&#39; object</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x51</span><span class="o">-</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y51</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;limegreen&quot;</span><span class="p">,</span> <span class="n">markerfacecolor</span> <span class="o">=</span> <span class="s2">&quot;chartreuse&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">markeredgewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C51000&quot;</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x71</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y71</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">markerfacecolor</span> <span class="o">=</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">markeredgewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C71000&quot;</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x75</span><span class="o">+</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y75</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">markerfacecolor</span> <span class="o">=</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">markeredgewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C75200&quot;</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xSS</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">markerfacecolor</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">markeredgewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;S30400&quot;</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Settings for plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+<span class="c1">#matplotlib.rcParams[&#39;pdf.fonttype&#39;]=42</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Plot with Dither&quot;</span><span class="p">,</span>       
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm{bacterial\ count}\ /10^9\;\rm</span><span class="si">{ml}</span><span class="s2">^{-1}$&quot;</span><span class="p">,</span> 
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm</span><span class="si">{time}</span><span class="s2">\ /\rm</span><span class="si">{min}</span><span class="s2">$&quot;</span><span class="p">,</span>                
+        <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">380</span><span class="p">],</span>                  
+        <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.8</span><span class="p">]</span>
+       <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/splines3.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/a1d65664b26eab7a7f66be495a636d034ac8c8e7fbcc66eecf933e8a6bf09a4f.png" src="_images/a1d65664b26eab7a7f66be495a636d034ac8c8e7fbcc66eecf933e8a6bf09a4f.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-with-splines">
+<h2>Plotting with Splines<a class="headerlink" href="#plotting-with-splines" title="Permalink to this headline">#</a></h2>
+<p>Just say no. But, to show the versatility of plotting using <em>Python</em> lets do some bad things and have fun.</p>
+<p>Splines are no better than hand drawing a curved line through your data. However there are those who still stand by them. Consider the contribution below that describes using splines to create line fits in data sets meant to predict organ rejection in transplant patients. Obviously, like many things in life, this data has many confounding factors that make deriving a mathematical model difficult. So why not just throw a spline through the cloud of points and then <em>only print the spline</em> as the data analysis tool. Now doctors can make decisions based on that plot, which has no underlying theoretical rigour. I told you that bad data analysis can kill more people than bad pilots.</p>
+<p>“Cubic splines to model relationships between continuous variables and outcomes: a guide for clinicians.” J. Gauthier, Q.V. Wu, T.A. Gooley, <em>Bone Marrow Transplant</em>, <strong>2020</strong>, <em>55</em>, 675–680. https://doi.org/10.1038/s41409-019-0679-x</p>
+<p>Look at the date. These researchers were advocating using a spline to fit data and guide decisions in medical treatment in 2020, when machine learning tools were already commonplace for analyzing these complex systems and teasing out the most important variables. When one only has a hammer the whole world looks like a nail. Being aware of the modern tools of data science will give you science superpowers. This presentation will show you none of them. Go exploring.</p>
+<div class="section" id="the-simple-cubic-spline">
+<h3>The Simple Cubic Spline<a class="headerlink" href="#the-simple-cubic-spline" title="Permalink to this headline">#</a></h3>
+<p>One common option for curve fitting in a spreadsheet is the “cubic spline.” Don’t touch that button! If we’re going to do something bad, lets at least do it right by using code that can be easily inspected rather than a radio-button in a GUI that you will forget you ever flipped 24 hours from now. Code will allow you to quickly repeat what you did without having to seach through menus looking for that thing you clicked on yesterday.</p>
+<p>The code below will use an interpolation tool fron the <em>SciPy</em> library, <code class="docutils literal notranslate"><span class="pre">scipy.interpolate.CubicSpline()</span></code>, which will generate a cubic spline function from the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> data. We can then calculate the value of this function over a smooth continuum of many points along the range of the x-axis and plot the spline. We will use <code class="docutils literal notranslate"><span class="pre">ax.scatter()</span></code> to plot the points and <code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code> to plot the line.</p>
+<p>Observe that this spline is “wilder” than the smooth line spline used by Excel. There are other spline generators available to <em>Python</em>, perhaps Excel uses one of those.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a figure (fig) of given size that contains a plot (ax)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>  
+
+<span class="n">dx</span> <span class="o">=</span> <span class="mi">3</span>     <span class="c1"># shift for dithering the x axis</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="mf">0.02</span>   <span class="c1"># shift for dithering the y axis</span>
+
+<span class="c1"># add four scatter plots and four splines to that &#39;ax&#39; object</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x51</span><span class="o">-</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y51</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">CubicSpline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bc_type</span><span class="o">=</span><span class="s2">&quot;natural&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;limegreen&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C51000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;chartreuse&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x71</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y71</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">CubicSpline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bc_type</span><span class="o">=</span><span class="s2">&quot;natural&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C71000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x75</span><span class="o">+</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y75</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">CubicSpline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bc_type</span><span class="o">=</span><span class="s2">&quot;natural&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C75200&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xSS</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">CubicSpline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bc_type</span><span class="o">=</span><span class="s2">&quot;natural&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;S30400&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xSS</span><span class="p">,</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Settings for plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Cubic Spline&quot;</span><span class="p">,</span>       
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm{bacterial\ count}\ /10^9\;\rm</span><span class="si">{ml}</span><span class="s2">^{-1}$&quot;</span><span class="p">,</span> 
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm</span><span class="si">{time}</span><span class="s2">\ /\rm</span><span class="si">{min}</span><span class="s2">$&quot;</span><span class="p">,</span>                
+        <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">380</span><span class="p">],</span>                  
+        <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.8</span><span class="p">]</span>
+    <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/splines4.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/eb02e03a505f3521cd14fc781606feebe3145d6db40f3449af7f2ac9015df438.png" src="_images/eb02e03a505f3521cd14fc781606feebe3145d6db40f3449af7f2ac9015df438.png" />
+</div>
+</div>
+</div>
+<div class="section" id="spline-with-akima1dinterpolator">
+<h3>Spline with Akima1DInterpolator<a class="headerlink" href="#spline-with-akima1dinterpolator" title="Permalink to this headline">#</a></h3>
+<p>There are more sophisticated spline tools available. The code below uses the <code class="docutils literal notranslate"><span class="pre">scipy.interpolate.Akima1DInterpolator()</span></code> tool to create the spline function. this has “signal dampening” features that tame the wild swings, but it is no more suitable than the basic spline for data interpreatation.</p>
+<p>Change the <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">&quot;akima&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;makima&quot;</span></code> to apply the “modified Akima spline.” Its slightly different and equally useless.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a figure (fig) of given size that contains a plot (ax)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>  
+
+<span class="n">dx</span> <span class="o">=</span> <span class="mi">3</span>     <span class="c1"># shift for dithering the x axis</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="mf">0.02</span>   <span class="c1"># shift for dithering the y axis</span>
+
+<span class="c1"># add four scatter plots and four splines to that &#39;ax&#39; object</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x51</span><span class="o">-</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y51</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">Akima1DInterpolator</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;akima&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;limegreen&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C51000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;chartreuse&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x71</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y71</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">Akima1DInterpolator</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;akima&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C71000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x75</span><span class="o">+</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y75</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">Akima1DInterpolator</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;akima&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C75200&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xSS</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">Akima1DInterpolator</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;akima&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;S30400&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xSS</span><span class="p">,</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Settings for plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Akima Spline&quot;</span><span class="p">,</span>       
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm{bacterial\ count}\ /10^9\;\rm</span><span class="si">{ml}</span><span class="s2">^{-1}$&quot;</span><span class="p">,</span> 
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm</span><span class="si">{time}</span><span class="s2">\ /\rm</span><span class="si">{min}</span><span class="s2">$&quot;</span><span class="p">,</span>                
+        <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">380</span><span class="p">],</span>                  
+        <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.8</span><span class="p">]</span>
+       <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/splines5.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/6981addfa76b672ab4a1e66769da888a41c151a34b249ba31b136298eed1df12.png" src="_images/6981addfa76b672ab4a1e66769da888a41c151a34b249ba31b136298eed1df12.png" />
+</div>
+</div>
+</div>
+<div class="section" id="spline-with-pchipinterpolator">
+<h3>Spline with PchipInterpolator<a class="headerlink" href="#spline-with-pchipinterpolator" title="Permalink to this headline">#</a></h3>
+<p>Lets try this one. How does it compare?</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a figure (fig) of given size that contains a plot (ax)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>  
+
+<span class="n">dx</span> <span class="o">=</span> <span class="mi">3</span>     <span class="c1"># shift for dithering the x axis</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="mf">0.02</span>   <span class="c1"># shift for dithering the y axis</span>
+
+<span class="c1"># add four scatter plots and four splines to that &#39;ax&#39; object</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x51</span><span class="o">-</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y51</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;limegreen&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C51000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;chartreuse&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x71</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y71</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C71000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x75</span><span class="o">+</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y75</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C75200&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xSS</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;S30400&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xSS</span><span class="p">,</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Settings for plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;PCHIP Spline&quot;</span><span class="p">,</span>       
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm{bacterial\ count}\ /10^9\;\rm</span><span class="si">{ml}</span><span class="s2">^{-1}$&quot;</span><span class="p">,</span> 
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm</span><span class="si">{time}</span><span class="s2">\ /\rm</span><span class="si">{min}</span><span class="s2">$&quot;</span><span class="p">,</span>                
+        <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">380</span><span class="p">],</span>                  
+        <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.8</span><span class="p">]</span>
+       <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/splines6.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/1f9f9fcab9a1f454bc9df63ca99101633acae9f59070a60c65948cd61073a440.png" src="_images/1f9f9fcab9a1f454bc9df63ca99101633acae9f59070a60c65948cd61073a440.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="smoothing-splines">
+<h2>Smoothing Splines<a class="headerlink" href="#smoothing-splines" title="Permalink to this headline">#</a></h2>
+<p>Having the line pass through each point helps the eye find all the data points in the series on the plot. That is why we use the straight line “connect-the-dot” style in plots that have no mathematical model that can be applied. Smooth splines that are forecd to pass through each point give strange artifacts like the wavy lines we have seen above.</p>
+<p>Smoothing spline has some use, though. A smoothing spline allows the line to try to make the least bends and curves yet adhere to the trend of the data. they are used in photogrpahy algoriths to smooth noise out of a photograph. Crank it up to the max to remove those crowsfeet around your eyes if you don’t mind that “uncanny valley” look in your portraits.</p>
+<p>We can use smoothing splines in <em>Python</em> as well.</p>
+<div class="section" id="scipy-interpolate-make-smoothing-spline">
+<h3>scipy.interpolate.make_smoothing_spline<a class="headerlink" href="#scipy-interpolate-make-smoothing-spline" title="Permalink to this headline">#</a></h3>
+<p>Consider the code below. Change the <code class="docutils literal notranslate"><span class="pre">smooth_factor</span></code> variable and see what happens. We have a smoother curve but, with scattered data like this, we still see artifacts such as excursions into impossible negative values for bacteria counts.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a figure (fig) of given size that contains a plot (ax)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>  
+
+<span class="n">dx</span> <span class="o">=</span> <span class="mi">3</span>     <span class="c1"># shift for dithering the x axis</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="mf">0.02</span>   <span class="c1"># shift for dithering the y axis</span>
+<span class="n">smooth_factor</span> <span class="o">=</span> <span class="mf">1E4</span>
+
+<span class="c1"># add four scatter plots and four splines to that &#39;ax&#39; object</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x51</span><span class="o">-</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y51</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">make_smoothing_spline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lam</span> <span class="o">=</span> <span class="n">smooth_factor</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;limegreen&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C51000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;chartreuse&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x71</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y71</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">make_smoothing_spline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lam</span> <span class="o">=</span> <span class="n">smooth_factor</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C71000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x75</span><span class="o">+</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y75</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">make_smoothing_spline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lam</span> <span class="o">=</span> <span class="n">smooth_factor</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;C75200&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xSS</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+<span class="n">spline</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">make_smoothing_spline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lam</span> <span class="o">=</span> <span class="n">smooth_factor</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;S30400&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xSS</span><span class="p">,</span> <span class="n">ySS</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Settings for plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Using &#39;make_smoothing_spline&#39;&quot;</span><span class="p">,</span>       
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm{bacterial\ count}\ /10^9\;\rm</span><span class="si">{ml}</span><span class="s2">^{-1}$&quot;</span><span class="p">,</span> 
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\rm</span><span class="si">{time}</span><span class="s2">\ /\rm</span><span class="si">{min}</span><span class="s2">$&quot;</span><span class="p">,</span>                
+        <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">380</span><span class="p">],</span>                  
+        <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.8</span><span class="p">]</span>
+       <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/splines7.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/2c5ffdb56aba9381e59db65563795df3d39b8e785b4c5da969d828e320447faa.png" src="_images/2c5ffdb56aba9381e59db65563795df3d39b8e785b4c5da969d828e320447faa.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<p>I hope that you will agree with me that splines are generally useless. However, I do use splines from time to time. I use them when interpolating between points in dense noiseless data, usually when reproducing a curve from a plot in older literature. Those of you taking Physical Organic Chemistry will see an example when we are using acidity function data for mixtures of sulphuric acid that was published in 1955.</p>
+<p>If you must add non-informative lines to you plot for some reason, use the “connect-the-dots” straight lines. You readers will not confuse them for a fitted model.</p>
+<p>Another approach would be to derive a mathematical model that explains the effect and then use that model to determine the parameters most responsible for cell death. Is it copper content, surface roughness, something else that is most important? Then use this information to make better antomicrobial surfaces.</p>
+<p>Next we will switch gears and explore how <em>Python</em> calculations can keep track of our experimental uncertainties for us.</p>
+<div class="section" id="id1">
+<h3><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_PlotBasics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Part 1: Quick Examples of Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03-Eyring_Exercises_Intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Erying Equation and Experimental Error</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-with-excel">Plotting with Excel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spreadsheet">The Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#that-curve">That Curve</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-python-plot">A Python Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-the-data">Extract the Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-plot">A Simple Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-bit-of-dithering">A Bit of Dithering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-right-way">The Right Way</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-with-splines">Plotting with Splines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simple-cubic-spline">The Simple Cubic Spline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spline-with-akima1dinterpolator">Spline with Akima1DInterpolator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spline-with-pchipinterpolator">Spline with PchipInterpolator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothing-splines">Smoothing Splines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-interpolate-make-smoothing-spline">scipy.interpolate.make_smoothing_spline</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

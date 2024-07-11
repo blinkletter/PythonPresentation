@@ -1,0 +1,1179 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Part 3A: A Simple Data Analysis &#8212; Python Presentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03A-Eyring_Exercises_1_simple';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Part 3B: Curve Fitting and Covariance" href="03B-Eyring_Exercises_2_curvefit.html" />
+    <link rel="prev" title="The Erying Equation and Experimental Error" href="03-Eyring_Exercises_Intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="start.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="start.html">
+                    Documenting Data Analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_PlotBasics.html">Part 1: Quick Examples of Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-CubicSpline.html">Part 2: Please Don’t Use “Smooth Lines”</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Curve Fits and Error</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="03-Eyring_Exercises_Intro.html">The Erying Equation and Experimental Error</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Part 3A: A Simple Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03B-Eyring_Exercises_2_curvefit.html">Part 3B: Curve Fitting and Covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03C-Eyring_Exercises_3_LMfit.html">Part 3C: Using LMFit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03D-Eyring_Exercises_4_pandas.html">Part 3D: Reading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03E-Eyring_Exercises_5_Bootstrap.html">Part 3E: Bootstrapping Confidence Intervals</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04-Styling.html">Part 4: Styling with Style Sheets</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/PythonPresentation/blob/main/./03A-Eyring_Exercises_1_simple.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03A-Eyring_Exercises_1_simple.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Part 3A: A Simple Data Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-simple">Its Simple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-erying-plot">The Erying Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-complete-calculation">The Complete Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-report">The Report</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-thermodynamic-parameters">Calculating Thermodynamic Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertain-numbers">Uncertain Numbers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highly-leveraged">Highly Leveraged</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-confidence-interval">Check the Confidence Interval</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lever-arm">The Lever Arm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-the-lever">Removing the Lever</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-thermodynamic-parameters-again">Calculating Thermodynamic Parameters Again</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-confidence-band">Plot the Confidence Band</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#band-calculated-from-uncertain-delta-h-ddagger-and-delta-s-ddagger">Band Calculated from Uncertain <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#band-calculated-from-uncertain-slope-and-intercept">Band Calculated from Uncertain Slope and Intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#band-calculated-from-zero">Band Calculated from Zero</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="part-3a-a-simple-data-analysis">
+<h1>Part 3A: A Simple Data Analysis<a class="headerlink" href="#part-3a-a-simple-data-analysis" title="Permalink to this headline">#</a></h1>
+<p>We will use data from the results of Machado et al. introduced on the previous page. I will use just five data points as that is a common number used in the literature (we really should insist on more.)</p>
+<div class="section" id="its-simple">
+<h2>Its Simple<a class="headerlink" href="#its-simple" title="Permalink to this headline">#</a></h2>
+<p><em>Python</em> is not complicated. In this notebook we will become acquainted with how a notebook works and with the architecture of a <em>Python</em> program. I have no intention of teaching <em>Python</em> here. You can figure out what is happening by looking at the code and reading the comments. You can access the code via Google <em>Colab</em> or download this notebook and use it on your own computer with the buttons at the top right of this web page.</p>
+<p>Lets dive right in…</p>
+</div>
+<div class="section" id="load-the-toolbox">
+<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Permalink to this headline">#</a></h2>
+<p>In a <em>Python</em> notebook we can mix code and text. In the code block below are commands to load the libraries and modules we ill need for this exercise. there are some special commands that are used to run unix xommands directly in the terminal of <em>Colab</em> to install <em>Python</em> packages that are not available by default. These are “commented out” so that they don’t run on your own computer should you have downloaded this notebook. You will need to delete the “hashtag” comment symbol to use these in <em>Colab</em>. Don’t worry, you will get an error if you forget that will remind you.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
+
+<span class="o">!</span>mkdir plots
+<span class="o">!</span>pip install uncertainties              # uncomment to install dependancy
+
+<span class="kn">import</span> <span class="nn">scipy</span>                             <span class="c1"># includes tools for data analysis</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1"># import the tools of NumPy as &quot;np&quot;</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>     <span class="c1"># tools for plotting</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+
+<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>               <span class="c1"># for handling uncertain numbers</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>  <span class="c1"># a replacement for numpy that uses </span>
+                                         <span class="c1">#  uncertainty values</span>
+
+<span class="c1">#location_data = &quot;data/&quot;         ## Use either local folder or github folder. </span>
+<span class="c1">#location_styles = &quot;styles/&quot;     ## Use github locations for Colab</span>
+<span class="n">location_data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/data/&quot;</span>
+<span class="n">location_styles</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/styles/&quot;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="section" id="the-erying-plot">
+<h2>The Erying Plot<a class="headerlink" href="#the-erying-plot" title="Permalink to this headline">#</a></h2>
+<p>The code below will take some data that we typed in and perform a linear least-squares fit. The data and the line fit will be plotted. I am using the minimum amount of coding here to emphasize how simple this can be. More complicated examples that follow in upcoming pages are all based on this foundation.</p>
+<div class="section" id="the-complete-calculation">
+<h3>The Complete Calculation<a class="headerlink" href="#the-complete-calculation" title="Permalink to this headline">#</a></h3>
+<p>The code below performs a linear fit to the Eyring plot and the results are printed out.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Experimental data</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">293</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span> <span class="mi">303</span><span class="p">,</span> <span class="mi">308</span><span class="p">,</span> <span class="mi">313</span><span class="p">]</span>       <span class="c1"># list of temperatures</span>
+<span class="n">k_obs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.6</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">,</span> <span class="mf">21.3</span><span class="p">,</span> <span class="mf">27.8</span><span class="p">]</span>  <span class="c1"># list of observe rate constants (s^-1)</span>
+
+<span class="c1">### Convert lists to numpy arrays (enables numpy math tools with these lists)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">k_obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">k_obs</span><span class="p">)</span>
+
+<span class="c1">### Calculations</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">temp</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k_obs</span><span class="o">/</span><span class="n">temp</span><span class="p">)</span>
+
+<span class="c1">### Line fit using linear regression</span>
+<span class="n">fit</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>                           <span class="c1"># fit is a &#39;object&#39; containing the results</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=-5560.074229125674, intercept=15.365177590523832, rvalue=-0.9970033160626764, pvalue=0.00019683392591187597, stderr=249.0767684307886, intercept_stderr=0.8227078340122718)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-report">
+<h3>The Report<a class="headerlink" href="#the-report" title="Permalink to this headline">#</a></h3>
+<p>It doesn’t matter what you do, you must tell somebody about it. The code below will print out the parameters and statistical information and plot the original data and a line calculated from the fit parameters. The second narrow plot is a plot of the residuals. Always plot the residuals for any curve fit. It may reveal systematic error in your model.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Assign compnents of the fit result to variables</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">slope</span>
+<span class="n">slope_stderr</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">stderr</span> 
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">intercept</span>
+<span class="n">int_stderr</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">intercept_stderr</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">rvalue</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1">### print a report using the variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">+/-</span><span class="si">{</span><span class="n">slope_stderr</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Use &quot;f-string&quot; to print variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;int = </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">+/-</span><span class="si">{</span><span class="n">int_stderr</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">best_fit_y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>                    <span class="c1"># calculate y-values using best fit parameters</span>
+
+<span class="c1">### Plot data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>                               <span class="c1"># plot data with black circle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">best_fit_y</span><span class="p">,</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>                      <span class="c1"># plot fit line with black line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>         <span class="c1"># there were too many x labels</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\ln{k/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                       <span class="c1"># show plot (and clear)</span>
+
+<span class="c1">### Plot the residuals</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">best_fit_y</span>                       <span class="c1"># difference between data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>                    <span class="c1"># set plot height to 1 inch</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">residuals</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>                  <span class="c1"># plot a horizontal line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>         <span class="c1"># there were too many x labels</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;residuals&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>slope = -5560.07+/-249.08
+int = 15.37+/-0.82
+rsq = 0.994
+</pre></div>
+</div>
+<img alt="_images/849fb4783bfeb278e83d9a12369f047f6a38d61388e096fe91cbe5dc35b426ed.png" src="_images/849fb4783bfeb278e83d9a12369f047f6a38d61388e096fe91cbe5dc35b426ed.png" />
+<img alt="_images/1be715287559029cacd3958e79b69970baf24f83a763e75cca4c3378b1edd731.png" src="_images/1be715287559029cacd3958e79b69970baf24f83a763e75cca4c3378b1edd731.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="calculating-thermodynamic-parameters">
+<h2>Calculating Thermodynamic Parameters<a class="headerlink" href="#calculating-thermodynamic-parameters" title="Permalink to this headline">#</a></h2>
+<p>We performed the Eyring plot analysis to get <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> for the reaction in the active site of the enzyme. Slope and intercept are not the goal. I can easily calculate the <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> from the line fit, but how do I propagate error through the calculation. The line-fit algorithm has produced an estimated error expressed as a standard deviation value for both slope and intercept. This error must be correctly translated to the calculated <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> values obtained from the uncertain slope and intercept. There are mathematical rules for doing this.</p>
+<div class="section" id="uncertain-numbers">
+<h3>Uncertain Numbers<a class="headerlink" href="#uncertain-numbers" title="Permalink to this headline">#</a></h3>
+<p>Rather than review a statistics testbook, let us use a tool that handles error propagation for us. We will use the <code class="docutils literal notranslate"><span class="pre">uncertainties</span></code> module. It provides a data structure called <em>ufloat</em>, which is a floating point value with the error included. It is an object that retains information on the uncertainty for the value and its relationship to any other uncertain values with which it has interacted. For example, if I multiply the ufloat values <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> together, it will produce a value that combines the errors. If I divide that answer by <span class="math notranslate nohighlight">\(b\)</span> I will not get an answer in which the errors have been combined but will get the original <span class="math notranslate nohighlight">\(a\)</span> back. The answer knew its history with <span class="math notranslate nohighlight">\(b\)</span> and correctly handled the situation.</p>
+<p>The code below will create ufloat values from the parameters and their estimated uncertainties. Then we will use these values to calculate the values of <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> with errors included. You can see that the estimated errors in the thermodynamic parameters are large.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Create ufloat objects from fit results</span>
+<span class="n">slope_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="n">slope_stderr</span><span class="p">)</span>
+<span class="n">intercept_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span><span class="n">int_stderr</span><span class="p">)</span>
+
+<span class="c1">### calculate thermodynamic parameters</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">R</span>
+<span class="n">kb</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">k</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">h</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">dH</span> <span class="o">=</span> <span class="o">-</span><span class="n">slope_u</span> <span class="o">*</span> <span class="n">R</span>
+<span class="n">dS</span> <span class="o">=</span> <span class="p">(</span><span class="n">intercept_u</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">kb</span><span class="o">/</span><span class="n">h</span><span class="p">))</span> <span class="o">*</span> <span class="n">R</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in enthalpy is </span><span class="si">{</span><span class="n">dH</span><span class="si">:</span><span class="s2">0.0f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in entropy is </span><span class="si">{</span><span class="n">dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> J/mole.K&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The change in enthalpy is 46229+/-2071 kJ/mole
+The change in entropy is -69.80+/-6.84 J/mole.K
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="highly-leveraged">
+<h2>Highly Leveraged<a class="headerlink" href="#highly-leveraged" title="Permalink to this headline">#</a></h2>
+<p>We shall now observe that we have set ourselves up for trouble with the way we are using these errors. The error in the slope has a large effect on the value of the intercept. The values of slope and intercept are “strongly coupled”in tnis case but the ufloat objects for <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> have no connection with each other because we created them from scratch. Consider the example below.</p>
+<div class="section" id="check-the-confidence-interval">
+<h3>Check the Confidence Interval<a class="headerlink" href="#check-the-confidence-interval" title="Permalink to this headline">#</a></h3>
+<p>We have the parameters and the estimated errors. We can back-propagate these uncertain values and calculate the rates at the tempertures in the data. The errors determined in the ufloat object will be the “<span class="math notranslate nohighlight">\(1\sigma\)</span> confidence interval.”  This should be the range where 68% of the values determined at that temperature would be found (one standard deviation in a Gaussian distribution.)</p>
+<p>As you can see, the confidence is awful. Our value is garbage. We have no confidence. Did we make a mistake? Yes we did.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Calculate the rate constant using the parameters and temperature</span>
+<span class="c1">### The uncertainty in the parameters will propagate back to the data point</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">303</span>
+<span class="n">k_obs_c</span> <span class="o">=</span> <span class="n">kappa</span><span class="o">*</span><span class="n">kb</span><span class="o">/</span><span class="n">h</span> <span class="o">*</span> <span class="n">T</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dH</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="p">))</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">dS</span><span class="o">/</span><span class="n">R</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The confidence interval for k_cat at </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2"> K is </span><span class="si">{</span><span class="n">k_obs_c</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> s^-1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The confidence interval for k_cat at 303 K is 15.3+/-17.8 s^-1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-lever-arm">
+<h3>The Lever Arm<a class="headerlink" href="#the-lever-arm" title="Permalink to this headline">#</a></h3>
+<p>Let us plot the entire x-axis from zero (where the y-intercept is) to our data. You can see that we are a looong distance from the y-axis and any small errors in slope will lead to large error in intercept.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Plot data and line-fit (cut and pasted from above)</span>
+<span class="n">x_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>            <span class="c1"># insert zero in alst position of x array</span>
+<span class="n">best_fit_y_0</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x_0</span> <span class="o">+</span> <span class="n">intercept</span> <span class="c1"># calculate fit starting at zero</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>                     <span class="c1"># plot data with black circle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span><span class="n">best_fit_y_0</span><span class="p">,</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>        <span class="c1"># plot fit line starting at zero</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}-0.0030$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\ln{k/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                       
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/88aedb09146f588b8226ed38a180e0c9612c906e8bf8621d19bb933cfd81a5f7.png" src="_images/88aedb09146f588b8226ed38a180e0c9612c906e8bf8621d19bb933cfd81a5f7.png" />
+</div>
+</div>
+</div>
+<div class="section" id="removing-the-lever">
+<h3>Removing the Lever<a class="headerlink" href="#removing-the-lever" title="Permalink to this headline">#</a></h3>
+<p>This problem is easily solved. We need the intercept to be very close to the data so there is no long lever arm. Let is simply subtract the average value for the x-axis data from the data set. Then the intercept will be in the middle of the data and experience the minimum coupling. We can calulate the value of the y-axis at the far flung end of the former lever arm and see that the erros for <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> are exactly the same as before. But now the ufloat object for the intercept knows that it has been coupled with the slope because we used the slope value in its calculation (see code below).</p>
+<p>With the coupling (covariance) established we can repeat the confidince interval calculation and we see a much more reasonable value.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Remove Lever Arm</span>
+<span class="n">x_ave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>      <span class="c1"># average 1/T value</span>
+<span class="n">x_nolever</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x_ave</span>      <span class="c1"># subtract average 1/T from 1/T values</span>
+
+<span class="n">fit</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x_nolever</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1">### REPORT</span>
+<span class="c1">### Assign compnents of the fit result to variables</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">slope</span>
+<span class="n">slope_stderr</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">stderr</span> 
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">intercept</span>
+<span class="n">int_stderr</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">intercept_stderr</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">rvalue</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1">### print a report using the variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">+/-</span><span class="si">{</span><span class="n">slope_stderr</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Use &quot;f-string&quot; to print variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;int = </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">+/-</span><span class="si">{</span><span class="n">int_stderr</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">best_fit_y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x_nolever</span> <span class="o">+</span> <span class="n">intercept</span>                    <span class="c1"># calculate y-values using best fit parameters</span>
+
+<span class="c1">### Plot data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_nolever</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>              <span class="c1"># plot data with black circle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_nolever</span><span class="p">,</span><span class="n">best_fit_y</span><span class="p">,</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>     <span class="c1"># plot fit line with black line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="mf">0.00010</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">])</span>         <span class="c1"># there were too many x labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}-0.0030$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\ln{k/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                              <span class="c1"># show plot (and clear)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>slope = -5560.07+/-249.08
+int = -2.99+/-0.02
+rsq = 0.994
+</pre></div>
+</div>
+<img alt="_images/aefc42263bf5cd52867237be609be99cd85bf31411ef951d0e32785670a2593f.png" src="_images/aefc42263bf5cd52867237be609be99cd85bf31411ef951d0e32785670a2593f.png" />
+</div>
+</div>
+</div>
+<div class="section" id="calculating-thermodynamic-parameters-again">
+<h3>Calculating Thermodynamic Parameters Again<a class="headerlink" href="#calculating-thermodynamic-parameters-again" title="Permalink to this headline">#</a></h3>
+<p>We have a value for intercept and its error that is very small as it is in the middle of the data set and largely unaffected by any variations in slope. We will now calculate the “true intercept” at <span class="math notranslate nohighlight">\(1/T = 0\)</span>. In the code below you can see that we are multiplying the slope by the length of the lever arm (the value we subtracted from the x axis) and adding that to the intercept. this will give us the true intercept at the end of the lever arm. The new ufloat object carries within it the knowledge that it was created through the combination of the slope and the intercept. The true intercept value is strongly coupled to slope (we multiplied by a long lever arm to get the value) but the ufloat object now includes this fact within it somehow.</p>
+<p>The values of <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> are derived from the strongly coupled slope and true intercept values. As a result, they are also strongly couples but the ufloat objects will continue to hold that covariance within them. When we use these values to calculate the <span class="math notranslate nohighlight">\(k_{cat}\)</span> value we see that the error is much more reasonable.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Create new ufloat objects from fit results</span>
+<span class="n">slope_unc</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">slope_stderr</span><span class="p">)</span>
+<span class="n">intercept_unc</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">int_stderr</span><span class="p">)</span>
+
+<span class="c1">### calculate the true intercept </span>
+<span class="n">intercept_true</span> <span class="o">=</span> <span class="n">intercept_unc</span> <span class="o">-</span> <span class="n">slope_unc</span> <span class="o">*</span> <span class="n">x_ave</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The true intercept is </span><span class="si">{</span><span class="n">intercept_true</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1">### calculate thermodynamic parameters</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">R</span>
+<span class="n">kb</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">k</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">h</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">dH</span> <span class="o">=</span> <span class="o">-</span><span class="n">slope_unc</span> <span class="o">*</span> <span class="n">R</span>
+<span class="n">dS</span> <span class="o">=</span> <span class="p">(</span><span class="n">intercept_true</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">kb</span><span class="o">/</span><span class="n">h</span><span class="p">))</span> <span class="o">*</span> <span class="n">R</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in enthalpy is </span><span class="si">{</span><span class="n">dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in entropy is </span><span class="si">{</span><span class="n">dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> J/mole.K&quot;</span><span class="p">)</span>
+
+<span class="c1">## calculate k from Erying plot parameters.</span>
+<span class="n">Temp</span> <span class="o">=</span> <span class="mi">303</span>
+<span class="n">kobs</span> <span class="o">=</span> <span class="p">(</span><span class="n">kappa</span> <span class="o">*</span> <span class="n">kb</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="n">Temp</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dH</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">Temp</span><span class="p">))</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">dS</span><span class="o">/</span><span class="n">R</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calculated k at T = </span><span class="si">{</span><span class="n">Temp</span><span class="si">}</span><span class="s2"> K is </span><span class="si">{</span><span class="n">kobs</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> s^-1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The true intercept is 15.37+/-0.82
+
+The change in enthalpy is 46229.03+/-2070.94 kJ/mole
+The change in entropy is -69.80+/-6.84 J/mole.K
+
+Calculated k at T = 303 K is 15.31+/-0.29 s^-1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot-the-confidence-band">
+<h2>Plot the Confidence Band<a class="headerlink" href="#plot-the-confidence-band" title="Permalink to this headline">#</a></h2>
+<p>Now that we have values for <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> that are represented by coupled ufloat objects we can use them to calculate the confidence interval at every x-value and plot the fit and the “confidence band.” the usual practice is to plot the 95% confidence interval, which is <span class="math notranslate nohighlight">\(2\sigma\)</span> or twice the standard deviation.</p>
+<p>In the code below you will see ways to separate the nominal value and the error values out of a ufloat object. The <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> library cannot use ufloat values. The code below is also “complete.” I will be repeating many elements that have already been assigned above so that this block of code can be cut and pasted in its entirety and used in your own work.</p>
+<div class="section" id="band-calculated-from-uncertain-delta-h-ddagger-and-delta-s-ddagger">
+<h3>Band Calculated from Uncertain <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span><a class="headerlink" href="#band-calculated-from-uncertain-delta-h-ddagger-and-delta-s-ddagger" title="Permalink to this headline">#</a></h3>
+<p>We can calculate the confidence band for the Erying plot by using the uncertain values for <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> to get an uncertain value for <span class="math notranslate nohighlight">\(k_{cat}\)</span>. We then calculate the y-axis of <span class="math notranslate nohighlight">\(\ln\left( k_{cat}/T\right)\)</span> as an uncertain number. Add and subtract the <span class="math notranslate nohighlight">\(\pm\)</span> error to get the confidence band.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Experimental data</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">293</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span> <span class="mi">303</span><span class="p">,</span> <span class="mi">308</span><span class="p">,</span> <span class="mi">313</span><span class="p">]</span>       <span class="c1"># list of temperatures</span>
+<span class="n">k_obs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.6</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">,</span> <span class="mf">21.3</span><span class="p">,</span> <span class="mf">27.8</span><span class="p">]</span>  <span class="c1"># list of observe rate constants (s^-1)</span>
+
+<span class="c1">### Convert lists to numpy arrays (enables numpy math tools with these lists)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">k_obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">k_obs</span><span class="p">)</span>
+
+<span class="c1">### Calculations</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">temp</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k_obs</span><span class="o">/</span><span class="n">temp</span><span class="p">)</span>
+
+<span class="c1">### Remove Lever Arm</span>
+<span class="n">x_ave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>      <span class="c1"># average 1/T value</span>
+<span class="n">x_nolever</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x_ave</span>      <span class="c1"># subtract average 1/T from 1/T values</span>
+
+<span class="n">fit</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x_nolever</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1">### REPORT</span>
+<span class="c1">### Assign compnents of the fit result to variables</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">slope</span>
+<span class="n">slope_stderr</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">stderr</span> 
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">intercept</span>
+<span class="n">int_stderr</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">intercept_stderr</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">rvalue</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1">### Create new ufloat objects from fit results</span>
+<span class="n">slope_unc</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">slope_stderr</span><span class="p">)</span>
+<span class="n">intercept_unc</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">int_stderr</span><span class="p">)</span>
+
+<span class="c1">### calculate the true intercept </span>
+<span class="n">intercept_true</span> <span class="o">=</span> <span class="n">intercept_unc</span> <span class="o">-</span> <span class="n">slope_unc</span> <span class="o">*</span> <span class="n">x_ave</span>
+
+<span class="c1">### print a report using the variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">+/-</span><span class="si">{</span><span class="n">slope_stderr</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Use &quot;f-string&quot; to print variables</span>
+<span class="c1"># print(f&quot;int = {intercept:0.2f}+/-{int_stderr:0.2f}&quot;)  </span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The true intercept is </span><span class="si">{</span><span class="n">intercept_true</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#### calculate y-values using best fit parameters</span>
+<span class="n">best_fit_y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept_true</span>     <span class="c1"># ufloat.n gives the nominal value</span>
+
+
+<span class="c1">### Plot data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>                               <span class="c1"># plot data with black circle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">),</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>                      <span class="c1"># plot fit line with black line</span>
+
+<span class="c1">### Create Confidence band upper and lower bounds</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># create array of uncertain values for kobs</span>
+<span class="n">kobs</span> <span class="o">=</span> <span class="p">(</span><span class="n">kappa</span> <span class="o">*</span> <span class="n">kb</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dH</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">temp</span><span class="p">))</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">dS</span><span class="o">/</span><span class="n">R</span><span class="p">)</span>
+
+<span class="c1"># upper and lower bounds of uncertain kobs as float values</span>
+<span class="n">k_up</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">kobs</span><span class="p">)</span> <span class="o">+</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">kobs</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span>
+<span class="n">k_dn</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">kobs</span><span class="p">)</span> <span class="o">-</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">kobs</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span>
+
+<span class="c1"># y axis is ln(k/T)</span>
+<span class="n">ln_k_up_T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k_up</span><span class="o">/</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">ln_k_dn_T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k_dn</span><span class="o">/</span><span class="n">temp</span><span class="p">)</span>
+
+<span class="c1"># make filled band</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ln_k_up_T</span><span class="p">,</span> <span class="n">ln_k_dn_T</span><span class="p">,</span> 
+                   <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;confidence interval&quot;</span><span class="p">)</span>
+
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>         <span class="c1"># there were too many x labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\ln{k/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                       <span class="c1"># show plot (and clear)</span>
+
+<span class="c1">### Plot the residuals</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span>   <span class="c1"># difference between data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>                    <span class="c1"># set plot height to 1 inch</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">residuals</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>                  <span class="c1"># plot a horizontal line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>         <span class="c1"># there were too many x labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;residuals&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1">### calculate thermodynamic parameters</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">R</span>
+<span class="n">kb</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">k</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">h</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">dH</span> <span class="o">=</span> <span class="o">-</span><span class="n">slope_unc</span> <span class="o">*</span> <span class="n">R</span>
+<span class="n">dS</span> <span class="o">=</span> <span class="p">(</span><span class="n">intercept_true</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">kb</span><span class="o">/</span><span class="n">h</span><span class="p">))</span> <span class="o">*</span> <span class="n">R</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in enthalpy is </span><span class="si">{</span><span class="n">dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in entropy is </span><span class="si">{</span><span class="n">dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> J/mole.K&quot;</span><span class="p">)</span>
+
+<span class="c1">## calculate k from Erying plot parameters.</span>
+<span class="n">Temp</span> <span class="o">=</span> <span class="mi">303</span>
+<span class="n">kobs</span> <span class="o">=</span> <span class="p">(</span><span class="n">kappa</span> <span class="o">*</span> <span class="n">kb</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="n">Temp</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dH</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">Temp</span><span class="p">))</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">dS</span><span class="o">/</span><span class="n">R</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">kobs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calculated k at T = </span><span class="si">{</span><span class="n">Temp</span><span class="si">}</span><span class="s2"> K is </span><span class="si">{</span><span class="n">kobs</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> s^-1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>slope = -5560.07+/-249.08
+The true intercept is 15.37+/-0.82
+
+rsq = 0.994
+</pre></div>
+</div>
+<img alt="_images/370f06e3d8a93a095ca66ff56b3814534b85a48f3a29c9534b5622b73bc45906.png" src="_images/370f06e3d8a93a095ca66ff56b3814534b85a48f3a29c9534b5622b73bc45906.png" />
+<img alt="_images/24a288d51c2c50170c631171505eff378c94549c9f5231ff4c49135cbb0006db.png" src="_images/24a288d51c2c50170c631171505eff378c94549c9f5231ff4c49135cbb0006db.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The change in enthalpy is 46229.03+/-2070.94 kJ/mole
+The change in entropy is -69.80+/-6.84 J/mole.K
+15.31+/-0.29
+Calculated k at T = 303 K is 15.31+/-0.29 s^-1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="band-calculated-from-uncertain-slope-and-intercept">
+<h3>Band Calculated from Uncertain Slope and Intercept<a class="headerlink" href="#band-calculated-from-uncertain-slope-and-intercept" title="Permalink to this headline">#</a></h3>
+<p>Note that it is identical to the above case where we used the uncertain ufloat values of <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span>. this is because the ufloat objects correctly handled error propagation back and forth through the math. They should be identical and indeed they are. The code is below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_unc</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">slope_stderr</span><span class="p">)</span>
+<span class="n">intercept_unc</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">int_stderr</span><span class="p">)</span>
+
+<span class="c1">### calculate the true intercept </span>
+<span class="n">intercept_true</span> <span class="o">=</span> <span class="n">intercept_unc</span> <span class="o">-</span> <span class="n">slope_unc</span> <span class="o">*</span> <span class="n">x_ave</span>
+
+<span class="c1">### print a report using the variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">+/-</span><span class="si">{</span><span class="n">slope_stderr</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Use &quot;f-string&quot; to print variables</span>
+<span class="c1"># print(f&quot;int = {intercept:0.2f}+/-{int_stderr:0.2f}&quot;)  </span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The true intercept is </span><span class="si">{</span><span class="n">intercept_true</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#### calculate y-values using best fit parameters</span>
+<span class="n">best_fit_y</span> <span class="o">=</span> <span class="n">slope_unc</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept_true</span>     <span class="c1"># ufloat.n gives the nominal value</span>
+
+
+<span class="c1">### Plot data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>                               <span class="c1"># plot data with black circle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">),</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>                      <span class="c1"># plot fit line with black line</span>
+
+<span class="c1">#### Create Confidence band upper and lower bounds</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># upper and lower bounds of uncertain kobs as float values</span>
+<span class="n">fit_up</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">+</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span>
+<span class="n">fit_dn</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">-</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span>
+
+<span class="c1"># make filled band</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fit_up</span><span class="p">,</span> <span class="n">fit_dn</span><span class="p">,</span> 
+                   <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;confidence interval&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>         <span class="c1"># there were too many x labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\ln{k/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                       <span class="c1"># show plot (and clear)</span>
+<span class="c1">#</span>
+<span class="c1">### Plot the residuals</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span>                       <span class="c1"># difference between data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>                    <span class="c1"># set plot height to 1 inch</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">residuals</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>                  <span class="c1"># plot a horizontal line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>         <span class="c1"># there were too many x labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;residuals&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>slope = -5560.07+/-249.08
+The true intercept is 15.37+/-0.82
+
+rsq = 0.994
+</pre></div>
+</div>
+<img alt="_images/e92c2a85e8c48c9449b47071e28e8bff5282d49f06d3f30529d545cb5949a897.png" src="_images/e92c2a85e8c48c9449b47071e28e8bff5282d49f06d3f30529d545cb5949a897.png" />
+<img alt="_images/24a288d51c2c50170c631171505eff378c94549c9f5231ff4c49135cbb0006db.png" src="_images/24a288d51c2c50170c631171505eff378c94549c9f5231ff4c49135cbb0006db.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.00341297 0.0033557  0.00330033 0.00324675 0.00319489]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="band-calculated-from-zero">
+<h3>Band Calculated from Zero<a class="headerlink" href="#band-calculated-from-zero" title="Permalink to this headline">#</a></h3>
+<p>Here we plot the lever arm plot again but add the confidence band. This plot must be calculated using the slope and intercept. The intercept occurs at <span class="math notranslate nohighlight">\(x = 0\)</span>.  If <span class="math notranslate nohighlight">\(1/T\)</span> is zero that means we are at infinite temperature. If I had used the uncertain <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> and temperature I would have had to use very high temperture values to approach, but never reach the origin of the <span class="math notranslate nohighlight">\(1/T\)</span> <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
+<p>this plot emphasizes the effect of the lever arm well.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_unc</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">slope_stderr</span><span class="p">)</span>
+<span class="n">intercept_unc</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">int_stderr</span><span class="p">)</span>
+
+<span class="c1">### calculate the true intercept </span>
+<span class="n">intercept_true</span> <span class="o">=</span> <span class="n">intercept_unc</span> <span class="o">-</span> <span class="n">slope_unc</span> <span class="o">*</span> <span class="n">x_ave</span>
+
+<span class="c1">### print a report using the variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">+/-</span><span class="si">{</span><span class="n">slope_stderr</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Use &quot;f-string&quot; to print variables</span>
+<span class="c1"># print(f&quot;int = {intercept:0.2f}+/-{int_stderr:0.2f}&quot;)  </span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The true intercept is </span><span class="si">{</span><span class="n">intercept_true</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#### calculate y-values using best fit parameters</span>
+<span class="n">x_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>                <span class="c1"># use 100 values between zero and max x for smoother plot</span>
+<span class="n">best_fit_y</span> <span class="o">=</span> <span class="n">slope_unc</span> <span class="o">*</span> <span class="n">x_0</span> <span class="o">+</span> <span class="n">intercept_true</span>     <span class="c1"># uncertain array of line fit</span>
+
+<span class="c1">### Plot data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>                                <span class="c1"># plot data with black circle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">),</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span> <span class="c1"># plot fit line with black line from zero</span>
+
+<span class="c1">#### Create Confidence band upper and lower bounds</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># upper and lower bounds of uncertain kobs as float values</span>
+<span class="n">fit_up</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">+</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span>
+<span class="n">fit_dn</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">-</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span>
+
+<span class="c1"># make filled band</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">fit_up</span><span class="p">,</span> <span class="n">fit_dn</span><span class="p">,</span> 
+                   <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;confidence interval&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\ln{k/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                       <span class="c1"># show plot (and clear)</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>slope = -5560.07+/-249.08
+The true intercept is 15.37+/-0.82
+
+rsq = 0.994
+</pre></div>
+</div>
+<img alt="_images/e2ac5a769eb6421b55826fa6341c0434e069bbcc1880e4844d74597466909fc0.png" src="_images/e2ac5a769eb6421b55826fa6341c0434e069bbcc1880e4844d74597466909fc0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03-Eyring_Exercises_Intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Erying Equation and Experimental Error</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03B-Eyring_Exercises_2_curvefit.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Part 3B: Curve Fitting and Covariance</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-simple">Its Simple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-erying-plot">The Erying Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-complete-calculation">The Complete Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-report">The Report</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-thermodynamic-parameters">Calculating Thermodynamic Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertain-numbers">Uncertain Numbers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highly-leveraged">Highly Leveraged</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-confidence-interval">Check the Confidence Interval</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lever-arm">The Lever Arm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-the-lever">Removing the Lever</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-thermodynamic-parameters-again">Calculating Thermodynamic Parameters Again</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-confidence-band">Plot the Confidence Band</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#band-calculated-from-uncertain-delta-h-ddagger-and-delta-s-ddagger">Band Calculated from Uncertain <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#band-calculated-from-uncertain-slope-and-intercept">Band Calculated from Uncertain Slope and Intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#band-calculated-from-zero">Band Calculated from Zero</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
