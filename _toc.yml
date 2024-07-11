@@ -4,32 +4,18 @@
 format: jb-book
 root: start
 parts:
-    - caption: Math
+    - caption: Basics
       chapters:
-        - file: 1_Math/1_1_Calculator.ipynb
-        - file: 1_Math/1_2_uncertainties.ipynb
-    - caption: MatPlotLib
+        - file: 01_PlotBasics.ipynb
+        - file: 02-CubicSpline.ipynb
+    - caption: Curve Fits and Error
       chapters:
-        - file: 2_MatPlotLib/2_1_Plotting.ipynb
-        - file: 2_MatPlotLib/2_2_Curve_Fits.ipynb
-        - file: 2_MatPlotLib/2_3_Curve_Fits.ipynb
-        - file: 2_MatPlotLib/2_4_Fancy_1.ipynb
-        - file: 2_MatPlotLib/2_5_Notes.ipynb
-        - file: 2_MatPlotLib/2_6_Plotting_Reaction_Kinetics_to_Determine_Order.ipynb
-    - caption: SymPy
+        - file: 03-Eyring_Exercises_Intro.md
+        - file: 03A-Eyring_Exercises_1_simple.ipynb
+        - file: 03B-Eyring_Exercises_2_curvefit.ipynb
+        - file: 03C-Eyring_Exercises_3_LMfit.ipynb
+        - file: 03D-Eyring_Exercises_4_pandas.ipynb
+        - file: 03E-Eyring_Exercises_5_Bootstrap.ipynb
+    - caption: Style
       chapters:
-        - file: 3_SymPy/K01_solving_with_sympy.ipynb
-        - file: 3_SymPy/K02_Integrating_Rate_Law_1.ipynb
-        - file: 3_SymPy/K03_Integrating_MM.ipynb
-    - caption: SciPy
-      chapters:
-        - file: 4_SciPy/K04_NumericIntegration.ipynb
-        - file: 4_SciPy/K05_NumericIntegration_SystemEq.ipynb
-    - caption: "PhysOrg Examples"
-      chapters:
-        - file: 6_PhysOrgExamples/6_0_Introduction.ipynb
-        - file: 6_PhysOrgExamples/6_1_start.ipynb
-        - file: 6_PhysOrgExamples/6_2_kinetics.ipynb
-        - file: 6_PhysOrgExamples/6_3_Problem_ch7_p5.ipynb
-        - file: 6_PhysOrgExamples/6_4_Problem_ch_7_p_9.ipynb
-        - file: 6_PhysOrgExamples/6_5_Problem_ch7_p11.ipynb
+        - file: 04-Styling.ipynb
