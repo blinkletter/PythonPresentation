@@ -36,28 +36,6 @@ Using the tools described in the pages that follow, we will be able to fit daya 
 
 ## Activities
 
-The following pages are interactive *Python* notebooks that are designed to run in Google *Colab*. Use them to explore python as a data anaysis tool.
-
-1. [Short and Sweet](temp)
-
-This notebook will plot a 5-point Erying plot and determine the $\Delta H^\ddagger$ and $\Delta S^\ddagger$ for the reaction. The standard deviations for the parameters will be examined and used to calculate the confidence interval for the rate constant at a given temperature. The ```scipy.stats.linregress``` tool will be demonstrated along with the ```matplotlib.pyplot``` library for plotting. Along the way we will learn the correct way to use the ```uncertainties``` module in our calculations.
-
-2. [A Better Fit](temp)
-
-The ```scipy.optimize``` library provides a better set of tools for fitting data to models and interfacing with the ```uncertainties``` package.  We will be using ```scipy.optimize.curvefit``` in this exercise.
-
-3. [Another Fit](temp)
-
-The ```lmfit``` library provides another set of tools for handling data and interfacing with the ```uncertainties``` package. It has many built-in tools for analyzing and visualizing the curve fit. It returns ufloat values for fit parameters directly.
-
-4. [Read it and Don't Weep](temp)
-
-This notebook will read in data from a text file. Creating data files for your experimental data will allow you to use a notebook to analyze a new set of data by changing the file name and nothing else. This will enable your data analysis notebook to be more versatile. More tools in ```lmfit``` for presenting data will be explored.
-
-5. [By Your Bootstrap](temp)
-
-The confidence intervals produced by ```lmfit``` or by using the covariance matrix from ```curve_fit``` follow typical rules for error propagation and present a range that is symmetrical above and below any value. This is the common $a \pm b$ way of presenting error. However, the confidence range may not be symmetrical (this is especially true sparse data sets.) One way to express this is to use more sophisticated error propagation tools in $python$ such as ```soerp``` or ```mcerp```. We won't be exploring these here. In this notebook we will use a robust but inefficient method for determining the confidence interval for a data set and generate a confidence band on a plot that reflects the "real world" error in your data. This method is called "bootstrapping."  
-
 
 
 
