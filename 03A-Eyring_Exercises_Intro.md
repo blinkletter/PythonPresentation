@@ -58,9 +58,7 @@ This notebook will read in data from a text file. Creating data files for your e
 
 The confidence intervals produced by ```lmfit``` or by using the covariance matrix from ```curve_fit``` follow typical rules for error propagation and present a range that is symmetrical above and below any value. This is the common $a \pm b$ way of presenting error. However, the confidence range may not be symmetrical (this is especially true sparse data sets.) One way to express this is to use more sophisticated error propagation tools in $python$ such as ```soerp``` or ```mcerp```. We won't be exploring these here. In this notebook we will use a robust but inefficient method for determining the confidence interval for a data set and generate a confidence band on a plot that reflects the "real world" error in your data. This method is called "bootstrapping."  
 
-6. [Style Matters](temp)
 
-Journals often have a specific style for plots. In a thesis, you should use the same style for all plots. In this notebook we will explore styling plots using many option available in the ```matplotlib.pyplot``` library. Once you get a style you like in a notebook, you never need to change. I haven't changed my style since 1985, that why I look so good.
 
 
 ## Steal This Code
