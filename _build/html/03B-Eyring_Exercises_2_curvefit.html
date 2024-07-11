@@ -395,9 +395,13 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Install and load packages</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
+
+<span class="o">!</span>mkdir plots
+
+<span class="c1">### Install and load packages</span>
  
-<span class="c1">#!pip install uncertainties              # uncomment to install dependancy</span>
+<span class="o">!</span>pip install uncertainties              # uncomment to install dependancy
 
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>     <span class="c1"># tool for curve fitting</span>
 <span class="kn">import</span> <span class="nn">scipy</span>                             <span class="c1"># includes tools for data analysis</span>
