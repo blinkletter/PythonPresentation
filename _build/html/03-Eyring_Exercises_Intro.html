@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>The Erying Equation and Experimental Error &#8212; Python Presentation</title>
   
@@ -18,46 +19,44 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="_static/tufte.css?v=189edcc0" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03-Eyring_Exercises_Intro';</script>
@@ -142,6 +141,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="start.html">
   
@@ -163,7 +164,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -226,9 +227,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -306,10 +307,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -317,14 +318,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -361,16 +362,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-erying-equation-and-experimental-error">
-<h1>The Erying Equation and Experimental Error<a class="headerlink" href="#the-erying-equation-and-experimental-error" title="Link to this heading">#</a></h1>
+<h1>The Erying Equation and Experimental Error<a class="headerlink" href="#the-erying-equation-and-experimental-error" title="Permalink to this heading">#</a></h1>
 <p>The famous Erying equationis used to create a linear equation that relates the free energy of activation or the free energy in an equilibrium with temperature. Because the enthalpy term is independant of temperature and the entropy term involves temperature, we can the separate these effects and determine the enthalpy and the entropy difference in the chemical change between reactants and transtion state or products. But, do you numbers make sense? Unless you are calculating the standard deviations from your plot you may be unaware of a low quality relationship.</p>
 <section id="enzyme-kinetics-example">
-<h2>Enzyme Kinetics Example<a class="headerlink" href="#enzyme-kinetics-example" title="Link to this heading">#</a></h2>
+<h2>Enzyme Kinetics Example<a class="headerlink" href="#enzyme-kinetics-example" title="Permalink to this heading">#</a></h2>
 <p>The data sets for this experiment comes from “Linear Eyring Plots Conceal a Change in the Rate-Limiting Step in an Enzyme Reaction”, Teresa F. G. Machado, Tracey M. Gloster, and Rafael G. da Silva, <em>Biochemistry</em>, <strong>2018</strong>, <em>57</em>, 6757-6761.https://doi.org/10.1021/acs.biochem.8b01099.</p>
 <p>Machado et al. were presenting an example where they hypothesized that there was a hidden effect due to changes in the rate-determining step. The plots are very linear so we will use the data at face value. I’m not really convinced that there was a change in rds.</p>
 <p>The reaction is the reduction of acetoacetate (3-oxobutanoate) or 3-Oxopentanoate by NADH with the action of <em>(R)-3-hydroxybutyrate dehydrogenase</em> (EC 1.1.1.30). Two sources of the enzyme were used. The common bacteria <em>Acinetobacter baumannii</em> and the cold-favouring (psychrophilic) bacteria <em>Psychrobacter arcticus</em>. The Michaelis-Menten turnover number (<span class="math notranslate nohighlight">\(k_{cat}\)</span>, the first-order rate constant of the enzyme-NADH-substrate complex to give product) was measured at temperatures for <span class="math notranslate nohighlight">\(-10\)</span> to <span class="math notranslate nohighlight">\(67\ ^\circ C\)</span>. The Eyring plot for the <em>P. arcticus</em> curves slightly as temperature increases. The enzyme comes from an organism adapted got cold conditions. The plot for the <em>A. baumannii</em> enzyme were linear so I will only use that data in this example.</p>
 </section>
 <section id="the-eyring-equation">
-<h2>The Eyring Equation<a class="headerlink" href="#the-eyring-equation" title="Link to this heading">#</a></h2>
+<h2>The Eyring Equation<a class="headerlink" href="#the-eyring-equation" title="Permalink to this heading">#</a></h2>
 <p>The Erying equation is…</p>
 <div class="math notranslate nohighlight">
 \[ k = \frac{\kappa k_B}{h} T e^{-\Delta G^\ddagger}\]</div>
@@ -384,14 +385,14 @@ document.write(`
 <p>From this, we can find <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> from the slope and intercept by plotting <span class="math notranslate nohighlight">\(\ln \frac{k}{T}\)</span> vs. <span class="math notranslate nohighlight">\(\frac{1}{T}\)</span></p>
 </section>
 <section id="know-your-error">
-<h2>Know Your Error<a class="headerlink" href="#know-your-error" title="Link to this heading">#</a></h2>
+<h2>Know Your Error<a class="headerlink" href="#know-your-error" title="Permalink to this heading">#</a></h2>
 <p>Or rather, estimate your error correctly. It’s easy to get a standard deviation for the set of results from a repeated experiment. How do you get the standard deviation for parameters derived from a line fit? Microsoft Excel can do this. But to fit an arbitrary equation, like a curve fit of the Erying equation, you will need to use the Solver ad-on, which is difficult to automate. Python can do all of this easily using many possible options.</p>
 <p>Using the tools described in the pages that follow, we will be able to fit daya to linear or non-linear equation models, obtain estimates of errors for the fitted parameters, use experimental error determined for data points to weight the curve fits and to propagate error through complex equations. Error propagation is often ignored in data analysis because it is complicated and opaque. We will use Python as a ‘black box’ that handles errors correctly. It will still be opaque, but it wont be complicated.</p>
 </section>
 <section id="steal-this-code">
-<h2>Steal This Code<a class="headerlink" href="#steal-this-code" title="Link to this heading">#</a></h2>
-<p>All of the notebooks presented here are for you to explore and use. Feel free to take any code and repurpose it for your own work. We are not programers. We pick and hack at code we find and hopefully get it working for our own needs. Once we build a tool that works we can use it and start forgetting how to program. The real benefit is that others can follow exactly what we did in our data analysis buy examining the <em>Python</em> code. No one will wonder why they cannot exactly obtain the results that you gleaned from your data. The cod ewill tell them exactly how it was done.</p>
-<p>Good documentation is the backbone of science. Repeatable experiments require complete information. A statement like “analyzed using standard methods” does not reveal that you used linear error propagation (the <code class="docutils literal notranslate"><span class="pre">Uncertainties</span></code>  library) when perhaps a Monte-Carlo method for error propagation (the <code class="docutils literal notranslate"><span class="pre">mcerp</span></code> library) would have been more appropriate. Your readers will just be guessing at what you might have done. Provide you code in supplemental material of a paper or in the appendices of your thesis. Then others can evaluate your analysis and properly praise your work or find your error.</p>
+<h2>Steal This Code<a class="headerlink" href="#steal-this-code" title="Permalink to this heading">#</a></h2>
+<p>All of the notebooks presented here are for you to explore and use. Feel free to take any code and repurpose it for your own work. We are not programers. We pick and hack at code we find and hopefully get it working for our own needs. Once we build a tool that works we can use it and start forgetting how to program. The real benefit is that others can follow exactly what we did in our data analysis buy examining the <em>Python</em> code. No one will wonder why they cannot exactly obtain the results that you gleaned from your data. The code will tell them exactly how it was done.</p>
+<p>Good documentation is the backbone of science. Repeatable experiments require complete information. A statement like “analyzed using standard methods” does not reveal that you used linear error propagation (the <code class="docutils literal notranslate"><span class="pre">uncertainties</span></code>  library) when perhaps a Monte-Carlo method for error propagation (the <code class="docutils literal notranslate"><span class="pre">mcerp</span></code> library) would have been more appropriate. Your readers will just be guessing at what you might have done. Provide your code in the supplemental material of a paper or in the appendices of your thesis. Then others can evaluate your analysis and properly praise your work or find your error.</p>
 </section>
 </section>
 
@@ -511,8 +512,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

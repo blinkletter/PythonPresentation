@@ -14,7 +14,7 @@ We will use *Python* only as a **tool**. This book is intended to provide some b
 
 The python notebooks described below contain all the code and documentation for the plots and data sets used in the presentation. Steal it run with it. 
 
-### Part 1: Quick Examples of *Python*
+## Part 1: Quick Examples of *Python*
 
 This notebook provides some simple examples of data analysis in *Python*. We will use the example of the Michaelis-Menten plot to highlight the dangers in linearization for data analysis.
 
@@ -22,7 +22,7 @@ This notebook provides some simple examples of data analysis in *Python*. We wil
 >**Tools**: *Python* math operators, *NumPy*, *SciPy*, *matplotlib*  <br>
 >**Skills**: Basic math operations and math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Accessing physical constants in *SciPy*. Data analysis tools in *SciPy*. Simple data visualization using *matplotlib*.
 
-### Part 2: Please Don't Use "Smooth Lines"
+## Part 2: Please Don't Use "Smooth Lines"
 
 Some data is not meant to be fit to a mathematical model. How should these data sets be presented? Quite often a simple plot with points connected by lines will do. Just don't chose the "smooth line" option. Along the way we will explore some of the smooth line options available via *Python* and spline functions. And we will then make a promise to never use them.
 
@@ -30,7 +30,7 @@ Some data is not meant to be fit to a mathematical model. How should these data 
 >**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Pandas*  <br>
 >**Skills**: Importing data from a csv file using the *Pandas* library. Basic math operations and math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Simple data visualization using *matplotlib*. Data interpolation using fits to spline function in the *SciPy.inetrpolate* sublibrary
 
-### Part 3: Uncertainty and Confidence Intervals
+## Part 3: Uncertainty and Confidence Intervals
 
 The Erying plot is a classic way to explore how *Python* tools can assist in analysis. Experimental data is often known only to within a range that defines it prescission. This experimental error will be reflected in parameters calculated from the mathematical model used in the analysis. The error will be transmitted through any calculation using these values. If we use the uncertainty of the parameters to calculate the prescission of the predicted results of the model then we will have the confidence interval across the range of experimental data. This can be plotted as well to provide a visual indication of the experimental error within the model.
 
@@ -38,7 +38,7 @@ Error propagation can get complicated. But we will use a set of tools provided b
 
 >**Title**: [Part 3: The Eyring Equation and Experimental Error](03-Eyring_Exercises_Intro.md) 
 
-#### Part 3A: A Simple Data Analysis
+### Part 3A: A Simple Data Analysis
 
 This notebook will plot a 5-point Erying plot and determine the $\Delta H^\ddagger$ and $\Delta S^\ddagger$ for the reaction. The standard deviations for the parameters will be examined and used to calculate the confidence interval for the rate constant at a given temperature. The ```scipy.stats.linregress``` tool will be demonstrated along with the ```matplotlib.pyplot``` library for plotting. Along the way we will learn the correct way to use the ```uncertainties``` module in our calculations.
 
@@ -47,15 +47,15 @@ This notebook will plot a 5-point Erying plot and determine the $\Delta H^\ddagg
 >**Skills**: Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Simple data visualization using *matplotlib*. Data interpolation using linear regression with sSciPy.stats.linregress*. Creating uncertain values with *Uncertainties.ufloat*. The consequences of strongly correlated errors in fit parameters (covariance) and ways to deal with this effect.
 
 
-#### Part 3B: Curve Fitting and Covariance
+### Part 3B: Curve Fitting and Covariance
 
 The ```scipy.optimize``` library provides a better set of tools for fitting data to models and interfacing with the ```uncertainties``` package.  We will be using ```scipy.optimize.curvefit``` in this exercise and using the covariance matrix returned by that function to create ufloat values that reflect the coupling between errors in fit parameters..
 
->**Title**: [## Part 3B: Curve Fitting and Covariance](03B-Eyring_Exercises_2_curvefit.ipynb) <br>
+>**Title**: [Part 3B: Curve Fitting and Covariance](03B-Eyring_Exercises_2_curvefit.ipynb) <br>
 >**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Uncertainties.correlated_values*, , *Uncertainties.unumpy*  <br>
 >**Skills**: Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using *SciPy.optimize.curve_fit* to fit data to arbitrary mathematical models. Creating uncertain values with *Uncertainties.correlated_values*. Propagating error and determining confidence intervals
 
-#### Part 3C: Using LMFit
+### Part 3C: Using LMFit
 
 The ```lmfit``` library provides another set of tools for handling data and interfacing with the ```uncertainties``` package. It has many built-in tools for analyzing and visualizing the curve fit. It returns ufloat values for fit parameters directly that already contain information on any covariance.
 
@@ -64,7 +64,7 @@ The ```lmfit``` library provides another set of tools for handling data and inte
 >**Skills**: Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using *LMFit* to fit data to arbitrary mathematical models and plot data. Propagating error and determining confidence intervals
 
 
-#### Part 3D: Reading Data
+### Part 3D: Reading Data
 
 This notebook will read in data from a text file. Creating data files for your experimental data will allow you to use a notebook to analyze a new set of data by changing the file name and nothing else. This will enable your data analysis notebook to be more versatile. This notebook is almost identical to Part 3B except that the data is read from a file rather than entered directly. Here we use the full dfata set from the publication and can see the result of increasing data on prescission.
 
@@ -73,7 +73,7 @@ This notebook will read in data from a text file. Creating data files for your e
 >**Skills**: Importing data from a csv file using the *Pandas* library. Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using *SciPy.optimize.curve_fit* to fit data to arbitrary mathematical models. Creating uncertain values with *Uncertainties.correlated_values*. Propagating error and determining confidence intervals
 
 
-#### Part 3E: Bootstrapping Confidence Intervals
+### Part 3E: Bootstrapping Confidence Intervals
 
 The confidence intervals produced by ```lmfit``` or by using the covariance matrix from ```curve_fit``` follow typical rules for error propagation and present a range that is symmetrical above and below any value. This is the common $a \pm b$ way of presenting error. However, the confidence range may not be symmetrical (this is especially true sparse data sets.) One way to express this is to use more sophisticated error propagation tools in $python$ such as ```soerp``` or ```mcerp```. We won't be exploring those here. In this notebook we will use a robust but inefficient method for determining the confidence interval for a data set and generate a confidence band on a plot that reflects the "real world" error in your data. This method is called "bootstrapping."  
 
@@ -84,7 +84,7 @@ The confidence intervals produced by ```lmfit``` or by using the covariance matr
 
 
 
-### Part 4: Pick a Style
+## Part 4: Pick a Style
 
 Journals often have a specific style for plots. In a thesis, you should use the same style for all plots. In this notebook we will explore styling plots using many option available in the ```matplotlib.pyplot``` library. Once you get a style you like in a notebook, you never need to change. I haven't changed my style since 1985, that why I look so good.
 
