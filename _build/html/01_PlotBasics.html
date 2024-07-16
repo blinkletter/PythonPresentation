@@ -379,7 +379,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-notebooks-and-documentation">Python Notebooks and Documentation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hookes-law">Hookes Law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data">Plotting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data">Plotting Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sample-plot-with-style">The Sample Plot with Style</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-linear-regression">Data Analysis - Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-non-linear-regression">Data Analysis - Non-linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-same-but-fancy">The Same, but Fancy</a></li>
@@ -412,12 +415,15 @@ document.write(`
 <span class="kn">import</span> <span class="nn">scipy.constants</span> <span class="k">as</span> <span class="nn">spc</span>   <span class="c1"># predefined constant library</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>              <span class="c1"># math tools</span>
 
-<span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">5E5</span>  <span class="c1"># 5x10^5 dynes/cm -- the force constant of a C-H bond stretch</span>
-<span class="n">m1</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">/</span> <span class="n">spc</span><span class="o">.</span><span class="n">Avogadro</span>   <span class="c1"># mass of an individual carbon atom</span>
-<span class="n">m2</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">/</span> <span class="n">spc</span><span class="o">.</span><span class="n">Avogadro</span>    <span class="c1"># mass of an individual hydrogen atom</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">c</span> <span class="o">*</span> <span class="mi">100</span>          <span class="c1"># speed of light: convert m.s^-1 to cm.s^-1</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">pi</span>              <span class="c1"># pi to many decimal places</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Avogadro</span>         <span class="c1"># Avogadro&#39;s number (mole^-1)</span>
 
-<span class="n">c</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">c</span> <span class="o">*</span> <span class="mi">100</span>          <span class="c1"># convert m.s-1 to cm.s-1</span>
-<span class="n">pi</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">pi</span>              <span class="c1"># </span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">5E5</span>      <span class="c1"># 5x10^5 dynes/cm -- the force constant of a C-H bond stretch</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">N</span>   <span class="c1"># mass of an individual carbon atom</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">/</span> <span class="n">N</span>  <span class="c1"># mass of an individual hydrogen atom</span>
+
+
 
 <span class="n">u</span> <span class="o">=</span> <span class="n">m1</span><span class="o">*</span><span class="n">m2</span> <span class="o">/</span> <span class="p">(</span><span class="n">m1</span><span class="o">+</span><span class="n">m2</span><span class="p">)</span>      <span class="c1"># reduced mass</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">u</span><span class="p">)</span>   <span class="c1"># Hooke&#39;s law</span>
@@ -427,15 +433,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Find frequency of IR vibration</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">scipy.constants</span> <span class="k">as</span> <span class="nn">spc</span>   <span class="c1"># predefined constant library</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>              <span class="c1"># math tools</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">5E5</span>  <span class="c1"># 5x10^5 dynes/cm -- the force constant of a C-H bond stretch</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The frequency is 3032.1 cm^-1
 </pre></div>
 </div>
 </div>
@@ -457,9 +455,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/68c280db89c0439ad2249c6c722fed39f1fa6f477fd63446e5dff3215e4bcb98.png" src="_images/68c280db89c0439ad2249c6c722fed39f1fa6f477fd63446e5dff3215e4bcb98.png" />
+<img alt="_images/b28719b9de510bd71e3cc5493f371ada86a38d722997976b1375508685ef3446.png" src="_images/b28719b9de510bd71e3cc5493f371ada86a38d722997976b1375508685ef3446.png" />
 </div>
 </div>
+<section id="the-sample-plot-with-style">
+<h3>The Sample Plot with Style<a class="headerlink" href="#the-sample-plot-with-style" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment for Google Colab</span>
@@ -473,7 +473,7 @@ document.write(`
 
 <span class="c1">##### PLOT COMMANDS #####</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># create a new blank plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  <span class="c1"># create a new blank plot</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conc</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span> <span class="c1"># plot the data as black &quot;k&quot; points &quot;o&quot;</span>
 
@@ -493,9 +493,10 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: plots: File exists
 </pre></div>
 </div>
-<img alt="_images/a3881394a438857b6c985c7bdb69d7a9a5b01c74def231722a7ce7d3e2c42e0f.png" src="_images/a3881394a438857b6c985c7bdb69d7a9a5b01c74def231722a7ce7d3e2c42e0f.png" />
+<img alt="_images/0317b42530921e67efa502301ab0b7c2282983730ab02138ab28e4753a83eedc.png" src="_images/0317b42530921e67efa502301ab0b7c2282983730ab02138ab28e4753a83eedc.png" />
 </div>
 </div>
+</section>
 </section>
 <section id="data-analysis-linear-regression">
 <h2>Data Analysis - Linear Regression<a class="headerlink" href="#data-analysis-linear-regression" title="Permalink to this heading">#</a></h2>
@@ -511,7 +512,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># plotting tools</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                 <span class="c1"># we need the array object</span>
 <span class="kn">import</span> <span class="nn">scipy</span>
-<span class="kn">import</span> <span class="nn">scipy.optimize</span>                       <span class="c1"># tools for science</span>
 
 <span class="n">conc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>                  <span class="c1"># units are mM</span>
 <span class="n">rate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.3</span><span class="p">,</span> <span class="mf">20.7</span><span class="p">,</span> <span class="mf">24.1</span><span class="p">,</span> <span class="mf">34.3</span><span class="p">,</span> <span class="mf">39.6</span><span class="p">,</span> <span class="mf">48.2</span><span class="p">,</span> <span class="mf">47.0</span><span class="p">,</span> <span class="mf">55.2</span><span class="p">]</span>  <span class="c1"># units are uM/min</span>
@@ -534,13 +534,13 @@ document.write(`
 
 <span class="c1">##### PLOT COMMANDS #####</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>       <span class="c1"># create a new blank plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>       <span class="c1"># create a new blank plot</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>      <span class="c1"># plot the data as black &quot;k&quot; points &quot;o&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>  <span class="c1"># plot the predicted line as black &quot;k&quot; line &quot;-&quot;</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>          <span class="c1"># set axis limits so the plot starts at the origin</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;1/[S]&quot;</span><span class="p">)</span>      <span class="c1"># label the two axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$1/\nu$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Lineweaver-Burke plot&quot;</span><span class="p">)</span>
@@ -564,7 +564,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/4c43d6cebd16e7b28941bdd0f461a11bb7b0747301c6859d9d9a4603ea88f4e5.png" src="_images/4c43d6cebd16e7b28941bdd0f461a11bb7b0747301c6859d9d9a4603ea88f4e5.png" />
+<img alt="_images/f00f8eff7bfe2f0fb803ce78d6d20bc6a1755c470ff625e7251006127f2218c4.png" src="_images/f00f8eff7bfe2f0fb803ce78d6d20bc6a1755c470ff625e7251006127f2218c4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The intercept is 0.0050
 The slope is 0.1227
 The RSQ is 0.96
@@ -617,16 +617,16 @@ The KM is 24.4023
 <span class="n">y_fit</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">KM</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">)</span>
 
 <span class="c1">##### PLOT COMMANDS #####</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>    <span class="c1"># create a new blank plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>    <span class="c1"># create a new blank plot</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span> <span class="c1"># plot the predicted line as black &quot;k&quot; line &quot;-&quot;</span>
 
 <span class="c1"># plot the LB line as red for comparison</span>
-<span class="c1">#plt.plot(x_fit, MM(x_fit, KM_lb, vmax_lb), &quot;r-&quot;)  </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">MM</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">KM_lb</span><span class="p">,</span> <span class="n">vmax_lb</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>  
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conc</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span> <span class="c1"># plot the data as black &quot;k&quot; points &quot;o&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>           <span class="c1"># set axis limits so the plot starts at the origin</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[S]&quot;</span><span class="p">)</span>         <span class="c1"># label the two axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Michaelis-Menten plot&quot;</span><span class="p">)</span>
@@ -645,7 +645,7 @@ The KM is 24.4023
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/a59b93cd4c34404bb93a672aa2ae2c43b411ff288395c784f2e0a5ece28d5080.png" src="_images/a59b93cd4c34404bb93a672aa2ae2c43b411ff288395c784f2e0a5ece28d5080.png" />
+<img alt="_images/80532de0647f9dafc745bc22609c636e1e1b69fce1cc1483c818577406a35585.png" src="_images/80532de0647f9dafc745bc22609c636e1e1b69fce1cc1483c818577406a35585.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 81.0018
 The KM is 6.8834
 The red line is the predicted curve using Lineweaver-Burke results.
@@ -704,7 +704,7 @@ The red line is the predicted curve using Lineweaver-Burke results.
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span><span class="o">+</span><span class="n">style</span><span class="p">)</span>  <span class="c1"># apply style-sheet file</span>
 <span class="c1">#####################################################</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>    <span class="c1"># create a new blank plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>    <span class="c1"># create a new blank plot</span>
 
 <span class="c1"># plot the LB line as red for comparison</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">MM</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">KM_lb</span><span class="p">,</span> <span class="n">vmax_lb</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>  
@@ -712,7 +712,7 @@ The red line is the predicted curve using Lineweaver-Burke results.
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span> <span class="c1"># plot the predicted line as black &quot;k&quot; line &quot;-&quot;</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>          <span class="c1"># set axis limits so the plot starts at the origin</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[S]&quot;</span><span class="p">)</span>        <span class="c1"># label the two axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Michaelis-Menten plot&quot;</span><span class="p">)</span>
@@ -732,7 +732,7 @@ The red line is the predicted curve using Lineweaver-Burke results.
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/dc70ef7e3dbc9f466c8d06df27288d00ba005b1db79ae62355c9272f43e83628.png" src="_images/dc70ef7e3dbc9f466c8d06df27288d00ba005b1db79ae62355c9272f43e83628.png" />
+<img alt="_images/246d05d9e39a586decd28144d06c2e3e6b38aa424659b272cce7d4db7994355b.png" src="_images/246d05d9e39a586decd28144d06c2e3e6b38aa424659b272cce7d4db7994355b.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 81.0018
 The KM is 6.8834
 The red line is the predicted curve using Lineweaver-Burke results.
@@ -813,7 +813,10 @@ The red line is the predicted curve using Lineweaver-Burke results.
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-notebooks-and-documentation">Python Notebooks and Documentation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hookes-law">Hookes Law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data">Plotting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data">Plotting Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sample-plot-with-style">The Sample Plot with Style</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-linear-regression">Data Analysis - Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-non-linear-regression">Data Analysis - Non-linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-same-but-fancy">The Same, but Fancy</a></li>

@@ -449,6 +449,12 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: plots: File exists
+Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/python3.12/site-packages (3.2.2)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="the-data-set">
@@ -509,7 +515,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/58c5b7208120ac99cd753c56b8f4a74e3392c98adce698610adfdb12952dd4ca.png" src="_images/58c5b7208120ac99cd753c56b8f4a74e3392c98adce698610adfdb12952dd4ca.png" />
+<img alt="_images/8b146b780d4318237412c24f9430b541c1bceafa1a9cbfb0056109a1d729fed9.png" src="_images/8b146b780d4318237412c24f9430b541c1bceafa1a9cbfb0056109a1d729fed9.png" />
 </div>
 </div>
 <section id="styling-the-plot">
@@ -545,7 +551,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/70f7e61d697cb831f9e60d588a04f1eaa08746463269585e524b90ce8dc5ee1b.png" src="_images/70f7e61d697cb831f9e60d588a04f1eaa08746463269585e524b90ce8dc5ee1b.png" />
+<img alt="_images/97af7e190017780abf3c8e36227b4ffa70d093516a8daab53b9cb353943455c9.png" src="_images/97af7e190017780abf3c8e36227b4ffa70d093516a8daab53b9cb353943455c9.png" />
 </div>
 </div>
 </section>
@@ -728,20 +734,20 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 68.3%
 
-slope range is -5161.6 to -5852.7
-median slope in bootstrap population is -5579.6 + 418.0 - 273.0
+slope range is -5158.7 to -5852.7
+median slope in bootstrap population is -5602.3 + 443.7 - 250.3
 best fit value for slope is -5560.1+/-249.1
 
-intercept range is 16.33 to 14.07
-median intercept in bootstrap population is 15.43 + 0.90 - 1.36
+intercept range is 16.34 to 14.06
+median intercept in bootstrap population is 15.50 + 0.84 - 1.44
 best fit value for intercept is 15.37+/-0.82
 
-delta H range is 42916.27 to 48661.72
-median delta H in bootstrap population is 46391.72 + 2270.01 - 3475.45
+delta H range is 42891.52 to 48661.72
+median delta H in bootstrap population is 46580.40 + 2081.33 - 3688.88
 best fit value for delta H is 46229.03+/-2070.94
 
-delta S range is -80.56 to -61.75
-median delta S in bootstrap population is -69.22 + 7.48 - 11.34
+delta S range is -80.67 to -61.69
+median delta S in bootstrap population is -68.69 + 7.00 - 11.99
 best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
@@ -776,15 +782,15 @@ best fit value for delta S is -69.80+/-6.84
           <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\ln (k / T)$&quot;</span><span class="p">,</span> 
           <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>                
 <span class="c1">#          xlim=[0.0030,0.00354],                  </span>
-<span class="c1">#          ylim=[-4.5,-1.1]</span>
+          <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="o">-</span><span class="mf">2.0</span><span class="p">]</span>
        <span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.0031</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0035</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
 <span class="c1">#          title = Title,       </span>
           <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\ln (k / T)$&quot;</span><span class="p">,</span> 
           <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>                
-          <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.0036</span><span class="p">],</span>                  
+<span class="c1">#          xlim=[0, 0.0036],                  </span>
           <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>
        <span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.002</span><span class="p">,</span><span class="mf">0.003</span><span class="p">])</span>
@@ -801,10 +807,10 @@ best fit value for delta S is -69.80+/-6.84
 
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">bs</span><span class="p">[</span><span class="s2">&quot;y_for_ci&quot;</span><span class="p">]:</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bs</span><span class="p">[</span><span class="s2">&quot;x_for_ci&quot;</span><span class="p">],</span> <span class="n">line</span><span class="p">,</span> 
-               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.05</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">bs</span><span class="p">[</span><span class="s2">&quot;y0_for_ci&quot;</span><span class="p">]:</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bs</span><span class="p">[</span><span class="s2">&quot;x0_for_ci&quot;</span><span class="p">],</span> <span class="n">line</span><span class="p">,</span> 
-               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.05</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1">#######################################</span>
 <span class="c1">### Plot Best Fit</span>
@@ -820,14 +826,71 @@ best fit value for delta S is -69.80+/-6.84
 <span class="c1">#######################################</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/Eyring_bootstrap_1.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/Eyring_bootstrap_1lightgray.pdf&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/5aa64d7a2c053d19795ef2a95af9a4621837a150be01be9d24aa1ce7ef83d8a1.png" src="_images/5aa64d7a2c053d19795ef2a95af9a4621837a150be01be9d24aa1ce7ef83d8a1.png" />
+<img alt="_images/44d41e52c52acbf0fde079684fd6faa4755d4963a862dac8900b4df82a88d9f2.png" src="_images/44d41e52c52acbf0fde079684fd6faa4755d4963a862dac8900b4df82a88d9f2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################################</span>
+<span class="c1">### Create plot</span>
+<span class="c1">#######################################</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+
+<span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
+<span class="c1">#style = &quot;S2_classic2.mplstyle&quot;</span>
+<span class="n">style_name</span> <span class="o">=</span> <span class="n">location_styles</span> <span class="o">+</span> <span class="n">style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">style_name</span><span class="p">)</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>  
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+<span class="c1">#          title = Title,       </span>
+          <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\ln (k / T)$&quot;</span><span class="p">,</span> 
+          <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>                
+<span class="c1">#          xlim=[0.0030,0.00354],                  </span>
+          <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="o">-</span><span class="mf">2.0</span><span class="p">]</span>
+       <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> 
+              <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">y_err</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> 
+               <span class="n">ecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">elinewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+            <span class="c1">#   capsize=2, capthick=0.5, </span>
+               <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">bs</span><span class="p">[</span><span class="s2">&quot;y_for_ci&quot;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bs</span><span class="p">[</span><span class="s2">&quot;x_for_ci&quot;</span><span class="p">],</span> <span class="n">line</span><span class="p">,</span> 
+               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#######################################</span>
+<span class="c1">### Plot Best Fit</span>
+<span class="c1">#######################################</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bs</span><span class="p">[</span><span class="s2">&quot;x_for_ci&quot;</span><span class="p">],</span> <span class="n">linear</span><span class="p">(</span><span class="n">bs</span><span class="p">[</span><span class="s2">&quot;x_for_ci&quot;</span><span class="p">],</span> <span class="n">slope_u</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">intercept_u</span><span class="o">.</span><span class="n">n</span><span class="p">),</span> 
+           <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1">#######################################</span>
+<span class="c1">### Output plot</span>
+<span class="c1">#######################################</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/Eyring_bootstrap_1lightgray.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4909dc4f24f2902bbd72633957950b76ce17375a9bbb383395478bb229df6ef7.png" src="_images/4909dc4f24f2902bbd72633957950b76ce17375a9bbb383395478bb229df6ef7.png" />
 </div>
 </div>
 <section id="checking-the-distribution">
@@ -845,6 +908,21 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">value</span> <span class="o">=</span> <span class="n">dS</span>
 <span class="n">values</span> <span class="o">=</span> <span class="s2">&quot;dS_list&quot;</span>
 <span class="n">ylimits</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span><span class="o">-</span><span class="mi">20</span><span class="p">]</span>
+
+<span class="c1">#median = median_intercept</span>
+<span class="c1">#value = intercept_u</span>
+<span class="c1">#values = &quot;intercept_list&quot;</span>
+<span class="c1">#ylimits = [10,22]</span>
+
+<span class="c1">#median = median_slope</span>
+<span class="c1">#value = slope_u</span>
+<span class="c1">#values = &quot;slope_list&quot;</span>
+<span class="c1">#ylimits = (-7500,-4000)</span>
+
+<span class="c1">#numbers = unp.nominal_values(bs[&quot;intercept_list&quot;])</span>
+<span class="c1">#top_intercept = np.percentile(numbers, high_p)</span>
+<span class="c1">#bot_intercept = np.percentile(numbers, low_p)</span>
+<span class="c1">#median_intercept = np.median(numbers)</span>
 
 <span class="n">y1</span> <span class="o">=</span> <span class="n">bs_simple</span><span class="p">[</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">y1_sorted</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span>
@@ -890,7 +968,7 @@ best fit value for delta S is -69.80+/-6.84
 
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1">#ax[1].axhline(median, color=&quot;red&quot;, linewidth = 0.5, zorder = 0)</span>
 
 <span class="c1">#################################################</span>
 <span class="c1">### 68%</span>
@@ -906,8 +984,8 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">percentile68right</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">percentile68left</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;68%&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">-</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">+</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1">#ax[1].axhline(np.percentile(y1,50-conf_/2), color=&quot;blue&quot;, linewidth = 0.5, zorder = 0)</span>
+<span class="c1">#ax[1].axhline(np.percentile(y1,50+conf_/2), color=&quot;blue&quot;, linewidth = 0.5, zorder = 0)</span>
 
 <span class="n">corners_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">percentile68left</span><span class="p">,</span> <span class="n">percentile68right</span><span class="p">,</span> <span class="n">percentile68right</span><span class="p">,</span> <span class="n">percentile68left</span><span class="p">]</span>
 <span class="n">corners_y</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">-</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">+</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> 
@@ -925,8 +1003,8 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">percentile95right</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">percentile95left</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">-</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">+</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1">#ax[1].axhline(np.percentile(y1,50-conf_/2), color=&quot;green&quot;, linewidth = 0.5, zorder = 0)</span>
+<span class="c1">#ax[1].axhline(np.percentile(y1,50+conf_/2), color=&quot;green&quot;, linewidth = 0.5, zorder = 0)</span>
 
 
 <span class="c1">#######################################</span>
@@ -955,7 +1033,7 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/d1e5f014bdcd5b418db07343567625056947a401f63f0b55aa650a323fe70557.png" src="_images/d1e5f014bdcd5b418db07343567625056947a401f63f0b55aa650a323fe70557.png" />
+<img alt="_images/be0811742fccb6c6a25d14122ee06cdb31fa4a2cea05555dfe5d164cabfa68cc.png" src="_images/be0811742fccb6c6a25d14122ee06cdb31fa4a2cea05555dfe5d164cabfa68cc.png" />
 </div>
 </div>
 </section>
@@ -1148,7 +1226,7 @@ best fit value for delta S is -69.80+/-6.84
           <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\ln (k / T)$&quot;</span><span class="p">,</span> 
           <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>                
 <span class="c1">#          xlim=[0.0030,0.00354],                  </span>
-          <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+          <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
        <span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.0031</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0035</span><span class="p">])</span>
 
@@ -1199,30 +1277,88 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_43195/2731163377.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_0/pb9y62rd59n_3vs7rbl1bndm0000gn/T/ipykernel_70265/2011354300.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
   popt,pcov = curve_fit(linear, x_s, y_s)    # Curve fit the resampled data
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 68.3%
 
-slope range is -5164.4 to -5857.1
-median slope in bootstrap population is -5555.9 + 391.5 - 301.2
+slope range is -5149.5 to -5866.6
+median slope in bootstrap population is -5554.7 + 405.1 - 311.9
 best fit value for slope is -5560.1+/-249.1
 
-intercept range is 16.34 to 14.08
-median intercept in bootstrap population is 15.35 + 0.99 - 1.27
+intercept range is 16.38 to 14.03
+median intercept in bootstrap population is 15.34 + 1.03 - 1.31
 best fit value for intercept is 15.37+/-0.82
 
-delta H range is 42939.26 to 48698.79
-median delta H in bootstrap population is 46194.10 + 2504.68 - 3254.84
+delta H range is 42815.66 to 48777.90
+median delta H in bootstrap population is 46184.25 + 2593.64 - 3368.59
 best fit value for delta H is 46229.03+/-2070.94
 
-delta S range is -80.51 to -61.68
-median delta S in bootstrap population is -69.95 + 8.27 - 10.56
+delta S range is -80.92 to -61.40
+median delta S in bootstrap population is -70.00 + 8.60 - 10.92
 best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
-<img alt="_images/cec2b789cfc8776213f7ff59b3dc3c0cb3e729aca70c02ab3b1a3fce63847652.png" src="_images/cec2b789cfc8776213f7ff59b3dc3c0cb3e729aca70c02ab3b1a3fce63847652.png" />
+<img alt="_images/7700c86e2134a7b9e86a7b5c55c90318c2eea1947b52d2e39d490893fc95816e.png" src="_images/7700c86e2134a7b9e86a7b5c55c90318c2eea1947b52d2e39d490893fc95816e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################################</span>
+<span class="c1">### Create plot</span>
+<span class="c1">#######################################</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+
+<span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
+<span class="c1">#style = &quot;S2_classic2.mplstyle&quot;</span>
+<span class="n">style_name</span> <span class="o">=</span> <span class="n">location_styles</span> <span class="o">+</span> <span class="n">style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">style_name</span><span class="p">)</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>  
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+<span class="c1">#          title = Title,       </span>
+          <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\ln (k / T)$&quot;</span><span class="p">,</span> 
+          <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>                
+<span class="c1">#          xlim=[0.0030,0.00354],                  </span>
+          <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+       <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> 
+              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">y_err</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> 
+               <span class="n">ecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">elinewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+            <span class="c1">#   capsize=2, capthick=0.5, </span>
+               <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">y_for_ci</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> 
+               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.05</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#######################################</span>
+<span class="c1">### Plot Best Fit</span>
+<span class="c1">#######################################</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="n">slope_u</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">intercept_u</span><span class="o">.</span><span class="n">n</span><span class="p">),</span> 
+           <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+
+<span class="c1">#######################################</span>
+<span class="c1">### Output plot</span>
+<span class="c1">#######################################</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/Eyring_bootstrap_2.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f5cefcc163a6b910492fa34dc830cf5b2e395c104182edc6f04bc748557167b9.png" src="_images/f5cefcc163a6b910492fa34dc830cf5b2e395c104182edc6f04bc748557167b9.png" />
 </div>
 </div>
 <section id="checking-the-smoothness">
@@ -1334,7 +1470,7 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/3607ed3a0332f232abbf96ee2074491b5b8a55e216c450f37b3f236aa3e8d09e.png" src="_images/3607ed3a0332f232abbf96ee2074491b5b8a55e216c450f37b3f236aa3e8d09e.png" />
+<img alt="_images/6f2df4b8392c5ed8e4337ca9951214b14f2135bc6fa6d40fab83c3ce1c72ce3a.png" src="_images/6f2df4b8392c5ed8e4337ca9951214b14f2135bc6fa6d40fab83c3ce1c72ce3a.png" />
 </div>
 </div>
 </section>
@@ -1360,7 +1496,7 @@ best fit value for delta S is -69.80+/-6.84
 <span class="c1">## Global variables</span>
 <span class="c1">#######################################</span>
 
-<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>                 <span class="c1"># Confidence. 1 sigma:68%, 2 sigma:95%, 3 sigma:99$</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>                 <span class="c1"># Confidence. 1 sigma:68%, 2 sigma:95%, 3 sigma:99$</span>
 <span class="n">boot_n</span> <span class="o">=</span> <span class="mi">2000</span>             <span class="c1"># Number of bootstrap resamples</span>
 
 <span class="c1">#######################################</span>
@@ -1525,7 +1661,7 @@ best fit value for delta S is -69.80+/-6.84
           <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\ln (k / T)$&quot;</span><span class="p">,</span> 
           <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>                
 <span class="c1">#          xlim=[0.0030,0.00354],                  </span>
-          <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+          <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
        <span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>
 
@@ -1602,30 +1738,102 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_43195/3313734404.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_0/pb9y62rd59n_3vs7rbl1bndm0000gn/T/ipykernel_70265/1449304134.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
   popt,pcov = curve_fit(linear, x_s, y_s)    # Curve fit the resampled data
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 95.5%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 68.3%
 
-slope range is -4734.2 to -6249.0
-median slope in bootstrap population is -5550.2 + 816.0 - 698.9
+slope range is -5154.6 to -5877.5
+median slope in bootstrap population is -5559.5 + 404.9 - 318.0
 best fit value for slope is -5545.9+/-277.8
 
-intercept range is 17.67 to 12.66
-median intercept in bootstrap population is 15.34 + 2.33 - 2.68
+intercept range is 16.42 to 14.05
+median intercept in bootstrap population is 15.36 + 1.05 - 1.31
 best fit value for intercept is 15.31+/-0.92
 
-delta H range is 39362.27 to 51957.22
-median delta H in bootstrap population is 46146.60 + 5810.63 - 6784.32
+delta H range is 42858.01 to 48868.51
+median delta H in bootstrap population is 46224.24 + 2644.27 - 3366.23
 best fit value for delta H is 46110.87+/-2309.56
 
-delta S range is -92.33 to -50.66
-median delta S in bootstrap population is -70.04 + 19.38 - 22.28
+delta S range is -80.74 to -61.06
+median delta S in bootstrap population is -69.81 + 8.75 - 10.93
 best fit value for delta S is -70.24+/-7.63
 </pre></div>
 </div>
-<img alt="_images/0d4011603f07dde1b8f03fd5195aacedc149c23462919d4c55305037372f69ef.png" src="_images/0d4011603f07dde1b8f03fd5195aacedc149c23462919d4c55305037372f69ef.png" />
+<img alt="_images/01ebe2aaf872ebdcb60b01d01283b6a343abb24a849f937ecea76b0b2faa7a97.png" src="_images/01ebe2aaf872ebdcb60b01d01283b6a343abb24a849f937ecea76b0b2faa7a97.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################################</span>
+<span class="c1">### Create plot</span>
+<span class="c1">#######################################</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+
+<span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
+<span class="c1">#style = &quot;S2_classic2.mplstyle&quot;</span>
+<span class="n">style_name</span> <span class="o">=</span> <span class="n">location_styles</span> <span class="o">+</span> <span class="n">style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">style_name</span><span class="p">)</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>  
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+<span class="c1">#          title = Title,       </span>
+          <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\ln (k / T)$&quot;</span><span class="p">,</span> 
+          <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>                
+<span class="c1">#          xlim=[0.0030,0.00354],                  </span>
+          <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+       <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> 
+              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">y_err</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> 
+               <span class="n">ecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">elinewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+            <span class="c1">#   capsize=2, capthick=0.5, </span>
+               <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">#######################################</span>
+<span class="c1">### Plot Best Fit</span>
+<span class="c1">#######################################</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="n">slope_u</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">intercept_u</span><span class="o">.</span><span class="n">n</span><span class="p">),</span> 
+           <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+
+<span class="c1">#######################################</span>
+<span class="c1">### Interval</span>
+<span class="c1">#######################################</span>
+<span class="n">top_y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">bot_y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">med_y</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">)):</span>
+    <span class="n">top_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y_for_ci</span><span class="p">[:,</span><span class="n">n</span><span class="p">],</span> <span class="n">high_p</span><span class="p">))</span>
+    <span class="n">bot_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y_for_ci</span><span class="p">[:,</span><span class="n">n</span><span class="p">],</span> <span class="n">low_p</span><span class="p">))</span>
+    <span class="n">med_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y_for_ci</span><span class="p">[:,</span><span class="n">n</span><span class="p">],</span> <span class="mi">50</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="n">top_y</span><span class="p">,</span> <span class="n">bot_y</span><span class="p">,</span> 
+                   <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;confidence interval&quot;</span><span class="p">)</span>
+
+ 
+
+<span class="c1">#######################################</span>
+<span class="c1">### Output plot</span>
+<span class="c1">#######################################</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/Eyring_bootstrap_6.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/70ae04aca854bc626ac50920237c447a10aa452a6a278ba47bbb846b37a0d1a8.png" src="_images/70ae04aca854bc626ac50920237c447a10aa452a6a278ba47bbb846b37a0d1a8.png" />
 </div>
 </div>
 </section>
@@ -1641,7 +1849,7 @@ best fit value for delta S is -70.24+/-7.63
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1272fb090&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13f969070&gt;]
 </pre></div>
 </div>
 <img alt="_images/2b4fab54ac15b87fe05bda8a645f1b186fe81374524ccba46086b4ffe3c146d3.png" src="_images/2b4fab54ac15b87fe05bda8a645f1b186fe81374524ccba46086b4ffe3c146d3.png" />
