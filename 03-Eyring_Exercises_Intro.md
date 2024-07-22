@@ -1,4 +1,4 @@
-# The Erying Equation and Experimental Error
+# Part 3: The Erying Equation and Experimental Error
 The famous Erying equationis used to create a linear equation that relates the free energy of activation or the free energy in an equilibrium with temperature. Because the enthalpy term is independant of temperature and the entropy term involves temperature, we can the separate these effects and determine the enthalpy and the entropy difference in the chemical change between reactants and transtion state or products. But, do you numbers make sense? Unless you are calculating the standard deviations from your plot you may be unaware of a low quality relationship.
 
 ## Enzyme Kinetics Example
