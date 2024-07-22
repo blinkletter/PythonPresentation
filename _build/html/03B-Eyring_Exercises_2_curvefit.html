@@ -1,63 +1,65 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Part 3B: Curve Fitting and Covariance &#8212; Python Presentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="_static/tufte.css?v=189edcc0" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03B-Eyring_Exercises_2_curvefit';</script>
@@ -66,7 +68,7 @@
     <link rel="next" title="Part 3C: Using LMFit" href="03C-Eyring_Exercises_3_LMfit.html" />
     <link rel="prev" title="Part 3A: A Simple Data Analysis" href="03A-Eyring_Exercises_1_simple.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -74,23 +76,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -112,20 +110,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,11 +130,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="start.html">
-  
   
   
   
@@ -154,23 +142,12 @@
       
     
     
-    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Python Presentation - Home"/>
-    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Python Presentation - Home"/>`);</script>
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -212,7 +189,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -221,7 +198,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -334,22 +311,20 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -402,15 +377,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="part-3b-curve-fitting-and-covariance">
-<h1>Part 3B: Curve Fitting and Covariance<a class="headerlink" href="#part-3b-curve-fitting-and-covariance" title="Link to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="part-3b-curve-fitting-and-covariance">
+<h1>Part 3B: Curve Fitting and Covariance<a class="headerlink" href="#part-3b-curve-fitting-and-covariance" title="Permalink to this headline">#</a></h1>
 <p>Above we used the trick where we determine the parameters near the y-axis and then mutiply by the length of the “lever arm” out to the true intercept to provide a correlation between slope and true intercept for the purposes of uncertainty calculations. We could declare the correlation using a correlation matrix. The <code class="docutils literal notranslate"><span class="pre">scipy.stats.linregress</span></code> function does not return a covariance matrix but the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> function will.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> tool requires a function be declared to which it is to fit the data. We pass this function as well as the data into <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> and a list of fit parameters and a covariance matrix are returned. We can then create the uncertainty values using the covariance matrix and the coupling between slope and intercept will now be built into our ufloat values.</p>
 <p>The function can be changed so that a fit to a different model can be achieved with no other changes to the code. <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> is my personal favourite for data analysis. At least it was, until <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> came into my life (more on that in the next notebook.) Consider the code below.</p>
-<section id="load-the-toolbox">
-<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Link to this heading">#</a></h2>
+<div class="section" id="load-the-toolbox">
+<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Permalink to this headline">#</a></h2>
 <p>In a <em>Python</em> notebook, we can mix code and text. In the code block below are commands to load the libraries and modules we will need for this exercise. There are some special commands that are used to run unix xommands directly in the terminal of <em>Colab</em> to install <em>Python</em> packages that are not available by default. These can “commented out” if you run this notebook on your own computer. You will need to add the “hashtag” comment symbol.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -421,11 +396,11 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
 
-<span class="o">!</span>mkdir<span class="w"> </span>plots
+<span class="o">!</span>mkdir plots
 
 <span class="c1">### Install and load packages</span>
  
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>uncertainties<span class="w">              </span>#<span class="w"> </span>uncomment<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>dependancy
+<span class="o">!</span>pip install uncertainties              # uncomment to install dependancy
 
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>     <span class="c1"># tool for curve fitting</span>
 <span class="kn">import</span> <span class="nn">scipy</span>                             <span class="c1"># includes tools for data analysis</span>
@@ -447,9 +422,9 @@ document.write(`
 </div>
 </details>
 </div>
-</section>
-<section id="perform-linear-curve-fit">
-<h2>Perform Linear Curve Fit<a class="headerlink" href="#perform-linear-curve-fit" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="perform-linear-curve-fit">
+<h2>Perform Linear Curve Fit<a class="headerlink" href="#perform-linear-curve-fit" title="Permalink to this headline">#</a></h2>
 <p>The code below repeats the exact steps of the previous notebook but uses <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> to fit the linear Eyring plot. We will create the uncertain slope and intercept values using the covariance matrix returned from the curve fit function. Compare to the values that were produced from <code class="docutils literal notranslate"><span class="pre">scipy.stats.linregress</span></code>. They are identical. Both functions used the least squares method and will give the same results. The curve fit function did not calculate the r-value and so I had to use a separate function from the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module to do that.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -501,8 +476,8 @@ rsq = 0.994
 </div>
 </div>
 </div>
-<section id="calculate-thermodynamic-parameters">
-<h3>Calculate Thermodynamic Parameters<a class="headerlink" href="#calculate-thermodynamic-parameters" title="Link to this heading">#</a></h3>
+<div class="section" id="calculate-thermodynamic-parameters">
+<h3>Calculate Thermodynamic Parameters<a class="headerlink" href="#calculate-thermodynamic-parameters" title="Permalink to this headline">#</a></h3>
 <p>Now that the uncertainty values have been created using the covariance matrix from the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> function we have an uncertain slope and intercept that are properly correlated. From this we can calculate uncertain values for <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> that propagate error correctly AND contain the information about their mutual correlation.</p>
 <p>Observe that the rate calculated at a given temperature now has a correct confidence range.</p>
 <div class="cell tag_hide-input docutils container">
@@ -543,9 +518,9 @@ Calculated k at T = 303 K is 15.31+/-0.29 s^-1
 </div>
 </div>
 </div>
-</section>
-<section id="plot-curve-fit-and-confidence-band">
-<h3>Plot Curve Fit and Confidence Band<a class="headerlink" href="#plot-curve-fit-and-confidence-band" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="plot-curve-fit-and-confidence-band">
+<h3>Plot Curve Fit and Confidence Band<a class="headerlink" href="#plot-curve-fit-and-confidence-band" title="Permalink to this headline">#</a></h3>
 <p>Using the properly correlated uncertain values for slope and intercept obtained from the curve fit we can plot the data, the best fit line and the confidence band. And never forget to plot the residuals as well. I have combined the three blocks of code above so that this single block could be copied and used as is.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -602,10 +577,10 @@ Calculated k at T = 303 K is 15.31+/-0.29 s^-1
 <img alt="_images/ea79fc9dec52c7f3d76dafa8bd89dd744058e4177ff71d78230c70b0a1b74ec9.png" src="_images/ea79fc9dec52c7f3d76dafa8bd89dd744058e4177ff71d78230c70b0a1b74ec9.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="using-experimental-error">
-<h2>Using Experimental Error<a class="headerlink" href="#using-experimental-error" title="Link to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="using-experimental-error">
+<h2>Using Experimental Error<a class="headerlink" href="#using-experimental-error" title="Permalink to this headline">#</a></h2>
 <p>Experimenatal values can be reported with data. We can include this in the curve fit. Points with greater error will have less weight in the curve fit. Observe the code below and note the one small change that included experimental error in the math of the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> function. Also, look for the added plot command that added error bars to the plot. Otherwise its all the same.</p>
 <p>The results changed slightly, reflecting the relative confidence in each data point.</p>
 <div class="cell tag_hide-input docutils container">
@@ -747,9 +722,9 @@ Calculated k at T = 303 K is 15.22+/-0.15 s^-1
 <img alt="_images/ea8277fa27ae7468799a6d434b31df23f8d8f1ba90524f271ab737e4b0422ccc.png" src="_images/ea8277fa27ae7468799a6d434b31df23f8d8f1ba90524f271ab737e4b0422ccc.png" />
 </div>
 </div>
-</section>
-<section id="get-bent">
-<h2>Get Bent<a class="headerlink" href="#get-bent" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="get-bent">
+<h2>Get Bent<a class="headerlink" href="#get-bent" title="Permalink to this headline">#</a></h2>
 <p>We have used the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> function to fit an arbitrary model (in this case a linear function) taking into account experimental error. The uncertainties tools handled the error propagation in making the Erying plot and also allowed the creation of properly correlated fit parameters using the parameter list and the covarienace matrix returns by the curve fit function.</p>
 <p>Many people feel that linearization of a function is a relic of a bygone error when graph paper reigned supreme. Let us fit the Erying equation directly by ploting rate constants vs temperature. Let us adapt the code above to plot <span class="math notranslate nohighlight">\(k_{cat}\)</span> vs <span class="math notranslate nohighlight">\(T\)</span> and fit this directly to the curved Erying equation…</p>
 <div class="math notranslate nohighlight">
@@ -893,12 +868,12 @@ Calculated k at T = 303 K is 15.22+/-0.15 s^-1
 <img alt="_images/2d1023a71dc94bc85638ccda06d5d867ffe17528d3d00f921a58f7df49a73be7.png" src="_images/2d1023a71dc94bc85638ccda06d5d867ffe17528d3d00f921a58f7df49a73be7.png" />
 </div>
 </div>
-</section>
-<section id="get-fancy">
-<h2>Get Fancy<a class="headerlink" href="#get-fancy" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="get-fancy">
+<h2>Get Fancy<a class="headerlink" href="#get-fancy" title="Permalink to this headline">#</a></h2>
 <p>The code below is the same as in the section above except for the plotting. I have used a more flexible set of tools from the <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> library to create a more styled plot. Below that are plotting code that present the plot and the residuals separately.</p>
-<section id="plot-of-k-vs-t-with-residuals">
-<h3>Plot of <span class="math notranslate nohighlight">\(k\)</span> vs <span class="math notranslate nohighlight">\(T\)</span> with Residuals<a class="headerlink" href="#plot-of-k-vs-t-with-residuals" title="Link to this heading">#</a></h3>
+<div class="section" id="plot-of-k-vs-t-with-residuals">
+<h3>Plot of <span class="math notranslate nohighlight">\(k\)</span> vs <span class="math notranslate nohighlight">\(T\)</span> with Residuals<a class="headerlink" href="#plot-of-k-vs-t-with-residuals" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1084,9 +1059,9 @@ Calculated k at T = 303 K is 15.22+/-0.15 s^-1
 <img alt="_images/4002992540a6f89f81eed28f36a7ca43dd9c6262a31980be97a1672f3dbf004f.png" src="_images/4002992540a6f89f81eed28f36a7ca43dd9c6262a31980be97a1672f3dbf004f.png" />
 </div>
 </div>
-</section>
-<section id="plot-of-k-vs-t">
-<h3>Plot of <span class="math notranslate nohighlight">\(k\)</span> vs <span class="math notranslate nohighlight">\(T\)</span><a class="headerlink" href="#plot-of-k-vs-t" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="plot-of-k-vs-t">
+<h3>Plot of <span class="math notranslate nohighlight">\(k\)</span> vs <span class="math notranslate nohighlight">\(T\)</span><a class="headerlink" href="#plot-of-k-vs-t" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1235,9 +1210,9 @@ Calculated k at T = 310 K is 23.57+/-0.55 s^-1
 <img alt="_images/31f5bc5b1ad04eafd2f4688e60b8fbd19d9f7366873259aa5f0858443679aadf.png" src="_images/31f5bc5b1ad04eafd2f4688e60b8fbd19d9f7366873259aa5f0858443679aadf.png" />
 </div>
 </div>
-</section>
-<section id="plot-of-residuals">
-<h3>Plot of Residuals<a class="headerlink" href="#plot-of-residuals" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="plot-of-residuals">
+<h3>Plot of Residuals<a class="headerlink" href="#plot-of-residuals" title="Permalink to this headline">#</a></h3>
 <p>This plot is styled to fit in the side bar of my handouts.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1372,9 +1347,9 @@ Calculated k at T = 303 K is 15.22+/-0.15 s^-1
 <img alt="_images/12b4a6d642c25469e41cd9e57f77cb83474f71a4bae4a4bf7c35560f7638ba0c.png" src="_images/12b4a6d642c25469e41cd9e57f77cb83474f71a4bae4a4bf7c35560f7638ba0c.png" />
 </div>
 </div>
-</section>
-<section id="erying-plot-of-ln-k-t-vs-1-t-with-residuals">
-<h3>Erying Plot of <span class="math notranslate nohighlight">\(\ln k/T\)</span> vs <span class="math notranslate nohighlight">\(1/T\)</span> with Residuals<a class="headerlink" href="#erying-plot-of-ln-k-t-vs-1-t-with-residuals" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="erying-plot-of-ln-k-t-vs-1-t-with-residuals">
+<h3>Erying Plot of <span class="math notranslate nohighlight">\(\ln k/T\)</span> vs <span class="math notranslate nohighlight">\(1/T\)</span> with Residuals<a class="headerlink" href="#erying-plot-of-ln-k-t-vs-1-t-with-residuals" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1564,9 +1539,9 @@ Calculated k at T = 310 K is 23.55+/-0.56 s^-1
 <img alt="_images/b38a94e7f43c05f760be05fb17a6337903a71688047c81f64002a10e54423683.png" src="_images/b38a94e7f43c05f760be05fb17a6337903a71688047c81f64002a10e54423683.png" />
 </div>
 </div>
-</section>
-<section id="erying-plot-of-ln-k-t-vs-1-t-without-residuals">
-<h3>Erying Plot of <span class="math notranslate nohighlight">\(\ln k/T\)</span> vs <span class="math notranslate nohighlight">\(1/T\)</span> without Residuals<a class="headerlink" href="#erying-plot-of-ln-k-t-vs-1-t-without-residuals" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="erying-plot-of-ln-k-t-vs-1-t-without-residuals">
+<h3>Erying Plot of <span class="math notranslate nohighlight">\(\ln k/T\)</span> vs <span class="math notranslate nohighlight">\(1/T\)</span> without Residuals<a class="headerlink" href="#erying-plot-of-ln-k-t-vs-1-t-without-residuals" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1716,9 +1691,9 @@ Calculated k at T = 310 K is 23.55+/-0.56 s^-1
 <img alt="_images/a5775ebcfd949ffde8d2b3ebeb65c01725164806e00da2e694cb11ee47b37da0.png" src="_images/a5775ebcfd949ffde8d2b3ebeb65c01725164806e00da2e694cb11ee47b37da0.png" />
 </div>
 </div>
-</section>
-<section id="erying-plot-of-residuals-only">
-<h3>Erying Plot of Residuals Only<a class="headerlink" href="#erying-plot-of-residuals-only" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="erying-plot-of-residuals-only">
+<h3>Erying Plot of Residuals Only<a class="headerlink" href="#erying-plot-of-residuals-only" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1851,9 +1826,9 @@ Calculated k at T = 310 K is 23.55+/-0.56 s^-1
 <img alt="_images/64733f2fe765475f13bed4acb6020b44d708f8d14fc161b23351b62b5f82c6d1.png" src="_images/64733f2fe765475f13bed4acb6020b44d708f8d14fc161b23351b62b5f82c6d1.png" />
 </div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1880,10 +1855,11 @@ Calculated k at T = 310 K is 23.55+/-0.56 s^-1
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03A-Eyring_Exercises_1_simple.html"
@@ -1903,7 +1879,10 @@ Calculated k at T = 310 K is 23.55+/-0.56 s^-1
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1911,7 +1890,6 @@ Calculated k at T = 310 K is 23.55+/-0.56 s^-1
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1957,7 +1935,6 @@ By Barry Linkletter
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2024.
@@ -1984,8 +1961,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

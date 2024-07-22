@@ -32,7 +32,7 @@ Some data is not meant to be fit to a mathematical model. How should these data 
 
 >**Title**: [Part 2: Please Don't Use "Smooth Lines"](02-CubicSpline.ipynb) <br>
 >**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Pandas*  <br>
->**Skills**: Importing data from a csv file using the *Pandas* library. Basic math operations and math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Simple data visualization using *matplotlib*. Data interpolation using fits to spline function in the *SciPy.inetrpolate* sublibrary
+>**Skills**: Importing data from a csv file using the *Pandas* library. Basic math operations and math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Simple data visualization using *matplotlib*. Data interpolation using fits to spline function in the `SciPy.interpolate` sublibrary
 
 ## Part 3: Uncertainty and Confidence Intervals
 
@@ -44,27 +44,27 @@ Error propagation can get complicated. But we will use a set of tools provided b
 
 ### Part 3A: A Simple Data Analysis
 
-This notebook will plot a 5-point Erying plot and determine the $\Delta H^\ddagger$ and $\Delta S^\ddagger$ for the reaction. The standard deviations for the parameters will be examined and used to calculate the confidence interval for the rate constant at a given temperature. The ```scipy.stats.linregress``` tool will be demonstrated along with the ```matplotlib.pyplot``` library for plotting. Along the way we will learn the correct way to use the ```uncertainties``` module in our calculations.
+This notebook will plot a 5-point Erying plot and determine the $\Delta H^\ddagger$ and $\Delta S^\ddagger$ for the reaction. The standard deviations for the parameters will be examined and used to calculate the confidence interval for the rate constant at a given temperature. The ```scipy.stats.linregress()``` tool will be demonstrated along with the ```matplotlib.pyplot``` library for plotting. Along the way we will learn the correct way to use the *uncertainties* module in our calculations.
 
 >**Title**: [Part 3A: A Simple Data Analysis](03A-Eyring_Exercises_1_simple.ipynb) <br>
 >**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Uncertainties.ufloat*, *Uncertainties.unumpy*  <br>
->**Skills**: Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Simple data visualization using *matplotlib*. Data interpolation using linear regression with sSciPy.stats.linregress*. Creating uncertain values with *Uncertainties.ufloat*. The consequences of strongly correlated errors in fit parameters (covariance) and ways to deal with this effect.
+>**Skills**: Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Simple data visualization using *matplotlib*. Data interpolation using linear regression with `SciPy.stats.linregress()`. Creating uncertain values with `Uncertainties.ufloat()`. The consequences of strongly correlated errors in fit parameters (covariance) and ways to deal with this effect.
 
 
 ### Part 3B: Curve Fitting and Covariance
 
-The ```scipy.optimize``` library provides a better set of tools for fitting data to models and interfacing with the ```uncertainties``` package.  We will be using ```scipy.optimize.curvefit``` in this exercise and using the covariance matrix returned by that function to create ufloat values that reflect the coupling between errors in fit parameters..
+The ```scipy.optimize``` sublibrary provides a better set of tools for fitting data to models and interfacing with the *uncertainties* package.  We will be using ```scipy.optimize.curvefit()``` in this exercise and using the covariance matrix returned by that function to create ufloat values that reflect the coupling between errors in fit parameters.
 
 >**Title**: [Part 3B: Curve Fitting and Covariance](03B-Eyring_Exercises_2_curvefit.ipynb) <br>
 >**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Uncertainties.correlated_values*, , *Uncertainties.unumpy*  <br>
->**Skills**: Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using *SciPy.optimize.curve_fit* to fit data to arbitrary mathematical models. Creating uncertain values with *Uncertainties.correlated_values*. Propagating error and determining confidence intervals
+>**Skills**: Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using `SciPy.optimize.curve_fit()` to fit data to arbitrary mathematical models. Creating uncertain values with `Uncertainties.correlated_values()`. Propagating error and determining confidence intervals
 
 ### Part 3C: Using LMFit
 
-The ```lmfit``` library provides another set of tools for handling data and interfacing with the ```uncertainties``` package. It has many built-in tools for analyzing and visualizing the curve fit. It returns ufloat values for fit parameters directly that already contain information on any covariance.
+The *lmfit* library provides another set of tools for handling data and interfacing with the *uncertainties* package. It has many built-in tools for analyzing and visualizing the curve fit. It returns ufloat values for fit parameters directly that already contain information on any covariance.
 
 >**Title**: [Part 3C: Using LMFit](03C-Eyring_Exercises_3_LMfit.ipynb) <br>
->**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Uncertainties, , *LMFit*  <br>
+>**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Uncertainties*, *LMFit*  <br>
 >**Skills**: Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using *LMFit* to fit data to arbitrary mathematical models and plot data. Propagating error and determining confidence intervals
 
 
@@ -74,7 +74,7 @@ This notebook will read in data from a text file. Creating data files for your e
 
 >**Title**: [Part 3D: Reading Data](03D-Eyring_Exercises_4_pandas.ipynb) <br>
 >**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Pandas*, *Uncertainties*  <br>
->**Skills**: Importing data from a csv file using the *Pandas* library. Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using *SciPy.optimize.curve_fit* to fit data to arbitrary mathematical models. Creating uncertain values with *Uncertainties.correlated_values*. Propagating error and determining confidence intervals
+>**Skills**: Importing data from a csv file using the *Pandas* library. Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using `SciPy.optimize.curve_fit()` to fit data to arbitrary mathematical models. Creating uncertain values with `Uncertainties.correlated_values()`. Propagating error and determining confidence intervals
 
 
 ### Part 3E: Bootstrapping Confidence Intervals
@@ -83,7 +83,7 @@ The confidence intervals produced by ```lmfit``` or by using the covariance matr
 
 >**Title**: [Part 3E: Bootstrapping Confidence Intervals](03E-Eyring_Exercises_5_Bootstrap.ipynb) <br>
 >**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Pandas*, *Uncertainties*  <br>
->**Skills**: Importing data from a csv file using the *Pandas* library. Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using *SciPy.optimize.curve_fit* to fit data to arbitrary mathematical models. Creating uncertain values with *Uncertainties.correlated_values*. Propagating error and determining confidence intervals
+>**Skills**: Importing data from a csv file using the *Pandas* library. Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using `SciPy.optimize.curve_fit` to fit data to arbitrary mathematical models. Creating uncertain values with `Uncertainties.correlated_values`. Propagating error and determining confidence intervals
 
 
 
@@ -96,8 +96,9 @@ Journals often have a specific style for plots. In a thesis, you should use the 
 >**Tools**: *matplotlib* <br>
 >**Skills**: Applying style files to plots. using standard styles and styles provided by journals.
 
----
-These is a **Juptyter-book** that was built from a set of **interactive *Python* Jupyter notebooks**. The original notebook for any given chapter can be obtained using the **download link** at the top of the page.
+## Notes and References
 
----
+This is a **Juptyter-book** that was built from a set of **interactive *Python* Jupyter notebooks**. The original notebook for any given chapter can be obtained using the **download link** at the top of the page.
+
+
 The Ouroboros with benzene image was accessed at https://commons.wikimedia.org/wiki/File:Ouroboros-benzene.svg on June 24, 2022. It is licensed under the Creative Commons license CC BY-SA 

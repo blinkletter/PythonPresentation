@@ -1,63 +1,65 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Documenting Data Analysis &#8212; Python Presentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="_static/tufte.css?v=189edcc0" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'start';</script>
@@ -65,7 +67,7 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Part 1: Quick Examples of Python" href="01_PlotBasics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -73,23 +75,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,22 +109,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -141,11 +129,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="#">
-  
   
   
   
@@ -155,23 +141,12 @@
       
     
     
-    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Python Presentation - Home"/>
-    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Python Presentation - Home"/>`);</script>
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -213,7 +188,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -222,7 +197,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -304,22 +279,20 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -360,6 +333,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-pick-a-style">Part 4: Pick a Style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-and-references">Notes and References</a></li>
 </ul>
             </nav>
         </div>
@@ -369,116 +343,117 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="documenting-data-analysis">
-<h1>Documenting Data Analysis<a class="headerlink" href="#documenting-data-analysis" title="Link to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="documenting-data-analysis">
+<h1>Documenting Data Analysis<a class="headerlink" href="#documenting-data-analysis" title="Permalink to this headline">#</a></h1>
 <p>In the presentation supported by this book I want to introduce you to the <strong>power</strong> of using computers to analyze and visualize data. Spreadsheets are great for budgeting but they are difficult to use when data gets “big.” And <strong>big data</strong> is here to stay. <strong>Biology</strong> and <strong>chemistry</strong> are rapidly becoming data-intensive fields. The tools to command all this data reside in specialized tools like “<em><strong>R</strong></em>” and general-purpose languages like <em><strong>Python</strong></em>.</p>
 <p>Most science students have never really commanded a computer. Apps command you, not the other way around. Learning to <strong>interpret and adapt</strong> a computer program for your own purposes is an essential skill in science.</p>
 <p>The goal of our program is to explore <strong>chemistry</strong>, not computer science. I will not be teaching <strong>programming</strong>. We will use programs that have been written and adapt them as needed. Along the way the basics of commanding a computer with written instructions will be revealed to you.</p>
-<section id="in-a-nutshell">
-<h2>In a Nutshell<a class="headerlink" href="#in-a-nutshell" title="Link to this heading">#</a></h2>
+<div class="section" id="in-a-nutshell">
+<h2>In a Nutshell<a class="headerlink" href="#in-a-nutshell" title="Permalink to this headline">#</a></h2>
 <p>The presentation will start with an argument that you can <strong>plot with <em>python</em> tools</strong> just as effectively as in Microsoft excel. Then we will digress to plead that you never commit one of Excels greatest sins, using the smoothed line to connect data points. One of the most important ideas in data analysis is correct <strong>propagation of experimental error</strong>. You will be introduced to the <strong>uncertainties package</strong> in <em>Python</em> that will handle your errors for you. Finally we will explore using <em>Python</em> plotting tools and the uncertainties package to analyze kinetic data using the Erying equation. At every step the <strong>self-documenting</strong> nature of <em>Python</em> code will be emphasized.</p>
-</section>
-<section id="steal-it-all">
-<h2>Steal it All<a class="headerlink" href="#steal-it-all" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="steal-it-all">
+<h2>Steal it All<a class="headerlink" href="#steal-it-all" title="Permalink to this headline">#</a></h2>
 <p>We will use <em>Python</em> only as a <strong>tool</strong>. This book is intended to provide some basic <strong>examples</strong> of <em>Python</em> code for performing <strong>calculations and visualizing data</strong>. All code for the demonstrations in this presentation is already written for you. Steal it from me; steal it from the internet; give your code to friends. Always <strong>give credit</strong> where credit is due. Examine, play with, and <strong>steal the code</strong> in the interactive notebooks linked below. To learn, you must first imitate. Later, you will inovate. The journey from here to there is up to you.</p>
-</section>
-<section id="notebooks-for-the-presentation">
-<h2>Notebooks for the Presentation<a class="headerlink" href="#notebooks-for-the-presentation" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="notebooks-for-the-presentation">
+<h2>Notebooks for the Presentation<a class="headerlink" href="#notebooks-for-the-presentation" title="Permalink to this headline">#</a></h2>
 <p>The python notebooks described below contain all the code and documentation for the plots and data sets used in the presentation. Steal it run with it.</p>
-</section>
-<section id="part-1-quick-examples-of-python">
-<h2>Part 1: Quick Examples of <em>Python</em><a class="headerlink" href="#part-1-quick-examples-of-python" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="part-1-quick-examples-of-python">
+<h2>Part 1: Quick Examples of <em>Python</em><a class="headerlink" href="#part-1-quick-examples-of-python" title="Permalink to this headline">#</a></h2>
 <p>This notebook provides some simple examples of data analysis in <em>Python</em>. We will use the example of the Michaelis-Menten plot to highlight the dangers in linearization for data analysis.</p>
 <blockquote>
-<div><p><strong>Title</strong>: <a class="reference internal" href="01_PlotBasics.html"><span class="std std-doc">Part 1: Quick Examples <em>Python</em></span></a> <br>
+<div><p><strong>Title</strong>: <a class="reference internal" href="01_PlotBasics.html"><span class="doc std std-doc">Part 1: Quick Examples <em>Python</em></span></a> <br>
 <strong>Tools</strong>: <em>Python</em> math operators, <em>NumPy</em>, <em>SciPy</em>, <em>matplotlib</em>  <br>
 <strong>Skills</strong>: Basic math operations and math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Accessing physical constants in <em>SciPy</em>. Data analysis tools in <em>SciPy</em>. Simple data visualization using <em>matplotlib</em>.</p>
 </div></blockquote>
-</section>
-<section id="part-2-please-don-t-use-smooth-lines">
-<h2>Part 2: Please Don’t Use “Smooth Lines”<a class="headerlink" href="#part-2-please-don-t-use-smooth-lines" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="part-2-please-don-t-use-smooth-lines">
+<h2>Part 2: Please Don’t Use “Smooth Lines”<a class="headerlink" href="#part-2-please-don-t-use-smooth-lines" title="Permalink to this headline">#</a></h2>
 <p>Some data is not meant to be fit to a mathematical model. How should these data sets be presented? Quite often a simple plot with points connected by lines will do. Just don’t chose the “smooth line” option. Along the way we will explore some of the smooth line options available via <em>Python</em> and spline functions. And we will then make a promise to never use them.</p>
 <blockquote>
-<div><p><strong>Title</strong>: <a class="reference internal" href="02-CubicSpline.html"><span class="std std-doc">Part 2: Please Don’t Use “Smooth Lines”</span></a> <br>
+<div><p><strong>Title</strong>: <a class="reference internal" href="02-CubicSpline.html"><span class="doc std std-doc">Part 2: Please Don’t Use “Smooth Lines”</span></a> <br>
 <strong>Tools</strong>: <em>NumPy</em>, <em>SciPy</em>, <em>matplotlib</em>, <em>Pandas</em>  <br>
-<strong>Skills</strong>: Importing data from a csv file using the <em>Pandas</em> library. Basic math operations and math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Simple data visualization using <em>matplotlib</em>. Data interpolation using fits to spline function in the <em>SciPy.inetrpolate</em> sublibrary</p>
+<strong>Skills</strong>: Importing data from a csv file using the <em>Pandas</em> library. Basic math operations and math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Simple data visualization using <em>matplotlib</em>. Data interpolation using fits to spline function in the <code class="docutils literal notranslate"><span class="pre">SciPy.interpolate</span></code> sublibrary</p>
 </div></blockquote>
-</section>
-<section id="part-3-uncertainty-and-confidence-intervals">
-<h2>Part 3: Uncertainty and Confidence Intervals<a class="headerlink" href="#part-3-uncertainty-and-confidence-intervals" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="part-3-uncertainty-and-confidence-intervals">
+<h2>Part 3: Uncertainty and Confidence Intervals<a class="headerlink" href="#part-3-uncertainty-and-confidence-intervals" title="Permalink to this headline">#</a></h2>
 <p>The Erying plot is a classic way to explore how <em>Python</em> tools can assist in analysis. Experimental data is often known only to within a range that defines it prescission. This experimental error will be reflected in parameters calculated from the mathematical model used in the analysis. The error will be transmitted through any calculation using these values. If we use the uncertainty of the parameters to calculate the prescission of the predicted results of the model then we will have the confidence interval across the range of experimental data. This can be plotted as well to provide a visual indication of the experimental error within the model.</p>
 <p>Error propagation can get complicated. But we will use a set of tools provided by the <em>Uncertainties</em> library to handle all of this automatically. We will also use a robust and extremely computationaly expensive method to obtain a more “real-world” estimate of the confidence interval.</p>
 <blockquote>
-<div><p><strong>Title</strong>: <a class="reference internal" href="03-Eyring_Exercises_Intro.html"><span class="std std-doc">Part 3: The Eyring Equation and Experimental Error</span></a></p>
+<div><p><strong>Title</strong>: <a class="reference internal" href="03-Eyring_Exercises_Intro.html"><span class="doc std std-doc">Part 3: The Eyring Equation and Experimental Error</span></a></p>
 </div></blockquote>
-<section id="part-3a-a-simple-data-analysis">
-<h3>Part 3A: A Simple Data Analysis<a class="headerlink" href="#part-3a-a-simple-data-analysis" title="Link to this heading">#</a></h3>
-<p>This notebook will plot a 5-point Erying plot and determine the <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> for the reaction. The standard deviations for the parameters will be examined and used to calculate the confidence interval for the rate constant at a given temperature. The <code class="docutils literal notranslate"><span class="pre">scipy.stats.linregress</span></code> tool will be demonstrated along with the <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> library for plotting. Along the way we will learn the correct way to use the <code class="docutils literal notranslate"><span class="pre">uncertainties</span></code> module in our calculations.</p>
+<div class="section" id="part-3a-a-simple-data-analysis">
+<h3>Part 3A: A Simple Data Analysis<a class="headerlink" href="#part-3a-a-simple-data-analysis" title="Permalink to this headline">#</a></h3>
+<p>This notebook will plot a 5-point Erying plot and determine the <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> for the reaction. The standard deviations for the parameters will be examined and used to calculate the confidence interval for the rate constant at a given temperature. The <code class="docutils literal notranslate"><span class="pre">scipy.stats.linregress()</span></code> tool will be demonstrated along with the <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> library for plotting. Along the way we will learn the correct way to use the <em>uncertainties</em> module in our calculations.</p>
 <blockquote>
-<div><p><strong>Title</strong>: <a class="reference internal" href="03A-Eyring_Exercises_1_simple.html"><span class="std std-doc">Part 3A: A Simple Data Analysis</span></a> <br>
+<div><p><strong>Title</strong>: <a class="reference internal" href="03A-Eyring_Exercises_1_simple.html"><span class="doc std std-doc">Part 3A: A Simple Data Analysis</span></a> <br>
 <strong>Tools</strong>: <em>NumPy</em>, <em>SciPy</em>, <em>matplotlib</em>, <em>Uncertainties.ufloat</em>, <em>Uncertainties.unumpy</em>  <br>
-<strong>Skills</strong>: Math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Simple data visualization using <em>matplotlib</em>. Data interpolation using linear regression with sSciPy.stats.linregress*. Creating uncertain values with <em>Uncertainties.ufloat</em>. The consequences of strongly correlated errors in fit parameters (covariance) and ways to deal with this effect.</p>
+<strong>Skills</strong>: Math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Simple data visualization using <em>matplotlib</em>. Data interpolation using linear regression with <code class="docutils literal notranslate"><span class="pre">SciPy.stats.linregress()</span></code>. Creating uncertain values with <code class="docutils literal notranslate"><span class="pre">Uncertainties.ufloat()</span></code>. The consequences of strongly correlated errors in fit parameters (covariance) and ways to deal with this effect.</p>
 </div></blockquote>
-</section>
-<section id="part-3b-curve-fitting-and-covariance">
-<h3>Part 3B: Curve Fitting and Covariance<a class="headerlink" href="#part-3b-curve-fitting-and-covariance" title="Link to this heading">#</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code> library provides a better set of tools for fitting data to models and interfacing with the <code class="docutils literal notranslate"><span class="pre">uncertainties</span></code> package.  We will be using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curvefit</span></code> in this exercise and using the covariance matrix returned by that function to create ufloat values that reflect the coupling between errors in fit parameters..</p>
+</div>
+<div class="section" id="part-3b-curve-fitting-and-covariance">
+<h3>Part 3B: Curve Fitting and Covariance<a class="headerlink" href="#part-3b-curve-fitting-and-covariance" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code> sublibrary provides a better set of tools for fitting data to models and interfacing with the <em>uncertainties</em> package.  We will be using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curvefit()</span></code> in this exercise and using the covariance matrix returned by that function to create ufloat values that reflect the coupling between errors in fit parameters.</p>
 <blockquote>
-<div><p><strong>Title</strong>: <a class="reference internal" href="03B-Eyring_Exercises_2_curvefit.html"><span class="std std-doc">Part 3B: Curve Fitting and Covariance</span></a> <br>
+<div><p><strong>Title</strong>: <a class="reference internal" href="03B-Eyring_Exercises_2_curvefit.html"><span class="doc std std-doc">Part 3B: Curve Fitting and Covariance</span></a> <br>
 <strong>Tools</strong>: <em>NumPy</em>, <em>SciPy</em>, <em>matplotlib</em>, <em>Uncertainties.correlated_values</em>, , <em>Uncertainties.unumpy</em>  <br>
-<strong>Skills</strong>: Math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Data visualization using <em>matplotlib</em>. Using <em>SciPy.optimize.curve_fit</em> to fit data to arbitrary mathematical models. Creating uncertain values with <em>Uncertainties.correlated_values</em>. Propagating error and determining confidence intervals</p>
+<strong>Skills</strong>: Math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Data visualization using <em>matplotlib</em>. Using <code class="docutils literal notranslate"><span class="pre">SciPy.optimize.curve_fit()</span></code> to fit data to arbitrary mathematical models. Creating uncertain values with <code class="docutils literal notranslate"><span class="pre">Uncertainties.correlated_values()</span></code>. Propagating error and determining confidence intervals</p>
 </div></blockquote>
-</section>
-<section id="part-3c-using-lmfit">
-<h3>Part 3C: Using LMFit<a class="headerlink" href="#part-3c-using-lmfit" title="Link to this heading">#</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> library provides another set of tools for handling data and interfacing with the <code class="docutils literal notranslate"><span class="pre">uncertainties</span></code> package. It has many built-in tools for analyzing and visualizing the curve fit. It returns ufloat values for fit parameters directly that already contain information on any covariance.</p>
+</div>
+<div class="section" id="part-3c-using-lmfit">
+<h3>Part 3C: Using LMFit<a class="headerlink" href="#part-3c-using-lmfit" title="Permalink to this headline">#</a></h3>
+<p>The <em>lmfit</em> library provides another set of tools for handling data and interfacing with the <em>uncertainties</em> package. It has many built-in tools for analyzing and visualizing the curve fit. It returns ufloat values for fit parameters directly that already contain information on any covariance.</p>
 <blockquote>
-<div><p><strong>Title</strong>: <a class="reference internal" href="03C-Eyring_Exercises_3_LMfit.html"><span class="std std-doc">Part 3C: Using LMFit</span></a> <br>
-<strong>Tools</strong>: <em>NumPy</em>, <em>SciPy</em>, <em>matplotlib</em>, *Uncertainties, , <em>LMFit</em>  <br>
+<div><p><strong>Title</strong>: <a class="reference internal" href="03C-Eyring_Exercises_3_LMfit.html"><span class="doc std std-doc">Part 3C: Using LMFit</span></a> <br>
+<strong>Tools</strong>: <em>NumPy</em>, <em>SciPy</em>, <em>matplotlib</em>, <em>Uncertainties</em>, <em>LMFit</em>  <br>
 <strong>Skills</strong>: Math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Data visualization using <em>matplotlib</em>. Using <em>LMFit</em> to fit data to arbitrary mathematical models and plot data. Propagating error and determining confidence intervals</p>
 </div></blockquote>
-</section>
-<section id="part-3d-reading-data">
-<h3>Part 3D: Reading Data<a class="headerlink" href="#part-3d-reading-data" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="part-3d-reading-data">
+<h3>Part 3D: Reading Data<a class="headerlink" href="#part-3d-reading-data" title="Permalink to this headline">#</a></h3>
 <p>This notebook will read in data from a text file. Creating data files for your experimental data will allow you to use a notebook to analyze a new set of data by changing the file name and nothing else. This will enable your data analysis notebook to be more versatile. This notebook is almost identical to Part 3B except that the data is read from a file rather than entered directly. Here we use the full dfata set from the publication and can see the result of increasing data on prescission.</p>
 <blockquote>
-<div><p><strong>Title</strong>: <a class="reference internal" href="03D-Eyring_Exercises_4_pandas.html"><span class="std std-doc">Part 3D: Reading Data</span></a> <br>
+<div><p><strong>Title</strong>: <a class="reference internal" href="03D-Eyring_Exercises_4_pandas.html"><span class="doc std std-doc">Part 3D: Reading Data</span></a> <br>
 <strong>Tools</strong>: <em>NumPy</em>, <em>SciPy</em>, <em>matplotlib</em>, <em>Pandas</em>, <em>Uncertainties</em>  <br>
-<strong>Skills</strong>: Importing data from a csv file using the <em>Pandas</em> library. Math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Data visualization using <em>matplotlib</em>. Using <em>SciPy.optimize.curve_fit</em> to fit data to arbitrary mathematical models. Creating uncertain values with <em>Uncertainties.correlated_values</em>. Propagating error and determining confidence intervals</p>
+<strong>Skills</strong>: Importing data from a csv file using the <em>Pandas</em> library. Math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Data visualization using <em>matplotlib</em>. Using <code class="docutils literal notranslate"><span class="pre">SciPy.optimize.curve_fit()</span></code> to fit data to arbitrary mathematical models. Creating uncertain values with <code class="docutils literal notranslate"><span class="pre">Uncertainties.correlated_values()</span></code>. Propagating error and determining confidence intervals</p>
 </div></blockquote>
-</section>
-<section id="part-3e-bootstrapping-confidence-intervals">
-<h3>Part 3E: Bootstrapping Confidence Intervals<a class="headerlink" href="#part-3e-bootstrapping-confidence-intervals" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="part-3e-bootstrapping-confidence-intervals">
+<h3>Part 3E: Bootstrapping Confidence Intervals<a class="headerlink" href="#part-3e-bootstrapping-confidence-intervals" title="Permalink to this headline">#</a></h3>
 <p>The confidence intervals produced by <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> or by using the covariance matrix from <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> follow typical rules for error propagation and present a range that is symmetrical above and below any value. This is the common <span class="math notranslate nohighlight">\(a \pm b\)</span> way of presenting error. However, the confidence range may not be symmetrical (this is especially true sparse data sets.) One way to express this is to use more sophisticated error propagation tools in <span class="math notranslate nohighlight">\(python\)</span> such as <code class="docutils literal notranslate"><span class="pre">soerp</span></code> or <code class="docutils literal notranslate"><span class="pre">mcerp</span></code>. We won’t be exploring those here. In this notebook we will use a robust but inefficient method for determining the confidence interval for a data set and generate a confidence band on a plot that reflects the “real world” error in your data. This method is called “bootstrapping.”</p>
 <blockquote>
-<div><p><strong>Title</strong>: <a class="reference internal" href="03E-Eyring_Exercises_5_Bootstrap.html"><span class="std std-doc">Part 3E: Bootstrapping Confidence Intervals</span></a> <br>
+<div><p><strong>Title</strong>: <a class="reference internal" href="03E-Eyring_Exercises_5_Bootstrap.html"><span class="doc std std-doc">Part 3E: Bootstrapping Confidence Intervals</span></a> <br>
 <strong>Tools</strong>: <em>NumPy</em>, <em>SciPy</em>, <em>matplotlib</em>, <em>Pandas</em>, <em>Uncertainties</em>  <br>
-<strong>Skills</strong>: Importing data from a csv file using the <em>Pandas</em> library. Math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Data visualization using <em>matplotlib</em>. Using <em>SciPy.optimize.curve_fit</em> to fit data to arbitrary mathematical models. Creating uncertain values with <em>Uncertainties.correlated_values</em>. Propagating error and determining confidence intervals</p>
+<strong>Skills</strong>: Importing data from a csv file using the <em>Pandas</em> library. Math functions using the tools of <em>NumPy</em>. Math with <em>NumPy</em> arrays, formatting numbers in f-strings. Data visualization using <em>matplotlib</em>. Using <code class="docutils literal notranslate"><span class="pre">SciPy.optimize.curve_fit</span></code> to fit data to arbitrary mathematical models. Creating uncertain values with <code class="docutils literal notranslate"><span class="pre">Uncertainties.correlated_values</span></code>. Propagating error and determining confidence intervals</p>
 </div></blockquote>
-</section>
-</section>
-<section id="part-4-pick-a-style">
-<h2>Part 4: Pick a Style<a class="headerlink" href="#part-4-pick-a-style" title="Link to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="part-4-pick-a-style">
+<h2>Part 4: Pick a Style<a class="headerlink" href="#part-4-pick-a-style" title="Permalink to this headline">#</a></h2>
 <p>Journals often have a specific style for plots. In a thesis, you should use the same style for all plots. In this notebook we will explore styling plots using many option available in the <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> library. Once you get a style you like in a notebook, you never need to change. I haven’t changed my style since 1985, that why I look so good.</p>
 <blockquote>
-<div><p><strong>Title</strong>: <a class="reference internal" href="04-Styling.html"><span class="std std-doc">Part 4: Styling Plots”</span></a> <br>
+<div><p><strong>Title</strong>: <a class="reference internal" href="04-Styling.html"><span class="doc std std-doc">Part 4: Styling Plots”</span></a> <br>
 <strong>Tools</strong>: <em>matplotlib</em> <br>
 <strong>Skills</strong>: Applying style files to plots. using standard styles and styles provided by journals.</p>
 </div></blockquote>
-<hr class="docutils" />
-<p>These is a <strong>Juptyter-book</strong> that was built from a set of <strong>interactive <em>Python</em> Jupyter notebooks</strong>. The original notebook for any given chapter can be obtained using the <strong>download link</strong> at the top of the page.</p>
-<hr class="docutils" />
+</div>
+<div class="section" id="notes-and-references">
+<h2>Notes and References<a class="headerlink" href="#notes-and-references" title="Permalink to this headline">#</a></h2>
+<p>This is a <strong>Juptyter-book</strong> that was built from a set of <strong>interactive <em>Python</em> Jupyter notebooks</strong>. The original notebook for any given chapter can be obtained using the <strong>download link</strong> at the top of the page.</p>
 <p>The Ouroboros with benzene image was accessed at https://commons.wikimedia.org/wiki/File:Ouroboros-benzene.svg on June 24, 2022. It is licensed under the Creative Commons license CC BY-SA</p>
-</section>
-<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</section>
+<div class="toctree-wrapper compound">
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -505,10 +480,11 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
        href="01_PlotBasics.html"
@@ -519,7 +495,10 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -527,7 +506,6 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -549,6 +527,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-pick-a-style">Part 4: Pick a Style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-and-references">Notes and References</a></li>
 </ul>
   </nav></div>
 
@@ -570,7 +549,6 @@ By Barry Linkletter
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2024.
@@ -597,8 +575,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

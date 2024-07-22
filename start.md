@@ -96,8 +96,9 @@ Journals often have a specific style for plots. In a thesis, you should use the 
 >**Tools**: *matplotlib* <br>
 >**Skills**: Applying style files to plots. using standard styles and styles provided by journals.
 
----
+## Notes and References
+
 This is a **Juptyter-book** that was built from a set of **interactive *Python* Jupyter notebooks**. The original notebook for any given chapter can be obtained using the **download link** at the top of the page.
 
----
+
 The Ouroboros with benzene image was accessed at https://commons.wikimedia.org/wiki/File:Ouroboros-benzene.svg on June 24, 2022. It is licensed under the Creative Commons license CC BY-SA 
