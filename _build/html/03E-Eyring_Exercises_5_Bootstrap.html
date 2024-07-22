@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Part 3E: Bootstrapping Confidence Intervals &#8212; Python Presentation</title>
   
@@ -19,44 +18,46 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css?v=189edcc0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03E-Eyring_Exercises_5_Bootstrap';</script>
@@ -141,8 +142,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="start.html">
   
@@ -164,7 +163,7 @@
 
  <script>
  document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -227,9 +226,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -254,14 +253,14 @@
       
       <li><a href="https://colab.research.google.com/github/blinkletter/PythonPresentation/blob/main/./03E-Eyring_Exercises_5_Bootstrap.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+   title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
+    <img src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -338,10 +337,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -349,14 +348,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -407,13 +406,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="part-3e-bootstrapping-confidence-intervals">
-<h1>Part 3E: Bootstrapping Confidence Intervals<a class="headerlink" href="#part-3e-bootstrapping-confidence-intervals" title="Permalink to this heading">#</a></h1>
-<p>The confidence intervals calculated with the uncertain fit parameters determined using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> or <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> are symmetrical. We get <span class="math notranslate nohighlight">\(\pm\)</span> some value as the standard deviation. This is a perfectly good was to estimate the confidence interval (all errors are estimated) but it hides a subtle truth. The confidence is not symmetrical. The data does not necesssarity have the same contribution to each parameter across the range of measuremnts and some regions may have more error than others, especially with non-linear curve fits.</p>
-<p>One way to estimate a confidence interval that reflects these regional effects in your data series is to use bootstrapping. It is a computationally expensive method where we randomly select data points from our data set and perfomr the curve fit hundreds, perhaps thousands of times. Then we values for the parameters that encompass the 68%, 95% and 99% percentiles (<span class="math notranslate nohighlight">\(1\sigma\)</span>, <span class="math notranslate nohighlight">\(2\sigma\)</span>, <span class="math notranslate nohighlight">\(3\sigma\)</span>) or any arbitrary range we like. The median values and these upper and lower bounds will reflect a more accurate picture of estimated error, if we have enough data.</p>
+<h1>Part 3E: Bootstrapping Confidence Intervals<a class="headerlink" href="#part-3e-bootstrapping-confidence-intervals" title="Link to this heading">#</a></h1>
+<p>The confidence intervals calculated with the uncertain fit parameters determined using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> or <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> are symmetrical. We get <span class="math notranslate nohighlight">\(\pm\)</span> some value as the standard deviation. This is a perfectly good way to estimate the confidence interval but it hides a subtle truth. The confidence is usually not symmetrical. The data does not necesssarity have the same contribution to each parameter across the range of measuremnts and some regions may have more error than others, especially with non-linear curve fits.</p>
+<p>One way to estimate a confidence interval that reflects these regional effects in your data series is to use bootstrapping. It is a computationally expensive method where we randomly select data points from our data set and perfom the curve fit hundreds, perhaps thousands of times. Then we ch oose values for the parameters that encompass the 68%, 95% and 99% percentiles (<span class="math notranslate nohighlight">\(1\sigma\)</span>, <span class="math notranslate nohighlight">\(2\sigma\)</span>, <span class="math notranslate nohighlight">\(3\sigma\)</span>) or any arbitrary range we like. The values and these upper and lower bounds will reflect a more accurate picture of estimated error, if we have enough data.</p>
 <p>This method may not be useful with small data sets as there may not be enough combinations such that percentiles are meaningful. Choosing the 95% percentile range from 6 discrete values is not useful. However, there are ways to magnify the amount of data through applying random error to data points. Is that appropriate? Some say yes, some say no. Regardless, you will know exactly what I did to determine the confidence interval for my experiment because the code is available for your inspection.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
-<p>As before, we load in the <em>Python</em> packages needed and set global variables.</p>
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<p>As before, we set up the environment in <em>Colab</em>, load in the <em>Python</em> packages needed and set global variables.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -433,11 +432,11 @@ document.write(`
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>     <span class="c1"># tool for curve fitting</span>
 <span class="kn">import</span> <span class="nn">scipy</span>                             <span class="c1"># includes tools for data analysis</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1"># import the tools of NumPy but use a shorter name, &quot;np&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1"># import the tools of NumPy </span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>     <span class="c1"># tools for plotting</span>
 
-<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>               <span class="c1"># tool set for handling numbers with uncertainties</span>
-<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>  <span class="c1"># a replacement for numpy that uses uncertainty values</span>
+<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>               <span class="c1"># tool set for handling uncertainties</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>  <span class="c1"># a replacement for numpy </span>
 
 <span class="c1">### Set global variables</span>
 
@@ -451,14 +450,14 @@ document.write(`
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: plots: File exists
-Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/python3.12/site-packages (3.2.2)
+Requirement already satisfied: uncertainties in /Users/blink/psi4conda/lib/python3.11/site-packages (3.2.1)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="the-data-set">
-<h2>The Data Set<a class="headerlink" href="#the-data-set" title="Permalink to this heading">#</a></h2>
+<h2>The Data Set<a class="headerlink" href="#the-data-set" title="Link to this heading">#</a></h2>
 <p>We will begin with the 5-point data set that we have been using so far.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -467,25 +466,25 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span>     <span class="p">[</span><span class="mi">293</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span>  <span class="mi">303</span><span class="p">,</span>  <span class="mi">308</span><span class="p">,</span>  <span class="mi">313</span><span class="p">]</span>       <span class="c1"># list of temperatures</span>
-<span class="n">k_obs</span> <span class="o">=</span>    <span class="p">[</span><span class="mf">7.6</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">,</span> <span class="mf">21.3</span><span class="p">,</span> <span class="mf">27.8</span><span class="p">]</span>      <span class="c1"># list of observe rate constants (s^-1)</span>
-<span class="n">k_obs_err</span><span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span>  <span class="mf">0.1</span><span class="p">,</span>  <span class="mf">0.9</span><span class="p">,</span>  <span class="mf">0.9</span><span class="p">]</span>       <span class="c1"># list of standard deviations for data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span>     <span class="p">[</span><span class="mi">293</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span>  <span class="mi">303</span><span class="p">,</span>  <span class="mi">308</span><span class="p">,</span>  <span class="mi">313</span><span class="p">]</span>  <span class="c1"># list of temperatures</span>
+<span class="n">k_obs</span> <span class="o">=</span>    <span class="p">[</span><span class="mf">7.6</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">,</span> <span class="mf">21.3</span><span class="p">,</span> <span class="mf">27.8</span><span class="p">]</span> <span class="c1"># list of rate constants (s^-1)</span>
+<span class="n">k_obs_err</span><span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span>  <span class="mf">0.1</span><span class="p">,</span>  <span class="mf">0.9</span><span class="p">,</span>  <span class="mf">0.9</span><span class="p">]</span>  <span class="c1"># list of standard deviations for data</span>
 
 <span class="c1">### Convert lists to numpy arrays (enables numpy math tools with these lists)</span>
 
-<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>              <span class="c1"># an array of float values</span>
-<span class="n">k</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">uarray</span><span class="p">(</span><span class="n">k_obs</span><span class="p">,</span> <span class="n">k_obs_err</span><span class="p">)</span>   <span class="c1"># make an array of ufloat values</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>             <span class="c1"># an array of float values</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">uarray</span><span class="p">(</span><span class="n">k_obs</span><span class="p">,</span> <span class="n">k_obs_err</span><span class="p">)</span>  <span class="c1"># make an array of ufloat values</span>
 
 <span class="c1">### Calculate x, y values and the uncertainty y_err using the</span>
 <span class="c1">###   error propagation provided by the *uncertainties* package</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">temp</span>                         <span class="c1"># 1/T</span>
-<span class="n">y_u</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">temp</span><span class="p">)</span>              <span class="c1"># ln(k/T) uncertain array for y-axis</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">temp</span>                        <span class="c1"># 1/T</span>
+<span class="n">y_u</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">temp</span><span class="p">)</span>             <span class="c1"># ln(k/T) uncertain array for y-axis</span>
 
-<span class="c1">### Separate the uncertain y value into y and y_err for use in the curve_fit function</span>
+<span class="c1">### Separate the uncertain y value into y and y_err for use in the curve_fit </span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">y_u</span><span class="p">)</span>        <span class="c1"># extract arrays of nominal values and errors</span>
-<span class="n">y_err</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">y_u</span><span class="p">)</span>          <span class="c1">#   because curve_fit can&#39;t handle ufloats</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">y_u</span><span class="p">)</span>       <span class="c1"># extract arrays of nominal values and errors</span>
+<span class="n">y_err</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">y_u</span><span class="p">)</span>         <span class="c1">#   because curve_fit can&#39;t handle ufloats</span>
 
 <span class="c1">#display(x, k, y_u)</span>
 </pre></div>
@@ -495,8 +494,8 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 </div>
 </section>
 <section id="a-quick-bootstrap">
-<h2>A Quick Bootstrap<a class="headerlink" href="#a-quick-bootstrap" title="Permalink to this heading">#</a></h2>
-<p>We can get a bootstrapped confidence interval using the <code class="docutils literal notranslate"><span class="pre">seaborn.regplot()</span></code> function that is part of the <em>Seaborn</em> plotting package. It will perform a bootstrap analysis and plot the confidence interval requested (below I am using a stardard 95% confiodence interval. Change the confidence and see what happens.)</p>
+<h2>A Quick Bootstrap<a class="headerlink" href="#a-quick-bootstrap" title="Link to this heading">#</a></h2>
+<p>We can get a bootstrapped confidence interval using the <code class="docutils literal notranslate"><span class="pre">seaborn.regplot()</span></code> function that is part of the <em>Seaborn</em> plotting package. It will perform a bootstrap analysis and plot the confidence interval requested (below I am using a stardard 95.5% confidence interval. Change the confidence and see what happens.)</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -504,10 +503,10 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">ci</span> <span class="o">=</span> <span class="mf">95.7</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">ci</span> <span class="o">=</span> <span class="mf">95.5</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -515,12 +514,12 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/8b146b780d4318237412c24f9430b541c1bceafa1a9cbfb0056109a1d729fed9.png" src="_images/8b146b780d4318237412c24f9430b541c1bceafa1a9cbfb0056109a1d729fed9.png" />
+<img alt="_images/478832f306a60f6e0e50c541c7d882fea2e9e4f2b632d52274fc6b4e98a7b67d.png" src="_images/478832f306a60f6e0e50c541c7d882fea2e9e4f2b632d52274fc6b4e98a7b67d.png" />
 </div>
 </div>
 <section id="styling-the-plot">
-<h3>Styling the Plot<a class="headerlink" href="#styling-the-plot" title="Permalink to this heading">#</a></h3>
-<p>Below is the same plot as above but I have added styling to the plot to fit with my own preferred publication style. We can send plotting style parameters into the <code class="docutils literal notranslate"><span class="pre">regplot()</span></code> function using keyword dictionaries.</p>
+<h3>Styling the Plot<a class="headerlink" href="#styling-the-plot" title="Link to this heading">#</a></h3>
+<p>Below is the same plot as above, but I have added styling to the plot to fit with my own preferred publication style. We can send plotting style parameters into the <code class="docutils literal notranslate"><span class="pre">regplot()</span></code> function using keyword dictionaries.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -536,7 +535,8 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">style_name</span><span class="p">)</span>
 
 <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span>
-            <span class="n">scatter_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;facecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;linewidths&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;zorder&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">},</span>
+            <span class="n">scatter_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;facecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+                           <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;linewidths&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;zorder&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">},</span>
             <span class="n">line_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;linewidth&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;zorder&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span> 
             <span class="n">ci</span> <span class="o">=</span> <span class="mf">95.5</span><span class="p">,</span> <span class="c1"># sigma = 2</span>
             <span class="p">)</span>
@@ -551,17 +551,17 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/97af7e190017780abf3c8e36227b4ffa70d093516a8daab53b9cb353943455c9.png" src="_images/97af7e190017780abf3c8e36227b4ffa70d093516a8daab53b9cb353943455c9.png" />
+<img alt="_images/7a1614d2f07e9b3f30986a7b536de386d39ef1083197226500b346543df8f62d.png" src="_images/7a1614d2f07e9b3f30986a7b536de386d39ef1083197226500b346543df8f62d.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="the-bootstrap">
-<h2>The Bootstrap<a class="headerlink" href="#the-bootstrap" title="Permalink to this heading">#</a></h2>
+<h2>The Bootstrap<a class="headerlink" href="#the-bootstrap" title="Link to this heading">#</a></h2>
 <p>The code below will sample points from the data with replacement. That means that in a list of 1-2-3-4-5 we might sample 1-3-4-1-2. Note that we might have two or three points repeated (or even, in rare instances, all five being the same selected point). We curve fit the resampled data and collect the slope, intercept, calculated <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> &amp; <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> values in lists. We also calculate the predicted lines based on the curve fit in each case and store the predicted values in lists as well.</p>
-<p>After we run the analysis many times (2000 times in the example below) we can select the values that border the confidence interval in each list. If we are interested in 68% confidence (one standard deviation or <span class="math notranslate nohighlight">\(1\sigma\)</span>) then we select the value at the <span class="math notranslate nohighlight">\(16^{th}\)</span> percentile (lower limit of confidence) and the value at the <span class="math notranslate nohighlight">\(84^{th}\)</span> percentile (a span of <span class="math notranslate nohighlight">\(34\%\)</span> on either side of the median, a band than contains the central <span class="math notranslate nohighlight">\(68\%\)</span> of the answers.)</p>
-<p>We can query the lists of line fit and calculated thermodynamic parameters and get the range that encloses the middle <span class="math notranslate nohighlight">\(68\%\)</span> of the possible results. How does this compare to the traditional line fit and calculated standard deviation? Note that the upper and lower limits are not symmetrical around the mean value. the bootstrap reveals a more “real world” confidence interval, and yet it is not greatly different that the standard deviation determined using a standard curve fit.</p>
-<p>Observe that when you run the bootstrap process again, the values change slightly. Each run is a different set of random resamplings. In a system where we have few data points we end up with sets of repeating lines. This can result in jumps in the percentile values depending on hoe many times these lines repeat. The bootstrap is a poor choice for limited data sets, however this can be addressed as we soon shall see.</p>
+<p>After we run the analysis many times (2000 times in the example below) we can select the values that enclose the confidence interval in each list. If we are interested in 68% confidence (one standard deviation or <span class="math notranslate nohighlight">\(1\sigma\)</span>) then we select the value at the <span class="math notranslate nohighlight">\(16^{th}\)</span> percentile (lower limit of confidence) and the value at the <span class="math notranslate nohighlight">\(84^{th}\)</span> percentile (a span of <span class="math notranslate nohighlight">\(34\%\)</span> on either side of the median and contains the central <span class="math notranslate nohighlight">\(68\%\)</span> of the answers.)</p>
+<p>We can query the lists of calculated thermodynamic parameters and get the range that encloses the middle <span class="math notranslate nohighlight">\(68\%\)</span> of the possible results. How does this compare to the traditional line fit and calculated standard deviation? Note that the upper and lower limits are not symmetrical around the mean value. The bootstrap reveals a more “real world” confidence interval, and yet it is not greatly different that the standard deviation determined using a standard curve fit.</p>
+<p>Observe that when you run the bootstrap process again, the values change slightly. Each run is a different set of random resamplings. In a system where we have few data points we end up with sets of repeating lines. This can result in jumps in the percentile values depending on how many times these lines repeat. The bootstrap is a poor choice for limited data sets, however this can be addressed as we soon shall see.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -613,28 +613,28 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <span class="c1">## Bootstrap - Calculate a list of line fits for resampled data sets.</span>
 <span class="c1">#######################################</span>
 
-<span class="n">slope_list</span> <span class="o">=</span> <span class="p">[]</span>               <span class="c1"># A list of slopes from each iteration of bootstrap</span>
-<span class="n">intercept_list</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># A list of intercepts</span>
+<span class="n">slope_list</span> <span class="o">=</span> <span class="p">[]</span>         <span class="c1"># A list of slopes from each iteration of bootstrap</span>
+<span class="n">intercept_list</span> <span class="o">=</span> <span class="p">[]</span>     <span class="c1"># A list of intercepts</span>
 
 <span class="n">dS_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">dH_list</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">x_for_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># Array of x values </span>
-<span class="n">x0_for_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>          <span class="c1"># Array of x values starting at zero</span>
+<span class="n">x0_for_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># Array of x values starting at zero</span>
 
-<span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>                   <span class="c1"># A list of predicted values at each data point</span>
-<span class="n">y_for_ci</span> <span class="o">=</span> <span class="p">[]</span>                 <span class="c1"># A list of sets of predicted values at each x point                     </span>
-<span class="n">y0_for_ci</span> <span class="o">=</span> <span class="p">[]</span>                <span class="c1"># A list of sets of predicted values at each x0 point</span>
+<span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>              <span class="c1"># A list of predicted values at each data point</span>
+<span class="n">y_for_ci</span> <span class="o">=</span> <span class="p">[]</span>            <span class="c1"># A list of sets of predicted values at each x point                     </span>
+<span class="n">y0_for_ci</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># A list of sets of predicted values at each x0 point</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">boot_n</span><span class="p">):</span>
-    <span class="n">pick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>     <span class="c1"># Random list of data points to pick</span>
+    <span class="n">pick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="c1"># Random data pick</span>
 
-    <span class="n">x_s</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>             <span class="c1"># Get x and y values from random pick</span>
+    <span class="n">x_s</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>             <span class="c1"># Get x and y values from random data pick</span>
     <span class="n">y_s</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span> 
     <span class="n">y_err_s</span> <span class="o">=</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>
 
-    <span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x_s</span><span class="p">,</span> <span class="n">y_s</span><span class="p">,</span>     <span class="c1"># Curve fit the resampled data</span>
-<span class="c1">#                          sigma = y_err        # Should we include weights?</span>
+    <span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x_s</span><span class="p">,</span> <span class="n">y_s</span><span class="p">,</span>   <span class="c1"># Curve fit the resampled data</span>
+<span class="c1">#                          sigma = y_err      # Should we include weights?</span>
                           <span class="p">)</span>    
     <span class="p">[</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">]</span> <span class="o">=</span> <span class="n">popt</span>
     <span class="n">slope_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
@@ -644,9 +644,9 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
     <span class="n">dH_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dH</span><span class="p">)</span>
     <span class="n">dS_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dS</span><span class="p">)</span>
 
-    <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>            <span class="c1"># Predict y at data points and add to list</span>
-    <span class="n">y_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>   <span class="c1"># Predict y along data range and add to list</span>
-    <span class="n">y0_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x0_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span> <span class="c1"># Predict y from zero to data range and add to list</span>
+    <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>            <span class="c1"># Predict y at data points </span>
+    <span class="n">y_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>   <span class="c1"># Predict y along data range </span>
+    <span class="n">y0_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x0_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span> <span class="c1"># Predict y from 0 to data range </span>
 
 <span class="c1"># Convert these lists of arrays to arrays of arrays (a matrix)</span>
 <span class="n">y_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_list</span><span class="p">)</span>
@@ -671,11 +671,11 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <span class="c1">## Traditional Curve Fit for Comparison</span>
 <span class="c1">#######################################</span>
 
-<span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>                        <span class="c1"># Final curve fit of original data</span>
-<span class="c1">#                      sigma = y_err, absolute_sigma=False  # Include st_devs for y data in calculations</span>
+<span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>         <span class="c1"># curve fit of original data</span>
+<span class="c1">#                      sigma = y_err, absolute_sigma=False  # Include exp err</span>
                      <span class="p">)</span>
 
-<span class="c1"># Create new ufloat objects from returned parameters and covariance matrix results</span>
+<span class="c1"># Create new ufloat objects from returned parameters and covariance matrix </span>
 <span class="p">[</span><span class="n">slope_u</span><span class="p">,</span> <span class="n">intercept_u</span><span class="p">]</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>
 
 <span class="c1">#######################################</span>
@@ -690,7 +690,9 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <span class="n">median_slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope range is </span><span class="si">{</span><span class="n">top_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">bot_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median slope in bootstrap population is </span><span class="si">{</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_slope</span><span class="o">-</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_slope</span><span class="o">-</span><span class="n">bot_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median slope in bootstrap population is </span><span class="si">{</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> + &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_slope</span><span class="o">-</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_slope</span><span class="o">-</span><span class="n">bot_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for slope is </span><span class="si">{</span><span class="n">slope_u</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -700,7 +702,10 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <span class="n">median_intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept range is </span><span class="si">{</span><span class="n">top_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">bot_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median intercept in bootstrap population is </span><span class="si">{</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_intercept</span><span class="o">-</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_intercept</span><span class="o">-</span><span class="n">bot_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median intercept in bootstrap population is </span><span class="si">{</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_intercept</span><span class="o">-</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">median_intercept</span><span class="o">-</span><span class="n">bot_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for intercept is </span><span class="si">{</span><span class="n">intercept_u</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -712,7 +717,9 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <span class="n">median_dH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;delta H range is </span><span class="si">{</span><span class="n">bot_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">top_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta H in bootstrap population is </span><span class="si">{</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_dH</span><span class="o">-</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dH</span><span class="o">-</span><span class="n">bot_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta H in bootstrap population is </span><span class="si">{</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + &quot;</span> 
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_dH</span><span class="o">-</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dH</span><span class="o">-</span><span class="n">bot_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for delta H is </span><span class="si">{</span><span class="n">dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -722,7 +729,8 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <span class="n">median_dS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;delta S range is </span><span class="si">{</span><span class="n">bot_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">top_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta S in bootstrap population is </span><span class="si">{</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_dS</span><span class="o">-</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dS</span><span class="o">-</span><span class="n">bot_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta S in bootstrap population is </span><span class="si">{</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_dS</span><span class="o">-</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dS</span><span class="o">-</span><span class="n">bot_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for delta S is </span><span class="si">{</span><span class="n">dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -734,20 +742,20 @@ Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/pyt
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 68.3%
 
-slope range is -5158.7 to -5852.7
-median slope in bootstrap population is -5602.3 + 443.7 - 250.3
+slope range is -5158.7 to -5757.1
+median slope in bootstrap population is -5579.6 + 421.0 - 177.4
 best fit value for slope is -5560.1+/-249.1
 
-intercept range is 16.34 to 14.06
-median intercept in bootstrap population is 15.50 + 0.84 - 1.44
+intercept range is 16.00 to 14.06
+median intercept in bootstrap population is 15.43 + 0.57 - 1.38
 best fit value for intercept is 15.37+/-0.82
 
-delta H range is 42891.52 to 48661.72
-median delta H in bootstrap population is 46580.40 + 2081.33 - 3688.88
+delta H range is 42891.52 to 47866.87
+median delta H in bootstrap population is 46391.72 + 1475.15 - 3500.20
 best fit value for delta H is 46229.03+/-2070.94
 
-delta S range is -80.67 to -61.69
-median delta S in bootstrap population is -68.69 + 7.00 - 11.99
+delta S range is -80.67 to -64.51
+median delta S in bootstrap population is -69.22 + 4.71 - 11.45
 best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
@@ -755,7 +763,7 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </section>
 <section id="plotting-the-bootstrap-runs">
-<h2>Plotting the Bootstrap Runs<a class="headerlink" href="#plotting-the-bootstrap-runs" title="Permalink to this heading">#</a></h2>
+<h2>Plotting the Bootstrap Runs<a class="headerlink" href="#plotting-the-bootstrap-runs" title="Link to this heading">#</a></h2>
 <p>Let us plot all the curve fits fom the bootstrap. Thats 2000 lines on a plot. I will use transparent lines (5% visible or alpha = 0.05) so that only the areas of the plot with many lines will “stack up” and be visible. The code below will plot the bootstrap data.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -833,7 +841,7 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/44d41e52c52acbf0fde079684fd6faa4755d4963a862dac8900b4df82a88d9f2.png" src="_images/44d41e52c52acbf0fde079684fd6faa4755d4963a862dac8900b4df82a88d9f2.png" />
+<img alt="_images/10dd04da3585bb8c7c6100865da46987a53e5b5af89a39bac16b61cd5e29d4bb.png" src="_images/10dd04da3585bb8c7c6100865da46987a53e5b5af89a39bac16b61cd5e29d4bb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -890,11 +898,11 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4909dc4f24f2902bbd72633957950b76ce17375a9bbb383395478bb229df6ef7.png" src="_images/4909dc4f24f2902bbd72633957950b76ce17375a9bbb383395478bb229df6ef7.png" />
+<img alt="_images/9c47eb7625ccc00794a61ef9935144730428cd332cd3ebdcf7e345ad8d2adc7c.png" src="_images/9c47eb7625ccc00794a61ef9935144730428cd332cd3ebdcf7e345ad8d2adc7c.png" />
 </div>
 </div>
 <section id="checking-the-distribution">
-<h3>Checking the Distribution<a class="headerlink" href="#checking-the-distribution" title="Permalink to this heading">#</a></h3>
+<h3>Checking the Distribution<a class="headerlink" href="#checking-the-distribution" title="Link to this heading">#</a></h3>
 <p>We can check the quality of our bootstrap process by plotting the values for a give parameter. Let us check the calculated <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> value. We will plot the values and we observe that there are several discrete values that we bounce around between rather than a smooth random. We  will also plot the distribution sorted from lowest values to highest and compare that to a distribution generated by a Gaussian probability curve.</p>
 <p>We can see the “steps” that are the result of repeated discrete values. The low number of points means that there are many repeats of the same resample.</p>
 <div class="cell tag_hide-input docutils container">
@@ -984,10 +992,13 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">percentile68right</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">percentile68left</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;68%&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
 
-<span class="c1">#ax[1].axhline(np.percentile(y1,50-conf_/2), color=&quot;blue&quot;, linewidth = 0.5, zorder = 0)</span>
-<span class="c1">#ax[1].axhline(np.percentile(y1,50+conf_/2), color=&quot;blue&quot;, linewidth = 0.5, zorder = 0)</span>
+<span class="c1">#ax[1].axhline(np.percentile(y1,50-conf_/2), color=&quot;blue&quot;, </span>
+<span class="c1">#              linewidth = 0.5, zorder = 0)</span>
+<span class="c1">#ax[1].axhline(np.percentile(y1,50+conf_/2), color=&quot;blue&quot;, </span>
+<span class="c1">#              linewidth = 0.5, zorder = 0)</span>
 
-<span class="n">corners_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">percentile68left</span><span class="p">,</span> <span class="n">percentile68right</span><span class="p">,</span> <span class="n">percentile68right</span><span class="p">,</span> <span class="n">percentile68left</span><span class="p">]</span>
+<span class="n">corners_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">percentile68left</span><span class="p">,</span> <span class="n">percentile68right</span><span class="p">,</span> 
+             <span class="n">percentile68right</span><span class="p">,</span> <span class="n">percentile68left</span><span class="p">]</span>
 <span class="n">corners_y</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">-</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">+</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> 
              <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">+</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="mi">50</span><span class="o">-</span><span class="n">conf_</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span>
 
@@ -1003,8 +1014,10 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">percentile95right</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">percentile95left</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
 
-<span class="c1">#ax[1].axhline(np.percentile(y1,50-conf_/2), color=&quot;green&quot;, linewidth = 0.5, zorder = 0)</span>
-<span class="c1">#ax[1].axhline(np.percentile(y1,50+conf_/2), color=&quot;green&quot;, linewidth = 0.5, zorder = 0)</span>
+<span class="c1">#ax[1].axhline(np.percentile(y1,50-conf_/2), color=&quot;green&quot;, </span>
+<span class="c1">#              linewidth = 0.5, zorder = 0)</span>
+<span class="c1">#ax[1].axhline(np.percentile(y1,50+conf_/2), color=&quot;green&quot;, </span>
+<span class="c1">#              linewidth = 0.5, zorder = 0)</span>
 
 
 <span class="c1">#######################################</span>
@@ -1013,7 +1026,7 @@ best fit value for delta S is -69.80+/-6.84
 
 <span class="n">y_r_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">x1</span><span class="p">:</span>
-<span class="c1">#   y_r = np.random.normal(dS.n, dS.s)   ### smooth with gaussian error </span>
+<span class="c1">#   y_r = np.random.normal(dS.n, dS.s)         ### smooth with gaussian error </span>
     <span class="n">y_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>   <span class="c1">### smooth with gaussian error </span>
     <span class="n">y_r_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_r</span><span class="p">)</span>
 
@@ -1033,13 +1046,13 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/be0811742fccb6c6a25d14122ee06cdb31fa4a2cea05555dfe5d164cabfa68cc.png" src="_images/be0811742fccb6c6a25d14122ee06cdb31fa4a2cea05555dfe5d164cabfa68cc.png" />
+<img alt="_images/e710ce3ce210386f71c0e77e4463aa61e5e3901d417aa6927a47b7258e89d315.png" src="_images/e710ce3ce210386f71c0e77e4463aa61e5e3901d417aa6927a47b7258e89d315.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="smooth-bootstrap">
-<h2>Smooth Bootstrap<a class="headerlink" href="#smooth-bootstrap" title="Permalink to this heading">#</a></h2>
+<h2>Smooth Bootstrap<a class="headerlink" href="#smooth-bootstrap" title="Link to this heading">#</a></h2>
 <p>If we do not have a large data set the bootstrap will contain many identical values and a smooth distribution of values will not be possible. However we can create more values by applying error to the data points. The below code is ifdentical to the above except that we are applying a random Gaussian distribution function to each resamples y-value. We will use the standard deviations reported for each data points to define these errors.</p>
 <p>Observe how the distribuition of lines is now smoother. There should be a better consistency to the percentile confidence interval values as well.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1093,24 +1106,24 @@ best fit value for delta S is -69.80+/-6.84
 <span class="c1">## Bootstrap - Calculate a list of line fits for resampled data sets.</span>
 <span class="c1">#######################################</span>
 
-<span class="n">slope_list</span> <span class="o">=</span> <span class="p">[]</span>               <span class="c1"># A list of slopes from each iteration of bootstrap</span>
-<span class="n">intercept_list</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># A list of intercepts</span>
+<span class="n">slope_list</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># A list of slopes from each iteration of bootstrap</span>
+<span class="n">intercept_list</span> <span class="o">=</span> <span class="p">[]</span>       <span class="c1"># A list of intercepts</span>
 
 <span class="n">dS_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">dH_list</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">x_for_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># Array of x values </span>
-<span class="n">x0_for_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>          <span class="c1"># Array of x values starting at zero</span>
+<span class="n">x0_for_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># Array of x values starting at zero</span>
 
-<span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>                   <span class="c1"># A list of predicted values at each data point</span>
-<span class="n">y_for_ci</span> <span class="o">=</span> <span class="p">[]</span>                 <span class="c1"># A list of sets of predicted values at each x point                     </span>
-<span class="n">y0_for_ci</span> <span class="o">=</span> <span class="p">[]</span>                <span class="c1"># A list of sets of predicted values at each x0 point</span>
+<span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>               <span class="c1"># A list of predicted values at each data point</span>
+<span class="n">y_for_ci</span> <span class="o">=</span> <span class="p">[]</span>             <span class="c1"># A list of sets of predicted values at each x point                     </span>
+<span class="n">y0_for_ci</span> <span class="o">=</span> <span class="p">[]</span>            <span class="c1"># A list of sets of predicted values at each x0 point</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">boot_n</span><span class="p">):</span>
-    <span class="n">pick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>     <span class="c1"># Random list of data points to pick</span>
+    <span class="n">pick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="c1"># Random data pick</span>
 
     <span class="n">x_s</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>             <span class="c1"># Get x and y values from random pick</span>
-    <span class="n">y_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">])</span>   <span class="c1">### smooth with gaussian error </span>
+    <span class="n">y_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">])</span>   <span class="c1"># smooth with gaussian error </span>
     <span class="n">y_err_s</span> <span class="o">=</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>
 
     <span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x_s</span><span class="p">,</span> <span class="n">y_s</span><span class="p">)</span>    <span class="c1"># Curve fit the resampled data</span>
@@ -1123,9 +1136,9 @@ best fit value for delta S is -69.80+/-6.84
     <span class="n">dH_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dH</span><span class="p">)</span>
     <span class="n">dS_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dS</span><span class="p">)</span>
 
-    <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>            <span class="c1"># Predict y at data points and add to list</span>
-    <span class="n">y_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>   <span class="c1"># Predict y along data range and add to list</span>
-    <span class="n">y0_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x0_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span> <span class="c1"># Predict y from zero to data range and add to list</span>
+    <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>            <span class="c1"># Predict y at data points </span>
+    <span class="n">y_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>   <span class="c1"># Predict y along data range </span>
+    <span class="n">y0_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x0_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span> <span class="c1"># Predict y from 0 to data range </span>
 
 <span class="c1"># Convert these lists of arrays to arrays of arrays (a matrix)</span>
 <span class="n">y_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_list</span><span class="p">)</span>
@@ -1151,11 +1164,11 @@ best fit value for delta S is -69.80+/-6.84
 <span class="c1">## Traditional Curve Fit for Comparison</span>
 <span class="c1">#######################################</span>
 
-<span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>                        <span class="c1"># Final curve fit of original data</span>
-           <span class="c1">#           sigma = y_err, absolute_sigma=False  # Include st_devs for y data in calculations</span>
+<span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>     <span class="c1"># Final curve fit of original data</span>
+           <span class="c1">#           sigma = y_err, absolute_sigma=False  # Include exp err</span>
                      <span class="p">)</span>
 
-<span class="c1"># Create new ufloat objects from returned parameters and covariance matrix results</span>
+<span class="c1"># Create new ufloat objects from returned parameters and covariance matrix </span>
 <span class="p">[</span><span class="n">slope_u</span><span class="p">,</span> <span class="n">intercept_u</span><span class="p">]</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>
 
 <span class="c1">#######################################</span>
@@ -1170,7 +1183,9 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">median_slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope range is </span><span class="si">{</span><span class="n">top_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">bot_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median slope in bootstrap population is </span><span class="si">{</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_slope</span><span class="o">-</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_slope</span><span class="o">-</span><span class="n">bot_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median slope in bootstrap population is </span><span class="si">{</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> + &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_slope</span><span class="o">-</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_slope</span><span class="o">-</span><span class="n">bot_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for slope is </span><span class="si">{</span><span class="n">slope_u</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -1180,7 +1195,10 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">median_intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept range is </span><span class="si">{</span><span class="n">top_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">bot_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median intercept in bootstrap population is </span><span class="si">{</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_intercept</span><span class="o">-</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_intercept</span><span class="o">-</span><span class="n">bot_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median intercept in bootstrap population is </span><span class="si">{</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_intercept</span><span class="o">-</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">median_intercept</span><span class="o">-</span><span class="n">bot_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for intercept is </span><span class="si">{</span><span class="n">intercept_u</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -1192,7 +1210,9 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">median_dH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;delta H range is </span><span class="si">{</span><span class="n">bot_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">top_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta H in bootstrap population is </span><span class="si">{</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_dH</span><span class="o">-</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dH</span><span class="o">-</span><span class="n">bot_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta H in bootstrap population is </span><span class="si">{</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + &quot;</span> 
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_dH</span><span class="o">-</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dH</span><span class="o">-</span><span class="n">bot_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for delta H is </span><span class="si">{</span><span class="n">dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -1202,9 +1222,11 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">median_dS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;delta S range is </span><span class="si">{</span><span class="n">bot_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">top_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta S in bootstrap population is </span><span class="si">{</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_dS</span><span class="o">-</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dS</span><span class="o">-</span><span class="n">bot_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta S in bootstrap population is </span><span class="si">{</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_dS</span><span class="o">-</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dS</span><span class="o">-</span><span class="n">bot_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for delta S is </span><span class="si">{</span><span class="n">dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
+
 
 <span class="n">bs_smooth</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -1277,30 +1299,30 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_0/pb9y62rd59n_3vs7rbl1bndm0000gn/T/ipykernel_70265/2011354300.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_0/pb9y62rd59n_3vs7rbl1bndm0000gn/T/ipykernel_6043/78441822.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
   popt,pcov = curve_fit(linear, x_s, y_s)    # Curve fit the resampled data
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 68.3%
 
-slope range is -5149.5 to -5866.6
-median slope in bootstrap population is -5554.7 + 405.1 - 311.9
+slope range is -5139.6 to -5868.3
+median slope in bootstrap population is -5545.0 + 405.4 - 323.3
 best fit value for slope is -5560.1+/-249.1
 
-intercept range is 16.38 to 14.03
-median intercept in bootstrap population is 15.34 + 1.03 - 1.31
+intercept range is 16.39 to 14.00
+median intercept in bootstrap population is 15.32 + 1.07 - 1.32
 best fit value for intercept is 15.37+/-0.82
 
-delta H range is 42815.66 to 48777.90
-median delta H in bootstrap population is 46184.25 + 2593.64 - 3368.59
+delta H range is 42733.08 to 48792.12
+median delta H in bootstrap population is 46103.78 + 2688.35 - 3370.70
 best fit value for delta H is 46229.03+/-2070.94
 
-delta S range is -80.92 to -61.40
-median delta S in bootstrap population is -70.00 + 8.60 - 10.92
+delta S range is -81.17 to -61.30
+median delta S in bootstrap population is -70.20 + 8.90 - 10.96
 best fit value for delta S is -69.80+/-6.84
 </pre></div>
 </div>
-<img alt="_images/7700c86e2134a7b9e86a7b5c55c90318c2eea1947b52d2e39d490893fc95816e.png" src="_images/7700c86e2134a7b9e86a7b5c55c90318c2eea1947b52d2e39d490893fc95816e.png" />
+<img alt="_images/b1c401ac5cef4fe5dd579b223b03eabe8741724d034f6d889a484309429bc801.png" src="_images/b1c401ac5cef4fe5dd579b223b03eabe8741724d034f6d889a484309429bc801.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1358,11 +1380,11 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f5cefcc163a6b910492fa34dc830cf5b2e395c104182edc6f04bc748557167b9.png" src="_images/f5cefcc163a6b910492fa34dc830cf5b2e395c104182edc6f04bc748557167b9.png" />
+<img alt="_images/7218c4e86b52427716c298c989a747388f9df024d41edfebccd68415724e280d.png" src="_images/7218c4e86b52427716c298c989a747388f9df024d41edfebccd68415724e280d.png" />
 </div>
 </div>
 <section id="checking-the-smoothness">
-<h3>Checking the Smoothness<a class="headerlink" href="#checking-the-smoothness" title="Permalink to this heading">#</a></h3>
+<h3>Checking the Smoothness<a class="headerlink" href="#checking-the-smoothness" title="Link to this heading">#</a></h3>
 <p>How is our distribution of results? Does it approach a random normal distribution? Let us see.</p>
 <p>We observe that the distribution is more evenly spread (smoother) and the values follow a curve that resemble a gaussian distribution.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1470,13 +1492,13 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/6f2df4b8392c5ed8e4337ca9951214b14f2135bc6fa6d40fab83c3ce1c72ce3a.png" src="_images/6f2df4b8392c5ed8e4337ca9951214b14f2135bc6fa6d40fab83c3ce1c72ce3a.png" />
+<img alt="_images/0032f7ca96a4db7090b5feb99715cbf0983a786cbf6ae6f5406204d01417f44a.png" src="_images/0032f7ca96a4db7090b5feb99715cbf0983a786cbf6ae6f5406204d01417f44a.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="plotting-a-confidence-band">
-<h2>Plotting a Confidence Band<a class="headerlink" href="#plotting-a-confidence-band" title="Permalink to this heading">#</a></h2>
+<h2>Plotting a Confidence Band<a class="headerlink" href="#plotting-a-confidence-band" title="Link to this heading">#</a></h2>
 <p>We have a set of thousands of lines plotted using the slope and intercept from the resampled and smoothed (by Gaussian error) data set. We have determined the confidence interval for the fit parameters and calculated thermodynamic paraters. Now lets plot the region of the plot that contains a band that encompasses the confidence interval for predicted y-values. All we need to do is get the percentile limits for the upper and lower confidence interval at every point that the prediction was calculated and then plot this is a filled area.</p>
 <p>Consider the code below for plotting this band.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1530,24 +1552,24 @@ best fit value for delta S is -69.80+/-6.84
 <span class="c1">## Bootstrap - Calculate a list of line fits for resampled data sets.</span>
 <span class="c1">#######################################</span>
 
-<span class="n">slope_list</span> <span class="o">=</span> <span class="p">[]</span>               <span class="c1"># A list of slopes from each iteration of bootstrap</span>
-<span class="n">intercept_list</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># A list of intercepts</span>
+<span class="n">slope_list</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># A list of slopes from each iteration of bootstrap</span>
+<span class="n">intercept_list</span> <span class="o">=</span> <span class="p">[]</span>       <span class="c1"># A list of intercepts</span>
 
 <span class="n">dS_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">dH_list</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">x_for_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># Array of x values </span>
-<span class="n">x0_for_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>          <span class="c1"># Array of x values starting at zero</span>
+<span class="n">x0_for_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># Array of x values starting at zero</span>
 
-<span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>                   <span class="c1"># A list of predicted values at each data point</span>
-<span class="n">y_for_ci</span> <span class="o">=</span> <span class="p">[]</span>                 <span class="c1"># A list of sets of predicted values at each x point                     </span>
-<span class="n">y0_for_ci</span> <span class="o">=</span> <span class="p">[]</span>                <span class="c1"># A list of sets of predicted values at each x0 point</span>
+<span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>             <span class="c1"># A list of predicted values at each data point</span>
+<span class="n">y_for_ci</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># A list of sets of predicted values at each x point                     </span>
+<span class="n">y0_for_ci</span> <span class="o">=</span> <span class="p">[]</span>          <span class="c1"># A list of sets of predicted values at each x0 point</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">boot_n</span><span class="p">):</span>
-    <span class="n">pick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>     <span class="c1"># Random list of data points to pick</span>
+    <span class="n">pick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>  <span class="c1"># Random data pick</span>
 
     <span class="n">x_s</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>             <span class="c1"># Get x and y values from random pick</span>
-    <span class="n">y_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">])</span>   <span class="c1">### smooth with gaussian error </span>
+    <span class="n">y_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">])</span>   <span class="c1"># smooth with gaussian error </span>
     <span class="n">y_err_s</span> <span class="o">=</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>
 
     <span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x_s</span><span class="p">,</span> <span class="n">y_s</span><span class="p">)</span>    <span class="c1"># Curve fit the resampled data</span>
@@ -1560,9 +1582,9 @@ best fit value for delta S is -69.80+/-6.84
     <span class="n">dH_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dH</span><span class="p">)</span>
     <span class="n">dS_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dS</span><span class="p">)</span>
 
-    <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>            <span class="c1"># Predict y at data points and add to list</span>
-    <span class="n">y_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>   <span class="c1"># Predict y along data range and add to list</span>
-    <span class="n">y0_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x0_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span> <span class="c1"># Predict y from zero to data range and add to list</span>
+    <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>            <span class="c1"># Predict y at data points </span>
+    <span class="n">y_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span>   <span class="c1"># Predict y along data range </span>
+    <span class="n">y0_for_ci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear</span><span class="p">(</span><span class="n">x0_for_ci</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span> <span class="c1"># Predict y from 0 to data range </span>
 
 <span class="c1"># Convert these lists of arrays to arrays of arrays (a matrix)</span>
 <span class="n">y_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_list</span><span class="p">)</span>
@@ -1587,11 +1609,11 @@ best fit value for delta S is -69.80+/-6.84
 <span class="c1">## Traditional Curve Fit for Comparison</span>
 <span class="c1">#######################################</span>
 
-<span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>                        <span class="c1"># Final curve fit of original data</span>
-                      <span class="n">sigma</span> <span class="o">=</span> <span class="n">y_err</span><span class="p">,</span> <span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">False</span>  <span class="c1"># Include st_devs for y data in calculations</span>
+<span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>        <span class="c1"># Final curve fit of original data</span>
+                      <span class="n">sigma</span> <span class="o">=</span> <span class="n">y_err</span><span class="p">,</span> <span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">False</span>  <span class="c1"># Include exp err</span>
                      <span class="p">)</span>
 
-<span class="c1"># Create new ufloat objects from returned parameters and covariance matrix results</span>
+<span class="c1"># Create new ufloat objects from returned parameters and covariance matrix </span>
 <span class="p">[</span><span class="n">slope_u</span><span class="p">,</span> <span class="n">intercept_u</span><span class="p">]</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>
 
 <span class="c1">#######################################</span>
@@ -1606,7 +1628,9 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">median_slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope range is </span><span class="si">{</span><span class="n">top_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">bot_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median slope in bootstrap population is </span><span class="si">{</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_slope</span><span class="o">-</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_slope</span><span class="o">-</span><span class="n">bot_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median slope in bootstrap population is </span><span class="si">{</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> + &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_slope</span><span class="o">-</span><span class="n">median_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_slope</span><span class="o">-</span><span class="n">bot_slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for slope is </span><span class="si">{</span><span class="n">slope_u</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -1616,7 +1640,10 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">median_intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept range is </span><span class="si">{</span><span class="n">top_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">bot_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median intercept in bootstrap population is </span><span class="si">{</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_intercept</span><span class="o">-</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_intercept</span><span class="o">-</span><span class="n">bot_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median intercept in bootstrap population is </span><span class="si">{</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_intercept</span><span class="o">-</span><span class="n">median_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">median_intercept</span><span class="o">-</span><span class="n">bot_intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for intercept is </span><span class="si">{</span><span class="n">intercept_u</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -1628,7 +1655,9 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">median_dH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;delta H range is </span><span class="si">{</span><span class="n">bot_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">top_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta H in bootstrap population is </span><span class="si">{</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_dH</span><span class="o">-</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dH</span><span class="o">-</span><span class="n">bot_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta H in bootstrap population is </span><span class="si">{</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + &quot;</span> 
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_dH</span><span class="o">-</span><span class="n">median_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dH</span><span class="o">-</span><span class="n">bot_dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for delta H is </span><span class="si">{</span><span class="n">dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
@@ -1638,10 +1667,10 @@ best fit value for delta S is -69.80+/-6.84
 <span class="n">median_dS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;delta S range is </span><span class="si">{</span><span class="n">bot_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">top_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta S in bootstrap population is </span><span class="si">{</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">top_dS</span><span class="o">-</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dS</span><span class="o">-</span><span class="n">bot_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median delta S in bootstrap population is </span><span class="si">{</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> + &quot;</span>
+      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">top_dS</span><span class="o">-</span><span class="n">median_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">median_dS</span><span class="o">-</span><span class="n">bot_dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best fit value for delta S is </span><span class="si">{</span><span class="n">dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
-
 
 <span class="c1">#######################################</span>
 <span class="c1">### Create plot</span>
@@ -1738,30 +1767,30 @@ best fit value for delta S is -69.80+/-6.84
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_0/pb9y62rd59n_3vs7rbl1bndm0000gn/T/ipykernel_70265/1449304134.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_0/pb9y62rd59n_3vs7rbl1bndm0000gn/T/ipykernel_6043/2884026688.py:65: OptimizeWarning: Covariance of the parameters could not be estimated
   popt,pcov = curve_fit(linear, x_s, y_s)    # Curve fit the resampled data
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence level = 68.3%
 
-slope range is -5154.6 to -5877.5
-median slope in bootstrap population is -5559.5 + 404.9 - 318.0
+slope range is -5151.2 to -5856.0
+median slope in bootstrap population is -5559.4 + 408.3 - 296.5
 best fit value for slope is -5545.9+/-277.8
 
-intercept range is 16.42 to 14.05
-median intercept in bootstrap population is 15.36 + 1.05 - 1.31
+intercept range is 16.34 to 14.02
+median intercept in bootstrap population is 15.36 + 0.97 - 1.34
 best fit value for intercept is 15.31+/-0.92
 
-delta H range is 42858.01 to 48868.51
-median delta H in bootstrap population is 46224.24 + 2644.27 - 3366.23
+delta H range is 42829.15 to 48689.37
+median delta H in bootstrap population is 46223.73 + 2465.65 - 3394.57
 best fit value for delta H is 46110.87+/-2309.56
 
-delta S range is -80.74 to -61.06
-median delta S in bootstrap population is -69.81 + 8.75 - 10.93
+delta S range is -80.95 to -61.73
+median delta S in bootstrap population is -69.82 + 8.09 - 11.12
 best fit value for delta S is -70.24+/-7.63
 </pre></div>
 </div>
-<img alt="_images/01ebe2aaf872ebdcb60b01d01283b6a343abb24a849f937ecea76b0b2faa7a97.png" src="_images/01ebe2aaf872ebdcb60b01d01283b6a343abb24a849f937ecea76b0b2faa7a97.png" />
+<img alt="_images/03f16f641c83849c3f54b311c17d36d932d88b4f99a406b0582f420dfa44bfd2.png" src="_images/03f16f641c83849c3f54b311c17d36d932d88b4f99a406b0582f420dfa44bfd2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1833,12 +1862,12 @@ best fit value for delta S is -70.24+/-7.63
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/70ae04aca854bc626ac50920237c447a10aa452a6a278ba47bbb846b37a0d1a8.png" src="_images/70ae04aca854bc626ac50920237c447a10aa452a6a278ba47bbb846b37a0d1a8.png" />
+<img alt="_images/d20be63df69e8fabf85797702b0046df72ed7e058023f1e5b700d51a38aad996.png" src="_images/d20be63df69e8fabf85797702b0046df72ed7e058023f1e5b700d51a38aad996.png" />
 </div>
 </div>
 </section>
 <section id="bonus-gaussian-error">
-<h2>Bonus: Gaussian Error<a class="headerlink" href="#bonus-gaussian-error" title="Permalink to this heading">#</a></h2>
+<h2>Bonus: Gaussian Error<a class="headerlink" href="#bonus-gaussian-error" title="Link to this heading">#</a></h2>
 <p>The smooth bootstrap above used a function that applied Guassian error to our data point. We can visualize the distrubution of Guassian error using a “normal distribution” function. Consider the code below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1849,15 +1878,14 @@ best fit value for delta S is -70.24+/-7.63
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13f969070&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x121a6af50&gt;]
 </pre></div>
 </div>
-<img alt="_images/2b4fab54ac15b87fe05bda8a645f1b186fe81374524ccba46086b4ffe3c146d3.png" src="_images/2b4fab54ac15b87fe05bda8a645f1b186fe81374524ccba46086b4ffe3c146d3.png" />
 </div>
 </div>
 </section>
 <section id="bonus-bootstrap-step-by-step">
-<h2>Bonus: Bootstrap Step by Step<a class="headerlink" href="#bonus-bootstrap-step-by-step" title="Permalink to this heading">#</a></h2>
+<h2>Bonus: Bootstrap Step by Step<a class="headerlink" href="#bonus-bootstrap-step-by-step" title="Link to this heading">#</a></h2>
 <p>below is code that makes a plot of twelve example boostrap runs. In each a different set of the five data points, randomly chose with replacement, is presented. Imagine that this was the first twelve plots in the 2000 we ran for each bootstrap above.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1884,7 +1912,8 @@ best fit value for delta S is -70.24+/-7.63
     <span class="k">return</span> <span class="n">dH</span><span class="p">,</span> <span class="n">dS</span>
 
 <span class="k">def</span> <span class="nf">contact_sheet</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_err</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
-            <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="s2">&quot;6&quot;</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">,</span><span class="s2">&quot;8&quot;</span><span class="p">,</span><span class="s2">&quot;9&quot;</span><span class="p">,</span><span class="s2">&quot;10&quot;</span><span class="p">,</span><span class="s2">&quot;11&quot;</span><span class="p">,</span><span class="s2">&quot;12&quot;</span><span class="p">,</span><span class="s2">&quot;13&quot;</span><span class="p">,</span><span class="s2">&quot;14&quot;</span><span class="p">,</span><span class="s2">&quot;15&quot;</span><span class="p">]):</span>
+            <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="s2">&quot;6&quot;</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">,</span><span class="s2">&quot;8&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;9&quot;</span><span class="p">,</span><span class="s2">&quot;10&quot;</span><span class="p">,</span><span class="s2">&quot;11&quot;</span><span class="p">,</span><span class="s2">&quot;12&quot;</span><span class="p">,</span><span class="s2">&quot;13&quot;</span><span class="p">,</span><span class="s2">&quot;14&quot;</span><span class="p">,</span><span class="s2">&quot;15&quot;</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots 12 plots, one for each column of plate</span>
 <span class="sd">    </span>
 <span class="sd">    Will produce a &#39;contact sheet&#39; of plots, one for each plat column</span>
@@ -1910,13 +1939,13 @@ best fit value for delta S is -70.24+/-7.63
     <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">### set counter</span>
     <span class="k">for</span> <span class="n">plot_name</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
         
-        <span class="n">pick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>     <span class="c1"># Random list of data points to pick</span>
+        <span class="n">pick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>  <span class="c1"># Random data pick</span>
     
         <span class="n">x_s</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>             <span class="c1"># Get x and y values from random pick</span>
-        <span class="n">y_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">])</span>   <span class="c1">### smooth with gaussian error </span>
+        <span class="n">y_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">])</span> <span class="c1"># smooth with error </span>
         <span class="n">y_err_s</span> <span class="o">=</span> <span class="n">y_err</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>
     
-        <span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x_s</span><span class="p">,</span> <span class="n">y_s</span><span class="p">)</span>    <span class="c1"># Curve fit the resampled data</span>
+        <span class="n">popt</span><span class="p">,</span><span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x_s</span><span class="p">,</span> <span class="n">y_s</span><span class="p">)</span>  <span class="c1"># Curve fit the resampled data</span>
     
         <span class="p">[</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">]</span> <span class="o">=</span> <span class="n">popt</span>
 
@@ -1976,8 +2005,8 @@ best fit value for delta S is -70.24+/-7.63
     <span class="k">return</span><span class="p">()</span>
 
 
-<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>      <span class="c1">### switch off interactive display of plots. plt.show() needed to display a plot now</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>     <span class="c1">### resets the plot defaults so we always start in the same place</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>      <span class="c1"># switch off interactive display of plots. </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span> <span class="c1"># resets the plot defaults </span>
 <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
 
@@ -1990,11 +2019,11 @@ best fit value for delta S is -70.24+/-7.63
                         <span class="c1">#   sharey=True</span>
                            <span class="p">)</span>  
     
-    <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">293</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span> <span class="mi">303</span><span class="p">,</span> <span class="mi">308</span><span class="p">,</span> <span class="mi">313</span><span class="p">]</span>       <span class="c1"># list of temperatures</span>
-    <span class="n">k_obs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.6</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">,</span> <span class="mf">21.3</span><span class="p">,</span> <span class="mf">27.8</span><span class="p">]</span>  <span class="c1"># list of observe rate constants (s^-1)</span>
-    <span class="n">k_obs_err</span><span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span> <span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>  <span class="c1"># list of standard deviations for data</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">293</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span> <span class="mi">303</span><span class="p">,</span> <span class="mi">308</span><span class="p">,</span> <span class="mi">313</span><span class="p">]</span>      <span class="c1"># list of temperatures</span>
+    <span class="n">k_obs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.6</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">,</span> <span class="mf">21.3</span><span class="p">,</span> <span class="mf">27.8</span><span class="p">]</span> <span class="c1"># list of rate constants (s^-1)</span>
+    <span class="n">k_obs_err</span><span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span> <span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span> <span class="c1"># list of st. deviations for data</span>
     
-    <span class="c1">### Convert lists to numpy arrays (enables numpy math tools with these lists)</span>
+    <span class="c1">### Convert lists to numpy arrays (enables numpy math tools with lists)</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
     <span class="n">k_obs</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">uarray</span><span class="p">(</span><span class="n">k_obs</span><span class="p">,</span> <span class="n">k_obs_err</span><span class="p">)</span>   <span class="c1"># make an array of ufloat values</span>
     
@@ -2008,7 +2037,7 @@ best fit value for delta S is -70.24+/-7.63
     <span class="n">contact_sheet</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_err</span><span class="p">)</span>
     
     <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># otherwise the right y-label is slightly clipped</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/plot_contact_sheet&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.pdf&quot;</span><span class="p">)</span>     <span class="c1">### export the plot as this</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/plot_contact_sheet&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.pdf&quot;</span><span class="p">)</span>   <span class="c1">### export the plot </span>
     <span class="c1">#plt.show()                 ### display the plot in this notebook</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Plot saved as plots/plot_contact_sheet.pdf&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -2164,8 +2193,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

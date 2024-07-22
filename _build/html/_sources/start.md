@@ -6,6 +6,10 @@ Most science students have never really commanded a computer. Apps command you, 
 
 The goal of our program is to explore **chemistry**, not computer science. I will not be teaching **programming**. We will use programs that have been written and adapt them as needed. Along the way the basics of commanding a computer with written instructions will be revealed to you. 
 
+## In a Nutshell
+
+The presentation will start with an argument that you can **plot with *python* tools** just as effectively as in Microsoft excel. Then we will digress to plead that you never commit one of Excels greatest sins, using the smoothed line to connect data points. One of the most important ideas in data analysis is correct **propagation of experimental error**. You will be introduced to the **uncertainties package** in *Python* that will handle your errors for you. Finally we will explore using *Python* plotting tools and the uncertainties package to analyze kinetic data using the Erying equation. At every step the **self-documenting** nature of *Python* code will be emphasized.
+
 ## Steal it All
 
 We will use *Python* only as a **tool**. This book is intended to provide some basic **examples** of *Python* code for performing **calculations and visualizing data**. All code for the demonstrations in this presentation is already written for you. Steal it from me; steal it from the internet; give your code to friends. Always **give credit** where credit is due. Examine, play with, and **steal the code** in the interactive notebooks linked below. To learn, you must first imitate. Later, you will inovate. The journey from here to there is up to you.

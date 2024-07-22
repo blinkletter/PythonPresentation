@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Part 1: Quick Examples of Python &#8212; Python Presentation</title>
   
@@ -19,44 +18,46 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css?v=189edcc0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '01_PlotBasics';</script>
@@ -141,8 +142,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="start.html">
   
@@ -164,7 +163,7 @@
 
  <script>
  document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -227,9 +226,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -254,14 +253,14 @@
       
       <li><a href="https://colab.research.google.com/github/blinkletter/PythonPresentation/blob/main/./01_PlotBasics.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+   title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
+    <img src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -338,10 +337,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -349,14 +348,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -399,15 +398,15 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="part-1-quick-examples-of-python">
-<h1>Part 1: Quick Examples of Python<a class="headerlink" href="#part-1-quick-examples-of-python" title="Permalink to this heading">#</a></h1>
-<p>Here are some quick examples of calculations and data analysis in python. Examine the code. Make changes and see what they do.</p>
+<h1>Part 1: Quick Examples of Python<a class="headerlink" href="#part-1-quick-examples-of-python" title="Link to this heading">#</a></h1>
+<p>Here are some quick examples of calculations and data analysis in <em>Python</em>. Examine the code. Make changes and see what they do.</p>
 <section id="python-notebooks-and-documentation">
-<h2>Python Notebooks and Documentation<a class="headerlink" href="#python-notebooks-and-documentation" title="Permalink to this heading">#</a></h2>
-<p>Observe how every example can be documented with text and typeset math equations. But, most important of all, all the math in your data analysis is documented in the python code itself. Whatever you write in the text, the code is the truth. If you made an error, you will find it in the code. If you want to find out how a result was obtained from a data set, the method will be in the code.</p>
+<h2>Python Notebooks and Documentation<a class="headerlink" href="#python-notebooks-and-documentation" title="Link to this heading">#</a></h2>
+<p>Observe how every example can be documented with text and typeset math equations. Most important of all, the math in your data analysis is documented in the <em>Python</em> code itself. Whatever you may write in the text, the code is the truth. If you made an error, you will find it in the code. If you want to find out how a result was obtained from a data set, the method will be in the code.</p>
 <p>If you print this notebook out as a PDF file and include it in your thesis, all the code will be visible for inspection by those who follow.</p>
 </section>
 <section id="hookes-law">
-<h2>Hookes Law<a class="headerlink" href="#hookes-law" title="Permalink to this heading">#</a></h2>
+<h2>Hookes Law<a class="headerlink" href="#hookes-law" title="Link to this heading">#</a></h2>
 <p>Calculating the frequency of a C–H bond using Hooke’s law. $<span class="math notranslate nohighlight">\(\bar{\nu} = \frac{1}{2\pi c}\sqrt\frac{k}{\mu}\)</span><span class="math notranslate nohighlight">\( where \)</span>\mu<span class="math notranslate nohighlight">\( is the *reduced mass* of the two atoms with masses \)</span>m_1<span class="math notranslate nohighlight">\( and \)</span>m_2<span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(\mu = \frac{m_1m_2}{m_1+m_2}\)</span><span class="math notranslate nohighlight">\( and \)</span>k$ is the force constant for the vibration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -423,12 +422,10 @@ document.write(`
 <span class="n">m1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">N</span>   <span class="c1"># mass of an individual carbon atom</span>
 <span class="n">m2</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">/</span> <span class="n">N</span>  <span class="c1"># mass of an individual hydrogen atom</span>
 
+<span class="n">u</span> <span class="o">=</span> <span class="n">m1</span><span class="o">*</span><span class="n">m2</span> <span class="o">/</span> <span class="p">(</span><span class="n">m1</span><span class="o">+</span><span class="n">m2</span><span class="p">)</span>                  <span class="c1"># Reduced mass</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">u</span><span class="p">)</span>   <span class="c1"># Hooke&#39;s law</span>
 
-
-<span class="n">u</span> <span class="o">=</span> <span class="n">m1</span><span class="o">*</span><span class="n">m2</span> <span class="o">/</span> <span class="p">(</span><span class="n">m1</span><span class="o">+</span><span class="n">m2</span><span class="p">)</span>      <span class="c1"># reduced mass</span>
-<span class="n">v</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">u</span><span class="p">)</span>   <span class="c1"># Hooke&#39;s law</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The frequency is </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> cm^-1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The frequency is </span><span class="si">{</span><span class="n">freq</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> cm^-1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -440,13 +437,14 @@ document.write(`
 </div>
 </section>
 <section id="plotting-data">
-<h2>Plotting Data<a class="headerlink" href="#plotting-data" title="Permalink to this heading">#</a></h2>
-<p>The code below takes two lists of numbers, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, and plots them on a graph. The <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> command makes the plot, the rest are all style. Examine the code. Change things and break things. Have fun.</p>
+<h2>Plotting Data<a class="headerlink" href="#plotting-data" title="Link to this heading">#</a></h2>
+<p>The code below takes two lists of numbers, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, and plots them on a graph. The <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> command makes the plot, the rest are all style commands. Examine the code. Change things and break things. Have fun.</p>
 <p>The data is for the enzyme-catalyzed hydrolysis of p-nitrophenylacetate at pH 7.1 in the presence of an extract of pineapple juice. The enzyme <em>pectinmethylesterase</em>, EC 3.1.1.11, is most likely the source of the catalysis.</p>
 <p>Below is a simple plot. Observe all we need is <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> data and a plot command. Its that simple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># plotting tools</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>                   <span class="c1"># start with default styles</span>
 <span class="n">conc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>                  <span class="c1"># units are mM</span>
 <span class="n">rate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.3</span><span class="p">,</span> <span class="mf">20.7</span><span class="p">,</span> <span class="mf">24.1</span><span class="p">,</span> <span class="mf">34.3</span><span class="p">,</span> <span class="mf">39.6</span><span class="p">,</span> <span class="mf">48.2</span><span class="p">,</span> <span class="mf">47.0</span><span class="p">,</span> <span class="mf">55.2</span><span class="p">]</span>  <span class="c1"># units are uM/min</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conc</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>          <span class="c1"># plot the data as black &quot;k&quot; points &quot;o&quot;</span>
@@ -455,11 +453,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b28719b9de510bd71e3cc5493f371ada86a38d722997976b1375508685ef3446.png" src="_images/b28719b9de510bd71e3cc5493f371ada86a38d722997976b1375508685ef3446.png" />
+<img alt="_images/68c280db89c0439ad2249c6c722fed39f1fa6f477fd63446e5dff3215e4bcb98.png" src="_images/68c280db89c0439ad2249c6c722fed39f1fa6f477fd63446e5dff3215e4bcb98.png" />
 </div>
 </div>
 <section id="the-sample-plot-with-style">
-<h3>The Sample Plot with Style<a class="headerlink" href="#the-sample-plot-with-style" title="Permalink to this heading">#</a></h3>
+<h3>The Sample Plot with Style<a class="headerlink" href="#the-sample-plot-with-style" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment for Google Colab</span>
@@ -472,6 +470,7 @@ document.write(`
 <span class="n">rate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.3</span><span class="p">,</span> <span class="mf">20.7</span><span class="p">,</span> <span class="mf">24.1</span><span class="p">,</span> <span class="mf">34.3</span><span class="p">,</span> <span class="mf">39.6</span><span class="p">,</span> <span class="mf">48.2</span><span class="p">,</span> <span class="mf">47.0</span><span class="p">,</span> <span class="mf">55.2</span><span class="p">]</span>  <span class="c1"># units are uM/min</span>
 
 <span class="c1">##### PLOT COMMANDS #####</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>                   <span class="c1"># start with default styles</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  <span class="c1"># create a new blank plot</span>
 
@@ -493,13 +492,13 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: plots: File exists
 </pre></div>
 </div>
-<img alt="_images/0317b42530921e67efa502301ab0b7c2282983730ab02138ab28e4753a83eedc.png" src="_images/0317b42530921e67efa502301ab0b7c2282983730ab02138ab28e4753a83eedc.png" />
+<img alt="_images/38218d2f0187801c8fe5b9daddb19dc5b72f6ffe7bb054de78cd920db0bd2c73.png" src="_images/38218d2f0187801c8fe5b9daddb19dc5b72f6ffe7bb054de78cd920db0bd2c73.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="data-analysis-linear-regression">
-<h2>Data Analysis - Linear Regression<a class="headerlink" href="#data-analysis-linear-regression" title="Permalink to this heading">#</a></h2>
+<h2>Data Analysis - Linear Regression<a class="headerlink" href="#data-analysis-linear-regression" title="Link to this heading">#</a></h2>
 <p>A famous (or infamous) method for analyzing enzyme kinetics is the Lineweaver-Burke equation. It is a double-reciprocal plot. We must convert the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values to <span class="math notranslate nohighlight">\(1/x\)</span> and <span class="math notranslate nohighlight">\(1/y\)</span>. The <span class="math notranslate nohighlight">\(y\)</span>-intercept will be <span class="math notranslate nohighlight">\(1/V_{max}\)</span> and the slope will be <span class="math notranslate nohighlight">\(K_M/V_{max}\)</span>. From this plot we can determine these two kinetic parameters for the enzyme and its substrate.</p>
 <p>The code below demonstrates these calculations, the plot and a linear regression line fit to obtain the slope and intercept.</p>
 <div class="cell tag_hide-input docutils container">
@@ -533,6 +532,7 @@ document.write(`
 <span class="n">y_predicted</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>   <span class="c1"># calculate the predicted line </span>
 
 <span class="c1">##### PLOT COMMANDS #####</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>                   <span class="c1"># start with default styles</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>       <span class="c1"># create a new blank plot</span>
 
@@ -564,7 +564,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/f00f8eff7bfe2f0fb803ce78d6d20bc6a1755c470ff625e7251006127f2218c4.png" src="_images/f00f8eff7bfe2f0fb803ce78d6d20bc6a1755c470ff625e7251006127f2218c4.png" />
+<img alt="_images/f10c38de9e626a63abe09d3182fee3461deab3a12a9eab8a0b77c44b2c04e853.png" src="_images/f10c38de9e626a63abe09d3182fee3461deab3a12a9eab8a0b77c44b2c04e853.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The intercept is 0.0050
 The slope is 0.1227
 The RSQ is 0.96
@@ -576,8 +576,8 @@ The KM is 24.4023
 </div>
 </section>
 <section id="data-analysis-non-linear-regression">
-<h2>Data Analysis - Non-linear Regression<a class="headerlink" href="#data-analysis-non-linear-regression" title="Permalink to this heading">#</a></h2>
-<p>We can fit data to any function and so are not limited to linear fits. The <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> tool will optimized parameters to obtain the best fit of x and y to a function that you define.</p>
+<h2>Data Analysis - Non-linear Regression<a class="headerlink" href="#data-analysis-non-linear-regression" title="Link to this heading">#</a></h2>
+<p>We can fit data to any function and so are not limited to linear fits. The <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> tool will optimized parameters to obtain the best fit of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> to a function that you define.</p>
 <p>The code below demonstrates these calculations, the plot and a curve fit to obtain the best-fit parameters.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -617,6 +617,8 @@ The KM is 24.4023
 <span class="n">y_fit</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">KM</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">)</span>
 
 <span class="c1">##### PLOT COMMANDS #####</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>                   <span class="c1"># start with default styles</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>    <span class="c1"># create a new blank plot</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span> <span class="c1"># plot the predicted line as black &quot;k&quot; line &quot;-&quot;</span>
@@ -645,7 +647,7 @@ The KM is 24.4023
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/80532de0647f9dafc745bc22609c636e1e1b69fce1cc1483c818577406a35585.png" src="_images/80532de0647f9dafc745bc22609c636e1e1b69fce1cc1483c818577406a35585.png" />
+<img alt="_images/b8e7625f08c1768473656aafbc03b86bacce281a32f2a8dfd3d564ab4e78ca38.png" src="_images/b8e7625f08c1768473656aafbc03b86bacce281a32f2a8dfd3d564ab4e78ca38.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 81.0018
 The KM is 6.8834
 The red line is the predicted curve using Lineweaver-Burke results.
@@ -655,7 +657,7 @@ The red line is the predicted curve using Lineweaver-Burke results.
 </div>
 </section>
 <section id="the-same-but-fancy">
-<h2>The Same, but Fancy<a class="headerlink" href="#the-same-but-fancy" title="Permalink to this heading">#</a></h2>
+<h2>The Same, but Fancy<a class="headerlink" href="#the-same-but-fancy" title="Link to this heading">#</a></h2>
 <p>The code below is almost exactly the same as in the example just above. Observe that I added a style-sheet command (look for the region hilighted by comments in the code).</p>
 <p>You can have a standard style for your lab and agree on a given style-sheet. Journals will often provide a <em>MatPlotLib</em> style-sheet file for you. Do you like it? Never appologize for your style (but always be willing to change it to suit the whims of fashion.)</p>
 <div class="cell tag_hide-input docutils container">
@@ -697,9 +699,9 @@ The red line is the predicted curve using Lineweaver-Burke results.
 <span class="n">y_fit</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">KM</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">)</span>    <span class="c1"># Calculate predicted curve using parameters</span>
 
 <span class="c1">##### PLOT COMMANDS #####</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>   <span class="c1"># reset style to defaults</span>
 
 <span class="c1">##########THIS IS THE ONLY NEW CODE##################</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>   <span class="c1"># reset style to defaults</span>
 <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span><span class="o">+</span><span class="n">style</span><span class="p">)</span>  <span class="c1"># apply style-sheet file</span>
 <span class="c1">#####################################################</span>
@@ -711,11 +713,15 @@ The red line is the predicted curve using Lineweaver-Burke results.
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conc</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>   <span class="c1"># plot the data as black &quot;k&quot; points &quot;o&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span> <span class="c1"># plot the predicted line as black &quot;k&quot; line &quot;-&quot;</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>          <span class="c1"># set axis limits so the plot starts at the origin</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">MaxY</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span> <span class="n">MinY</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.05</span><span class="o">*</span><span class="n">MaxY</span>
+<span class="n">MaxX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x_fit</span><span class="p">);</span> <span class="n">MinX</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.05</span><span class="o">*</span><span class="n">MaxX</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">MinX</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>          <span class="c1"># set axis limits so the plot starts at the origin</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">MinY</span><span class="p">,</span> <span class="n">MaxY</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[S]&quot;</span><span class="p">)</span>        <span class="c1"># label the two axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Michaelis-Menten plot&quot;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>        <span class="c1"># Prevents axis lables from falling off edge of plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/basics_plot4.pdf&quot;</span><span class="p">)</span>   <span class="c1"># save the plot to this file</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                <span class="c1"># show the plot in this notebook and clear it</span>
@@ -732,7 +738,7 @@ The red line is the predicted curve using Lineweaver-Burke results.
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/246d05d9e39a586decd28144d06c2e3e6b38aa424659b272cce7d4db7994355b.png" src="_images/246d05d9e39a586decd28144d06c2e3e6b38aa424659b272cce7d4db7994355b.png" />
+<img alt="_images/b79fe19091a602700e5bea377fafd36b8ea85831d987905cfd89773230ad8fda.png" src="_images/b79fe19091a602700e5bea377fafd36b8ea85831d987905cfd89773230ad8fda.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 81.0018
 The KM is 6.8834
 The red line is the predicted curve using Lineweaver-Burke results.
@@ -742,7 +748,7 @@ The red line is the predicted curve using Lineweaver-Burke results.
 </div>
 </section>
 <section id="what-s-next">
-<h2>What’s Next<a class="headerlink" href="#what-s-next" title="Permalink to this heading">#</a></h2>
+<h2>What’s Next<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
 <p>There is much more to plotting and data analysis that <em>Python</em> has available. You will find it when you need it. Search and you shall find. You will see examples of more advanced plotting in the next few notebooks. If you like what you see, just steal it and change it to suit your needs.</p>
 </section>
 </section>
@@ -869,8 +875,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
