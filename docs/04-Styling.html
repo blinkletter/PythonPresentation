@@ -1,0 +1,954 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Part 4: Styling with Style Sheets &#8212; Python Presentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04-Styling';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Part 3E: Bootstrapping Confidence Intervals" href="03E-Eyring_Exercises_5_Bootstrap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="start.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="start.html">
+                    Documenting Data Analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_PlotBasics.html">Part 1: Quick Examples of Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-CubicSpline.html">Part 2: Please Don’t Use “Smooth Lines”</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Curve Fits and Error</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="03-Eyring_Exercises_Intro.html">Part 3: The Erying Equation and Experimental Error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03A-Eyring_Exercises_1_simple.html">Part 3A: A Simple Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03B-Eyring_Exercises_2_curvefit.html">Part 3B: Curve Fitting and Covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03C-Eyring_Exercises_3_LMfit.html">Part 3C: Using LMFit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03D-Eyring_Exercises_4_pandas.html">Part 3D: Reading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03E-Eyring_Exercises_5_Bootstrap.html">Part 3E: Bootstrapping Confidence Intervals</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Part 4: Styling with Style Sheets</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/PythonPresentation/blob/main/./04-Styling.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/04-Styling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Part 4: Styling with Style Sheets</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-curve-fit">Perform the Curve Fit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-data">Set Up the Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curve-fit">The Curve Fit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-results-and-print-report">Extract Results and Print Report</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#styling-examples">Styling Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-styles">More Styles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-style-sheets">Examples of Style Sheets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#my-style">My Style</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-tweaks">Final Tweaks</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="part-4-styling-with-style-sheets">
+<h1>Part 4: Styling with Style Sheets<a class="headerlink" href="#part-4-styling-with-style-sheets" title="Permalink to this headline">#</a></h1>
+<p>We can set up style in plots one command at a time or we can load in a whole set of styles as a “style sheet” file. These files have the extension <code class="docutils literal notranslate"><span class="pre">.mplstyle</span></code> and there is a standard set that comes with <em>Pythonb</em> and you can find others on the web provided by journals or helpful people.</p>
+<p>In the code blocks below observe, how we take a code example from Part 3C: Using LMFit and then apply different style sheets. Which do you prefer?</p>
+<div class="section" id="load-the-toolbox">
+<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Permalink to this headline">#</a></h2>
+<p>As always we start with laoding the tools.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
+
+<span class="o">!</span>mkdir plots
+
+<span class="c1">### Install and load packages</span>
+ 
+<span class="o">!</span>pip install uncertainties    # uncomment to install dependancy
+<span class="o">!</span>pip install lmfit            # <span class="k">for</span> docs see https://lmfit.github.io/lmfit-py/
+
+<span class="kn">import</span> <span class="nn">lmfit</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1"># import the tools of NumPy </span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>     <span class="c1"># tools for plotting</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">scipy.constants</span>
+
+<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>               <span class="c1"># tool set for handling uncertainties</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>  <span class="c1"># a replacement for numpy</span>
+
+<span class="c1">### Set global variables</span>
+
+<span class="c1">#location_data = &quot;data/&quot;         ## Use either local folder or github folder. </span>
+<span class="c1">#location_styles = &quot;styles/&quot;     ## Use github locations for Colab</span>
+<span class="n">location_data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/data/&quot;</span>
+<span class="n">location_styles</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/styles/&quot;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: plots: File exists
+Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/python3.12/site-packages (3.2.2)
+Requirement already satisfied: lmfit in /opt/anaconda3/envs/main/lib/python3.12/site-packages (1.3.1)
+Requirement already satisfied: asteval&gt;=0.9.28 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (1.0.1)
+Requirement already satisfied: numpy&gt;=1.19 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (1.26.4)
+Requirement already satisfied: scipy&gt;=1.6 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (1.13.1)
+Requirement already satisfied: uncertainties&gt;=3.1.4 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (3.2.2)
+Requirement already satisfied: dill&gt;=0.3.4 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (0.3.8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="perform-the-curve-fit">
+<h2>Perform the Curve Fit<a class="headerlink" href="#perform-the-curve-fit" title="Permalink to this headline">#</a></h2>
+<p>In the code below we start with the experimental results and then construct an array of ufloat values for the rate constants, <span class="math notranslate nohighlight">\(k\)</span>. This will allow us to use the uncertainties package to properly propagate errors through the <span class="math notranslate nohighlight">\(\ln(k/T)\)</span> term for the y-axis. We then separate the nominal and error component of the y-axis values to give the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(y\)</span>-error values for the curve fit.</p>
+<p>To use <em>LMFit</em> we must first create a model object using the <code class="docutils literal notranslate"><span class="pre">lmfit.model</span></code> function. Then we assign parameters and initial values to that model using <code class="docutils literal notranslate"><span class="pre">lmfit.make_params</span></code>. Finally we optimize those parameters using a curve fit by calling the <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> function and assigning the bresult to a variable name.  this new variable now contains an lmfit object that contains the results and many tools for interpretting that information.</p>
+<div class="section" id="set-up-the-data">
+<h3>Set Up the Data<a class="headerlink" href="#set-up-the-data" title="Permalink to this headline">#</a></h3>
+<p>Below we obtain the x,y and y-error values for the linear Eyring plot.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">######################</span>
+<span class="c1">### Experimental data with error</span>
+<span class="c1">######################</span>
+
+<span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">293</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span> <span class="mi">303</span><span class="p">,</span> <span class="mi">308</span><span class="p">,</span> <span class="mi">313</span><span class="p">]</span>       <span class="c1"># list of temperatures</span>
+<span class="n">k_obs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.6</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">,</span> <span class="mf">21.3</span><span class="p">,</span> <span class="mf">27.8</span><span class="p">]</span>  <span class="c1"># list of observe rate constants (s^-1)</span>
+<span class="n">k_obs_err</span><span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span> <span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>  <span class="c1"># list of standard deviations for data</span>
+
+<span class="c1">### Convert lists to numpy arrays (enables numpy math tools with these lists)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">k_obs</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">uarray</span><span class="p">(</span><span class="n">k_obs</span><span class="p">,</span> <span class="n">k_obs_err</span><span class="p">)</span>   <span class="c1"># make an array of ufloat values</span>
+
+<span class="c1">### Calculations for Erying plot axes</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">temp</span>
+<span class="n">y_u</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k_obs</span><span class="o">/</span><span class="n">temp</span><span class="p">)</span>   <span class="c1"># y_u is now an array of ufloats</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">y_u</span><span class="p">)</span> <span class="c1"># extract arrays of nominal values and errors</span>
+<span class="n">y_err</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">y_u</span><span class="p">)</span>   <span class="c1"># because curve_fit can handle ufloats</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="section" id="the-curve-fit">
+<h3>The Curve Fit<a class="headerlink" href="#the-curve-fit" title="Permalink to this headline">#</a></h3>
+<p>Below we use the <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> function to produce an object that contains the optimized parameters and much more.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">######################</span>
+<span class="c1">###  Linear function to be used by curve_fit</span>
+<span class="c1">######################</span>
+<span class="k">def</span> <span class="nf">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="c1">### Use curve_fit function  </span>
+
+<span class="c1"># load the function f as the model to be fit</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">lmfit</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">linear</span><span class="p">)</span>  
+
+<span class="c1"># state the parameters (use the text strings that we used above in the </span>
+<span class="c1">#   function) initial values are also set here</span>
+<span class="n">pars</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">make_params</span><span class="p">(</span><span class="n">m</span><span class="o">=-</span><span class="mi">1000</span><span class="p">,</span> <span class="n">b</span><span class="o">=-</span><span class="mi">1</span>  <span class="p">)</span>     
+                                            
+<span class="c1"># use the .fit method on the model object to perform the curve fit</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pars</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">y_err</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="section" id="extract-results-and-print-report">
+<h3>Extract Results and Print Report<a class="headerlink" href="#extract-results-and-print-report" title="Permalink to this headline">#</a></h3>
+<p>Now we call the <code class="docutils literal notranslate"><span class="pre">fit_report</span></code> function built into the result object. It will output lots of information about the fit. We then extract the slope and intercept as uncertain values and calculate the <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> values. Compare these to the results from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code>. They should be identical because both systems use the least squares algorithm. You will see that the calculation of <span class="math notranslate nohighlight">\(k_{cat}\)</span> at a given temperature produces a good value showing that the covariance between <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span>  is included in their respective ufloat values.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------- FIT REPORT ------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
+
+<span class="n">r</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span> <span class="n">rsq</span> <span class="o">=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RSQ = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1">#print(&quot;--- PARAMETER CONFIDENCE INTERVALS ----&quot;)</span>
+<span class="c1">#print(result.ci_report())</span>
+<span class="c1">#print()</span>
+
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">uvars</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>  <span class="c1"># collect parameters as uncertain values </span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">uvars</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span>
+
+<span class="n">Temp</span> <span class="o">=</span> <span class="mi">303</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">R</span>
+<span class="n">kb</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">k</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">h</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">dH</span> <span class="o">=</span> <span class="o">-</span><span class="n">slope</span> <span class="o">*</span> <span class="n">R</span>
+<span class="n">dS</span> <span class="o">=</span> <span class="p">(</span><span class="n">intercept</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">kb</span><span class="o">/</span><span class="n">h</span><span class="p">))</span> <span class="o">*</span> <span class="n">R</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------THERMODYNAMIC PARAMETERS----------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in enthalpy is </span><span class="si">{</span><span class="n">dH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> J/mole&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in entropy is </span><span class="si">{</span><span class="n">dS</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> J/mole.K&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="c1">## calculate k from Erying plot parameters.</span>
+<span class="n">kobs</span> <span class="o">=</span> <span class="p">(</span><span class="n">kappa</span> <span class="o">*</span> <span class="n">kb</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="n">Temp</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dH</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">Temp</span><span class="p">))</span> <span class="o">*</span> <span class="n">unp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">dS</span><span class="o">/</span><span class="n">R</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------- CHECK FIT ----------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;calculate k at T=</span><span class="si">{</span><span class="n">Temp</span><span class="si">}</span><span class="s2"> K is </span><span class="si">{</span><span class="n">kobs</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------- FIT REPORT ------------
+[[Model]]
+    Model(linear)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 7
+    # data points      = 5
+    # variables        = 2
+    chi-square         = 8.03472275
+    reduced chi-square = 2.67824092
+    Akaike info crit   = 6.37167291
+    Bayesian info crit = 5.59054873
+    R-squared          = 0.99382103
+[[Variables]]
+    m: -5545.86259 +/- 277.775827 (5.01%) (init = -1000)
+    b:  15.3123516 +/- 0.91797561 (6.00%) (init = -1)
+[[Correlations]] (unreported correlations are &lt; 0.100)
+    C(m, b) = -0.9999
+RSQ = 0.994
+
+------THERMODYNAMIC PARAMETERS----------
+The change in enthalpy is 46110.87+/-2309.56 J/mole
+The change in entropy is -70.24+/-7.63 J/mole.K
+
+-------- CHECK FIT ----------
+calculate k at T=303 K is 15.22+/-0.15
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="styling-examples">
+<h2>Styling Examples<a class="headerlink" href="#styling-examples" title="Permalink to this headline">#</a></h2>
+<p>We can access style options within the built in plotting function of the result object. Observe how we do this using style dictionaries and style files. the example below uses the built-in plot function in the <em>LMFit</em> object. We apply styles using style sheets. In the final example I add some specific style options to get exactly my preferred style for these kinds of presentations.</p>
+<p>You can use standard styles and then make some tweaks or you can edit a standard file to obtain your preferred style as default. Its up to you. Consider the following code.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">result</span><span class="o">.</span><span class="n">plot_fit</span><span class="p">(</span>
+            <span class="n">xlabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>
+            <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\ln \left( k/T \right)$&quot;</span><span class="p">,</span>
+            <span class="n">yerr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">y_err</span><span class="p">,</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Default Style&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>  <span class="c1"># These will be the ticks for both axes</span>
+
+<span class="c1">### Confidence band</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span> <span class="o">-</span> <span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> 
+                   <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span>
+                   <span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/LMfitplot2.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/fa1eb2e047958fea1d7c414ade8ccc0fa41c9e8e31ad1eb0eeae89c3d246105e.png" src="_images/fa1eb2e047958fea1d7c414ade8ccc0fa41c9e8e31ad1eb0eeae89c3d246105e.png" />
+</div>
+</div>
+<div class="section" id="more-styles">
+<h3>More Styles<a class="headerlink" href="#more-styles" title="Permalink to this headline">#</a></h3>
+<p>The above is the default style applied to my plot. We can used many other styles that are built in. Lets see what is available using the code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">available</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Solarize_Light2&#39;, &#39;_classic_test_patch&#39;, &#39;_mpl-gallery&#39;, &#39;_mpl-gallery-nogrid&#39;, &#39;bmh&#39;, &#39;classic&#39;, &#39;dark_background&#39;, &#39;fast&#39;, &#39;fivethirtyeight&#39;, &#39;ggplot&#39;, &#39;grayscale&#39;, &#39;seaborn-v0_8&#39;, &#39;seaborn-v0_8-bright&#39;, &#39;seaborn-v0_8-colorblind&#39;, &#39;seaborn-v0_8-dark&#39;, &#39;seaborn-v0_8-dark-palette&#39;, &#39;seaborn-v0_8-darkgrid&#39;, &#39;seaborn-v0_8-deep&#39;, &#39;seaborn-v0_8-muted&#39;, &#39;seaborn-v0_8-notebook&#39;, &#39;seaborn-v0_8-paper&#39;, &#39;seaborn-v0_8-pastel&#39;, &#39;seaborn-v0_8-poster&#39;, &#39;seaborn-v0_8-talk&#39;, &#39;seaborn-v0_8-ticks&#39;, &#39;seaborn-v0_8-white&#39;, &#39;seaborn-v0_8-whitegrid&#39;, &#39;tableau-colorblind10&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="examples-of-style-sheets">
+<h3>Examples of Style Sheets<a class="headerlink" href="#examples-of-style-sheets" title="Permalink to this headline">#</a></h3>
+<p>Below is code that will run through all the available styles and output a plot for each.</p>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">styles</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">available</span>
+
+<span class="k">for</span> <span class="n">style</span> <span class="ow">in</span> <span class="n">styles</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">plot_fit</span><span class="p">(</span>
+                <span class="n">xlabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>
+                <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\ln \left( k/T \right)$&quot;</span><span class="p">,</span>
+                <span class="n">yerr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">y_err</span><span class="p">,</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">style</span><span class="p">,</span>
+                <span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>  <span class="c1"># These will be the ticks for both axes</span>
+    
+    <span class="c1">### Confidence band</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span><span class="o">-</span><span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span><span class="o">+</span><span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> 
+                       <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span>
+                       <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/04style-&quot;</span><span class="o">+</span><span class="n">style</span><span class="o">+</span><span class="s2">&quot;.pdf&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<img alt="_images/9c80f2afef72b86740a1f905976a1fc5dda8ea6824970091ba1130b5cf218edf.png" src="_images/9c80f2afef72b86740a1f905976a1fc5dda8ea6824970091ba1130b5cf218edf.png" />
+<img alt="_images/b0856ccea4972a52faa07508e29178fc6b45c43340415ce0e80b2693de3fd6cf.png" src="_images/b0856ccea4972a52faa07508e29178fc6b45c43340415ce0e80b2693de3fd6cf.png" />
+<img alt="_images/176b958faa259c486006c3302161b9f8afc64a681adf0c4da944906d5adb24aa.png" src="_images/176b958faa259c486006c3302161b9f8afc64a681adf0c4da944906d5adb24aa.png" />
+<img alt="_images/90753a2618e7c328de2349405df9eae728e9c269eadfefd55a46782929634630.png" src="_images/90753a2618e7c328de2349405df9eae728e9c269eadfefd55a46782929634630.png" />
+<img alt="_images/bdd5f32c27b50b07a14184d35a053aa57cdff0ec8405bdccd05f1365fe2bfd59.png" src="_images/bdd5f32c27b50b07a14184d35a053aa57cdff0ec8405bdccd05f1365fe2bfd59.png" />
+<img alt="_images/23264f963b532495ba10ec1017aee69fa8c38f996ad801334d12a8f843365fec.png" src="_images/23264f963b532495ba10ec1017aee69fa8c38f996ad801334d12a8f843365fec.png" />
+<img alt="_images/55fe021a21144c65781550a6a41bd323e5fc3e7b7739be8ca4ee8f7a6c4cc220.png" src="_images/55fe021a21144c65781550a6a41bd323e5fc3e7b7739be8ca4ee8f7a6c4cc220.png" />
+<img alt="_images/85e36f6104f77641f0b58164eebf8ae35f0d48594757ffab7a9352554f9ab65b.png" src="_images/85e36f6104f77641f0b58164eebf8ae35f0d48594757ffab7a9352554f9ab65b.png" />
+<img alt="_images/d3c75f4ffc2be29df9bd065b487859ff1926cdf4bc11bb1ff04b0663abfa89ae.png" src="_images/d3c75f4ffc2be29df9bd065b487859ff1926cdf4bc11bb1ff04b0663abfa89ae.png" />
+<img alt="_images/e2caca6b478b29ce519ce40064e88607fb26482f75b9829f9f71b6b18122735b.png" src="_images/e2caca6b478b29ce519ce40064e88607fb26482f75b9829f9f71b6b18122735b.png" />
+<img alt="_images/b5d46bd2d63f41b2d2bb8515978efd2e5c5ced10e20e160490f867260fc0d93f.png" src="_images/b5d46bd2d63f41b2d2bb8515978efd2e5c5ced10e20e160490f867260fc0d93f.png" />
+<img alt="_images/c641ae0e454335b3b71a1bd3004a29bfa6bf0b730b9b3c40d660e3be407202db.png" src="_images/c641ae0e454335b3b71a1bd3004a29bfa6bf0b730b9b3c40d660e3be407202db.png" />
+<img alt="_images/589f917bdc85e44b56bb3903801963fcc17c324fc7d9696710c5914a2badf1af.png" src="_images/589f917bdc85e44b56bb3903801963fcc17c324fc7d9696710c5914a2badf1af.png" />
+<img alt="_images/6eb2f7ab4d7270cae64f1b268dd9e968e841f4ba9ba1a139bd18a6c7079e4c99.png" src="_images/6eb2f7ab4d7270cae64f1b268dd9e968e841f4ba9ba1a139bd18a6c7079e4c99.png" />
+<img alt="_images/a9842b4b5b353de0d4c89128c3e058e2e5af726344fa94b4595811cba8544fe8.png" src="_images/a9842b4b5b353de0d4c89128c3e058e2e5af726344fa94b4595811cba8544fe8.png" />
+<img alt="_images/d47ac9fbe0e7dbdf3f3116f35002ab1e968a8a4941bdc13199082f019b38ade7.png" src="_images/d47ac9fbe0e7dbdf3f3116f35002ab1e968a8a4941bdc13199082f019b38ade7.png" />
+<img alt="_images/5bcc32cc0b1f5589a315c0f107d226385d11a43bdb40a13ccdd928716c72d5b3.png" src="_images/5bcc32cc0b1f5589a315c0f107d226385d11a43bdb40a13ccdd928716c72d5b3.png" />
+<img alt="_images/5064b1f45481f2f7244e3194e2537d014822d020629a9a5ad228161dee4c8387.png" src="_images/5064b1f45481f2f7244e3194e2537d014822d020629a9a5ad228161dee4c8387.png" />
+<img alt="_images/042d46efd20a94d97ce484b3dee4db726be3ab0ee5738ff0cf4edcc7e72caa1e.png" src="_images/042d46efd20a94d97ce484b3dee4db726be3ab0ee5738ff0cf4edcc7e72caa1e.png" />
+<img alt="_images/f0d94c328359b5d07524c10b49a385363fc70b969cda79bdec29639bb05d1f5f.png" src="_images/f0d94c328359b5d07524c10b49a385363fc70b969cda79bdec29639bb05d1f5f.png" />
+<img alt="_images/99e592c96e4dbfddca7cbd88c722eb1389bcf17106fffa11f375a540775bd59d.png" src="_images/99e592c96e4dbfddca7cbd88c722eb1389bcf17106fffa11f375a540775bd59d.png" />
+<img alt="_images/6717bf7350c0346d894d534158547c9a902400d7860cb1d987d8a72fdad9f86f.png" src="_images/6717bf7350c0346d894d534158547c9a902400d7860cb1d987d8a72fdad9f86f.png" />
+<img alt="_images/eae3c564e101792818845cfe72f78033e392b45f1c12f4f65402a704a18e6669.png" src="_images/eae3c564e101792818845cfe72f78033e392b45f1c12f4f65402a704a18e6669.png" />
+<img alt="_images/b65e7992756940b2e48d1c98f52f34054d7a640cf7cd9cc5b339d48678e3a1f9.png" src="_images/b65e7992756940b2e48d1c98f52f34054d7a640cf7cd9cc5b339d48678e3a1f9.png" />
+<img alt="_images/f3aa5137c1b45903b733b6d1be2adedf0a01d158033bda3767f685aad04c489b.png" src="_images/f3aa5137c1b45903b733b6d1be2adedf0a01d158033bda3767f685aad04c489b.png" />
+<img alt="_images/96554485254bea4d42f16ae025fe5e1a54901b3ebb502bf3437c720bda6412f2.png" src="_images/96554485254bea4d42f16ae025fe5e1a54901b3ebb502bf3437c720bda6412f2.png" />
+<img alt="_images/0d2f51edafcf098626c568323d2f7cfbe9d1c00481ba8d6a96f72d9fcf4d936c.png" src="_images/0d2f51edafcf098626c568323d2f7cfbe9d1c00481ba8d6a96f72d9fcf4d936c.png" />
+<img alt="_images/e54dc2f2ef3819f67ac8adb402bcb2e39df5b9069f259579873dd5a3b98195ba.png" src="_images/e54dc2f2ef3819f67ac8adb402bcb2e39df5b9069f259579873dd5a3b98195ba.png" />
+</div>
+</details>
+</div>
+</div>
+<div class="section" id="my-style">
+<h3>My Style<a class="headerlink" href="#my-style" title="Permalink to this headline">#</a></h3>
+<p>You can use style sheets from others. Here I use a style sheet made by Nicole Vadot via their github site at https://github.com/ninivert/matplotlib_tufte</p>
+<p>I downloaded the style file, made a small modification (removed the axis lines) and then saved it in my own working folder.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
+<span class="n">style_name</span> <span class="o">=</span> <span class="n">location_styles</span> <span class="o">+</span> <span class="n">style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">style_name</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">result</span><span class="o">.</span><span class="n">plot_fit</span><span class="p">(</span>
+            <span class="n">xlabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>
+            <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\ln \left( k/T \right)$&quot;</span><span class="p">,</span>
+            <span class="n">yerr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">y_err</span><span class="p">,</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">style</span><span class="p">,</span>
+            <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>  <span class="c1"># These will be the ticks for both axes</span>
+
+<span class="c1">### Confidence band</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span> <span class="o">-</span> <span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> 
+                   <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span>
+                   <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/04style-&quot;</span><span class="o">+</span><span class="n">style</span><span class="o">+</span><span class="s2">&quot;.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/5a5072d4b1d5d92ecec70348e70bf1d5eb76033d3c3e89352cf0f2f7a6b28611.png" src="_images/5a5072d4b1d5d92ecec70348e70bf1d5eb76033d3c3e89352cf0f2f7a6b28611.png" />
+</div>
+</div>
+</div>
+<div class="section" id="final-tweaks">
+<h3>Final Tweaks<a class="headerlink" href="#final-tweaks" title="Permalink to this headline">#</a></h3>
+<p>I have a preferred style that is “lighter” in appearance than the dfault colors and sizes of <em>matplotlib</em>. I could edit the style file but I often have different needs so I prefer to apply line and marker styles separately.</p>
+<p>here I am using keyword dictionaries to pass style commands into the <em>LMFit</em> plot command. When plotting the confidence interval I am passing the style commands as direct arguments to the plot function. Pyplot has many ways to send style information to the polotting system and different modules demand different paradigms. Once you figure it all out just keep copying that code and reusing and you’ll never have to relearn it.</p>
+<p>Consider the code below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
+<span class="n">style_name</span> <span class="o">=</span> <span class="n">location_styles</span> <span class="o">+</span> <span class="n">style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">style_name</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">result</span><span class="o">.</span><span class="n">plot_fit</span><span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>
+            <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\ln \left( k/T \right)$&quot;</span><span class="p">,</span>
+            <span class="n">yerr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">y_err</span><span class="p">,</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">style</span><span class="o">+</span><span class="s2">&quot;-tweaks&quot;</span><span class="p">,</span>
+            <span class="n">data_kws</span> <span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> 
+                       <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> 
+                       <span class="s2">&quot;linewidth&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                       <span class="s2">&quot;markerfacecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;markeredgecolor&quot;</span><span class="p">:</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+                       <span class="s2">&quot;markeredgewidth&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> 
+                       <span class="s2">&quot;zorder&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">},</span>
+            <span class="n">fit_kws</span> <span class="o">=</span><span class="p">{</span><span class="s2">&quot;linewidth&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> 
+                      <span class="s2">&quot;zorder&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+            <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>  <span class="c1"># These will be the ticks for both axes</span>
+
+<span class="c1">### Confidence band</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span> <span class="o">-</span> <span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> 
+                   <span class="n">edgecolor</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+                   <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span>
+                   <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/04style-&quot;</span><span class="o">+</span><span class="n">style</span><span class="o">+</span><span class="s2">&quot;-tweaks.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/bbb4453317518b93b05fa6a077d279ea143ba40c5503fc8b5c68455ef35de92b.png" src="_images/bbb4453317518b93b05fa6a077d279ea143ba40c5503fc8b5c68455ef35de92b.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03E-Eyring_Exercises_5_Bootstrap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Part 3E: Bootstrapping Confidence Intervals</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-toolbox">Load the Toolbox</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-curve-fit">Perform the Curve Fit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-data">Set Up the Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curve-fit">The Curve Fit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-results-and-print-report">Extract Results and Print Report</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#styling-examples">Styling Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-styles">More Styles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-style-sheets">Examples of Style Sheets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#my-style">My Style</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-tweaks">Final Tweaks</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
