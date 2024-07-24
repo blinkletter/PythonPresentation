@@ -3,62 +3,61 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Part 2: Please Don’t Use “Smooth Lines” &#8212; Python Presentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Part 3: The Erying Equation and Experimental Error" href="03-Eyring_Exercises_Intro.html" />
     <link rel="prev" title="Part 1: Quick Examples of Python" href="01_PlotBasics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -76,19 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -110,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -130,9 +141,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="start.html">
+  
   
   
   
@@ -142,12 +155,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Python Presentation - Home"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Python Presentation - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -189,7 +213,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -198,7 +222,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -311,20 +335,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -387,35 +413,35 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="part-2-please-don-t-use-smooth-lines">
-<h1>Part 2: Please Don’t Use “Smooth Lines”<a class="headerlink" href="#part-2-please-don-t-use-smooth-lines" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="part-2-please-don-t-use-smooth-lines">
+<h1>Part 2: Please Don’t Use “Smooth Lines”<a class="headerlink" href="#part-2-please-don-t-use-smooth-lines" title="Permalink to this heading">#</a></h1>
 <p>When plotting data, Microsoft Excel has a handy option called “smooth lines.” This produces some sort of spline function that connects the data points with a curvy line. Please do not us it.</p>
 <p>Showing a line on a plot implies that you are plotting a model that is fit to that data. No one assumes this of standard “connect-the-dots” plots but a curve can confuse the reader. This is especially true when the spline swoops through inpossible values (like negative concentrations).</p>
 <p>In this notebook we will plot some data involving living cells. Such data often defies mathematical modelling and all we can do is plot our observations and compare results. I will present this data using MS Excel just for the sake of ridiculing it. Then I will present ways that <em>Python</em> can plot similar splines (which you should never use, but at least your exact methods can be documented for others to criticize.)</p>
 <p>Finally I will present the data using straight lines, as such data is usually visualized in the literature. As you read widely, you will observe that smooth lines are not used in major journals.</p>
-<div class="section" id="the-data">
-<h2>The Data<a class="headerlink" href="#the-data" title="Permalink to this headline">#</a></h2>
+<section id="the-data">
+<h2>The Data<a class="headerlink" href="#the-data" title="Permalink to this heading">#</a></h2>
 <p>The data set is from a recent contribution from the group of Sanda Wilkes at the University of Southhampton: “The survival of <em>Escherichia coli</em> O157 on a range of metal surfaces.” S.A. Wilks, H. Michels, C.W. Keevil, <em>Int. J. Food Microbiol.</em>, <strong>2005</strong>, <em>105</em>, 445-454. https://doi.org/10.1016/j.ijfoodmicro.2005.04.021.</p>
 <p>The experiment involves measuring the density of bacteria in contact with different alloys of copper. This is a process with many factors involvend but the decay of the bacterial population under different conditions can be visualized and compared. We begin with Excel.</p>
-</div>
-<div class="section" id="plotting-with-excel">
-<h2>Plotting with Excel<a class="headerlink" href="#plotting-with-excel" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="plotting-with-excel">
+<h2>Plotting with Excel<a class="headerlink" href="#plotting-with-excel" title="Permalink to this heading">#</a></h2>
 <p>Below is a plot of the data from a quick plot in Excel. Observe the dips below zero population as the smooth curve curves passes through the points. Also observe the curves between points; do you think this predicts the bacterial population between measurements?</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/images/02-bacteriaSurvival.png"><img alt="Alternative text" src="https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/images/02-bacteriaSurvival.png" style="width: 400px;" /></a>
-<div class="section" id="the-spreadsheet">
-<h3>The Spreadsheet<a class="headerlink" href="#the-spreadsheet" title="Permalink to this headline">#</a></h3>
+<section id="the-spreadsheet">
+<h3>The Spreadsheet<a class="headerlink" href="#the-spreadsheet" title="Permalink to this heading">#</a></h3>
 <p>So how would you instruct a future student reading your thesis so that they could reproduce that plot from your data? Below is a printout of the spreadsheet that created the plot. What calculations were done? What settings were changed on the default plot? As you can see, the spreadsheet has no information that describes the calculations visible to the reader. One could get the Excel file and click on each cell to see what is happening but that can’t be archived in print</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/images/02-bacteriaSurvivalExcel.png"><img alt="Alternative text" src="https://raw.githubusercontent.com/blinkletter/PythonPresentation/main/images/02-bacteriaSurvivalExcel.png" style="width: 500px;" /></a>
-</div>
-<div class="section" id="that-curve">
-<h3>That Curve<a class="headerlink" href="#that-curve" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="that-curve">
+<h3>That Curve<a class="headerlink" href="#that-curve" title="Permalink to this heading">#</a></h3>
 <p>To add insult to injury, you probably cannot describe the method that generated that smooth curve. What kind of spline function was it? What were the parameters? I cannot find that information in the Excel documentation. You wouldn’t fly an airplane without the manual, so don’t plot a curve without documentation. I honestly belive that bad data interpretation has killed more people than aviation disasters.</p>
-</div>
-</div>
-<div class="section" id="a-python-plot">
-<h2>A Python Plot<a class="headerlink" href="#a-python-plot" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="a-python-plot">
+<h2>A Python Plot<a class="headerlink" href="#a-python-plot" title="Permalink to this heading">#</a></h2>
 <p>First we will need data. In the code below we will get the data from a file.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -426,7 +452,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
 
-<span class="o">!</span>mkdir plots
+<span class="o">!</span>mkdir<span class="w"> </span>plots
 
 <span class="c1">### Install and load packages</span>
  
@@ -587,8 +613,8 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<div class="section" id="extract-the-data">
-<h3>Extract the Data<a class="headerlink" href="#extract-the-data" title="Permalink to this headline">#</a></h3>
+<section id="extract-the-data">
+<h3>Extract the Data<a class="headerlink" href="#extract-the-data" title="Permalink to this heading">#</a></h3>
 <p>Below I will manipulate the data to get a series of data sets for each experiment. Observe how the code reveals exactly what I did.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -619,9 +645,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="a-simple-plot">
-<h3>A Simple Plot<a class="headerlink" href="#a-simple-plot" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="a-simple-plot">
+<h3>A Simple Plot<a class="headerlink" href="#a-simple-plot" title="Permalink to this heading">#</a></h3>
 <p>The code below plots the four sets of data. Without lines, the relationship between the four data sets is not obvious. Observe that the plot code is using a different paradigm in this example. here we create a plot object called <code class="docutils literal notranslate"><span class="pre">ax</span></code> that contains methods for adding plots to itself and setting style parameters. <code class="docutils literal notranslate"><span class="pre">ax.scatter()</span></code> and <code class="docutils literal notranslate"><span class="pre">ax.set()</span></code> are just some of the built-in tools that allow us to manipulate the <code class="docutils literal notranslate"><span class="pre">ax</span></code> object.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -680,9 +706,9 @@ document.write(`
 <img alt="_images/6fbc5c8e676fe7bac0e110681c1230c25dba20d70958b85a3d004b292bb186ba.png" src="_images/6fbc5c8e676fe7bac0e110681c1230c25dba20d70958b85a3d004b292bb186ba.png" />
 </div>
 </div>
-</div>
-<div class="section" id="a-bit-of-dithering">
-<h3>A Bit of Dithering<a class="headerlink" href="#a-bit-of-dithering" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="a-bit-of-dithering">
+<h3>A Bit of Dithering<a class="headerlink" href="#a-bit-of-dithering" title="Permalink to this heading">#</a></h3>
 <p>Because of the low precision of the data we see that many of the points are obscuring others. The code below was copied from above and changed by adding small offsets to the data points. One should definitely inform the reader of this fact - fortunately a casual inspection of the code will reveal exactly what was done. The code can often be the only documentation you need.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -744,9 +770,9 @@ document.write(`
 <img alt="_images/99db8b67f7425797a1ad9b8b1129da83134097b11304edadb7050d6f5c4d2e37.png" src="_images/99db8b67f7425797a1ad9b8b1129da83134097b11304edadb7050d6f5c4d2e37.png" />
 </div>
 </div>
-</div>
-<div class="section" id="the-right-way">
-<h3>The Right Way<a class="headerlink" href="#the-right-way" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="the-right-way">
+<h3>The Right Way<a class="headerlink" href="#the-right-way" title="Permalink to this heading">#</a></h3>
 <p>The code below will plot the data the way I prefer – with straight line connecting the points. No one will assume that this was an attempt to fit a mathematical model to the data. The lines help the reader follow the trends without misleading anyone as to their purpose. Here we use the <code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code> method built into the <code class="docutils literal notranslate"><span class="pre">ax</span></code> object.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -818,16 +844,16 @@ document.write(`
 <img alt="_images/8388b5d4dada51fe0a5f8fbaab1459eeda0af4fad57e878fe24dcb0677265673.png" src="_images/8388b5d4dada51fe0a5f8fbaab1459eeda0af4fad57e878fe24dcb0677265673.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="plotting-with-splines">
-<h2>Plotting with Splines<a class="headerlink" href="#plotting-with-splines" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="plotting-with-splines">
+<h2>Plotting with Splines<a class="headerlink" href="#plotting-with-splines" title="Permalink to this heading">#</a></h2>
 <p>Just say no. But, to show the versatility of plotting using <em>Python</em> lets do some bad things and have fun.</p>
 <p>Splines are no better than hand drawing a curved line through your data. However there are those who still stand by them. Consider the contribution below that describes using splines to create line fits in data sets meant to predict organ rejection in transplant patients. Obviously, like many things in life, this data has many confounding factors that make deriving a mathematical model difficult. So why not just throw a spline through the cloud of points and then <em>only print the spline</em> as the data analysis tool. Now doctors can make decisions based on that plot, which has no underlying theoretical rigour. I told you that bad data analysis can kill more people than bad pilots.</p>
 <p>“Cubic splines to model relationships between continuous variables and outcomes: a guide for clinicians.” J. Gauthier, Q.V. Wu, T.A. Gooley, <em>Bone Marrow Transplant</em>, <strong>2020</strong>, <em>55</em>, 675–680. https://doi.org/10.1038/s41409-019-0679-x</p>
 <p>Look at the date. These researchers were advocating using a spline to fit data and guide decisions in medical treatment in 2020, when machine learning tools were already commonplace for analyzing these complex systems and teasing out the most important variables. When one only has a hammer the whole world looks like a nail. Being aware of the modern tools of data science will give you science superpowers. This presentation will show you none of them. Go exploring.</p>
-<div class="section" id="the-simple-cubic-spline">
-<h3>The Simple Cubic Spline<a class="headerlink" href="#the-simple-cubic-spline" title="Permalink to this headline">#</a></h3>
+<section id="the-simple-cubic-spline">
+<h3>The Simple Cubic Spline<a class="headerlink" href="#the-simple-cubic-spline" title="Permalink to this heading">#</a></h3>
 <p>One common option for curve fitting in a spreadsheet is the “cubic spline.” Don’t touch that button! If we’re going to do something bad, lets at least do it right by using code that can be easily inspected rather than a radio-button in a GUI that you will forget you ever flipped 24 hours from now. Code will allow you to quickly repeat what you did without having to seach through menus looking for that thing you clicked on yesterday.</p>
 <p>The code below will use an interpolation tool fron the <em>SciPy</em> library, <code class="docutils literal notranslate"><span class="pre">scipy.interpolate.CubicSpline()</span></code>, which will generate a cubic spline function from the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> data. We can then calculate the value of this function over a smooth continuum of many points along the range of the x-axis and plot the spline. We will use <code class="docutils literal notranslate"><span class="pre">ax.scatter()</span></code> to plot the points and <code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code> to plot the line.</p>
 <p>Observe that this spline is “wilder” than the smooth line spline used by Excel. There are other spline generators available to <em>Python</em>, perhaps Excel uses one of those.</p>
@@ -907,9 +933,9 @@ document.write(`
 <img alt="_images/eb32fdad15df714819dc838127b7a57ddc388f95b842f9eb899197812238c810.png" src="_images/eb32fdad15df714819dc838127b7a57ddc388f95b842f9eb899197812238c810.png" />
 </div>
 </div>
-</div>
-<div class="section" id="spline-with-akima1dinterpolator">
-<h3>Spline with Akima1DInterpolator<a class="headerlink" href="#spline-with-akima1dinterpolator" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="spline-with-akima1dinterpolator">
+<h3>Spline with Akima1DInterpolator<a class="headerlink" href="#spline-with-akima1dinterpolator" title="Permalink to this heading">#</a></h3>
 <p>There are more sophisticated spline tools available. The code below uses the <code class="docutils literal notranslate"><span class="pre">scipy.interpolate.Akima1DInterpolator()</span></code> tool to create the spline function. this has “signal dampening” features that tame the wild swings, but it is no more suitable than the basic spline for data interpreatation.</p>
 <p>Change the <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">&quot;akima&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;makima&quot;</span></code> to apply the “modified Akima spline.” Its slightly different and equally useless.</p>
 <div class="cell tag_hide-input docutils container">
@@ -988,9 +1014,9 @@ document.write(`
 <img alt="_images/4a3a78a4b47943005db9488a8021f529aec16d57256211076c1244c794dbdb80.png" src="_images/4a3a78a4b47943005db9488a8021f529aec16d57256211076c1244c794dbdb80.png" />
 </div>
 </div>
-</div>
-<div class="section" id="spline-with-pchipinterpolator">
-<h3>Spline with PchipInterpolator<a class="headerlink" href="#spline-with-pchipinterpolator" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="spline-with-pchipinterpolator">
+<h3>Spline with PchipInterpolator<a class="headerlink" href="#spline-with-pchipinterpolator" title="Permalink to this heading">#</a></h3>
 <p>Lets try this one. How does it compare?</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1068,15 +1094,15 @@ document.write(`
 <img alt="_images/51ec117c2b5cba5c57e7299554a7cb172518583698338320ee3db44019823f5f.png" src="_images/51ec117c2b5cba5c57e7299554a7cb172518583698338320ee3db44019823f5f.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="smoothing-splines">
-<h2>Smoothing Splines<a class="headerlink" href="#smoothing-splines" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="smoothing-splines">
+<h2>Smoothing Splines<a class="headerlink" href="#smoothing-splines" title="Permalink to this heading">#</a></h2>
 <p>Having the line pass through each point helps the eye find all the data points in the series on the plot. That is why we use the straight line “connect-the-dot” style in plots that have no mathematical model that can be applied. Smooth splines that are forecd to pass through each point give strange artifacts like the wavy lines we have seen above.</p>
 <p>Smoothing spline has some use, though. A smoothing spline allows the line to try to make the least bends and curves yet adhere to the trend of the data. they are used in photogrpahy algoriths to smooth noise out of a photograph. Crank it up to the max to remove those crowsfeet around your eyes if you don’t mind that “uncanny valley” look in your portraits.</p>
 <p>We can use smoothing splines in <em>Python</em> as well.</p>
-<div class="section" id="scipy-interpolate-make-smoothing-spline">
-<h3>scipy.interpolate.make_smoothing_spline<a class="headerlink" href="#scipy-interpolate-make-smoothing-spline" title="Permalink to this headline">#</a></h3>
+<section id="scipy-interpolate-make-smoothing-spline">
+<h3>scipy.interpolate.make_smoothing_spline<a class="headerlink" href="#scipy-interpolate-make-smoothing-spline" title="Permalink to this heading">#</a></h3>
 <p>Consider the code below. Change the <code class="docutils literal notranslate"><span class="pre">smooth_factor</span></code> variable and see what happens. We have a smoother curve but, with scattered data like this, we still see artifacts such as excursions into impossible negative values for bacteria counts.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1155,19 +1181,19 @@ document.write(`
 <img alt="_images/29fa5dc76fbe0007052baf4c97fb3052cd9d3f104e7e3b3337be21532364cbb9.png" src="_images/29fa5dc76fbe0007052baf4c97fb3052cd9d3f104e7e3b3337be21532364cbb9.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>I hope that you will agree with me that splines are generally useless. However, I do use splines from time to time. I use them when interpolating between points in dense noiseless data, usually when reproducing a curve from a plot in older literature. Those of you taking Physical Organic Chemistry will see an example when we are using acidity function data for mixtures of sulphuric acid that was published in 1955.</p>
 <p>If you must add non-informative lines to you plot for some reason, use the “connect-the-dots” straight lines. You readers will not confuse them for a fitted model.</p>
 <p>Another approach would be to derive a mathematical model that explains the effect and then use that model to determine the parameters most responsible for cell death. Is it copper content, surface roughness, something else that is most important? Then use this information to make better antomicrobial surfaces.</p>
 <p>Next we will switch gears and explore how <em>Python</em> calculations can keep track of our experimental uncertainties for us.</p>
-<div class="section" id="id1">
-<h3><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
-</div>
-</div>
-</div>
+<section id="id1">
+<h3><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1194,11 +1220,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="01_PlotBasics.html"
@@ -1218,10 +1243,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1229,6 +1251,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1284,6 +1307,7 @@ By Barry Linkletter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -1310,8 +1334,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
