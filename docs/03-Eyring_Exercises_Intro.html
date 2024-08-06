@@ -3,61 +3,62 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Part 3: The Erying Equation and Experimental Error &#8212; Python Presentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -67,7 +68,7 @@
     <link rel="next" title="Part 3A: A Simple Data Analysis" href="03A-Eyring_Exercises_1_simple.html" />
     <link rel="prev" title="Part 2: Please Don’t Use “Smooth Lines”" href="02-CubicSpline.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -75,23 +76,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,20 +110,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -141,11 +130,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="start.html">
-  
   
   
   
@@ -155,23 +142,12 @@
       
     
     
-    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Python Presentation - Home"/>
-    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Python Presentation - Home"/>`);</script>
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -195,9 +171,10 @@
 <li class="toctree-l1"><a class="reference internal" href="03D-Eyring_Exercises_4_pandas.html">Part 3D: Reading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03E-Eyring_Exercises_5_Bootstrap.html">Part 3E: Bootstrapping Confidence Intervals</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style and Extras</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="04-Styling.html">Part 4: Styling with Style Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-QRCode.html">Extra: QR Codes in Python</a></li>
 </ul>
 
     </div>
@@ -213,7 +190,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -222,7 +199,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -304,22 +281,20 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -359,19 +334,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="part-3-the-erying-equation-and-experimental-error">
-<h1>Part 3: The Erying Equation and Experimental Error<a class="headerlink" href="#part-3-the-erying-equation-and-experimental-error" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="part-3-the-erying-equation-and-experimental-error">
+<h1>Part 3: The Erying Equation and Experimental Error<a class="headerlink" href="#part-3-the-erying-equation-and-experimental-error" title="Permalink to this headline">#</a></h1>
 <p>The famous Erying equationis used to create a linear equation that relates the free energy of activation or the free energy in an equilibrium with temperature. Because the enthalpy term is independant of temperature and the entropy term involves temperature, we can the separate these effects and determine the enthalpy and the entropy difference in the chemical change between reactants and transtion state or products. But, do you numbers make sense? Unless you are calculating the standard deviations from your plot you may be unaware of a low quality relationship.</p>
-<section id="enzyme-kinetics-example">
-<h2>Enzyme Kinetics Example<a class="headerlink" href="#enzyme-kinetics-example" title="Permalink to this heading">#</a></h2>
+<div class="section" id="enzyme-kinetics-example">
+<h2>Enzyme Kinetics Example<a class="headerlink" href="#enzyme-kinetics-example" title="Permalink to this headline">#</a></h2>
 <p>The data sets for this experiment comes from “Linear Eyring Plots Conceal a Change in the Rate-Limiting Step in an Enzyme Reaction”, Teresa F. G. Machado, Tracey M. Gloster, and Rafael G. da Silva, <em>Biochemistry</em>, <strong>2018</strong>, <em>57</em>, 6757-6761.https://doi.org/10.1021/acs.biochem.8b01099.</p>
 <p>Machado et al. were presenting an example where they hypothesized that there was a hidden effect due to changes in the rate-determining step. The plots are very linear so we will use the data at face value. I’m not really convinced that there was a change in rds.</p>
 <p>The reaction is the reduction of acetoacetate (3-oxobutanoate) or 3-Oxopentanoate by NADH with the action of <em>(R)-3-hydroxybutyrate dehydrogenase</em> (EC 1.1.1.30). Two sources of the enzyme were used. The common bacteria <em>Acinetobacter baumannii</em> and the cold-favouring (psychrophilic) bacteria <em>Psychrobacter arcticus</em>. The Michaelis-Menten turnover number (<span class="math notranslate nohighlight">\(k_{cat}\)</span>, the first-order rate constant of the enzyme-NADH-substrate complex to give product) was measured at temperatures for <span class="math notranslate nohighlight">\(-10\)</span> to <span class="math notranslate nohighlight">\(67\ ^\circ C\)</span>. The Eyring plot for the <em>P. arcticus</em> curves slightly as temperature increases. The enzyme comes from an organism adapted got cold conditions. The plot for the <em>A. baumannii</em> enzyme were linear so I will only use that data in this example.</p>
-</section>
-<section id="the-eyring-equation">
-<h2>The Eyring Equation<a class="headerlink" href="#the-eyring-equation" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="the-eyring-equation">
+<h2>The Eyring Equation<a class="headerlink" href="#the-eyring-equation" title="Permalink to this headline">#</a></h2>
 <p>The Erying equation is…</p>
 <div class="math notranslate nohighlight">
 \[ k = \frac{\kappa k_B}{h} T e^{-\Delta G^\ddagger}\]</div>
@@ -383,18 +358,18 @@ document.write(`
 \[\ln \frac{k}{T} = \frac{-\Delta H^\ddagger}{R}\cdot\frac{1}{T} + \ln\frac{\kappa k_B}{h} + \frac{\Delta S^\ddagger}{R}\]</div>
 <p>…where <span class="math notranslate nohighlight">\(k\)</span> is the observed rate constant and <span class="math notranslate nohighlight">\(T\)</span> is the absolute temperature.</p>
 <p>From this, we can find <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> from the slope and intercept by plotting <span class="math notranslate nohighlight">\(\ln \frac{k}{T}\)</span> vs. <span class="math notranslate nohighlight">\(\frac{1}{T}\)</span></p>
-</section>
-<section id="know-your-error">
-<h2>Know Your Error<a class="headerlink" href="#know-your-error" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="know-your-error">
+<h2>Know Your Error<a class="headerlink" href="#know-your-error" title="Permalink to this headline">#</a></h2>
 <p>Or rather, estimate your error correctly. It’s easy to get a standard deviation for the set of results from a repeated experiment. How do you get the standard deviation for parameters derived from a line fit? Microsoft Excel can do this. But to fit an arbitrary equation, like a curve fit of the Erying equation, you will need to use the Solver ad-on, which is difficult to automate. Python can do all of this easily using many possible options.</p>
 <p>Using the tools described in the pages that follow, we will be able to fit daya to linear or non-linear equation models, obtain estimates of errors for the fitted parameters, use experimental error determined for data points to weight the curve fits and to propagate error through complex equations. Error propagation is often ignored in data analysis because it is complicated and opaque. We will use Python as a ‘black box’ that handles errors correctly. It will still be opaque, but it wont be complicated.</p>
-</section>
-<section id="steal-this-code">
-<h2>Steal This Code<a class="headerlink" href="#steal-this-code" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="steal-this-code">
+<h2>Steal This Code<a class="headerlink" href="#steal-this-code" title="Permalink to this headline">#</a></h2>
 <p>All of the notebooks presented here are for you to explore and use. Feel free to take any code and repurpose it for your own work. We are not programers. We pick and hack at code we find and hopefully get it working for our own needs. Once we build a tool that works we can use it and start forgetting how to program. The real benefit is that others can follow exactly what we did in our data analysis buy examining the <em>Python</em> code. No one will wonder why they cannot exactly obtain the results that you gleaned from your data. The code will tell them exactly how it was done.</p>
 <p>Good documentation is the backbone of science. Repeatable experiments require complete information. A statement like “analyzed using standard methods” does not reveal that you used linear error propagation (the <code class="docutils literal notranslate"><span class="pre">uncertainties</span></code>  library) when perhaps a Monte-Carlo method for error propagation (the <code class="docutils literal notranslate"><span class="pre">mcerp</span></code> library) would have been more appropriate. Your readers will just be guessing at what you might have done. Provide your code in the supplemental material of a paper or in the appendices of your thesis. Then others can evaluate your analysis and properly praise your work or find your error.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -421,10 +396,11 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="02-CubicSpline.html"
@@ -444,7 +420,10 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -452,7 +431,6 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -485,7 +463,6 @@ By Barry Linkletter
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2024.
@@ -512,8 +489,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

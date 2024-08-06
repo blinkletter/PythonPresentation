@@ -3,70 +3,72 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Part 4: Styling with Style Sheets &#8212; Python Presentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '04-Styling';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Extra: QR Codes in Python" href="04-QRCode.html" />
     <link rel="prev" title="Part 3E: Bootstrapping Confidence Intervals" href="03E-Eyring_Exercises_5_Bootstrap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -74,23 +76,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -112,20 +110,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,11 +130,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="start.html">
-  
   
   
   
@@ -154,23 +142,12 @@
       
     
     
-    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Python Presentation - Home"/>
-    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Python Presentation - Home"/>`);</script>
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -194,9 +171,10 @@
 <li class="toctree-l1"><a class="reference internal" href="03D-Eyring_Exercises_4_pandas.html">Part 3D: Reading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03E-Eyring_Exercises_5_Bootstrap.html">Part 3E: Bootstrapping Confidence Intervals</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style and Extras</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Part 4: Styling with Style Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-QRCode.html">Extra: QR Codes in Python</a></li>
 </ul>
 
     </div>
@@ -212,7 +190,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -221,7 +199,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -334,22 +312,20 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -402,14 +378,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="part-4-styling-with-style-sheets">
-<h1>Part 4: Styling with Style Sheets<a class="headerlink" href="#part-4-styling-with-style-sheets" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="part-4-styling-with-style-sheets">
+<h1>Part 4: Styling with Style Sheets<a class="headerlink" href="#part-4-styling-with-style-sheets" title="Permalink to this headline">#</a></h1>
 <p>We can set up style in plots one command at a time or we can load in a whole set of styles as a “style sheet” file. These files have the extension <code class="docutils literal notranslate"><span class="pre">.mplstyle</span></code> and there is a standard set that comes with <em>Pythonb</em> and you can find others on the web provided by journals or helpful people.</p>
 <p>In the code blocks below observe, how we take a code example from Part 3C: Using LMFit and then apply different style sheets. Which do you prefer?</p>
-<section id="load-the-toolbox">
-<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Permalink to this heading">#</a></h2>
+<div class="section" id="load-the-toolbox">
+<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Permalink to this headline">#</a></h2>
 <p>As always we start with laoding the tools.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -420,12 +396,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
 
-<span class="o">!</span>mkdir<span class="w"> </span>plots
+<span class="o">!</span>mkdir plots
 
 <span class="c1">### Install and load packages</span>
  
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>uncertainties<span class="w">    </span>#<span class="w"> </span>uncomment<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>dependancy
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>lmfit<span class="w">            </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>docs<span class="w"> </span>see<span class="w"> </span>https://lmfit.github.io/lmfit-py/
+<span class="o">!</span>pip install uncertainties    # uncomment to install dependancy
+<span class="o">!</span>pip install lmfit            # <span class="k">for</span> docs see https://lmfit.github.io/lmfit-py/
 
 <span class="kn">import</span> <span class="nn">lmfit</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1"># import the tools of NumPy </span>
@@ -461,16 +437,16 @@ Requirement already satisfied: dill&gt;=0.3.4 in /opt/anaconda3/envs/main/lib/py
 </div>
 </div>
 </div>
-<section id="id1">
-<h3><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-</section>
-</section>
-<section id="perform-the-curve-fit">
-<h2>Perform the Curve Fit<a class="headerlink" href="#perform-the-curve-fit" title="Permalink to this heading">#</a></h2>
+<div class="section" id="id1">
+<h3><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="perform-the-curve-fit">
+<h2>Perform the Curve Fit<a class="headerlink" href="#perform-the-curve-fit" title="Permalink to this headline">#</a></h2>
 <p>In the code below we start with the experimental results and then construct an array of ufloat values for the rate constants, <span class="math notranslate nohighlight">\(k\)</span>. This will allow us to use the uncertainties package to properly propagate errors through the <span class="math notranslate nohighlight">\(\ln(k/T)\)</span> term for the y-axis. We then separate the nominal and error component of the y-axis values to give the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(y\)</span>-error values for the curve fit.</p>
 <p>To use <em>LMFit</em> we must first create a model object using the <code class="docutils literal notranslate"><span class="pre">lmfit.model</span></code> function. Then we assign parameters and initial values to that model using <code class="docutils literal notranslate"><span class="pre">lmfit.make_params</span></code>. Finally we optimize those parameters using a curve fit by calling the <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> function and assigning the bresult to a variable name.  this new variable now contains an lmfit object that contains the results and many tools for interpretting that information.</p>
-<section id="set-up-the-data">
-<h3>Set Up the Data<a class="headerlink" href="#set-up-the-data" title="Permalink to this heading">#</a></h3>
+<div class="section" id="set-up-the-data">
+<h3>Set Up the Data<a class="headerlink" href="#set-up-the-data" title="Permalink to this headline">#</a></h3>
 <p>Below we obtain the x,y and y-error values for the linear Eyring plot.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -502,9 +478,9 @@ Requirement already satisfied: dill&gt;=0.3.4 in /opt/anaconda3/envs/main/lib/py
 </div>
 </details>
 </div>
-</section>
-<section id="the-curve-fit">
-<h3>The Curve Fit<a class="headerlink" href="#the-curve-fit" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="the-curve-fit">
+<h3>The Curve Fit<a class="headerlink" href="#the-curve-fit" title="Permalink to this headline">#</a></h3>
 <p>Below we use the <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> function to produce an object that contains the optimized parameters and much more.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -536,9 +512,9 @@ Requirement already satisfied: dill&gt;=0.3.4 in /opt/anaconda3/envs/main/lib/py
 </div>
 </details>
 </div>
-</section>
-<section id="extract-results-and-print-report">
-<h3>Extract Results and Print Report<a class="headerlink" href="#extract-results-and-print-report" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="extract-results-and-print-report">
+<h3>Extract Results and Print Report<a class="headerlink" href="#extract-results-and-print-report" title="Permalink to this headline">#</a></h3>
 <p>Now we call the <code class="docutils literal notranslate"><span class="pre">fit_report</span></code> function built into the result object. It will output lots of information about the fit. We then extract the slope and intercept as uncertain values and calculate the <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> values. Compare these to the results from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code>. They should be identical because both systems use the least squares algorithm. You will see that the calculation of <span class="math notranslate nohighlight">\(k_{cat}\)</span> at a given temperature produces a good value showing that the covariance between <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span>  is included in their respective ufloat values.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -612,10 +588,10 @@ calculate k at T=303 K is 15.22+/-0.15
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="styling-examples">
-<h2>Styling Examples<a class="headerlink" href="#styling-examples" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="styling-examples">
+<h2>Styling Examples<a class="headerlink" href="#styling-examples" title="Permalink to this headline">#</a></h2>
 <p>We can access style options within the built in plotting function of the result object. Observe how we do this using style dictionaries and style files. the example below uses the built-in plot function in the <em>LMFit</em> object. We apply styles using style sheets. In the final example I add some specific style options to get exactly my preferred style for these kinds of presentations.</p>
 <p>You can use standard styles and then make some tweaks or you can edit a standard file to obtain your preferred style as default. Its up to you. Consider the following code.</p>
 <div class="cell tag_hide-input docutils container">
@@ -654,8 +630,8 @@ calculate k at T=303 K is 15.22+/-0.15
 <img alt="_images/fa1eb2e047958fea1d7c414ade8ccc0fa41c9e8e31ad1eb0eeae89c3d246105e.png" src="_images/fa1eb2e047958fea1d7c414ade8ccc0fa41c9e8e31ad1eb0eeae89c3d246105e.png" />
 </div>
 </div>
-<section id="more-styles">
-<h3>More Styles<a class="headerlink" href="#more-styles" title="Permalink to this heading">#</a></h3>
+<div class="section" id="more-styles">
+<h3>More Styles<a class="headerlink" href="#more-styles" title="Permalink to this headline">#</a></h3>
 <p>The above is the default style applied to my plot. We can used many other styles that are built in. Lets see what is available using the code below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -669,9 +645,9 @@ calculate k at T=303 K is 15.22+/-0.15
 </div>
 </div>
 </div>
-</section>
-<section id="examples-of-style-sheets">
-<h3>Examples of Style Sheets<a class="headerlink" href="#examples-of-style-sheets" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="examples-of-style-sheets">
+<h3>Examples of Style Sheets<a class="headerlink" href="#examples-of-style-sheets" title="Permalink to this headline">#</a></h3>
 <p>Below is code that will run through all the available styles and output a plot for each.</p>
 <div class="cell tag_hide-input tag_hide-output docutils container">
 <details class="hide above-input">
@@ -747,9 +723,9 @@ calculate k at T=303 K is 15.22+/-0.15
 </div>
 </details>
 </div>
-</section>
-<section id="my-style">
-<h3>My Style<a class="headerlink" href="#my-style" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="my-style">
+<h3>My Style<a class="headerlink" href="#my-style" title="Permalink to this headline">#</a></h3>
 <p>You can use style sheets from others. Here I use a style sheet made by Nicole Vadot via their github site at https://github.com/ninivert/matplotlib_tufte</p>
 <p>I downloaded the style file, made a small modification (removed the axis lines) and then saved it in my own working folder.</p>
 <div class="cell tag_hide-input docutils container">
@@ -791,9 +767,9 @@ calculate k at T=303 K is 15.22+/-0.15
 <img alt="_images/5a5072d4b1d5d92ecec70348e70bf1d5eb76033d3c3e89352cf0f2f7a6b28611.png" src="_images/5a5072d4b1d5d92ecec70348e70bf1d5eb76033d3c3e89352cf0f2f7a6b28611.png" />
 </div>
 </div>
-</section>
-<section id="final-tweaks">
-<h3>Final Tweaks<a class="headerlink" href="#final-tweaks" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="final-tweaks">
+<h3>Final Tweaks<a class="headerlink" href="#final-tweaks" title="Permalink to this headline">#</a></h3>
 <p>I have a preferred style that is “lighter” in appearance than the dfault colors and sizes of <em>matplotlib</em>. I could edit the style file but I often have different needs so I prefer to apply line and marker styles separately.</p>
 <p>here I am using keyword dictionaries to pass style commands into the <em>LMFit</em> plot command. When plotting the confidence interval I am passing the style commands as direct arguments to the plot function. Pyplot has many ways to send style information to the polotting system and different modules demand different paradigms. Once you figure it all out just keep copying that code and reusing and you’ll never have to relearn it.</p>
 <p>Consider the code below.</p>
@@ -845,9 +821,9 @@ calculate k at T=303 K is 15.22+/-0.15
 <img alt="_images/bbb4453317518b93b05fa6a077d279ea143ba40c5503fc8b5c68455ef35de92b.png" src="_images/bbb4453317518b93b05fa6a077d279ea143ba40c5503fc8b5c68455ef35de92b.png" />
 </div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -874,10 +850,11 @@ calculate k at T=303 K is 15.22+/-0.15
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03E-Eyring_Exercises_5_Bootstrap.html"
@@ -888,7 +865,19 @@ calculate k at T=303 K is 15.22+/-0.15
         <p class="prev-next-title">Part 3E: Bootstrapping Confidence Intervals</p>
       </div>
     </a>
+    <a class="right-next"
+       href="04-QRCode.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Extra: QR Codes in Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -896,7 +885,6 @@ calculate k at T=303 K is 15.22+/-0.15
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -942,7 +930,6 @@ By Barry Linkletter
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2024.
@@ -969,8 +956,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

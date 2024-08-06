@@ -3,61 +3,62 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Part 3C: Using LMFit &#8212; Python Presentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/tufte.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -67,7 +68,7 @@
     <link rel="next" title="Part 3D: Reading Data" href="03D-Eyring_Exercises_4_pandas.html" />
     <link rel="prev" title="Part 3B: Curve Fitting and Covariance" href="03B-Eyring_Exercises_2_curvefit.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -75,23 +76,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,20 +110,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -141,11 +130,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="start.html">
-  
   
   
   
@@ -155,23 +142,12 @@
       
     
     
-    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Python Presentation - Home"/>
-    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Python Presentation - Home"/>`);</script>
+    <img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Ouroboros-benzene.svg.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -195,9 +171,10 @@
 <li class="toctree-l1"><a class="reference internal" href="03D-Eyring_Exercises_4_pandas.html">Part 3D: Reading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03E-Eyring_Exercises_5_Bootstrap.html">Part 3E: Bootstrapping Confidence Intervals</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style and Extras</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="04-Styling.html">Part 4: Styling with Style Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-QRCode.html">Extra: QR Codes in Python</a></li>
 </ul>
 
     </div>
@@ -213,7 +190,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -222,7 +199,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -335,22 +312,20 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -398,14 +373,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="part-3c-using-lmfit">
-<h1>Part 3C: Using LMFit<a class="headerlink" href="#part-3c-using-lmfit" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="part-3c-using-lmfit">
+<h1>Part 3C: Using LMFit<a class="headerlink" href="#part-3c-using-lmfit" title="Permalink to this headline">#</a></h1>
 <p>We have been using the uncertainties package to fit the linear Erying plot and the non-linear Erying equation to obtain thermodynamic data for the transition state of a reaction. The <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> tool cannot use the ufloat values provided by the uncertainties packagae and so we separated the nominal values and the standard deviations before using them in the curve fit.</p>
 <p>There are many curve fitting packages available and one is <em>LMFit</em>. This package uses the uncertainties ufloat values natively. If we used it just like <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> we would obtain uncertain values for our parameters directly, with covariance already included. We still need to use the y values and y-error values separately but, after that, the output includes ufloat values natively.  It can also handle complex numbers and has built-in tools for data anaylsis and plotting.</p>
-<section id="load-the-toolbox">
-<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Permalink to this heading">#</a></h2>
+<div class="section" id="load-the-toolbox">
+<h2>Load the Toolbox<a class="headerlink" href="#load-the-toolbox" title="Permalink to this headline">#</a></h2>
 <p>In a <em>Python</em> notebook, we can mix code and text. In the code block below are commands to load the libraries and modules we will need for this exercise. There are some special commands that are used to run unix xommands directly in the terminal of <em>Colab</em> to install <em>Python</em> packages that are not available by default. These can “commented out” if you run this notebook on your own computer. You will need to add the “hashtag” comment symbol.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -416,12 +391,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Setup environment</span>
 
-<span class="o">!</span>mkdir<span class="w"> </span>plots
+<span class="o">!</span>mkdir plots
 
 <span class="c1">### Install and load packages</span>
  
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>uncertainties<span class="w">     </span>#<span class="w"> </span>uncomment<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>dependancy
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>lmfit<span class="w">             </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>docs<span class="w"> </span>see<span class="w"> </span>https://lmfit.github.io/lmfit-py/
+<span class="o">!</span>pip install uncertainties     # uncomment to install dependancy
+<span class="o">!</span>pip install lmfit             # <span class="k">for</span> docs see https://lmfit.github.io/lmfit-py/
 
 
 <span class="kn">import</span> <span class="nn">lmfit</span>
@@ -450,23 +425,24 @@ document.write(`
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: plots: File exists
-Requirement already satisfied: uncertainties in /Users/blink/psi4conda/lib/python3.11/site-packages (3.2.1)
-Requirement already satisfied: lmfit in /Users/blink/psi4conda/lib/python3.11/site-packages (1.2.2)
-Requirement already satisfied: asteval&gt;=0.9.28 in /Users/blink/psi4conda/lib/python3.11/site-packages (from lmfit) (0.9.33)
-Requirement already satisfied: numpy&gt;=1.19 in /Users/blink/psi4conda/lib/python3.11/site-packages (from lmfit) (1.26.4)
-Requirement already satisfied: scipy&gt;=1.6 in /Users/blink/psi4conda/lib/python3.11/site-packages (from lmfit) (1.13.0)
-Requirement already satisfied: uncertainties&gt;=3.1.4 in /Users/blink/psi4conda/lib/python3.11/site-packages (from lmfit) (3.2.1)
+Requirement already satisfied: uncertainties in /opt/anaconda3/envs/main/lib/python3.12/site-packages (3.2.2)
+Requirement already satisfied: lmfit in /opt/anaconda3/envs/main/lib/python3.12/site-packages (1.3.1)
+Requirement already satisfied: asteval&gt;=0.9.28 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (1.0.1)
+Requirement already satisfied: numpy&gt;=1.19 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (1.26.4)
+Requirement already satisfied: scipy&gt;=1.6 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (1.13.1)
+Requirement already satisfied: uncertainties&gt;=3.1.4 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (3.2.2)
+Requirement already satisfied: dill&gt;=0.3.4 in /opt/anaconda3/envs/main/lib/python3.12/site-packages (from lmfit) (0.3.8)
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="perform-the-curve-fit">
-<h2>Perform the Curve Fit<a class="headerlink" href="#perform-the-curve-fit" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="perform-the-curve-fit">
+<h2>Perform the Curve Fit<a class="headerlink" href="#perform-the-curve-fit" title="Permalink to this headline">#</a></h2>
 <p>In the code below we start with the experimental results and then construct an array of ufloat values for the rate constants, <span class="math notranslate nohighlight">\(k\)</span>. This will allow us to use the uncertainties package to properly propagate errors through the <span class="math notranslate nohighlight">\(\ln(k/T)\)</span> term for the y-axis. We then separate the nominal and error component of the y-axis values to give the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(y\)</span>-error values for the curve fit.</p>
 <p>To use <em>LMFit</em> we must first create a model object using the <code class="docutils literal notranslate"><span class="pre">lmfit.model</span></code> function. Then we assign parameters and initial values to that model using <code class="docutils literal notranslate"><span class="pre">lmfit.make_params</span></code>. Finally we optimize those parameters using a curve fit by calling the <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> function and assigning the bresult to a variable name.  This new variable now contains an lmfit object that contains the results and many tools for interpretting that information.</p>
-<section id="set-up-the-data">
-<h3>Set Up the Data<a class="headerlink" href="#set-up-the-data" title="Permalink to this heading">#</a></h3>
+<div class="section" id="set-up-the-data">
+<h3>Set Up the Data<a class="headerlink" href="#set-up-the-data" title="Permalink to this headline">#</a></h3>
 <p>Below we obtain the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(y\)</span>-error values for the linear Eyring plot.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -498,9 +474,9 @@ Requirement already satisfied: uncertainties&gt;=3.1.4 in /Users/blink/psi4conda
 </div>
 </details>
 </div>
-</section>
-<section id="the-curve-fit">
-<h3>The Curve Fit<a class="headerlink" href="#the-curve-fit" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="the-curve-fit">
+<h3>The Curve Fit<a class="headerlink" href="#the-curve-fit" title="Permalink to this headline">#</a></h3>
 <p>Below we use the <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> function to produce an object that contains the optimized parameters and much more.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,9 +502,9 @@ Requirement already satisfied: uncertainties&gt;=3.1.4 in /Users/blink/psi4conda
 </div>
 </div>
 </div>
-</section>
-<section id="extract-results-and-print-report">
-<h3>Extract Results and Print Report<a class="headerlink" href="#extract-results-and-print-report" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="extract-results-and-print-report">
+<h3>Extract Results and Print Report<a class="headerlink" href="#extract-results-and-print-report" title="Permalink to this headline">#</a></h3>
 <p>Now we call the <code class="docutils literal notranslate"><span class="pre">fit_report</span></code> function built into the result object. It will output lots of information about the fit. We then extract the slope and intercept as uncertain values and calculate the <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span> values. Compare these to the results from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code>. They should be identical because both systems use the least squares algorithm. You will see that the calculation of <span class="math notranslate nohighlight">\(k_{cat}\)</span> at a given temperature produces a good value showing that the covariance between <span class="math notranslate nohighlight">\(\Delta H^\ddagger\)</span> and <span class="math notranslate nohighlight">\(\Delta S^\ddagger\)</span>  is included in their respective ufloat values.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -545,7 +521,7 @@ Requirement already satisfied: uncertainties&gt;=3.1.4 in /Users/blink/psi4conda
 <span class="nb">print</span><span class="p">()</span>
 
 <span class="c1">#print(&quot;--- PARAMETER CONFIDENCE INTERVALS ----&quot;)</span>
-<span class="c1">#print(result.ci_report())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">ci_report</span><span class="p">())</span>
 <span class="c1">#print()</span>
 
 <span class="n">intercept</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">uvars</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>      <span class="c1"># collect parameters as uncertain values </span>
@@ -586,7 +562,7 @@ Requirement already satisfied: uncertainties&gt;=3.1.4 in /Users/blink/psi4conda
     reduced chi-square = 2.67824092
     Akaike info crit   = 6.37167291
     Bayesian info crit = 5.59054873
-    R-squared          = -7.69086731
+    R-squared          = 0.99382103
 [[Variables]]
     m: -5545.86259 +/- 277.775827 (5.01%) (init = -1000)
     b:  15.3123516 +/- 0.91797561 (6.00%) (init = -1)
@@ -594,6 +570,9 @@ Requirement already satisfied: uncertainties&gt;=3.1.4 in /Users/blink/psi4conda
     C(m, b) = -0.9999
 RSQ = 0.994
 
+      99.73%    95.45%    68.27%    _BEST_    68.27%    95.45%    99.73%
+ m:-2560.79881-918.55590-332.46919-5545.86259+332.46919+918.55590+2560.79881
+ b:  -8.46276  -3.03558  -1.09872  15.31235  +1.09872  +3.03558  +8.46276
 ------THERMODYNAMIC PARAMETERS----------
 The change in enthalpy is 46110.87+/-2309.56 J/mole
 The change in entropy is -70.24+/-7.63 J/mole.K
@@ -604,9 +583,9 @@ calculate k at T=303 K is 15.22+/-0.15
 </div>
 </div>
 </div>
-</section>
-<section id="plot-the-fit">
-<h3>Plot the Fit<a class="headerlink" href="#plot-the-fit" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="plot-the-fit">
+<h3>Plot the Fit<a class="headerlink" href="#plot-the-fit" title="Permalink to this headline">#</a></h3>
 <p>Now we will plot the data and the line representing the optimized parameters. Observe the complicated code for doing so. What do you think?</p>
 <p>LMFit result objects contain many tool like this all-in-one plotting function that uses the data and parameters that are contained within the result object.</p>
 <div class="cell tag_hide-input docutils container">
@@ -631,9 +610,9 @@ calculate k at T=303 K is 15.22+/-0.15
 <img alt="_images/6a3864dd75b600ee5add659f1332581efc978d096826f0257b0f404395e954dd.png" src="_images/6a3864dd75b600ee5add659f1332581efc978d096826f0257b0f404395e954dd.png" />
 </div>
 </div>
-</section>
-<section id="adding-the-confidence-band">
-<h3>Adding the Confidence Band<a class="headerlink" href="#adding-the-confidence-band" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="adding-the-confidence-band">
+<h3>Adding the Confidence Band<a class="headerlink" href="#adding-the-confidence-band" title="Permalink to this headline">#</a></h3>
 <p>Observe how we use the <code class="docutils literal notranslate"><span class="pre">eval_uncertainty</span></code> that is built in to the result object to calculate the standard deviation at each data point. We then use that to calculate the confidence band at <span class="math notranslate nohighlight">\(2\sigma\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -651,6 +630,7 @@ calculate k at T=303 K is 15.22+/-0.15
 <span class="n">y_fit</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_fit</span> <span class="o">-</span> <span class="n">dely</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">y_fit</span> <span class="o">+</span> <span class="n">dely</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> 
                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/3C-02.pdf&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -661,9 +641,9 @@ calculate k at T=303 K is 15.22+/-0.15
 <img alt="_images/d501d00d625ad8cbae026c46f3a14904bfd4cb587cf31cfb56741a754860c90e.png" src="_images/d501d00d625ad8cbae026c46f3a14904bfd4cb587cf31cfb56741a754860c90e.png" />
 </div>
 </div>
-</section>
-<section id="fancy-styling">
-<h3>Fancy Styling<a class="headerlink" href="#fancy-styling" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="fancy-styling">
+<h3>Fancy Styling<a class="headerlink" href="#fancy-styling" title="Permalink to this headline">#</a></h3>
 <p>We can access style options within the built in plotting function of the result object. Observe how we do this using dictionaries. There are three blocks of code below. The first plots the fit with residuals, the second is just the fit and the last is just the residuals.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -774,7 +754,7 @@ calculate k at T=303 K is 15.22+/-0.15
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/5690c9bd899981b609b0d9e2f9c88be373d1fd9bce3c29b0935c8d15519c5c5c.png" src="_images/5690c9bd899981b609b0d9e2f9c88be373d1fd9bce3c29b0935c8d15519c5c5c.png" />
+<img alt="_images/7a2b955e40a224a6d622e947e6dfc5b7b7b0f44c5b305bd102a183c40213eb35.png" src="_images/7a2b955e40a224a6d622e947e6dfc5b7b7b0f44c5b305bd102a183c40213eb35.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -826,10 +806,10 @@ calculate k at T=303 K is 15.22+/-0.15
 <img alt="_images/4de186efc71172d25c7cd7157ae5db415f3f8c515aff8996b4dbfce6ef243d59.png" src="_images/4de186efc71172d25c7cd7157ae5db415f3f8c515aff8996b4dbfce6ef243d59.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="plots-of-k-vs-t">
-<h2>Plots of <span class="math notranslate nohighlight">\(k\)</span> vs. <span class="math notranslate nohighlight">\(T\)</span><a class="headerlink" href="#plots-of-k-vs-t" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="plots-of-k-vs-t">
+<h2>Plots of <span class="math notranslate nohighlight">\(k\)</span> vs. <span class="math notranslate nohighlight">\(T\)</span><a class="headerlink" href="#plots-of-k-vs-t" title="Permalink to this headline">#</a></h2>
 <p>We can repeat all of the above for the direct curve fit to the Erying equation. Observe how little we had to change to accomplish this.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -900,7 +880,9 @@ calculate k at T=303 K is 15.22+/-0.15
 <span class="n">pars</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">make_params</span><span class="p">(</span><span class="n">dH</span>  <span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">dS</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span>  <span class="p">)</span>     
                                                   
 <span class="c1"># use the .fit method on the model object to perform the curve fit</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pars</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">y_err</span><span class="p">)</span>   
+<span class="n">result</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pars</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> 
+                 <span class="n">weights</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">y_err</span>
+                 <span class="p">)</span>   
 
 
 
@@ -912,6 +894,11 @@ calculate k at T=303 K is 15.22+/-0.15
 
 <span class="n">r</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span> <span class="n">rsq</span> <span class="o">=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RSQ = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">correlation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RSQ = </span><span class="si">{</span><span class="n">correlation</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RSQ = </span><span class="si">{</span><span class="n">correlation</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
 <span class="c1">#print(&quot;--- PARAMETER CONFIDENCE INTERVALS ----&quot;)</span>
@@ -938,60 +925,71 @@ calculate k at T=303 K is 15.22+/-0.15
 
 
 <span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">x_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">y_0</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_0</span><span class="p">)</span>
-<span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-<span class="n">dely_0</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_0</span><span class="p">)</span>
-
-
 
 <span class="c1">######################</span>
 <span class="c1">###  Make the plot</span>
 <span class="c1">######################</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
-<span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;tufte.mplstyle&quot;</span>
-<span class="c1">#style = &quot;S2_classic2.mplstyle&quot;</span>
-<span class="n">style_name</span> <span class="o">=</span> <span class="n">location_styles</span> <span class="o">+</span> <span class="n">style</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">style_name</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
 
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="n">size2</span><span class="p">)</span>
 <span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span> <span class="o">=</span> <span class="n">fig</span><span class="p">,</span>
+            <span class="n">numpoints</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
             <span class="n">fig_kws</span> <span class="o">=</span> <span class="p">{},</span>      <span class="c1"># this is a keyword dictionary for figure styles</span>
             <span class="n">xlabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$1/T$&quot;</span><span class="p">,</span>
             <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\ln \left( k/T \right)$&quot;</span><span class="p">,</span>
             <span class="n">yerr</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">y_err</span><span class="p">,</span>
             <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">,</span>
-            <span class="n">data_kws</span> <span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;linewidth&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-                       <span class="s2">&quot;markerfacecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;markeredgecolor&quot;</span><span class="p">:</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> 
-                       <span class="s2">&quot;markeredgewidth&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;zorder&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">},</span>
+            <span class="n">datafmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">fitfmt</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+            <span class="n">data_kws</span> <span class="o">=</span><span class="p">{</span>
+                       <span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;linewidth&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                       <span class="s2">&quot;markersize&quot;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;markerfacecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> 
+                       <span class="s2">&quot;markeredgecolor&quot;</span><span class="p">:</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;markeredgewidth&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> 
+                       <span class="s2">&quot;zorder&quot;</span><span class="p">:</span><span class="mi">3</span>
+                       <span class="p">},</span>
             <span class="n">fit_kws</span> <span class="o">=</span><span class="p">{</span><span class="s2">&quot;linewidth&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;zorder&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
             <span class="n">ax_res_kws</span> <span class="o">=</span> <span class="p">{},</span>   
-            <span class="n">ax_fit_kws</span> <span class="o">=</span> <span class="p">{},</span>
+            <span class="n">ax_fit_kws</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="c1">#  &quot;xlim&quot;: [290,320], </span>
+                        <span class="c1">#  &quot;xmargin&quot;: 0.05, &quot;ymargin&quot;: 0.05, </span>
+                        <span class="c1">#  &quot;xticks&quot;: [300,305,315]</span>
+                          <span class="p">},</span>
             <span class="p">)</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span>   <span class="c1"># get the axes from the plot (there are two in a list)</span>
 
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>  <span class="c1"># These will be the ticks for both axes</span>
-
-
 <span class="c1">### Confidence band</span>
 
+<span class="n">x_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y_0</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_0</span><span class="p">)</span>
+<span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dely_q</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
 
-<span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span><span class="o">-</span><span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">best_fit</span><span class="o">+</span><span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> 
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_0</span><span class="p">)</span><span class="o">-</span><span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_0</span><span class="p">)</span><span class="o">+</span><span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> 
                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="o">-</span><span class="n">sigma</span><span class="o">*</span><span class="n">dely_0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">*</span><span class="n">dely_0</span><span class="p">,</span> 
+<span class="c1">#ax[1].fill_between(x_0, result.eval(x=x_0)-dely_q, result.eval(x=x_0)+dely_q, </span>
+<span class="c1">#                   linewidth=0, color=&#39;pink&#39;, alpha=0.4, zorder=1)</span>
+
+<span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dely_q</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval_uncertainty</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="o">-</span><span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> <span class="n">sigma</span><span class="o">*</span><span class="n">dely</span><span class="p">,</span> 
                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span>
                    <span class="p">)</span>
 
+<span class="c1">#ax[0].fill_between(x_0, -dely_q, dely_q, </span>
+<span class="c1">#                   linewidth=0, color=&#39;pink&#39;, alpha = 0.4, zorder=1</span>
+<span class="c1">#                   )</span>
 
 <span class="c1">### do not show legend </span>
 <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">([])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([])</span>      <span class="c1"># blank legend</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/3C-06.pdf&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1011,12 +1009,15 @@ calculate k at T=303 K is 15.22+/-0.15
     reduced chi-square = 2.58752814
     Akaike info crit   = 6.19938705
     Bayesian info crit = 5.41826288
-    R-squared          = 0.96949005
+    R-squared          = 0.99611341
 [[Variables]]
     dH:  46263.7654 +/- 2237.04932 (4.84%) (init = 1000)
     dS: -69.7357517 +/- 7.39184495 (10.60%) (init = -50)
 [[Correlations]] (unreported correlations are &lt; 0.100)
     C(dH, dS) = +0.9999
+RSQ = 0.983
+
+RSQ = 0.991
 RSQ = 0.983
 
 ------THERMODYNAMIC PARAMETERS----------
@@ -1027,16 +1028,293 @@ The change in entropy is -69.74+/-7.39 J/mole.K
 calculate k at T=303 K is 15.22+/-0.15
 </pre></div>
 </div>
-<img alt="_images/fce18469bbea71de191d51587233a1ac1070265c3f8f1a0c0a895fab46159db2.png" src="_images/fce18469bbea71de191d51587233a1ac1070265c3f8f1a0c0a895fab46159db2.png" />
+<img alt="_images/6d88293be24204939937110bab95eae6f966f22756af8093c1ac071180307a85.png" src="_images/6d88293be24204939937110bab95eae6f966f22756af8093c1ac071180307a85.png" />
 </div>
 </div>
-</section>
-<section id="which-do-you-prefer">
-<h2>Which Do You Prefer?<a class="headerlink" href="#which-do-you-prefer" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="which-do-you-prefer">
+<h2>Which Do You Prefer?<a class="headerlink" href="#which-do-you-prefer" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">scipy.stats.linregress</span></code> function was useful but did not output information that allowed simple creation of uncertain values for the parameters that included covariance. Using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> will allow us to fit to any arbitrary equation and produced a covariance matrix that allows for the creation of properly correlated uncertain values for the parameters. The <code class="docutils literal notranslate"><span class="pre">lmfit.fit</span></code> function produced correlated uncertain values for the fit parameters directly and also has many tools builtin for analysis and plotting.</p>
 <p>The <em>LMFit</em> package is very powerful and I use it when I have a challenging situation like a function that includes imaginary numbers. The <code class="docutils literal notranslate"><span class="pre">curve</span> <span class="pre">fit</span></code> function is also powerful and just as good in most cases. Personal preference will help you choose.</p>
-</section>
-</section>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dely</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">dely_predicted</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dely</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.37946215 5.37876423 5.37803479 5.37727417 5.37648278 5.3756611
+ 5.3748097  5.37392923 5.37302044 5.37208418 5.37112141 5.37013318
+ 5.36912068 5.36808519 5.36702815 5.3659511  5.36485575 5.36374395
+ 5.36261767 5.36147909 5.36033054 5.35917451 5.3580137  5.35685098
+ 5.35568945 5.35453239 5.35338332 5.35224599 5.35112439 5.35002274
+ 5.34894555 5.34789759 5.3468839  5.34590983 5.34498103 5.34410348
+ 5.34328348 5.34252766 5.34184304 5.34123699 5.34071726 5.34029202
+ 5.33996981 5.33975965 5.33967096 5.33971364 5.33989806 5.34023506
+ 5.340736   5.34141276 5.34227773 5.34334389 5.34462475 5.34613443
+ 5.34788762 5.34989964 5.35218645 5.35476463 5.35765143 5.36086479
+ 5.36442331 5.36834632 5.37265383 5.37736662 5.38250617 5.38809474
+ 5.39415534 5.40071174 5.40778849 5.41541094 5.42360521 5.43239822
+ 5.44181768 5.4518921  5.46265077 5.4741238  5.48634205 5.49933718
+ 5.51314162 5.52778855 5.5433119  5.55974633 5.5771272  5.59549059
+ 5.61487321 5.63531245 5.65684629 5.67951331 5.70335264 5.72840394
+ 5.75470735 5.78230347 5.81123328 5.84153818 5.87325985 5.90644027
+ 5.94112168 5.97734649 6.01515726 6.05459668]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">conf_interval</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method conf_interval in module lmfit.model:
+
+conf_interval(**kwargs) method of lmfit.model.ModelResult instance
+    Calculate the confidence intervals for the variable parameters.
+
+    Confidence intervals are calculated using the
+    :func:`confidence.conf_interval` function and keyword arguments
+    (`**kwargs`) are passed to that function. The result is stored in
+    the :attr:`ci_out` attribute so that it can be accessed without
+    recalculating them.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;_Minimizer__jacobian&#39;,
+ &#39;_Minimizer__residual&#39;,
+ &#39;__class__&#39;,
+ &#39;__delattr__&#39;,
+ &#39;__dict__&#39;,
+ &#39;__dir__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__eq__&#39;,
+ &#39;__format__&#39;,
+ &#39;__ge__&#39;,
+ &#39;__getattribute__&#39;,
+ &#39;__getstate__&#39;,
+ &#39;__gt__&#39;,
+ &#39;__hash__&#39;,
+ &#39;__init__&#39;,
+ &#39;__init_subclass__&#39;,
+ &#39;__le__&#39;,
+ &#39;__lt__&#39;,
+ &#39;__module__&#39;,
+ &#39;__ne__&#39;,
+ &#39;__new__&#39;,
+ &#39;__reduce__&#39;,
+ &#39;__reduce_ex__&#39;,
+ &#39;__repr__&#39;,
+ &#39;__setattr__&#39;,
+ &#39;__sizeof__&#39;,
+ &#39;__str__&#39;,
+ &#39;__subclasshook__&#39;,
+ &#39;__weakref__&#39;,
+ &#39;_abort&#39;,
+ &#39;_calculate_covariance_matrix&#39;,
+ &#39;_calculate_uncertainties_correlations&#39;,
+ &#39;_err_max_evals&#39;,
+ &#39;_err_nonparam&#39;,
+ &#39;_int2ext_cov_x&#39;,
+ &#39;_lnprob&#39;,
+ &#39;_repr_html_&#39;,
+ &#39;aborted&#39;,
+ &#39;aic&#39;,
+ &#39;ampgo&#39;,
+ &#39;basinhopping&#39;,
+ &#39;best_fit&#39;,
+ &#39;best_values&#39;,
+ &#39;bic&#39;,
+ &#39;brute&#39;,
+ &#39;calc_covar&#39;,
+ &#39;call_kws&#39;,
+ &#39;chisqr&#39;,
+ &#39;ci_out&#39;,
+ &#39;ci_report&#39;,
+ &#39;col_deriv&#39;,
+ &#39;components&#39;,
+ &#39;conf_interval&#39;,
+ &#39;covar&#39;,
+ &#39;data&#39;,
+ &#39;dely&#39;,
+ &#39;dely_comps&#39;,
+ &#39;dely_predicted&#39;,
+ &#39;dual_annealing&#39;,
+ &#39;dump&#39;,
+ &#39;dumps&#39;,
+ &#39;emcee&#39;,
+ &#39;errorbars&#39;,
+ &#39;eval&#39;,
+ &#39;eval_components&#39;,
+ &#39;eval_uncertainty&#39;,
+ &#39;fit&#39;,
+ &#39;fit_report&#39;,
+ &#39;flatchain&#39;,
+ &#39;ier&#39;,
+ &#39;init_fit&#39;,
+ &#39;init_params&#39;,
+ &#39;init_vals&#39;,
+ &#39;init_values&#39;,
+ &#39;iter_cb&#39;,
+ &#39;jacfcn&#39;,
+ &#39;kws&#39;,
+ &#39;last_internal_values&#39;,
+ &#39;least_squares&#39;,
+ &#39;leastsq&#39;,
+ &#39;lmdif_message&#39;,
+ &#39;load&#39;,
+ &#39;loads&#39;,
+ &#39;max_nfev&#39;,
+ &#39;message&#39;,
+ &#39;method&#39;,
+ &#39;minimize&#39;,
+ &#39;model&#39;,
+ &#39;nan_policy&#39;,
+ &#39;ndata&#39;,
+ &#39;nfev&#39;,
+ &#39;nfree&#39;,
+ &#39;nvarys&#39;,
+ &#39;params&#39;,
+ &#39;penalty&#39;,
+ &#39;plot&#39;,
+ &#39;plot_fit&#39;,
+ &#39;plot_residuals&#39;,
+ &#39;prepare_fit&#39;,
+ &#39;redchi&#39;,
+ &#39;reduce_fcn&#39;,
+ &#39;residual&#39;,
+ &#39;result&#39;,
+ &#39;rsquared&#39;,
+ &#39;scalar_minimize&#39;,
+ &#39;scale_covar&#39;,
+ &#39;set_max_nfev&#39;,
+ &#39;shgo&#39;,
+ &#39;show_candidates&#39;,
+ &#39;success&#39;,
+ &#39;summary&#39;,
+ &#39;unprepare_fit&#39;,
+ &#39;user_options&#39;,
+ &#39;userargs&#39;,
+ &#39;userfcn&#39;,
+ &#39;userkws&#39;,
+ &#39;uvars&#39;,
+ &#39;values&#39;,
+ &#39;var_names&#39;,
+ &#39;weights&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lmfit</span><span class="o">.</span><span class="vm">__file__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/opt/anaconda3/envs/main/lib/python3.12/site-packages/lmfit/__init__.py&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">lmfit</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/main/lib/python3.12/site-packages/lmfit
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Experimental data</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">293</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span> <span class="mi">303</span><span class="p">,</span> <span class="mi">308</span><span class="p">,</span> <span class="mi">313</span><span class="p">]</span>       <span class="c1"># list of temperatures</span>
+<span class="n">k_obs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.6</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">,</span> <span class="mf">21.3</span><span class="p">,</span> <span class="mf">27.8</span><span class="p">]</span>  <span class="c1"># list of observe rate constants (s^-1)</span>
+
+<span class="c1">### Convert lists to numpy arrays (enables numpy math tools with these lists)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">k_obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">k_obs</span><span class="p">)</span>
+
+<span class="c1">### Calculations</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">temp</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k_obs</span><span class="o">/</span><span class="n">temp</span><span class="p">)</span>
+
+<span class="c1">### Line fit using linear regression</span>
+<span class="n">fit</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>                           <span class="c1"># fit is a &#39;object&#39; containing the results</span>
+
+<span class="c1">### Assign compnents of the fit result to variables</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">slope</span>
+<span class="n">slope_stderr</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">stderr</span> 
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">intercept</span>
+<span class="n">int_stderr</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">intercept_stderr</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">rvalue</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1">### print a report using the variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">+/-</span><span class="si">{</span><span class="n">slope_stderr</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;int = </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">+/-</span><span class="si">{</span><span class="n">int_stderr</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">best_fit_y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>   <span class="c1"># calculate y-values using fit parameters</span>
+
+<span class="c1">### Plot data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>                    <span class="c1"># plot data with black circle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">best_fit_y</span><span class="p">,</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>           <span class="c1"># plot fit line with black line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>    <span class="c1"># there were too many x labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">4.2</span><span class="p">,</span><span class="o">-</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\ln{k/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/3A-00.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                            <span class="c1"># show plot (and clear)</span>
+
+<span class="c1">### Plot the residuals</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">best_fit_y</span>            <span class="c1"># difference between data and line-fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>       <span class="c1"># set plot height to 1 inch</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>       <span class="c1"># plot a horizontal line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">residuals</span><span class="p">,</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0033</span><span class="p">,</span><span class="mf">0.0034</span><span class="p">])</span>    <span class="c1"># there were too many x labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">.1</span><span class="p">,</span><span class="mf">.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;${1/T}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;residuals&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/3C-01.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=-5560.074229125674, intercept=15.365177590523832, rvalue=-0.9970033160626764, pvalue=0.00019683392591187597, stderr=249.0767684307886, intercept_stderr=0.8227078340122718)
+slope = -5560.07+/-249.08
+int = 15.37+/-0.82
+rsq = 0.994
+</pre></div>
+</div>
+<img alt="_images/881b7a2e6e59c6646070cf4c54554182fdd06e0d301f31be3481a2c448efb6f0.png" src="_images/881b7a2e6e59c6646070cf4c54554182fdd06e0d301f31be3481a2c448efb6f0.png" />
+<img alt="_images/3aaab3dfb0fafdf329be8994321d9ca60f1726077ce5c26a7ae74bdd4f35d230.png" src="_images/3aaab3dfb0fafdf329be8994321d9ca60f1726077ce5c26a7ae74bdd4f35d230.png" />
+</div>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1063,10 +1341,11 @@ calculate k at T=303 K is 15.22+/-0.15
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03B-Eyring_Exercises_2_curvefit.html"
@@ -1086,7 +1365,10 @@ calculate k at T=303 K is 15.22+/-0.15
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1094,7 +1376,6 @@ calculate k at T=303 K is 15.22+/-0.15
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1135,7 +1416,6 @@ By Barry Linkletter
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2024.
@@ -1162,8 +1442,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

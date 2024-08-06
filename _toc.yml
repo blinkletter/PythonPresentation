@@ -16,6 +16,7 @@ parts:
         - file: 03C-Eyring_Exercises_3_LMfit.ipynb
         - file: 03D-Eyring_Exercises_4_pandas.ipynb
         - file: 03E-Eyring_Exercises_5_Bootstrap.ipynb
-    - caption: Style
+    - caption: Style and Extras
       chapters:
         - file: 04-Styling.ipynb
+        - file: 04-QRCode.ipynb
