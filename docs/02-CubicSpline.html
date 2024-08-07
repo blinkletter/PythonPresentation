@@ -429,16 +429,17 @@ document.write(`
 
 <span class="c1">### Setup environment</span>
 
-<span class="o">!</span>mkdir plots
+<span class="c1">#!mkdir plots</span>
 
 <span class="c1">### Install and load packages</span>
  
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                      <span class="c1"># data handling tools</span>
+
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>     <span class="c1"># tool for curve fitting</span>
 <span class="kn">import</span> <span class="nn">scipy</span>                             <span class="c1"># includes tools for data analysis</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1"># import the tools of NumPy as &quot;np&quot;</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>     <span class="c1"># tools for plotting</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                      <span class="c1"># data handling tools</span>
 <span class="kn">import</span> <span class="nn">scipy.interpolate</span>                 <span class="c1"># The spline functions</span>
 
 <span class="c1">### Set global variables</span>
@@ -461,9 +462,6 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: plots: File exists
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {

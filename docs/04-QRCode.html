@@ -373,14 +373,14 @@ document.write(`
 <h2>Free and Safe QR Codes<a class="headerlink" href="#free-and-safe-qr-codes" title="Permalink to this headline">#</a></h2>
 <p>The only way to be safe is to do it youself. We can use free open-source software to make a QR code. You can istall the <code class="docutils literal notranslate"><span class="pre">segno</span></code> python package using <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> as below</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">segno</span></code></p>
-<p>‘conda install segno`</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">segno</span></code></p>
 <p>The call and use the package as demostrated below. The example will use the URL for this website and create a png file for the QR code. You can delete all the options except the destination filename, the defaults are fine.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install segno        # remove comment to instal segno in Colab</span>
 
 <span class="kn">import</span> <span class="nn">segno</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="n">qrcode</span> <span class="o">=</span> <span class="n">segno</span><span class="o">.</span><span class="n">make_qr</span><span class="p">(</span><span class="s2">&quot;https://blinkletter.github.io/PythonPresentation/start.html&quot;</span><span class="p">)</span>
 <span class="n">qrcode</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;qrcode.png&quot;</span><span class="p">,</span>

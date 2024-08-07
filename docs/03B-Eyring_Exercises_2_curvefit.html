@@ -428,7 +428,7 @@ document.write(`
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: plots: File exists
-Requirement already satisfied: uncertainties in /Users/blink/psi4conda/lib/python3.11/site-packages (3.2.1)
+Requirement already satisfied: uncertainties in /opt/anaconda3/envs/psi4fun/lib/python3.11/site-packages (3.2.1)
 </pre></div>
 </div>
 </div>
@@ -1531,8 +1531,8 @@ Calculated k at T = 303 K is 15.22+/-0.15 s^-1
 
 <span class="c1"># Add error bars</span>
 <span class="c1">### White background graphics</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y_err</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> 
-               <span class="n">ecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">elinewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dash_capstyle</span><span class="o">=</span><span class="s2">&quot;round&quot;</span><span class="p">,</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y_err</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> 
+               <span class="n">ecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">elinewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">dash_capstyle</span><span class="o">=</span><span class="s2">&quot;round&quot;</span><span class="p">,</span>
                <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1">### Data graphics</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y_err</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> 
@@ -1569,6 +1569,12 @@ Calculated k at T = 303 K is 15.22+/-0.15 s^-1
                <span class="n">ecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">elinewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">dash_capstyle</span><span class="o">=</span><span class="s2">&quot;projecting&quot;</span><span class="p">,</span>
              <span class="c1">#  capsize=2, capthick=0.5, </span>
                <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># make filled band</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">,</span> <span class="o">-</span><span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">best_fit_y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">,</span> 
+                   <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                   <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;confidence interval&quot;</span><span class="p">)</span>
+
 <span class="c1">### Other elements</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> 
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
@@ -1591,7 +1597,7 @@ The change in entropy is -70.24+/-7.63 J/mole.K
 Calculated k at T = 310 K is 23.55+/-0.56 s^-1
 </pre></div>
 </div>
-<img alt="_images/b38a94e7f43c05f760be05fb17a6337903a71688047c81f64002a10e54423683.png" src="_images/b38a94e7f43c05f760be05fb17a6337903a71688047c81f64002a10e54423683.png" />
+<img alt="_images/c60b1c68d7809c1bbac15c56fd3c2ae31ceec796eba81da9d8bb4fa2e6d3a8cf.png" src="_images/c60b1c68d7809c1bbac15c56fd3c2ae31ceec796eba81da9d8bb4fa2e6d3a8cf.png" />
 </div>
 </div>
 </div>
