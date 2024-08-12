@@ -1,0 +1,15 @@
+# from "Linear Eyring Plots Conceal a Change in the Rate-Limiting Step in an Enzyme Reaction"
+# Teresa F. G. Machado, Tracey M. Gloster, and Rafael G. da Silva
+# Biochemistry 2018 57 (49), 6757-6761
+# https://doi.org/10.1021/acs.biochem.8b01099
+#
+# data for Figure 1: PaHBDH with Acetoacetate 
+"TEMP(K)", "Kcat(s-1)", "Error(s-1)"
+283,    30,    1
+288,    42,    1
+293,    60,    3
+298,    86,    4
+303,    112,   5 
+308,    155,   4 
+313,    172,   3 
+318,    216,   8 
