@@ -83,7 +83,15 @@ The confidence intervals produced by ```lmfit``` or by using the covariance matr
 
 >**Title**: [Part 3E: Bootstrapping Confidence Intervals](03E-Eyring_Exercises_5_Bootstrap.ipynb) <br>
 >**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Pandas*, *Uncertainties*  <br>
->**Skills**: Importing data from a csv file using the *Pandas* library. Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. Using `SciPy.optimize.curve_fit` to fit data to arbitrary mathematical models. Creating uncertain values with `Uncertainties.correlated_values`. Propagating error and determining confidence intervals
+>**Skills**: Importing data from a csv file using the *Pandas* library. Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib*. 
+
+### Part 3F: Final Plots
+
+Three blocks of code that determine the thermodynamic parameters and confidence intervals (CI) for the Erying plot three different ways: using `scipy.optimize.curve_fit` and using the standard deviation to establish the CI; using `lmfit` and the confidence interval is determined by the CI algorithm of `lmfit` (explained [here](https://lmfit.github.io/lmfit-py/confidence.html)); and using the bootstrap method.
+
+>**Title**: [Part 3F: Final Plots](03F_Final_Plots.ipynb) <br>
+>**Tools**: *NumPy*, *SciPy*, *matplotlib*, *Pandas*, *Uncertainties*  <br>
+>**Skills**: Importing data from a csv file using the *Pandas* library. Math functions using the tools of *NumPy*. Math with *NumPy* arrays, formatting numbers in f-strings. Data visualization using *matplotlib* and *lmfit*. Using `SciPy.optimize.curve_fit` to fit data to arbitrary mathematical models. Creating uncertain values with `Uncertainties.correlated_values`. Propagating error and determining confidence intervals
 
 
 

@@ -16,6 +16,7 @@ parts:
         - file: 03C-Eyring_Exercises_3_LMfit.ipynb
         - file: 03D-Eyring_Exercises_4_pandas.ipynb
         - file: 03E-Eyring_Exercises_5_Bootstrap.ipynb
+        - file: 03F_Final_Plots.ipynb
     - caption: Style and Extras
       chapters:
         - file: 04-Styling.ipynb
