@@ -1,0 +1,57 @@
+version: 1
+project:
+  title: Python Presentation
+  authors:
+    - name: Barry Linkletter
+      affiliations:
+        - University of Prince Edward Island
+  copyright: '2026'
+  description: A webbook of Python examples and exercises for chemistry students.
+  license: CC-BY-NC-4.0
+  exclude:
+    - _build
+    - _files
+    - Thumbs.db
+    - .DS_Store
+    - '**.ipynb_checkpoints'
+    - OLD
+  github: blinkletter/PythonPresentation
+  bibliography:
+    - references.bib
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/book.pdf
+  toc:
+    - file: start.md
+    - title: Basics
+      children:
+        - file: 01_PlotBasics.ipynb
+        - file: 02-CubicSpline.ipynb
+    - title: Curve Fits and Error
+      children:
+        - file: 03-Eyring_Exercises_Intro.md
+        - file: 03A-Eyring_Exercises_1_simple.ipynb
+        - file: 03B-Eyring_Exercises_2_curvefit.ipynb
+        - file: 03C-Eyring_Exercises_3_LMfit.ipynb
+        - file: 03D-Eyring_Exercises_4_pandas.ipynb
+        - file: 03E-Eyring_Exercises_5_Bootstrap.ipynb
+        - file: 03F_Final_Plots.ipynb
+    - title: Style and Extras
+      children:
+        - file: 04-Styling.ipynb
+        - file: 04-QRCode.ipynb
+site:
+  options:
+    logo: Ouroboros-benzene.svg.png
+    style: ./custom.css
+    logo_text: Python Presentation
+    folders: true
+  #    baseurl: /samplewebbook/
+#    favicon: images/favicon_io/favicon.ico
+    # used https://favicon.io/favicon-generator/
+#    hide_authors: true
+#    hide_footer_links: true # Hide the previous/next links in the footer
+#    hide_outline: true # Hide the document outline on all pages (right side)
+#    hide_toc: true # left side table of contents
+  template: book-theme
